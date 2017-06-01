@@ -178,7 +178,11 @@
       "node-pre-gyp",
       "bcrypt",
       "mongoose",
-      "jsonwebtoken"
+      "jsonwebtoken",
+      "express-validator",
+      "bluebird",
+      "passport",
+      "passport-local"
     ],
     "include": [
       "core-js",
@@ -235,7 +239,6 @@
     "minimist": "1.2.0",
     "moment": "^2.18.1",
     "mongoose": "^4.10.4",
-    "node-pre-gyp": "^0.6.36",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "15.4.1",
