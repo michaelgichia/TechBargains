@@ -6,6 +6,7 @@ import isString from 'lodash/isString';
 import invariant from 'invariant';
 import warning from 'warning';
 import createReducer from 'reducers';
+import Auth from '../containers/Utils';
 
 /**
  * Validate the shape of redux store
@@ -16,7 +17,6 @@ export function checkStore(store) {
     subscribe: isFunction,
     getState: isFunction,
     replaceReducer: isFunction,
-    runSaga: isFunction,
     asyncReducers: isObject,
   };
   invariant(
@@ -44,24 +44,34 @@ export function injectAsyncReducer(store, isValid) {
   };
 }
 
-/**
- * Inject an asynchronously loaded saga
- */
-export function injectAsyncSagas(store, isValid) {
-  return function injectSagas(sagas) {
-    if (!isValid) checkStore(store);
 
-    invariant(
-      Array.isArray(sagas),
-      '(app/utils...) injectAsyncSagas: Expected `sagas` to be an array of generator functions'
-    );
+function redirectToDashboard(store) {
+  return (nextState, replace) => {
+    if (Auth.isUserAuthenticated()) {
+      replace({
+        pathname: '/dashboard',
+        state: { nextPathname: nextState.location.pathname },
+      });
+    }
+  };
+}
 
-    warning(
-      !isEmpty(sagas),
-      '(app/utils...) injectAsyncSagas: Received an empty `sagas` array'
-    );
+function redirectToLogin(store) {
+  return (nextState, replace) => {
+    if (!Auth.isUserAuthenticated()) {
+      replace({
+        pathname: '/login',
+        state: { nextPathname: nextState.location.pathname },
+      });
+    }
+  };
+}
 
-    sagas.map(store.runSaga);
+function logoutUser(store) {
+  return (nextState, replace) => {
+    if (Auth.isUserAuthenticated()) {
+      Auth.deauthenticateUser();
+    }
   };
 }
 
@@ -73,6 +83,8 @@ export function getAsyncInjectors(store) {
 
   return {
     injectReducer: injectAsyncReducer(store, true),
-    injectSagas: injectAsyncSagas(store, true),
+    redirectToLogin: redirectToLogin(store),
+    redirectToDashboard: redirectToDashboard(store),
+    logoutUser: logoutUser(store),
   };
 }

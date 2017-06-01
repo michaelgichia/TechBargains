@@ -1,0 +1,5 @@
+{
+  "dbUri": "mongodb://localhost/react_app",
+  "mlab": "mongodb://Gichia:pipowakwa1258@ds111489.mlab.com:11489/dealsexp",
+  "jwtSecret": "a secret phrase!!"
+}

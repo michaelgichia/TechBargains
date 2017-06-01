@@ -12,6 +12,20 @@
  */
 
 import React from 'react';
+// Material-ui
+import Navigation from 'containers/NavBar';
+import DashboardSidebar from 'containers/DashboardSidebar';
+
+
+const style = {
+  appBarStyle: {
+    background: '#fff',
+  },
+  divi: {
+    margin: 0,
+    padding: 0,
+  },
+};
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -20,10 +34,19 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   };
 
   render() {
+    const { pathname } = this.props.location;
     return (
-      <div>
-        {React.Children.toArray(this.props.children)}
+      <div style={style.divi}>
+        { pathname.substring(1,10) === 'dashboard' ? 
+          <DashboardSidebar />
+        :
+          <Navigation />
+        }
+        <div style={style.appBarStyle} className={pathname.substring(1,10) === 'dashboard' ? "dashtech": "tech"}>
+          {React.Children.toArray(this.props.children)}
+        </div>
       </div>
     );
   }
 }
+
