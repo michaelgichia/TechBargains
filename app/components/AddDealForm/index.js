@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import DatePicker from 'material-ui/DatePicker';
 
-class AddDealForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class AddDealForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>

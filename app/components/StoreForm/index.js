@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 
-class StoreForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class StoreForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
