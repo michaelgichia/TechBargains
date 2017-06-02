@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import { connect } from 'react-redux';
 
-const style = {
+const gems3 = {
   navbar: {
     position: 'fixed ',
     width: '100%',
@@ -26,7 +26,7 @@ export class DashboardSidebar extends React.Component { // eslint-disable-line r
     return (
       <AppBar
         title="Dashboard"
-        style={style.navbar}
+        style={gems3.navbar}
         iconClassNameRight="muidocs-icon-navigation-expand-more"
         onLeftIconButtonTouchTap={this.handleToggle}
         zDepth={2}

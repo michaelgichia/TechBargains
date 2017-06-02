@@ -19,7 +19,7 @@ import Auth from '../Utils';
 const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
 
-const style = {
+const gems6 = {
   paper: {
     padding: 30,
     marginTop: 30,
@@ -140,7 +140,7 @@ export class MerchantEdit extends React.Component { // eslint-disable-line react
       <Grid>
         <Row>
           <Col xs={10} md={8} xsOffset={1} mdOffset={2}>
-            <Paper zDepth={5} rounded={false} style={style.paper}>
+            <Paper zDepth={5} rounded={false} style={gems6.paper}>
               <StoreForm
                 onChange={this.handleChange}
                 onClick={this.handleSubmit}

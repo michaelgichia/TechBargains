@@ -6,61 +6,57 @@ import shortid from 'shortid';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-const SignUpForm = ({
-  onClick,
-  onChange,
-  errors,
-  user,
-  nameError,
-  emailError,
-  passwordError,
-}) => (
-  <div>
-    <h2>Register</h2>
-    <div>
-      <ul style={{ listStyle: 'none' }}>
-        {errors && errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
-      </ul>
-      <TextField
-        floatingLabelText="Name"
-        hintText="Name"
-        name="name"
-        errorText={nameError}
-        onChange={onChange}
-        value={user.name}
-        fullWidth
-      />
-      <TextField
-        floatingLabelText="Email"
-        name="email"
-        hintText="Email"
-        errorText={emailError}
-        onChange={onChange}
-        value={user.email}
-        fullWidth
-      />
-      <TextField
-        floatingLabelText="Password"
-        hintText="Password"
-        type="password"
-        name="password"
-        onChange={onChange}
-        errorText={passwordError}
-        value={user.password}
-        fullWidth
-      />
-      <br />
-      <br />
-      <RaisedButton
-        label="Register"
-        primary
-        onClick={onClick}
-      />
-    </div>
-    <br />
-    <div>Already have an account ?<Link to={'/login'}>Log in</Link></div>
-  </div>
+class SignUpForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  render() {
+    return (
+      <div>
+        <h2>Register</h2>
+        <div>
+          <ul style={{ listStyle: 'none' }}>
+            {this.props.errors && this.props.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
+          </ul>
+          <TextField
+            floatingLabelText="Name"
+            hintText="Name"
+            name="name"
+            errorText={this.props.nameError}
+            onChange={this.props.onChange}
+            value={this.props.user.name}
+            fullWidth
+          />
+          <TextField
+            floatingLabelText="Email"
+            name="email"
+            hintText="Email"
+            errorText={this.props.emailError}
+            onChange={this.props.onChange}
+            value={this.props.user.email}
+            fullWidth
+          />
+          <TextField
+            floatingLabelText="Password"
+            hintText="Password"
+            type="password"
+            name="password"
+            onChange={this.props.onChange}
+            errorText={this.props.passwordError}
+            value={this.props.user.password}
+            fullWidth
+          />
+          <br />
+          <br />
+          <RaisedButton
+            label="Register"
+            primary
+            onClick={this.props.onClick}
+          />
+        </div>
+        <br />
+        <div>Already have an account ?<Link to={'/login'}>Log in</Link></div>
+      </div>
 );
+  }
+}
 
 SignUpForm.propTypes = {
   onClick: PropTypes.func.isRequired,

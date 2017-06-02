@@ -18,7 +18,7 @@ import Auth from '../Utils';
 const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
 
-const style = {
+const gems5 = {
   paper: {
     padding: 30,
     marginTop: 30,
@@ -98,10 +98,10 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
               </CardText>
               <CardActions>
                 <Divider />
-                <RaisedButton primary style={style.button} label="Add" onTouchTap={() => this.handleAdd()} />
-                <RaisedButton primary style={style.button} label="Edit" onTouchTap={() => this.handleEdit()} />
-                <RaisedButton primary style={style.button} label="Delete"onTouchTap={() => this.handleDelete()} />
-                <RaisedButton primary style={style.button} label="Merchants"onTouchTap={() => this.handleMerchants()} />
+                <RaisedButton primary style={gems5.button} label="Add" onTouchTap={() => this.handleAdd()} />
+                <RaisedButton primary style={gems5.button} label="Edit" onTouchTap={() => this.handleEdit()} />
+                <RaisedButton primary style={gems5.button} label="Delete"onTouchTap={() => this.handleDelete()} />
+                <RaisedButton primary style={gems5.button} label="Merchants"onTouchTap={() => this.handleMerchants()} />
               </CardActions>
             </Card>
           </Col>

@@ -75,6 +75,8 @@ module.exports = (options) => ({
       },
     }),
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.UglifyJsPlugin(), //minify everything
+    new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks 
     new webpack.ContextReplacementPlugin(/^\.\/locale$/, context => {
       if (!/\/moment\//.test(context.context)) { return }
       // context needs to be modified in place

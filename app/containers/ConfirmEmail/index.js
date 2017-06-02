@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 export class ConfirmEmail extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const style = {
+    const gems1 = {
       margin: 20,
       textAlign: 'center',
       display: 'inline-block',
@@ -21,7 +21,7 @@ export class ConfirmEmail extends React.Component { // eslint-disable-line react
       marginTop: 50,
     };
     return (
-      <Paper style={style} zDepth={1} rounded={false}>
+      <Paper style={gems1} zDepth={1} rounded={false}>
         <span>
           <h1>Thank you!</h1>
         </span>

@@ -1,4 +1,4 @@
-export const style = {
+export const gems = {
   propContainer: {
     width: 200,
     overflow: 'hidden',

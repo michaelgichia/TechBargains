@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import EventListener, { withOptions } from 'react-event-listener';
-import { style } from './style';
+import { jewels } from './jewels';
 // import styled from 'styled-components';
 
 class TopNav extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -27,9 +27,9 @@ class TopNav extends React.Component { // eslint-disable-line react/prefer-state
         title="Title"
         showMenuIconButton={this.state.windowWidth < 768}
         onLeftIconButtonTouchTap={this.props.onLeftIconButtonTouchTap}
-        titleStyle={style.titleStyle}
-        style={style.appBar}
-        iconStyleLeft={style.iconStyleLeft}
+        titleStyle={jewels.titleStyle}
+        style={jewels.appBar}
+        iconStyleLeft={jewels.iconStyleLeft}
       />
     );
   }

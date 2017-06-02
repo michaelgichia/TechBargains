@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import shortid from 'shortid';
 // Material-ui
 import { Card, CardActions, CardHeader } from 'material-ui/Card';
@@ -85,9 +84,7 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
         { items.map((item, index) => (
           <TableRow selected={this.isSelected(index)} key={shortid.generate()}>
             <TableRowColumn colSpan="10">
-              <Link to={`/dashboard/items-list/${item.id}`} key={shortid.generate()} >
-                { ReactHtmlParser(item.name) }
-              </Link>
+              <Link to={`/dashboard/items-list/${item.id}`}><div dangerouslySetInnerHTML={{__html: item.name}}/></Link>
             </TableRowColumn>
           </TableRow>
       ))}

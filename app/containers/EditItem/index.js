@@ -187,7 +187,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       );
       // Item id.
       const itemId = this.props.params.itemId;
-      console.log('Item', itemId);
       // Create.
       this.props.updateItem(data, itemId);
     }

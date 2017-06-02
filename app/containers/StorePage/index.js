@@ -19,7 +19,7 @@ import {
 } from 'material-ui/Table';
 import { doSaveMerchant } from './actions';
 
-const style = {
+const gemsgood = {
   paper: {
     padding: 30,
     marginTop: 30,
@@ -127,7 +127,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
       <Grid>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-            <Paper zDepth={2} rounded={false} style={style.paper}>
+            <Paper zDepth={2} rounded={false} style={gemsgood.paper}>
               <StoreForm
                 onChange={this.handleChange}
                 onClick={this.handleSubmit}
@@ -143,7 +143,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
         </Row>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-            <Table wrapperStyle={style.wrapperStyle} bodyStyle={style.bodyStyle} fixedHeader selectable onRowSelection={this.handleRowSelection}>
+            <Table wrapperStyle={gemsgood.wrapperStyle} bodyStyle={gemsgood.bodyStyle} fixedHeader selectable onRowSelection={this.handleRowSelection}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
                   <TableHeaderColumn colSpan="12" tooltip="Super Header" style={{ textAlign: 'center', fontSize: 24, color: 'black' }}>

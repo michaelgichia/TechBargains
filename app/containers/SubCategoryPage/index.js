@@ -24,7 +24,7 @@ import { postSubCategory } from './actions';
 const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
 
-const style = {
+const gemsawesome = {
   propContainer: {
     width: 200,
     overflow: 'hidden',
@@ -191,7 +191,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
       <Grid>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-            <Paper zDepth={2} rounded={false} style={style.paper}>
+            <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}
                 onClick={this.handleSubmit}
@@ -209,14 +209,14 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
         </Row>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-            <div style={style.table}>
+            <div style={gemsawesome.table}>
               <Table
                 fixedHeader
                 selectable
                 onRowSelection={this.handleRowSelection}
-                bodyStyle={style.bodyStyle}
+                bodyStyle={gemsawesome.bodyStyle}
                 height="500px"
-                wrapperStyle={style.wrapperStyle}
+                wrapperStyle={gemsawesome.wrapperStyle}
               >
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                   <TableRow>

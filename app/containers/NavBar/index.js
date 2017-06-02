@@ -8,7 +8,7 @@ import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import TopNav from 'containers/TopNav';
 import axios from 'axios';
 
-const style = {
+const gems65 = {
   navbar: {
     position: 'fixed',
     width: '100%',
@@ -66,7 +66,7 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <div style={style.navbar}>
+      <div style={gems65.navbar}>
         <TopNav
           onLeftIconButtonTouchTap={this.handleTouchTap}
         />

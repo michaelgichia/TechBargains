@@ -14,7 +14,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import { style } from './style';
+import { gems } from './gems';
 import Auth from '../Utils';
 import { deleteCategory } from './actions';
 
@@ -99,7 +99,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
       <Grid>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-            <Paper zDepth={2} rounded={false} style={style.paper}>
+            <Paper zDepth={2} rounded={false} style={gems.paper}>
               <CategoryForm
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
@@ -115,14 +115,14 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
         </Row>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-            <div style={style.table}>
+            <div style={gems.table}>
               <Table
                 fixedHeader
                 selectable
                 height="500px"
                 onRowSelection={this.handleRowSelection}
-                bodyStyle={style.bodyStyle}
-                wrapperStyle={style.wrapperStyle}
+                bodyStyle={gems.bodyStyle}
+                wrapperStyle={gems.wrapperStyle}
               >
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                   <TableRow>

@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import axios from 'axios';
-import ReactHtmlParser from 'react-html-parser';
 import RaisedButton from 'material-ui/RaisedButton';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
@@ -16,7 +15,7 @@ import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'm
 import { connect } from 'react-redux';
 
 // Styling
-const style = {
+const gems4 = {
   button: {
     margin: 12,
   },
@@ -76,7 +75,11 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
               <ListItem disabled leftAvatar={<Avatar>{`${percentage || 'none'}%`}</Avatar>} />
 
               <CardMedia
-                overlay={<CardTitle title={ReactHtmlParser(name)} subtitle={`Merchant: ${merchant ? merchant.title : 'none'}`} />}
+                overlay={<CardTitle
+                  title={<div dangerouslySetInnerHTML={{__html: name}}/>}
+                  subtitle={`Merchant: ${merchant ? merchant.title : 'none'}`} 
+                  />
+                }
                 style={{ marginTop: 10 }}
               >
                 {/* The deal image.*/}
@@ -95,31 +98,36 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
                 <CardText>
                   <CardTitle title="Features" />
                   <ul>
-                    {features ? features.map((feature) => (<li key={shortid.generate()}>{ ReactHtmlParser(feature) }</li>)) : []}
+                    {features ? features.map((feature) => (<li
+                      key={shortid.generate()}>
+                      <div dangerouslySetInnerHTML={{__html: feature}}/>
+                      </li>
+                      )) : []
+                    }
                   </ul>
                 </CardText>
               </Paper>
 
               <CardActions>
                 <Link to={'/dashboard'} key={0} >
-                  <RaisedButton label="Add" style={style.button} labelColor="#7c7c7c" />
+                  <RaisedButton label="Add" style={gems4.button} labelColor="#7c7c7c" />
                 </Link>
 
                 <Link to={'/dashboard/items-list'} key={1} >
-                  <RaisedButton label="Items" style={style.button} labelColor="#7c7c7c" />
+                  <RaisedButton label="Items" style={gems4.button} labelColor="#7c7c7c" />
                 </Link>
 
                 <Link key={2} >
                   <RaisedButton
                     label="Delete"
-                    style={style.button}
+                    style={gems4.button}
                     labelColor="#7c7c7c"
                     onTouchTap={() => this.props.deleteItem(this.state.itemId)}
                   />
                 </Link>
 
                 <Link to={`/dashboard/items-list/${this.state.itemId}/update`} key={3} >
-                  <RaisedButton label="Edit" style={style.button} labelColor="#7c7c7c" />
+                  <RaisedButton label="Edit" style={gems4.button} labelColor="#7c7c7c" />
                 </Link>
               </CardActions>
 

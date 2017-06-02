@@ -4,29 +4,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 
-
-function DealModal({ selected, handleClose, open }) {
-  const actions = [
-    <BuyButton currentStore={selected.merchant} url={selected.backlink} />,
-    <BackButton onTouchTap={handleClose} />,
-  ];
-  return (
-    <Dialog
-      title={selected.name}
-      titleStyle={{
-        textAlign: 'center',
-        borderBottom: 'solid 1.5px #ee6e73',
-        marginBottom: 10,
-      }}
-      actions={actions}
-      actionsContainerStyle={{ textAlign: 'center', top: '50%' }}
-      modal={false}
-      open={open}
-      onRequestClose={handleClose}
-    >
-          No Coupon code required. Go to store and shop.
-        </Dialog>
-  );
+class DealModal extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  render() {
+    const actions = [
+      <BuyButton currentStore={this.props.selected.merchant} url={this.props.selected.backlink} />,
+      <BackButton onTouchTap={this.props.handleClose} />,
+    ];
+    
+    return (
+      <Dialog
+        title={this.props.selected.name}
+        titleStyle={{
+          textAlign: 'center',
+          borderBottom: 'solid 1.5px #ee6e73',
+          marginBottom: 10,
+        }}
+        actions={actions}
+        actionsContainerStyle={{ textAlign: 'center', top: '50%' }}
+        modal={false}
+        open={this.props.open}
+        onRequestClose={this.props.handleClose}
+      >
+        No Coupon code required. Go to store and shop.
+      </Dialog>
+    );
+  }
 }
 
 DealModal.propTypes = {

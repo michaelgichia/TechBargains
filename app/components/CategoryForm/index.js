@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import Subheader from 'material-ui/Subheader';
 
-const style = {
+const gems = {
   toggle: {
     marginBottom: 16,
   },
@@ -32,7 +32,7 @@ class CategoryForm extends React.PureComponent { // eslint-disable-line react/pr
         <Toggle
           label="Is Category featured ?"
           defaultToggled={false}
-          style={style.toggle}
+          style={gems.toggle}
           onToggle={this.props.onToggle}
           labelPosition="right"
           toggled={this.props.toggled}
