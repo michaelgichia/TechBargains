@@ -28,7 +28,7 @@ export const SubtitleDiv = styled.div`
         color: rgb(82, 92, 101);
         text-decoration: underline;
     }
-`
+`;
 export const TitleDiv = styled.div`
     background-color: #ff8400;
     padding: 10px 16px;
@@ -46,4 +46,4 @@ export const TitleDiv = styled.div`
     font-size: 24px;
   }
 }
-`
+`;

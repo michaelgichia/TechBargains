@@ -15,7 +15,7 @@ class SubCategoryForm extends React.PureComponent { // eslint-disable-line react
           {this.props.errors && this.props.errors.map((error, i) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
         </ul>
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{fontSize: 24, textAlign: "center", color: "black"}}>Create SubCategory</Subheader>
+        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>Create SubCategory</Subheader>
         <TextField
           hintText="Title"
           floatingLabelText="Title"

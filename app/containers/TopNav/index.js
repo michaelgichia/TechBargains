@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
-import EventListener, {withOptions} from 'react-event-listener';
+import EventListener, { withOptions } from 'react-event-listener';
 import { style } from './style';
 // import styled from 'styled-components';
 

@@ -4,12 +4,12 @@ import React from 'react';
 
 function CustomToolbar() {
   return (
-      <div id="toolbar">
-        <button className="ql-bold"></button>
-        <button className="ql-underline"></button>
-        <button className="ql-link">
-        </button>
-      </div>
+    <div id="toolbar">
+      <button className="ql-bold"></button>
+      <button className="ql-underline"></button>
+      <button className="ql-link">
+      </button>
+    </div>
   );
 }
 

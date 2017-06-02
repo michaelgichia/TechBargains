@@ -108,7 +108,7 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
         <Row>
           <Col xs={10} md={8} xsOffset={1} mdOffset={2}>
             <Card style={{ marginTop: 20 }}>
-              <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Items / Products / Services List"/>
+              <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Items / Products / Services List" />
               <CardActions>
                 <FlatButton key={shortid.generate()} icon={<RefreshIcon />} label="Refresh" />
                 <FlatButton key={shortid.generate()} icon={<FilterIcon />} label="Filter Deals" />

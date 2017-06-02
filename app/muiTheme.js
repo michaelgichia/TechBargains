@@ -5,10 +5,10 @@ export const theme = getMuiTheme({
     textColor: '#525c65',
   },
   TextField: {
-      zIndex: 1,
+    zIndex: 1,
   },
-   appBar: {
-       zIndex: 5,
-       width: '100%',
-   },
+  appBar: {
+    zIndex: 5,
+    width: '100%',
+  },
 });

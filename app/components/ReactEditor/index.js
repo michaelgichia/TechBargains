@@ -7,26 +7,26 @@ const modules = {
   toolbar: [['bold', 'italic', 'underline'], ['link']],
 };
 const formats = [
-  'bold', 'italic', 'underline', 'bullet', 'indent', 'link'
+  'bold', 'italic', 'underline', 'bullet', 'indent', 'link',
 ];
 // Handler example
 // handleChange = (html) => this.setState({ editorHtml: html });
 
-const ReactEditor = ({ onChange, placeholder, id}) => (
+const ReactEditor = ({ onChange, placeholder, id }) => (
   <div className="text-editor">
     <CustomToolbar />
     <ReactQuill
       id={id}
-      onChange={onChange} 
+      onChange={onChange}
       placeholder={placeholder}
       modules={modules}
       formats={formats}
-      theme={"snow"}
+      theme={'snow'}
     >
-      <div 
-        key="editor"                     
+      <div
+        key="editor"
         ref="editor"
-        className="quill-contents"                     
+        className="quill-contents"
       />
     </ReactQuill>
   </div>
@@ -35,6 +35,6 @@ const ReactEditor = ({ onChange, placeholder, id}) => (
 ReactEditor.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-}
+};
 
 export default ReactEditor;

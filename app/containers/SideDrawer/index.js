@@ -33,7 +33,8 @@ export class SideDrawer extends React.Component { // eslint-disable-line react/p
           zDepth={2}
         />
         <List>
-          <ListItem primaryText="All items" leftIcon={<ItemsIcon />}
+          <ListItem
+            primaryText="All items" leftIcon={<ItemsIcon />}
             initiallyOpen
             primaryTogglesNestedList
             containerElement={<Link to={'/dashboard/items-list'} key={0} />}
@@ -46,12 +47,12 @@ export class SideDrawer extends React.Component { // eslint-disable-line react/p
               />,
             ]}
           />,
-          <ListItem 
+          <ListItem
             primaryText="Category"
             leftIcon={<CategoryIcon />}
             containerElement={<Link to={'/dashboard/category'} key={0} />}
           />,
-          <ListItem 
+          <ListItem
             primaryText="Subcategory"
             leftIcon={<SubcatIcon />}
             containerElement={<Link to={'/dashboard/sub-category'} key={1} />}

@@ -143,12 +143,12 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
    * Auto generate theme color.
   */
   generateThemeColors = (colors) => colors[Math.floor(Math.random() * colors.length)];
-  
-  onNameChange = (name) => this.setState({name});
 
-  onDescriptionChange = (description) => this.setState({description});
+  onNameChange = (name) => this.setState({ name });
 
-  onFeaturesChange = (features) => this.setState({features});
+  onDescriptionChange = (description) => this.setState({ description });
+
+  onFeaturesChange = (features) => this.setState({ features });
 
 
   /**
@@ -187,7 +187,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       );
       // Item id.
       const itemId = this.props.params.itemId;
-      console.log('Item', itemId)
+      console.log('Item', itemId);
       // Create.
       this.props.updateItem(data, itemId);
     }
@@ -355,8 +355,8 @@ EditItem.propTypes = {
 };
 
 EditItem.defaultProps = {
-  itemId: "",
-}
+  itemId: '',
+};
 
 const mapStateToProps = ({ panel, editItem }) => ({
   categories: panel.categories,

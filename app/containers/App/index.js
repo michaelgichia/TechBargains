@@ -37,12 +37,12 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     const { pathname } = this.props.location;
     return (
       <div style={style.divi}>
-        { pathname.substring(1,10) === 'dashboard' ? 
+        { pathname.substring(1, 10) === 'dashboard' ?
           <DashboardSidebar />
         :
           <Navigation />
         }
-        <div style={style.appBarStyle} className={pathname.substring(1,10) === 'dashboard' ? "dashtech": "tech"}>
+        <div style={style.appBarStyle} className={pathname.substring(1, 10) === 'dashboard' ? 'dashtech' : 'tech'}>
           {React.Children.toArray(this.props.children)}
         </div>
       </div>

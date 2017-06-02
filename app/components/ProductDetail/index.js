@@ -18,7 +18,7 @@ function ProductDetail({ product, handleOpen }) {
       <Header style={{ backgroundColor: product.themeColor }}></Header>
       <Paper style={style.firstDiv}>
         <img
-          alt='dealsexp'
+          alt="dealsexp"
           style={style.image}
           src={product.image}
         />

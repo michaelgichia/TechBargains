@@ -7,23 +7,23 @@
 import { DELETE_CATEGORY } from './constants';
 
 const initialState = {
-    categories: [],
-    errors: '',
-    message: '',
+  categories: [],
+  errors: '',
+  message: '',
 };
 
 function categoryPageReducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_CATEGORY.SUCCESS:
       return {
-          ...state,
-          categories: action.categories,
+        ...state,
+        categories: action.categories,
       };
 
     case DELETE_CATEGORY.ERROR:
       return {
-          ...state,
-          errors: action.errors,
+        ...state,
+        errors: action.errors,
         categories: action.categories,
       };
 

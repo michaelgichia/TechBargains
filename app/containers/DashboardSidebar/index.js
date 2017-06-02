@@ -11,7 +11,7 @@ const style = {
     top: 0,
     zIndex: 5,
   },
-}
+};
 
 export class DashboardSidebar extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -32,8 +32,8 @@ export class DashboardSidebar extends React.Component { // eslint-disable-line r
         zDepth={2}
       >
         <SideDrawer
-        open={open}
-        handleToggle={this.handleToggle}
+          open={open}
+          handleToggle={this.handleToggle}
         />
       </AppBar>
     );

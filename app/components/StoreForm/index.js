@@ -12,7 +12,7 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
         <ul style={{ listStyle: 'none' }}>
           {this.props.errors && this.props.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
         </ul>
-        <Subheader style={{fontSize: 24, textAlign: "center", color: "black"}}>{this.props.header}</Subheader>
+        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{this.props.header}</Subheader>
         <TextField
           hintText="Title"
           id="title"

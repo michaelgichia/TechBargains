@@ -17,7 +17,7 @@ import subCategoryPageReducer from 'containers/SubCategoryPage/reducer';
 import itemsListReducer from 'containers/ItemsList/reducer';
 import editItemReducer from 'containers/EditItem/reducer';
 import merchantsListReducer from 'containers/MerchantsList/reducer';
-import homepageReducer from 'containers/HomePage/reducer';
+// import homepageReducer from 'containers/HomePage/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -36,7 +36,7 @@ export default function createReducer(asyncReducers) {
     itemlist: itemsListReducer,
     editItem: editItemReducer,
     merchantsList: merchantsListReducer,
-    homepage: homepageReducer,
+    // homepage: homepageReducer,
     ...asyncReducers,
   });
 }

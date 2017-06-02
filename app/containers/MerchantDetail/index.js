@@ -88,22 +88,22 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
       <Grid>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-              <Card style={{marginTop: 30}}>
-                <CardHeader
-                  title="Store Details"
-                  subtitle={`Name of the Store: ${title}`}
-                />
-                <CardText>
-                  {`Description: ${description}`}
-                </CardText>
-                <CardActions>
-                  <Divider />
-                  <RaisedButton primary style={style.button} label="Add" onTouchTap={() => this.handleAdd()} />
-                  <RaisedButton primary style={style.button} label="Edit" onTouchTap={() => this.handleEdit()} />
-                  <RaisedButton primary style={style.button} label="Delete"onTouchTap={() => this.handleDelete()} />
-                  <RaisedButton primary style={style.button} label="Merchants"onTouchTap={() => this.handleMerchants()} />
-                </CardActions>
-              </Card>
+            <Card style={{ marginTop: 30 }}>
+              <CardHeader
+                title="Store Details"
+                subtitle={`Name of the Store: ${title}`}
+              />
+              <CardText>
+                {`Description: ${description}`}
+              </CardText>
+              <CardActions>
+                <Divider />
+                <RaisedButton primary style={style.button} label="Add" onTouchTap={() => this.handleAdd()} />
+                <RaisedButton primary style={style.button} label="Edit" onTouchTap={() => this.handleEdit()} />
+                <RaisedButton primary style={style.button} label="Delete"onTouchTap={() => this.handleDelete()} />
+                <RaisedButton primary style={style.button} label="Merchants"onTouchTap={() => this.handleMerchants()} />
+              </CardActions>
+            </Card>
           </Col>
         </Row>
       </Grid>
@@ -117,6 +117,6 @@ MerchantDetail.propTypes = {
 
 MerchantDetail.defaultProps = {
   merchantId: '#',
-}
+};
 
 export default MerchantDetail;

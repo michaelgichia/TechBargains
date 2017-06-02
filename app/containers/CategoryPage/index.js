@@ -126,7 +126,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
               >
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                   <TableRow>
-                    <TableHeaderColumn colSpan="12" tooltip="A List Of Categories" style={{ textAlign: 'center', fontSize: 24, color: "black" }}>
+                    <TableHeaderColumn colSpan="12" tooltip="A List Of Categories" style={{ textAlign: 'center', fontSize: 24, color: 'black' }}>
                     A List Of Categories
                   </TableHeaderColumn>
                   </TableRow>
@@ -163,8 +163,8 @@ const mapStateToProps = ({ category }) => ({
   errors: category.errors,
 });
 
-const mapDispatchToProps = (dispatch) => ({ 
-  deleteCategory: (id) => dispatch(deleteCategory(id))
+const mapDispatchToProps = (dispatch) => ({
+  deleteCategory: (id) => dispatch(deleteCategory(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage);

@@ -9,7 +9,7 @@
  * the linting exception.
  */
 import ProductDetail from 'components/ProductDetail';
-import MobileProductDetail from 'containers/MobileProductDetail' 
+import MobileProductDetail from 'containers/MobileProductDetail';
 import DealModal from 'components/DealModal';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -43,7 +43,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     axios.get('/public-api/item')
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        console.log('DATA', response.data)
+        console.log('DATA', response.data);
         this.setState({ products: response.data.results });
       }
       // console.info('err', response.data.errors);
@@ -105,17 +105,16 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                 </Row>
               </Grid>
             );
-          } else {
-            return(
-              <Grid fluid>
-                <Row>
-                  <Col sm={11.9} xs={11.9}>
-                    <MobileProductDetail />
-                  </Col>
-                </Row>
-              </Grid>
-            )
           }
+          return (
+            <Grid fluid>
+              <Row>
+                <Col sm={11.9} xs={11.9}>
+                  <MobileProductDetail />
+                </Col>
+              </Row>
+            </Grid>
+          );
         }}
       </MediaQuery>
     );
@@ -126,7 +125,7 @@ HomePage.propTypes = {
 };
 
 HomePage.defaultProps = {
-  open: false
-}
+  open: false,
+};
 
 export default HomePage;

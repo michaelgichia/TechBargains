@@ -6,25 +6,25 @@ import Auth from '../Utils';
 const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
 
-const fetchCategories = () => axios.get(fetchAPI)
+const fetchCategories = () => axios.get(fetchAPI);
 
-const deleteId = (id) => axios.delete(`${deleteAPI}/${id}`)
+const deleteId = (id) => axios.delete(`${deleteAPI}/${id}`);
 
 export const deleteCategory = (id) => (dispatch) => {
-    Promise.all([ deleteId(id), fetchCategories() ])
-  .then(([deleteId, categoriesData]) =>  {
-      if (deleteId.data.confirmation === 'success' &&
+  Promise.all([deleteId(id), fetchCategories()])
+  .then(([deleteId, categoriesData]) => {
+    if (deleteId.data.confirmation === 'success' &&
               categoriesData.data.confirmation === 'success') {
-                  dispatch({
-                      type: DELETE_CATEGORY.SUCCESS,
-                      categories: categoriesData.data.results,
-                  });
-      } else {
-          dispatch({
-              type: DELETE_CATEGORY.ERROR,
-              errors: deleteId.data.message,
-              categories: categoriesData.data.results,
-          });
-      }
-  })
-}
+      dispatch({
+        type: DELETE_CATEGORY.SUCCESS,
+        categories: categoriesData.data.results,
+      });
+    } else {
+      dispatch({
+        type: DELETE_CATEGORY.ERROR,
+        errors: deleteId.data.message,
+        categories: categoriesData.data.results,
+      });
+    }
+  });
+};

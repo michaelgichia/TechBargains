@@ -73,29 +73,29 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
           <Col xs={10} md={8} lg={6} sm={12}>
             <Card containerStyle={{ marginTop: 30 }}>
 
-              <ListItem disabled leftAvatar={<Avatar>{`${percentage ? percentage:'none'}%`}</Avatar>} />
+              <ListItem disabled leftAvatar={<Avatar>{`${percentage || 'none'}%`}</Avatar>} />
 
               <CardMedia
-                overlay={<CardTitle title={ ReactHtmlParser(name) } subtitle={`Merchant: ${merchant ? merchant.title:'none'}`} />}
+                overlay={<CardTitle title={ReactHtmlParser(name)} subtitle={`Merchant: ${merchant ? merchant.title : 'none'}`} />}
                 style={{ marginTop: 10 }}
               >
                 {/* The deal image.*/}
-                <img src={backlink} style={{ maxHeight: 400, maxWidth: 300 }} alt={name}/>
+                <img src={backlink} style={{ maxHeight: 400, maxWidth: 300 }} alt={name} />
               </CardMedia>
 
               <Paper zDepth={1} rounded={false}>
-                <CardTitle subtitle={`Category: ${category ? category.name:'none'}`} />
+                <CardTitle subtitle={`Category: ${category ? category.name : 'none'}`} />
                 <Divider />
-                <CardTitle subtitle={`Subcategory: ${subCategory ? subCategory.title: 'none'}`} />
+                <CardTitle subtitle={`Subcategory: ${subCategory ? subCategory.title : 'none'}`} />
                 <Divider />
-                <CardTitle subtitle={`Coupon: ${coupon ? coupon: 'none'}`} />
+                <CardTitle subtitle={`Coupon: ${coupon || 'none'}`} />
                 <Divider />
-                <CardTitle subtitle={`Expires on: ${expire? expire: 'none'}`} />
+                <CardTitle subtitle={`Expires on: ${expire || 'none'}`} />
                 <Divider />
                 <CardText>
                   <CardTitle title="Features" />
                   <ul>
-                    {features ? features.map(feature => (<li key={shortid.generate()}>{ ReactHtmlParser(feature) }</li>)) : []}
+                    {features ? features.map((feature) => (<li key={shortid.generate()}>{ ReactHtmlParser(feature) }</li>)) : []}
                   </ul>
                 </CardText>
               </Paper>

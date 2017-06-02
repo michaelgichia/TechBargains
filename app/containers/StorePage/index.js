@@ -143,10 +143,10 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
         </Row>
         <Row>
           <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
-              <Table wrapperStyle={style.wrapperStyle} bodyStyle={style.bodyStyle} fixedHeader selectable onRowSelection={this.handleRowSelection}>
+            <Table wrapperStyle={style.wrapperStyle} bodyStyle={style.bodyStyle} fixedHeader selectable onRowSelection={this.handleRowSelection}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
-                  <TableHeaderColumn colSpan="12" tooltip="Super Header" style={{ textAlign: 'center', fontSize: 24, color: "black" }}>
+                  <TableHeaderColumn colSpan="12" tooltip="Super Header" style={{ textAlign: 'center', fontSize: 24, color: 'black' }}>
                     A List Of Merchants
                   </TableHeaderColumn>
                 </TableRow>
@@ -156,7 +156,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
               </TableHeader>
               <TableBody displayRowCheckbox={false} deselectOnClickaway preScanRows={false}>
                 {this.state.merchants.map((row, index) => (
-                  <TableRow style={{color: "#337ab7"}} key={shortid.generate()}>
+                  <TableRow style={{ color: '#337ab7' }} key={shortid.generate()}>
                     <TableRowColumn colSpan="12">{row.title}</TableRowColumn>
                   </TableRow>
                   ))}

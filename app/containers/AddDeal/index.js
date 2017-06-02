@@ -123,11 +123,11 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
   */
   generateThemeColors = (colors) => colors[Math.floor(Math.random() * colors.length)];
 
-  onNameChange = (name) => this.setState({name});
+  onNameChange = (name) => this.setState({ name });
 
-  onDescriptionChange = (description) => this.setState({description});
+  onDescriptionChange = (description) => this.setState({ description });
 
-  onFeaturesChange = (features) => this.setState({features});
+  onFeaturesChange = (features) => this.setState({ features });
 
   /**
    * Validate user input to avoid empty values sent to the db.
