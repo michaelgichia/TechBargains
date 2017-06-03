@@ -1,51 +1,27 @@
 import Paper from 'material-ui/Paper';
 import React from 'react';
+import SectionDiv from 'components/SectionDiv';
+import SecondDiv from 'components/SecondDiv';
+import Topper from 'components/Topper';
+import BorderTop from 'components/BorderTop';
+import FirstDiv from 'components/FirstDiv';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 
 class ProductDetail extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Paper className="section-div">
-        <div className="potato" style={{ backgroundColor: this.props.product.themeColor }}></div>
-        <Paper className="first-div">
-          <img
-            alt="dealsexp"
-            className="imagi-div"
-            src={this.props.product.image}
-          />
-        </Paper>
-        <Paper className="second-div">
-          <div
-            className="header-div mango"
-            dangerouslySetInnerHTML={{__html: this.props.product.name}}
-          />
-          <div
-            className="title-div"
-            style={{ backgroundColor: this.props.product.themeColor }}
-            dangerouslySetInnerHTML={{__html: this.props.product.description}}
-          />
-          <div className="detail-div">
-            <ul>
-              {
-                this.props.product.features.splice(0, 5).map((detail) => (
-                  <li key={shortid.generate()}><div dangerouslySetInnerHTML={{__html: detail}}/></li>
-                ))
-              }
-            </ul>
-          </div>
-          <div className="buyerdiv">
-            <button
-              onClick={() => this.props.handleOpen(this.props.product.id)}
-              className="deal-button"
-              style={{
-                ...{ borderColor: this.props.product.themeColor, color: this.props.product.themeColor },
-              }}
-            >
-              SEE DEAL
-            </button>
-          </div>
-        </Paper>
+        <Topper
+          product={this.props.product}
+        />
+
+        <FirstDiv 
+          product={this.props.product}
+        />
+        <SecondDiv
+          handleOpen={this.props.handleOpen}
+          product={this.props.product}
+        />
       </Paper>
     );
 
