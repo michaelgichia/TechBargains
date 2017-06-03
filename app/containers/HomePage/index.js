@@ -9,6 +9,7 @@
  * the linting exception.
  */
 import ProductDetail from 'components/ProductDetail';
+import LineBar from 'components/LineBar';
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import DealModal from 'components/DealModal';
 import React from 'react';
@@ -78,6 +79,11 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           if (matches) {
             return (
               <Grid fluid>
+                <Row>
+                  <Col sm={12} xs={10} smOffset={1} md={8} mdOffset={2} lg={7} lgOffset={2}>
+                    <LineBar />
+                  </Col>
+                </Row>
                 <Row>
                   <Col sm={12} xs={10} smOffset={1} md={8} mdOffset={2} lg={7} lgOffset={2}>
                     <DealModal
