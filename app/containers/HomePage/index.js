@@ -9,7 +9,7 @@
  * the linting exception.
  */
 import ProductDetail from 'components/ProductDetail';
-import LineBar from 'components/LineBar';
+import Dropdown from 'components/Dropdown';
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import DealModal from 'components/DealModal';
 import React from 'react';
@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import axios from 'axios';
 import MediaQuery from 'react-responsive';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import { Col, Row } from 'react-styled-flexboxgrid';
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -38,6 +38,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     },
     open: false,
     products: [],
+    dropdownValue: 'Most Recent',
   }
 
   componentDidMount() {
@@ -70,7 +71,10 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
       // console.info('err', response.data.errors);
     });
     this.setState({ open: false });
-  }
+  };
+
+  handleDropdown = (e) => this.setState({ dropdownValue: e.target.id });
+
 
   render() {
     return (
@@ -78,37 +82,35 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         {(matches) => {
           if (matches) {
             return (
-              <Grid fluid>
-                <Row>
-                  <Col sm={12} xs={10} smOffset={1} md={8} mdOffset={2} lg={7} lgOffset={2}>
-                    <LineBar />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col sm={12} xs={10} smOffset={1} md={8} mdOffset={2} lg={7} lgOffset={2}>
-                    <DealModal
-                      handleClose={this.handleClose}
-                      open={this.state.open}
-                      selected={this.state.selected}
-                    />
-                  </Col>
-                  <Col sm={12} xs={10} smOffset={1} md={8} mdOffset={2} lg={7} lgOffset={2}>
-                    <ul style={{ listStyleType: 'none' }}>
-                      {
-                      this.state.products.map((product, index) => (
-                        <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
-                          <ProductDetail
-                            product={product}
-                            key={index}
-                            handleOpen={this.handleOpen}
-                          />
-                        </li>
-                      ))
+              <Row>
+                <Col xs={12} sm={7} smOffset={0.5} md={8} mdOffset={0.5} lg={9} lgOffset={0.5}>
+                  <Dropdown
+                    handleDropdown={this.handleDropdown}
+                    dropdownValue={this.state.dropdownValue}
+                  />
+                  <DealModal
+                    handleClose={this.handleClose}
+                    open={this.state.open}
+                    selected={this.state.selected}
+                  />
+                  <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                    {
+                    this.state.products.map((product, index) => (
+                      <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+                        <ProductDetail
+                          product={product}
+                          key={shortid.generate()}
+                          handleOpen={this.handleOpen}
+                        />
+                      </li>
+                    ))
                     }
-                    </ul>
-                  </Col>
-                </Row>
-              </Grid>
+                  </ul>
+                </Col>
+                <Col xs={12} sm={3} md={2} lg={1}>
+                  <di>Home</di>
+                </Col>
+              </Row>
             );
           }
         }}
@@ -125,12 +127,3 @@ HomePage.defaultProps = {
 };
 
 export default HomePage;
-// return (
-//   <Grid fluid>
-//     <Row>
-//       <Col sm={11.9} xs={11.9}>
-//         <MobileProductDetail />
-//       </Col>
-//     </Row>
-//   </Grid>
-// );
