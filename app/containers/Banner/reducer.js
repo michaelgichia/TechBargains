@@ -4,23 +4,23 @@
  *
  */
 
-import { DELETE_CATEGORY } from './constants';
+import { DELETE_BANNER } from './constants';
 
 const initialState = {
-  categories: [],
+  banners: [],
   errors: '',
   message: '',
 };
 
-function categoryPageReducer(state = initialState, action) {
+function bannerReducer(state = initialState, action) {
   switch (action.type) {
-    case DELETE_CATEGORY.SUCCESS:
+    case DELETE_BANNER.SUCCESS:
       return {
         ...state,
         categories: action.categories,
       };
 
-    case DELETE_CATEGORY.ERROR:
+    case DELETE_BANNER.ERROR:
       return {
         ...state,
         errors: action.errors,
@@ -32,4 +32,4 @@ function categoryPageReducer(state = initialState, action) {
   }
 }
 
-export default categoryPageReducer;
+export default bannerReducer;

@@ -9,4 +9,4 @@ export const deleteAPI = '/api/category';
 export const fetchAPI = '/public-api/category';
 
 // Action types
-export const DELETE_CATEGORY = asyncActionType('DELETE_CATEGORY');
+export const DELETE_BANNER = asyncActionType('DELETE_BANNER');

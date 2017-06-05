@@ -275,21 +275,31 @@ export default function createRoutes(store) {
       },
     }, {
       onEnter: redirectToLogin,
-      path: '/dashboard/banner',
-      name: 'banner',
-      getComponent(location, cb) {
-        import('containers/Banner')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    }, {
-      onEnter: redirectToLogin,
       path: '/dashboard/banner/create',
       name: 'bannerCreate',
       getComponent(location, cb) {
         import('containers/BannerCreate')
           .then(loadModule(cb))
           .catch(errorLoading);
+      },
+    }, {
+      onEnter: redirectToLogin,
+      path: '/dashboard/banner',
+      name: 'banner',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Banner/reducer'),
+          import('containers/Banner'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('banner', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
       },
     }, {
       path: '*',

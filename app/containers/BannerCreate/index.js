@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import validator from 'validator';
 import axios from 'axios';
 import Auth from '../Utils';
-import { deleteBanner } from './actions';
 
 // token
 const token = `bearer ${Auth.getToken()}`;
