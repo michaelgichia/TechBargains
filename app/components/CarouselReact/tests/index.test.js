@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import BorderTop from '../index';
+// import Carousel from '../index';
 
-describe('<BorderTop />', () => {
+describe('<Carousel />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

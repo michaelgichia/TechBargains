@@ -34,7 +34,6 @@ import '!file-loader?name=[name].[ext]!./manifest.json';
 import '!!style-loader!css-loader!./bootstrap.css';
 import '!!style-loader!css-loader!./bootstrap-theme.css';
 import '!!style-loader!css-loader!./../node_modules/react-quill/dist/quill.snow.css';
-
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './store';

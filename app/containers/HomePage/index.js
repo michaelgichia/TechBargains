@@ -10,6 +10,7 @@
  */
 import ProductDetail from 'components/ProductDetail';
 import Dropdown from 'components/Dropdown';
+import CarouselReact from 'components/CarouselReact';
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import DealModal from 'components/DealModal';
 import React from 'react';
@@ -83,6 +84,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           if (matches) {
             return (
               <Row>
+                <Col xs={12} sm={7} smOffset={0.5} md={8} mdOffset={0.5} lg={9} lgOffset={0.5}>
+                  <CarouselReact />
+                </Col>
                 <Col xs={12} sm={7} smOffset={0.5} md={8} mdOffset={0.5} lg={9} lgOffset={0.5}>
                   <Dropdown
                     handleDropdown={this.handleDropdown}

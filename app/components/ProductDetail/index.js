@@ -3,7 +3,6 @@ import React from 'react';
 import SectionDiv from 'components/SectionDiv';
 import SecondDiv from 'components/SecondDiv';
 import Topper from 'components/Topper';
-import BorderTop from 'components/BorderTop';
 import FirstDiv from 'components/FirstDiv';
 import PropTypes from 'prop-types';
 
