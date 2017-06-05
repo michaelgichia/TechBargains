@@ -141,6 +141,7 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      onEnter: redirectToLogin,
       path: '/dashboard/sub-category',
       name: 'subCategoryPage',
       getComponent(nextState, cb) {
@@ -254,6 +255,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      onEnter: redirectToLogin,
       path: '/dashboard/merchants/:merchantId/update',
       name: 'merchantEdit',
       getComponent(nextState, cb) {
@@ -270,6 +272,24 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
+      },
+    }, {
+      onEnter: redirectToLogin,
+      path: '/dashboard/banner',
+      name: 'banner',
+      getComponent(location, cb) {
+        import('containers/Banner')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      onEnter: redirectToLogin,
+      path: '/dashboard/banner/create',
+      name: 'bannerCreate',
+      getComponent(location, cb) {
+        import('containers/BannerCreate')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     }, {
       path: '*',

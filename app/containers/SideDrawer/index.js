@@ -13,6 +13,7 @@ import StoreIcon from 'material-ui/svg-icons/action/store';
 import SubcatIcon from 'material-ui/svg-icons/image/view-comfy';
 import ItemsIcon from 'material-ui/svg-icons/places/ac-unit';
 import CreateIcon from 'material-ui/svg-icons/file/create-new-folder';
+import BannerIcon from 'material-ui/svg-icons/image/panorama';
 
 
 export class SideDrawer extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -35,7 +36,6 @@ export class SideDrawer extends React.Component { // eslint-disable-line react/p
         <List>
           <ListItem
             primaryText="All items" leftIcon={<ItemsIcon />}
-            initiallyOpen
             primaryTogglesNestedList
             containerElement={<Link to={'/dashboard/items-list'} key={0} />}
             nestedItems={[
@@ -61,6 +61,19 @@ export class SideDrawer extends React.Component { // eslint-disable-line react/p
             primaryText="Stores"
             leftIcon={<StoreIcon />}
             containerElement={<Link to={'/dashboard/merchants'} key={2} />}
+          />,
+          <ListItem
+            primaryText="Banners" leftIcon={<BannerIcon />}
+            primaryTogglesNestedList
+            containerElement={<Link to={'/dashboard/banner'} key={4} />}
+            nestedItems={[
+              <ListItem
+                key={1}
+                primaryText="Add New Banner"
+                leftIcon={<CreateIcon />}
+                containerElement={<Link to={'/dashboard/banner/create'} key={4} />}
+              />,
+            ]}
           />,
         </List>
       </Drawer>

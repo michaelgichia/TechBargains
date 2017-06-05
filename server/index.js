@@ -56,6 +56,7 @@ const subCategoryRoutes = require('./routes/subcategory.route');
 const merchantRoutes = require('./routes/merchant.route');
 const publicRoutes = require('./routes/api.public');
 const catsAndsubsRoutes = require('./routes/catAndSub.route');
+const bannerRoutes = require('./routes/banner.route');
 
 // routes
 app.use('/auth', authRoutes);
@@ -64,6 +65,7 @@ app.use('/api/category', categoryRoutes);
 app.use('/api/item', itemRoutes);
 app.use('/api/subcategory', subCategoryRoutes);
 app.use('/api/merchant', merchantRoutes);
+app.use('/api/banner', bannerRoutes);
 app.use('/public-api/all', catsAndsubsRoutes);
 app.use('/public-api', publicRoutes);
 
