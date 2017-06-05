@@ -9,6 +9,8 @@ import BannerTable from 'components/BannerTable';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { deleteBanner } from './actions';
+import { browserHistory } from 'react-router';
+
 
 
 export class Banner extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -30,6 +32,7 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
 
   handleRowSelection = (selectedRows) => {
     const bannerId = this.state.banners[selectedRows].id;
+    browserHistory.push(`/dashboard/banner/${bannerId}`)
   };
 
   render() {

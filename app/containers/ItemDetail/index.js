@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react';
 import axios from 'axios';
+import shortid from 'shortid';
+import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import { connect } from 'react-redux';
+// Material
 import RaisedButton from 'material-ui/RaisedButton';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router';
-import shortid from 'shortid';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 // Actions
 import { deleteItem } from './actions';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
-// Material
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import { connect } from 'react-redux';
 
 // Styling
 const gems4 = {

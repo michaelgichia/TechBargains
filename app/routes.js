@@ -302,6 +302,25 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      onEnter: redirectToLogin,
+      path: '/dashboard/banner/:bannerId',
+      name: 'bannerDetail',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/BannerDetail/reducer'),
+          import('containers/BannerDetail'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('bannerDetail', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
