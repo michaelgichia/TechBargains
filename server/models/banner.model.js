@@ -29,7 +29,7 @@ const BannerSchema = new Schema({
 BannerSchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
-    name: this.name,
+    title: this.title,
     backlink: this.backlink,
     imageUrl: this.imageUrl,
     isFeatured: this.isFeatured,

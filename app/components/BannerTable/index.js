@@ -42,7 +42,7 @@ class BannerTable extends React.PureComponent { // eslint-disable-line react/pre
           {this.props.banners.map((row) => (
             <TableRow key={shortid.generate()}>
               <TableRowColumn colSpan="7">{row.title}</TableRowColumn>
-              <TableRowColumn colSpan="2">{row.isFeatured ? 'true' : 'false'}</TableRowColumn>
+              <TableRowColumn colSpan="3">{row.isFeatured ? 'true' : 'false'}</TableRowColumn>
               <TableRowColumn colSpan="2">&times;</TableRowColumn>
             </TableRow>
           ))}
