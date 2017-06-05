@@ -12,6 +12,20 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
+.card {
+  margin: 30px 10%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  max-width: 90%;
+  height: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
 h2 {
   border: none !important;
 }

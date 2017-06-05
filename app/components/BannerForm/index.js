@@ -17,7 +17,7 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
       <div>
         {this.props.errors && <p>{this.props.errors}</p>}
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>Create Category</Subheader>
+        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>Create Banner</Subheader>
         <TextField
           hintText="Title"
           id="title"

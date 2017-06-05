@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import BannerForm from 'components/BannerForm';
+import PaperLite from 'components/PaperLite';
 import { connect } from 'react-redux';
 import validator from 'validator';
 import axios from 'axios';
@@ -97,7 +98,7 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
       message,
     } = this.state;
     return (
-      <div>
+      <PaperLite>
         <BannerForm
           title={title}
           imageUrl={imageUrl}
@@ -112,7 +113,7 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
           onToggle={this.handleToggle}
           toggled={isFeatured}
         />
-      </div>
+      </PaperLite>
     );
   }
 }
