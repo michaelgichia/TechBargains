@@ -63,7 +63,7 @@ export class SideDrawer extends React.Component { // eslint-disable-line react/p
             containerElement={<Link to={'/dashboard/merchants'} key={2} />}
           />,
           <ListItem
-            primaryText="Banners" leftIcon={<BannerIcon />}
+            primaryText="All Banners" leftIcon={<BannerIcon />}
             primaryTogglesNestedList
             containerElement={<Link to={'/dashboard/banner'} key={4} />}
             nestedItems={[

@@ -4,21 +4,16 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Col, Row } from 'react-styled-flexboxgrid';
 import axios from 'axios';
+import { browserHistory, Link } from 'react-router';
 // Material
 import RaisedButton from 'material-ui/RaisedButton';
-import ListItem from 'material-ui/List/ListItem';
-import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import PaperLite from 'components/PaperLite';
-import { Link } from 'react-router';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-// Actions
-import { deleteBanner } from './actions';
+import { Card, CardActions,  CardMedia, CardTitle } from 'material-ui/Card';
 
 // Styling
 const gems4 = {
@@ -28,7 +23,7 @@ const gems4 = {
 };
 
 export class BannerDetail extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   state = {
     itemData: {
       title: '',
@@ -47,33 +42,46 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
     axios.get(`/public-api/banner/${bannerId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        console.log('jane', response.data.result)
         this.setState({ itemData: { ...response.data.result }});
       } else {
         this.setState({ errors: response.data.message });
+        console.error(response.data);
       }
     });
   }
 
+  handleDelete = () => {
+    const url = '/dashboard/banner';
+    axios.delete(`/api/banner/${this.state.bannerId}`)
+    .then((response) => {
+      if (response.data.confirmation === 'success') {
+        console.info('info', response.data)
+        browserHistory.push(url);
+      } else {
+        this.setState({ errors: response.data.errors });
+      }
+    });
+  };
+
   render() {
-    const { backlink, imageUrl, title} = this.state.itemData;
+    const { backlink, imageUrl, title } = this.state.itemData;
     return (
       <Grid>
         <Row>
-          <Col xs={12} sm={10}  md={10} lg={10} lgOffset={1} mdOffset={1} xsOffset={1}>
+          <Col xs={12} sm={10} md={10} lg={10} lgOffset={1} mdOffset={1} xsOffset={1}>
             <Card containerStyle={{ marginTop: 30 }}>
               <CardMedia style={{ marginTop: 10 }}>
                 <img src={backlink} style={{ maxHeight: 400, maxWidth: 300 }} alt={name} />
               </CardMedia>
 
               <Paper zDepth={1} rounded={false}>
-                <CardTitle subtitle={`Backlink: ${backlink ? backlink : 'none'}`} style={{marginBottom: 20}} />
-                <Divider style={{marginBottom: 20}} />
-                <CardTitle subtitle={`Image Url: ${imageUrl ? imageUrl : 'none'}`} />
+                <CardTitle subtitle={`Backlink: ${ backlink ? backlink : 'none' }`} style={{marginBottom: 20}} />
+                <Divider style={{ marginBottom: 20 }} />
+                <CardTitle subtitle={`Image Url: ${ imageUrl ? imageUrl : 'none' }`} />
               </Paper>
 
               <CardActions>
-                <Link to={'/dashboard/banner/create'} key={0}   >
+                <Link to={'/dashboard/banner/create'} key={0}>
                   <RaisedButton label="Add" labelColor="#7c7c7c" />
                 </Link>
 
@@ -86,7 +94,7 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
                     label="Delete"
                     style={gems4.button}
                     labelColor="#7c7c7c"
-                    onTouchTap={() => this.props.deleteBanner(this.state.bannerId)}
+                    onTouchTap={() => this.handleDelete()}
                   />
                 </Link>
 
@@ -106,8 +114,4 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
 BannerDetail.propTypes = {
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  deleteBanner: (bannerId) => dispatch(deleteBanner(bannerId)),
-})
-
-export default connect(null, mapDispatchToProps)(BannerDetail);
+export default BannerDetail;

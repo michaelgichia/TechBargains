@@ -22,7 +22,7 @@ const update = (id, params) =>
       { upsert: true, new: true },
       (err, store) => {
         if (err) {
-          reject(err, null);
+          reject(err);
         }
         resolve(store.summary());
       });
@@ -32,10 +32,10 @@ const deleteStore = (id) =>
   new Promise((resolve, reject) => {
     Merchant.findOneAndRemove(id, (err) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
-      resolve(null, null);
+      resolve(null);
     });
   });
 

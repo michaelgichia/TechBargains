@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import BannerMsg from '../index';
+// import { BannerEdit } from '../index';
 
-describe('<BannerMsg />', () => {
+describe('<BannerEdit />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

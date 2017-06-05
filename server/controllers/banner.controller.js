@@ -8,7 +8,7 @@ const create = (body) =>
         reject(err);
         return;
       }
-      resolve(banner);
+      resolve(banner.summary());
     });
   });
 
@@ -16,10 +16,10 @@ const update = (id, params) =>
   new Promise((resolve, reject) => {
     Banner.findByIdAndUpdate(id, params, { new: true }, (err, banner) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
-      resolve(null, banner);
+      resolve(banner.summary());
     });
   });
 
@@ -27,10 +27,10 @@ const deleteBanner = (id) =>
   new Promise((resolve, reject) => {
     Banner.findOneAndRemove(id, (err) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
-      resolve(null, null);
+      resolve(null);
     });
   });
 

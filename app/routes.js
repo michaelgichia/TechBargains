@@ -284,41 +284,30 @@ export default function createRoutes(store) {
       },
     }, {
       onEnter: redirectToLogin,
+      path: '/dashboard/banner/:bannerId/update',
+      name: 'bannerEdit',
+      getComponent(location, cb) {
+        import('containers/BannerEdit')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      onEnter: redirectToLogin,
       path: '/dashboard/banner',
       name: 'banner',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/Banner/reducer'),
-          import('containers/Banner'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('banner', reducer.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
+      getComponent(location, cb) {
+        import('containers/Banner')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     }, {
       onEnter: redirectToLogin,
       path: '/dashboard/banner/:bannerId',
       name: 'bannerDetail',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/BannerDetail/reducer'),
-          import('containers/BannerDetail'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('bannerDetail', reducer.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
+      getComponent(location, cb) {
+        import('containers/BannerDetail')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     }, {
       path: '*',

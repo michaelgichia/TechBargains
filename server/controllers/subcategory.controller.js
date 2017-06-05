@@ -17,7 +17,7 @@ const update = (id, params) =>
   new Promise((resolve, reject) => {
     SubCategory.findByIdAndUpdate(id, params, { new: true }, (err, payload) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
       resolve(payload);
@@ -28,10 +28,10 @@ const deleteSubCategory = (id) =>
   new Promise((resolve, reject) => {
     SubCategory.findOneAndRemove(id, (err) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
-      resolve(null, null);
+      resolve(null);
     });
   });
 

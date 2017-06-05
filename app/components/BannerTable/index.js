@@ -16,6 +16,8 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import EditIcon from 'material-ui/svg-icons/editor/border-color';
+
 
 class BannerTable extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -43,7 +45,7 @@ class BannerTable extends React.PureComponent { // eslint-disable-line react/pre
             <TableRow key={shortid.generate()}>
               <TableRowColumn colSpan="7">{row.title}</TableRowColumn>
               <TableRowColumn colSpan="3">{row.isFeatured ? 'true' : 'false'}</TableRowColumn>
-              <TableRowColumn colSpan="2">&times;</TableRowColumn>
+              <TableRowColumn colSpan="2"><EditIcon /></TableRowColumn>
             </TableRow>
           ))}
         </TableBody>

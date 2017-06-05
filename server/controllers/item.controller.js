@@ -26,7 +26,7 @@ const update = (id, params) =>
 
     Item.findByIdAndUpdate(itemId, paramsCopy, { upsert: false, new: true }, (err, item) => {
       if (err) {
-        reject(err, null);
+        reject(err);
       }
       resolve(item.summary());
     });
@@ -36,9 +36,9 @@ const deleteItem = (id) =>
   new Promise((resolve, reject) => {
     Item.findOneAndRemove(id, (err) => {
       if (err) {
-        reject(err, null);
+        reject(err);
       }
-      resolve(null, null);
+      resolve(null);
     });
   });
 

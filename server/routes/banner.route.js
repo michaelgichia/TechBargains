@@ -54,7 +54,7 @@ router.delete('/:bannerId', (req, res) => {
     }).end();
   }
 
-  const id = { _id: req.params.categoryId };
+  const id = { _id: req.params.bannerId };
 
   controllers.deleteBanner(id)
   .then(() => {
@@ -72,7 +72,7 @@ router.delete('/:bannerId', (req, res) => {
   });
 });
 
-router.post('/update/:bannerId', (req, res) => {
+router.put('/update/:bannerId', (req, res) => {
   // Sanitize id passed in.
   req.sanitize('id').escape();
   req.sanitize('id').trim();
@@ -86,7 +86,7 @@ router.post('/update/:bannerId', (req, res) => {
     }).end();
   }
 
-  const id = req.params.id;
+  const id = req.params.bannerId;
 
   controllers.update(id, req.body)
   .then((result) => {

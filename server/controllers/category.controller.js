@@ -9,7 +9,7 @@ const create = (body) =>
         reject(err);
         return;
       }
-      resolve(category);
+      resolve(category.summary());
     });
   });
 
@@ -17,10 +17,10 @@ const update = (id, params) =>
   new Promise((resolve, reject) => {
     Category.findByIdAndUpdate(id, params, { new: true }, (err, category) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
-      resolve(null, category);
+      resolve(category.summary());
     });
   });
 
@@ -28,10 +28,10 @@ const deleteCategory = (id) =>
   new Promise((resolve, reject) => {
     Category.findOneAndRemove(id, (err) => {
       if (err) {
-        reject(err, null);
+        reject(err);
         return;
       }
-      resolve(null, null);
+      resolve(null);
     });
   });
 

@@ -18,8 +18,6 @@ import itemsListReducer from 'containers/ItemsList/reducer';
 import editItemReducer from 'containers/EditItem/reducer';
 import merchantsListReducer from 'containers/MerchantsList/reducer';
 import homepageReducer from 'containers/HomePage/reducer';
-import bannerReducer from 'containers/Banner/reducer';
-import bannerDetailReducer from 'containers/BannerDetail/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -39,8 +37,6 @@ export default function createReducer(asyncReducers) {
     editItem: editItemReducer,
     merchantsList: merchantsListReducer,
     homepage: homepageReducer,
-    banner: bannerReducer,
-    bannerDetail: bannerDetailReducer,
     ...asyncReducers,
   });
 }

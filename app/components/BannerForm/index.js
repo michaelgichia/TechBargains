@@ -17,7 +17,7 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
       <div>
         {this.props.errors && <p>{this.props.errors}</p>}
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>Create Banner</Subheader>
+        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{this.props.formTitle}</Subheader>
         <TextField
           hintText="Title"
           id="title"
@@ -78,6 +78,7 @@ BannerForm.propTypes = {
   message: PropTypes.string.isRequired,
   onToggle: PropTypes.func.isRequired,
   toggled: PropTypes.bool.isRequired,
+  formTitle: PropTypes.string.isRequired,
 };
 
 export default BannerForm;
