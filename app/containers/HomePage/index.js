@@ -11,6 +11,7 @@
 import Dropdown from 'components/Dropdown';
 import CarouselContainer from 'containers/CarouselContainer';
 import Product from 'containers/Product';
+import Cuopon from 'containers/Cuopon';
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import React from 'react';
 import MediaQuery from 'react-responsive';
@@ -30,7 +31,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           if (matches) {
             return (
               <Row>
-                <Col xs={10} sm={7} smOffset={0.5} md={6} mdOffset={0.5} lg={6} lgOffset={0.5}>
+                <Col xs={10} sm={8} smOffset={0.5} md={6} mdOffset={0.5} lg={6} lgOffset={0.5}>
                   <CarouselContainer />
                   <Dropdown
                     handleDropdown={this.handleDropdown}
@@ -38,8 +39,10 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   />
                   <Product />
                 </Col>
-                <Col xs={false} sm={false} md={3} lg={2}>
-                  <di>Home</di>
+                <Col xs={1} sm={3} md={5} lg={5}>
+                    <Cuopon />
+                    <Cuopon />
+                    <Cuopon />
                 </Col>
               </Row>
             );
