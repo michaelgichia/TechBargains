@@ -12,6 +12,8 @@ import Dropdown from 'components/Dropdown';
 import CarouselContainer from 'containers/CarouselContainer';
 import Product from 'containers/Product';
 import Cuopon from 'containers/Cuopon';
+import CouponHeader from 'components/CouponHeader';
+
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import React from 'react';
 import MediaQuery from 'react-responsive';
@@ -40,9 +42,10 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   <Product />
                 </Col>
                 <Col xs={1} sm={3} md={5} lg={5}>
-                    <Cuopon />
-                    <Cuopon />
-                    <Cuopon />
+                  <CouponHeader />
+                  <Cuopon />
+                  <Cuopon />
+                  <Cuopon />
                 </Col>
               </Row>
             );
