@@ -4,6 +4,7 @@ import SectionDiv from 'components/SectionDiv';
 import SecondDiv from 'components/SecondDiv';
 import Topper from 'components/Topper';
 import FirstDiv from 'components/FirstDiv';
+import ThirdDiv from 'components/ThirdDiv';
 import PropTypes from 'prop-types';
 
 class ProductDetail extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -18,8 +19,11 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
           product={this.props.product}
         />
         <SecondDiv
-          handleOpen={this.props.handleOpen}
           product={this.props.product}
+        />
+        <ThirdDiv
+          product={this.props.product}
+          handleOpen={this.props.handleOpen}
         />
       </Paper>
     );
@@ -33,7 +37,6 @@ ProductDetail.propTypes = {
 };
 
 ProductDetail.defaultProps = {
-  themeColor: '#C3D6E4',
 };
 
 export default ProductDetail;

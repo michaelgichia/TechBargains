@@ -15,7 +15,7 @@ import React from 'react';
 // Material-ui
 import Navigation from 'containers/NavBar';
 import DashboardSidebar from 'containers/DashboardSidebar';
-
+import withProgressBar from 'components/ProgressBar';
 
 const style = {
   appBarStyle: {
@@ -27,7 +27,7 @@ const style = {
   },
 };
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
@@ -50,3 +50,4 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   }
 }
 
+export default withProgressBar(App);

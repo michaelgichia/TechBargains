@@ -36,7 +36,9 @@ export default function configureStore(initialState = {}, history) {
     createReducer(),
     initialState,
     composeEnhancers(...enhancers,
-      applyMiddleware(thunk),
+      applyMiddleware(
+        thunk,
+      ),
     )
   );
 

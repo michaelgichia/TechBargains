@@ -27,7 +27,23 @@ const findById = (id) =>
     });
   });
 
+const findCarousel = (params) =>
+  new Promise((resolve, reject) => {
+    Banner.find({isFeatured: true}).sort('-date').limit(5).exec((err, banners) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      const summaries = [];
+      banners.forEach((banner) => {
+        summaries.push(banner.summary());
+      });
+      resolve(summaries);
+    });
+  });
+
 module.exports = {
   find,
   findById,
+  findCarousel
 };

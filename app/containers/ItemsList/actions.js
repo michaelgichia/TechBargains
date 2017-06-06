@@ -5,6 +5,7 @@
  */
 
 import axios from 'axios';
+
 import {
     ITEMS_RECEIVED_ERROR,
     ITEMS_RECEIVED_SUCCESS,
@@ -13,6 +14,7 @@ import {
 } from './constants';
 
 export const getItems = () => (dispatch) => {
+  dispatch(showLoading());
   axios.get('/public-api/item')
     .then((response) => {
       if (response.data.confirmation === 'success') {

@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import SectionDiv from '../index';
+// import ThirdDiv from '../index';
 
-describe('<SectionDiv />', () => {
+describe('<ThirdDiv />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

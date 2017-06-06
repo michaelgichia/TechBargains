@@ -66,7 +66,7 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
   render() {
     const { backlink, imageUrl, title } = this.state.itemData;
     return (
-      <Grid>
+      <Grid fluid>
         <Row>
           <Col xs={12} sm={10} md={10} lg={10} lgOffset={1} mdOffset={1} xsOffset={1}>
             <Card containerStyle={{ marginTop: 30 }}>
