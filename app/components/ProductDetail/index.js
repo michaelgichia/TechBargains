@@ -1,6 +1,5 @@
 import Paper from 'material-ui/Paper';
 import React from 'react';
-import SectionDiv from 'components/SectionDiv';
 import SecondDiv from 'components/SecondDiv';
 import Topper from 'components/Topper';
 import FirstDiv from 'components/FirstDiv';
