@@ -5,7 +5,6 @@
  */
 import AddDealForm from 'components/AddDealForm';
 import React, { PropTypes } from 'react';
-import moment from 'moment';
 import validator from 'validator';
 import { connect } from 'react-redux';
 import MenuItem from 'material-ui/MenuItem';
@@ -133,11 +132,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     updateitem[e.target.id] = e.target.value;
     this.setState({ item: updateitem });
   };
-
-  /**
-   * Pretify the date object.
-  */
-  hadleDateFormat = (expire) => moment(expire).format('MMMM Do, YYYY');
 
   /**
    * Auto generate theme color.
@@ -290,7 +284,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={6} xsOffset={1} mdOffset={3}>
+          <Col xs={12} md={12} lg={12}>
             <AddDealForm
               onClick={this.handleSubmit}
               onChange={this.handleChange}
@@ -302,7 +296,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
               onCategoryChange={this.handleCategory}
               onSubCategoryChange={this.handleSubcategory}
               onDateChange={this.handleDate}
-              formatDate={this.hadleDateFormat}
               categoryError={categoryError}
               subCategoryError={subCategoryError}
               nameError={nameError}

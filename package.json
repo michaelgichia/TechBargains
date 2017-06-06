@@ -243,7 +243,6 @@
     "lodash": "^4.17.4",
     "material-ui": "^0.18.1",
     "minimist": "1.2.0",
-    "moment": "^2.18.1",
     "mongoose": "^4.10.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

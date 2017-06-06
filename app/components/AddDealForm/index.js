@@ -109,7 +109,6 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
             id="expire"
             mode="landscape"
             onChange={this.props.onDateChange}
-            formatDate={this.props.formatDate}
             fullWidth
             value={this.props.expire}
           />
@@ -139,7 +138,6 @@ AddDealForm.propTypes = {
   subCategoryError: PropTypes.string.isRequired,
   subCategoryArray: PropTypes.array.isRequired,
   onDateChange: PropTypes.func.isRequired,
-  formatDate: PropTypes.func.isRequired,
   expire: PropTypes.object.isRequired,
   merchantError: PropTypes.string.isRequired,
   merchant: PropTypes.string.isRequired,

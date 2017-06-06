@@ -1,7 +1,6 @@
 import AddDealForm from 'components/AddDealForm';
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import validator from 'validator';
 // Material-ui
 import MenuItem from 'material-ui/MenuItem';
@@ -112,11 +111,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
     updateItem[e.target.id] = e.target.value;
     this.setState({ item: updateItem });
   };
-
-  /**
-   * Pretify the date object.
-  */
-  hadleDateFormat = (expire) => moment(expire).format('MMMM Do, YYYY');
 
   /**
    * Auto generate theme color.
@@ -284,7 +278,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 onCategoryChange={this.handleCategory}
                 onSubCategoryChange={this.handleSubcategory}
                 onDateChange={this.handleDate}
-                formatDate={this.hadleDateFormat}
                 categoryError={categoryError}
                 subCategoryError={subCategoryError}
                 percentageError={percentageError}

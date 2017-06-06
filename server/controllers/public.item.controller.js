@@ -29,7 +29,9 @@ const findById = (id) =>
       if (err) {
         reject(err);
       }
-      resolve(item.summary());
+      if (item !== null) {
+        resolve(item.summary());
+      }
     });
   });
 

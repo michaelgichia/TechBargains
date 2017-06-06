@@ -70,15 +70,21 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
         <Row>
           <Col xs={12} sm={10} md={10} lg={10} lgOffset={1} mdOffset={1} xsOffset={1}>
             <Card containerStyle={{ marginTop: 30 }}>
-              <CardMedia style={{ marginTop: 10 }}>
-                <img src={backlink} style={{ maxHeight: 400, maxWidth: 300 }} alt={name} />
+              <CardMedia style={{ marginTop: 10, marginBottom: 20 }} mediaStyle={{ maxHeight: 300 , height: 300}}>
+                <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
               </CardMedia>
 
-              <Paper zDepth={1} rounded={false}>
-                <CardTitle subtitle={`Backlink: ${ backlink ? backlink : 'none' }`} style={{marginBottom: 20}} />
+              <div>
+                <CardTitle 
+                  subtitleColor='#676d79'
+                  subtitle={`Backlink: ${ backlink ? backlink : 'none' }`} 
+                  style={{marginBottom: 20}} 
+                />
                 <Divider style={{ marginBottom: 20 }} />
-                <CardTitle subtitle={`Image Url: ${ imageUrl ? imageUrl : 'none' }`} />
-              </Paper>
+                <CardTitle
+                  subtitleColor='#676d79' 
+                  subtitle={`Image Url: ${ imageUrl ? imageUrl : 'none' }`} />
+              </div>
 
               <CardActions>
                 <Link to={'/dashboard/banner/create'} key={0}>
