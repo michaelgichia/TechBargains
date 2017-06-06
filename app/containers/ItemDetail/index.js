@@ -69,12 +69,13 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={8} lg={6} sm={12}>
+          <Col xs={10} xsOffset={1} md={10} mdOffset={1} lg={10} lgOffset={1} sm={12}>
             <Card containerStyle={{ marginTop: 30 }}>
 
               <ListItem disabled leftAvatar={<Avatar>{`${percentage || 'none'}%`}</Avatar>} />
 
               <CardMedia
+                mediaStyle={{ maxHeight: 300 , height: 300}}
                 overlay={<CardTitle
                   title={<div dangerouslySetInnerHTML={{__html: name}}/>}
                   subtitle={`Merchant: ${merchant ? merchant.title : 'none'}`} 
@@ -83,7 +84,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
                 style={{ marginTop: 10 }}
               >
                 {/* The deal image.*/}
-                <img src={backlink} style={{ maxHeight: 400, maxWidth: 300 }} alt={name} />
+                <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
               </CardMedia>
 
               <Paper zDepth={1} rounded={false}>
