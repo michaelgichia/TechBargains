@@ -6,7 +6,10 @@ import validator from 'validator';
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
-import { Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 // Actions
 import { postDeal } from './actions';
 
@@ -285,50 +288,52 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
     const merchantArray = this.displayMerchants(merchants);
 
     return (
-      <Row>
-        <Col xs={12} sm={10} smOffset={1} md={8} mdOffset={1} lg={8} lgOffset={1}>
-          <Paper rounded={false} style={style.paper}>
-            <AddDealForm
-              onClick={this.handleSubmit}
-              onChange={this.handleChange}
-              hintStyle={hintStyle}
-              subCategoryArray={subCategoryArray}
-              categoryArray={categoryArray}
-              category={category}
-              subCategory={subCategory}
-              onCategoryChange={this.handleCategory}
-              onSubCategoryChange={this.handleSubcategory}
-              onDateChange={this.handleDate}
-              categoryError={categoryError}
-              subCategoryError={subCategoryError}
-              percentageError={percentageError}
-              merchantError={merchantError}
-              couponError={couponError}
-              featuresError={featuresError}
-              backlink={backlink}
-              percentage={percentage}
-              expire={expire}
-              merchant={merchant}
-              coupon={coupon}
-              features={features}
-              onMerchantChange={this.handleMerchantChange}
-              merchantArray={merchantArray}
-              errors={errors}
-              header="Add a Deal or Coupon"
-              image={image}
-              description={description}
-              onNameChange={this.onNameChange}
-              onDescriptionChange={this.onDescriptionChange}
-              onFeaturesChange={this.onFeaturesChange}
-              name="Name"
-              isFeatured={isFeatured}
-              isCoupon={isCoupon}
-              onCouponChange={this.handleIsCoupon}
-              onFeaturedChange={this.handleIsFeatured}
-            />
-          </Paper>
-        </Col>
-      </Row>
+      <Grid>
+        <Row>
+          <Col xs={12} md={8} mdPush={2}>
+            <Paper rounded={false} style={style.paper}>
+              <AddDealForm
+                onClick={this.handleSubmit}
+                onChange={this.handleChange}
+                hintStyle={hintStyle}
+                subCategoryArray={subCategoryArray}
+                categoryArray={categoryArray}
+                category={category}
+                subCategory={subCategory}
+                onCategoryChange={this.handleCategory}
+                onSubCategoryChange={this.handleSubcategory}
+                onDateChange={this.handleDate}
+                categoryError={categoryError}
+                subCategoryError={subCategoryError}
+                percentageError={percentageError}
+                merchantError={merchantError}
+                couponError={couponError}
+                featuresError={featuresError}
+                backlink={backlink}
+                percentage={percentage}
+                expire={expire}
+                merchant={merchant}
+                coupon={coupon}
+                features={features}
+                onMerchantChange={this.handleMerchantChange}
+                merchantArray={merchantArray}
+                errors={errors}
+                header="Add a Deal or Coupon"
+                image={image}
+                description={description}
+                onNameChange={this.onNameChange}
+                onDescriptionChange={this.onDescriptionChange}
+                onFeaturesChange={this.onFeaturesChange}
+                name="Name"
+                isFeatured={isFeatured}
+                isCoupon={isCoupon}
+                onCouponChange={this.handleIsCoupon}
+                onFeaturedChange={this.handleIsFeatured}
+              />
+            </Paper>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

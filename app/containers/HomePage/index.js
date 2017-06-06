@@ -13,11 +13,13 @@ import CarouselContainer from 'containers/CarouselContainer';
 import Product from 'containers/Product';
 import Cuopon from 'containers/Cuopon';
 import CouponHeader from 'components/CouponHeader';
-
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import React from 'react';
 import MediaQuery from 'react-responsive';
-import { Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 
 class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -32,8 +34,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         {(matches) => {
           if (matches) {
             return (
-              <Row>
-                <Col xs={10} sm={8} smOffset={0.5} md={6} mdOffset={0.5} lg={6} lgOffset={0.5}>
+              <Grid>
+              <Row className="show-grid">
+                <Col xs={12} md={8}>
                   <CarouselContainer />
                   <Dropdown
                     handleDropdown={this.handleDropdown}
@@ -41,13 +44,14 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   />
                   <Product />
                 </Col>
-                <Col xs={1} sm={3} md={5} lg={5}>
+                <Col xs={6} md={4}>
                   <CouponHeader />
                   <Cuopon />
                   <Cuopon />
                   <Cuopon />
                 </Col>
               </Row>
+              </Grid>
             );
           }
         }}

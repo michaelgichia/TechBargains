@@ -6,7 +6,10 @@
 
 import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 import axios from 'axios';
 // Material-ui
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
@@ -87,7 +90,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <Card style={{ marginTop: 30 }}>
               <CardHeader
                 title="Store Details"

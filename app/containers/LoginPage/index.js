@@ -1,7 +1,11 @@
 import LoginForm from 'components/LoginForm';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Paper from 'material-ui/Paper';
+
 import { loginUser } from './actions';
 
 class LoginPage extends Component {
@@ -36,12 +40,14 @@ class LoginPage extends Component {
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={4} xsOffset={1} mdOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
+            <Paper zDepth={1} rounded={false} style={{ padding: 30, marginTop: 30 }}>
             <LoginForm
               onChange={this.handleChange}
               onClick={this.login}
               errors={this.state.errors}
             />
+            </Paper>
           </Col>
         </Row>
       </Grid>

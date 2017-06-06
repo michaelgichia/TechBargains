@@ -6,7 +6,9 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 import axios from 'axios';
 import { browserHistory, Link } from 'react-router';
 // Material
@@ -66,9 +68,9 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
   render() {
     const { backlink, imageUrl, title } = this.state.itemData;
     return (
-      <Grid fluid>
+      <Grid>
         <Row>
-          <Col xs={12} sm={10} md={10} lg={10} lgOffset={1} mdOffset={1} xsOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <Card containerStyle={{ marginTop: 30 }}>
               <CardMedia style={{ marginTop: 10, marginBottom: 20 }} mediaStyle={{ maxHeight: 300 , height: 300}}>
                 <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
@@ -108,7 +110,6 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
                   <RaisedButton label="Edit" style={gems4.button} labelColor="#7c7c7c" />
                 </Link>
               </CardActions>
-
             </Card>
           </Col>
         </Row>

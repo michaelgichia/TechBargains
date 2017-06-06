@@ -9,7 +9,10 @@ import StoreForm from 'components/StoreForm';
 import validator from 'validator';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 import axios from 'axios';
 // Material-ui
 import Paper from 'material-ui/Paper';
@@ -139,7 +142,7 @@ export class MerchantEdit extends React.Component { // eslint-disable-line react
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={8} xsOffset={1} mdOffset={2}>
+          <Col xs={12} md={8} mdPush={2}>
             <Paper zDepth={5} rounded={false} style={gems6.paper}>
               <StoreForm
                 onChange={this.handleChange}

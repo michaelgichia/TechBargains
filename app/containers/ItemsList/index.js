@@ -17,7 +17,10 @@ import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 import { getItems } from './actions';
 
 const wrapperStyle = {
@@ -101,9 +104,9 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
       );
     }
     return (
-      <Grid fluid >
+      <Grid>
         <Row>
-          <Col xs={10} md={8} xsOffset={1} mdOffset={2}>
+          <Col xs={12} md={8} mdPush={2}>
             <Card style={{ marginTop: 20 }}>
               <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Items / Products / Services List" />
               <CardActions>
@@ -115,7 +118,7 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
           </Col>
         </Row>
         <Row>
-          <Col xs={10} md={8} xsOffset={1} mdOffset={2}>
+          <Col xs={12} md={8} mdPush={2}>
             <span>
               <ul style={{ listStyle: 'none' }}>
                 {this.state.errors && this.state.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}

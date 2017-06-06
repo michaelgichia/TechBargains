@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import axios from 'axios';
 import shortid from 'shortid';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 import { connect } from 'react-redux';
-// Material
+// Material-ui
 import RaisedButton from 'material-ui/RaisedButton';
 import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
@@ -69,7 +71,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
     return (
       <Grid>
         <Row>
-          <Col xs={10} xsOffset={1} md={10} mdOffset={1} lg={10} lgOffset={1} sm={12}>
+          <Col xs={12} md={8} mdPush={2}>
             <Card containerStyle={{ marginTop: 30 }}>
 
               <ListItem disabled leftAvatar={<Avatar>{`${percentage || 'none'}%`}</Avatar>} />

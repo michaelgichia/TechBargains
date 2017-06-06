@@ -16,7 +16,9 @@ import {
 } from 'material-ui/Table';
 import { connect } from 'react-redux';
 import { getCategories } from 'containers/Dashboard/actions';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 import Auth from '../Utils';
 import { postSubCategory } from './actions';
 
@@ -190,7 +192,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}
@@ -208,7 +210,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
           </Col>
         </Row>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <div style={gemsawesome.table}>
               <Table
                 fixedHeader

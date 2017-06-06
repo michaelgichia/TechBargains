@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
 import { browserHistory } from 'react-router';
 // Material
 import {
@@ -126,7 +129,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <Paper zDepth={2} rounded={false} style={gemsgood.paper}>
               <StoreForm
                 onChange={this.handleChange}
@@ -142,7 +145,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
           </Col>
         </Row>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <Table wrapperStyle={gemsgood.wrapperStyle} bodyStyle={gemsgood.bodyStyle} fixedHeader selectable onRowSelection={this.handleRowSelection}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>

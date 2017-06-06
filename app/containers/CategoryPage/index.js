@@ -1,10 +1,12 @@
 import CategoryForm from 'components/CategoryForm';
 import React, { PropTypes } from 'react';
 import shortid from 'shortid';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 import Paper from 'material-ui/Paper';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
 // Material
 import {
   Table,
@@ -98,7 +100,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     return (
       <Grid>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <Paper zDepth={2} rounded={false} style={gems.paper}>
               <CategoryForm
                 onClick={this.handleSubmit}
@@ -114,7 +116,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
           </Col>
         </Row>
         <Row>
-          <Col xs={10} md={10} lg={10} sm={10} smOffset={1} xsOffset={1} mdOffset={1} lgOffset={1}>
+          <Col xs={12} md={8} mdPush={2}>
             <div style={gems.table}>
               <Table
                 fixedHeader
