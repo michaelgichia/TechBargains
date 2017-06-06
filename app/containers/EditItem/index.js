@@ -8,7 +8,8 @@ import React, { PropTypes } from 'react';
 import validator from 'validator';
 import { connect } from 'react-redux';
 import MenuItem from 'material-ui/MenuItem';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import Paper from 'material-ui/Paper';
+import { Col, Row } from 'react-styled-flexboxgrid';
 // Actions
 import { getCategories, getSubCategories, getMerchants } from 'containers/Dashboard/actions';
 import { fetchItem, updateItem } from './actions';
@@ -16,6 +17,13 @@ import { fetchItem, updateItem } from './actions';
 const hintStyle = {
   fonstSize: 10,
   marginTop: 0,
+};
+
+const style = {
+  paper: {
+    padding: 30,
+    marginTop: 30,
+  },
 };
 
 const themesColor = [
@@ -48,6 +56,8 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     subCategoryError: '',
     percentageError: '',
     merchantError: '',
+    isFeatured: true,
+    isCoupon: false,
     errors: [],
   };
 
@@ -117,6 +127,20 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   };
 
   /**
+   * Update isFeatured in the state and clear error.
+  */
+  handleIsFeatured = (e, i, value) => {
+    this.setState({ isFeatured: value });
+  };
+
+  /**
+   * Update isCoupon in the state and clear error.
+  */
+  handleIsCoupon = (e, i, value) => {
+    this.setState({ isCoupon: value });
+  };
+
+  /**
    * Update the state from user input.
    * Clear error using dynamic keys on the setState.
   */
@@ -178,6 +202,8 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
         { subCategory: this.state.subCategory },
         { expire: this.state.expire },
         { themeColor: selectedColor },
+        { isFeatured: this.state.isFeatured },
+        { isCoupon: this.state.isCoupon },
       );
       // Item id.
       const itemId = this.props.params.itemId;
@@ -274,6 +300,8 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       backlink,
       coupon,
       image,
+      isCoupon,
+      isFeatured,
     } = this.state;
 
     const { categories, subcategories, merchants } = this.props;
@@ -282,51 +310,52 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     const merchantArray = this.displayMerchants(merchants);
 
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={12} lg={12}>
-            <AddDealForm
-              onClick={this.handleSubmit}
-              onChange={this.handleChange}
-              hintStyle={hintStyle}
-              subCategoryArray={subCategoryArray}
-              categoryArray={categoryArray}
-              category={category}
-              subCategory={subCategory}
-              onCategoryChange={this.handleCategory}
-              onSubCategoryChange={this.handleSubcategory}
-              onDateChange={this.handleDate}
-              categoryError={categoryError}
-              subCategoryError={subCategoryError}
-              nameError={nameError}
-              percentageError={percentageError}
-              merchantError={merchantError}
-              couponError={couponError}
-              featuresError={featuresError}
-              name={name}
-              backlink={backlink}
-              percentage={percentage}
-              expire={expire}
-              merchant={merchant}
-              coupon={coupon}
-              features={features}
-              onMerchantChange={this.handleMerchantChange}
-              merchantArray={merchantArray}
-              errors={errors}
-              message={message}
-              header="Edit item"
-              image={image}
-              description={description}
-              onNameChange={this.onNameChange}
-              onDescriptionChange={this.onDescriptionChange}
-              onFeaturesChange={this.onFeaturesChange}
-              name="Name"
-              description="Sub title"
-              features="Features "
-            />
-          </Col>
-        </Row>
-      </Grid>
+      <Row>
+        <Col xs={12} sm={10} smOffset={1} md={8} mdOffset={1} lg={8} lgOffset={1}>
+          <Paper rounded={false} style={style.paper}>
+          <AddDealForm
+            onClick={this.handleSubmit}
+            onChange={this.handleChange}
+            hintStyle={hintStyle}
+            subCategoryArray={subCategoryArray}
+            categoryArray={categoryArray}
+            category={category}
+            subCategory={subCategory}
+            onCategoryChange={this.handleCategory}
+            onSubCategoryChange={this.handleSubcategory}
+            onDateChange={this.handleDate}
+            categoryError={categoryError}
+            subCategoryError={subCategoryError}
+            nameError={nameError}
+            percentageError={percentageError}
+            merchantError={merchantError}
+            couponError={couponError}
+            featuresError={featuresError}
+            name={name}
+            backlink={backlink}
+            percentage={percentage}
+            expire={expire}
+            merchant={merchant}
+            coupon={coupon}
+            features={features}
+            onMerchantChange={this.handleMerchantChange}
+            merchantArray={merchantArray}
+            errors={errors}
+            message={message}
+            header="Edit an Item or a Coupon"
+            image={image}
+            description={description}
+            onNameChange={this.onNameChange}
+            onDescriptionChange={this.onDescriptionChange}
+            onFeaturesChange={this.onFeaturesChange}
+            isFeatured={isFeatured}
+            isCoupon={isCoupon}
+            onCouponChange={this.handleIsCoupon}
+            onFeaturedChange={this.handleIsFeatured}
+          />
+          </Paper>
+        </Col>
+      </Row>
     );
   }
 }

@@ -26,6 +26,8 @@ router.post('/create', (req, res, next) => {
   req.sanitize('expire').trim();
   req.sanitize('image').trim();
   req.sanitize('themeColor').trim();
+  req.sanitize('isFeatured').trim();
+  req.sanitize('isCoupon').trim();
 
   // Errors
   const errors = req.validationErrors();
@@ -36,9 +38,9 @@ router.post('/create', (req, res, next) => {
       errors,
     }).end();
   }
-  console.log('Body', req.body)
   controllers.create(req.body)
   .then((result) => {
+    console.log('Body', result)
     res.json({
       confirmation: 'success',
       result,
@@ -79,6 +81,8 @@ router.put('/update/:itemId', (req, res, next) => {
   req.sanitize('expire').trim();
   req.sanitize('image').trim();
   req.sanitize('themeColor').trim();
+  req.sanitize('isFeatured').trim();
+  req.sanitize('isCoupon').trim();
 
 
   // Errors

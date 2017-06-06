@@ -62,6 +62,14 @@ const ItemSchema = new Schema({
     default: '',
     max: 10,
   },
+  isFeatured: {
+    type: Boolean,
+    default: true,
+  },
+  isCoupon: {
+    type: Boolean,
+    default: false,
+  },
   created: {
     type: Date,
     default: Date.now,
@@ -79,11 +87,13 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
     subCategory: this.subCategory,
     merchant: this.merchant,
     coupon: this.coupon,
-    offerEnds: this.offerEnds,
+    expire: this.expire,
     features: this.features,
     created: this.created,
     image: this.image,
     themeColor: this.themeColor,
+    isFeatured: this.isFeatured,
+    isCoupon: this.isCoupon,
   };
 
   return summary;

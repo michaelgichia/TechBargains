@@ -10,6 +10,7 @@ const create = (body) =>
     Item.create(body, (err, item) => {
       if (err) {
         reject(err);
+        return;
       }
       resolve(item.summary());
     });
