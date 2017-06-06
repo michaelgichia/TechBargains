@@ -15,7 +15,7 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
     banners: [],
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get('/public-api/banner')
     .then((response) => {
       if (response.data.confirmation === 'success') {

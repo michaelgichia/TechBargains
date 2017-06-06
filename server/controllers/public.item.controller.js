@@ -35,7 +35,27 @@ const findById = (id) =>
     });
   });
 
+const findFeaturedCoupon = (params) =>
+  new Promise((resolve, reject) => {
+    Item.find({  isCoupon: true, isFeatured: true })
+        .select('name percentage image')
+        .sort('-date')
+        .limit(5)
+        .exec((err, coupons) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      const summaries = [];
+      coupons.forEach((coupon) => {
+        summaries.push(coupon.summary());
+      });
+      resolve(summaries);
+    });
+  });
+
 module.exports = {
   find,
   findById,
+  findFeaturedCoupon,
 };
