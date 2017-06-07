@@ -48,7 +48,9 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     merchant: {
       title: '',
       description: '',
+      imageUrl: '',
     },
+    isFeatured: false,
     titleError: '',
     descriptionError: '',
     message: '',
@@ -60,6 +62,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     axios.get('/public-api/merchant')
     .then((response) => {
       if (response.data.confirmation === 'success') {
+        console.log('response', response.data.results)
         this.setState({ merchants: [...response.data.results] });
       } else {
         this.setState({ errors: response.data.message });
@@ -77,6 +80,8 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     this.setState({ merchant: updatedStore });
   };
 
+  handleToggle = (e, isInputChecked) => this.setState({ isFeatured: isInputChecked });
+
   /**
    * Update the state from user input.
   */
@@ -89,7 +94,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     // Reset clear from the current field.
     this.setState(errorObject);
     // Update the state.
-    const updatedStore = { ...this.state.merchant };
+    const updatedStore = { ...this.state.merchant, isFeatured: this.state.isFeatured };
     updatedStore[e.target.id] = e.target.value;
     this.setState({ merchant: updatedStore });
   };
@@ -125,7 +130,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
 
   render() {
     const { titleError, descriptionError, errors } = this.state;
-    const { title, description } = this.state.merchant;
+    const { title, description, imageUrl } = this.state.merchant;
     return (
       <Grid>
         <Row>
@@ -140,6 +145,8 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
                 description={description}
                 errors={errors}
                 header="Add a new merchant"
+                onToggle={this.handleToggle}
+                imageUrl={imageUrl}
               />
             </Paper>
           </Col>

@@ -4,6 +4,13 @@ import shortid from 'shortid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
+import Toggle from 'material-ui/Toggle';
+
+const styles = {
+  toggle: {
+    marginBottom: 16,
+  },
+}
 
 class StoreForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -23,6 +30,14 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           value={this.props.title}
         />
         <TextField
+          hintText="Image Url"
+          id="imageUrl"
+          floatingLabelText="Image Url"
+          onChange={this.props.onChange}
+          fullWidth
+          value={this.props.imageUrl}
+        />
+        <TextField
           hintText="Description"
           id="description"
           floatingLabelText="Description"
@@ -33,6 +48,15 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           rowsMax={10}
           multiLine
           rows={5}
+        />
+        <br />
+        <br />
+        <Toggle
+          label="Is Featured?"
+          defaultToggled={false}
+          style={styles.toggle}
+          onToggle={this.props.onToggle}
+          labelPosition="right"
         />
         <RaisedButton
           label="Submit"
@@ -53,6 +77,8 @@ StoreForm.propTypes = {
   onClick: PropTypes.func.isRequired,
   errors: PropTypes.array.isRequired,
   header: PropTypes.string.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 };
 
 export default StoreForm;

@@ -10,6 +10,8 @@ router.post('/create', (req, res, next) => {
 
   req.sanitize('title').trim();
   req.sanitize('description').trim();
+  req.sanitize('description').trim();
+  req.sanitize('isFeatured').trim();
 
   // Errors
   const errors = req.validationErrors();
@@ -47,6 +49,8 @@ router.put('/update/:merchantId', (req, res, next) => {
 
   req.sanitize('title').trim();
   req.sanitize('description').trim();
+  req.sanitize('description').trim();
+  req.sanitize('isFeatured').trim();
 
   // Errors
   const errors = req.validationErrors();
