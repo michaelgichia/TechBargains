@@ -194,7 +194,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         { isCoupon: this.state.isCoupon },
         { isShipped: this.state.isShipped },
       );
-      console.log('item', item);
       // Create.
       this.props.postDeal(item);
     }
@@ -283,7 +282,8 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       isFeatured,
       isCoupon,
       features,
-      isShipped
+      isShipped,
+      name,
     } = this.state;
     const {
       percentage,
@@ -341,6 +341,9 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
                 onShippingChange={this.handleShipping}
+                name={name}
+                description={description}
+                features={features}
               />
             </Paper>
           </Col>

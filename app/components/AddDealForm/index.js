@@ -22,16 +22,19 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           id="name"
           placeholder="Name or Title"
           onChange={this.props.onNameChange}
+          value={this.props.name}
         />
         <ReactEditor
           id="description"
           placeholder="Description"
           onChange={this.props.onDescriptionChange}
+          value={this.props.description}
         />
         <ReactEditor
           id="features"
           placeholder="Features"
           onChange={this.props.onFeaturesChange}
+          value={this.props.features}
         />
         <TextField
           hintText="Percentage Discount"
@@ -170,18 +173,15 @@ AddDealForm.propTypes = {
   backlink: PropTypes.string.isRequired,
   percentage: PropTypes.string.isRequired,
   percentageError: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
   onCategoryChange: PropTypes.func.isRequired,
   categoryError: PropTypes.string.isRequired,
   categoryArray: PropTypes.array.isRequired,
-  subCategory: PropTypes.string.isRequired,
   onSubCategoryChange: PropTypes.func.isRequired,
   subCategoryError: PropTypes.string.isRequired,
   subCategoryArray: PropTypes.array.isRequired,
   onDateChange: PropTypes.func.isRequired,
   expire: PropTypes.object.isRequired,
   merchantError: PropTypes.string.isRequired,
-  merchant: PropTypes.string.isRequired,
   coupon: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onMerchantChange: PropTypes.func.isRequired,
@@ -198,6 +198,9 @@ AddDealForm.propTypes = {
   onFeaturedChange: PropTypes.func.isRequired,
   isShipped: PropTypes.bool.isRequired,
   onShippingChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  features: PropTypes.string.isRequired,
 };
 
 export default AddDealForm;

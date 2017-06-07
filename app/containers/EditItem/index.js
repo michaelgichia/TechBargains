@@ -60,6 +60,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     merchantError: '',
     isFeatured: true,
     isCoupon: false,
+    isShipped: false,
     errors: [],
   };
 
@@ -75,6 +76,15 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
+    }
+    if (nextProps.itemData.name !== this.state.name) {
+      this.setState({ name: nextProps.itemData.name });
+    }
+    if (nextProps.itemData.description !== this.state.description) {
+      this.setState({ description: nextProps.itemData.description });
+    }
+    if (nextProps.itemData.features !== this.state.features) {
+      this.setState({ features: nextProps.itemData.features });
     }
     if (nextProps.itemData.coupon !== this.state.coupon) {
       this.setState({ coupon: nextProps.itemData.coupon });
@@ -143,6 +153,13 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   };
 
   /**
+   * Update isShipping in the state and clear error.
+  */
+  handleShipping = (e, i, value) => {
+    this.setState({ isShipped: value });
+  };
+
+  /**
    * Update the state from user input.
    * Clear error using dynamic keys on the setState.
   */
@@ -151,12 +168,11 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     const errorName = `${e.target.id}Error`;
     const errorValue = '';
     // Create a current error object.
-    errorObject[errorName] = errorValue;
     // Reset clear from the current field.
+    errorObject[errorName] = errorValue;
     this.setState(errorObject);
-    const updateitem = { ...this.state.item };
-    updateitem[e.target.id] = e.target.value;
-    this.setState({ item: updateitem });
+
+    this.setState({ [e.target.id]: e.target.value });
   };
 
   /**
@@ -206,6 +222,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
+        { isShipped: this.state.isShipped },
       );
       // Item id.
       const itemId = this.props.params.itemId;
@@ -304,6 +321,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       image,
       isCoupon,
       isFeatured,
+      isShipped
     } = this.state;
 
     const { categories, subcategories, merchants } = this.props;
@@ -355,6 +373,11 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 isCoupon={isCoupon}
                 onCouponChange={this.handleIsCoupon}
                 onFeaturedChange={this.handleIsFeatured}
+                isShipped={isShipped}
+                onShippingChange={this.handleShipping}
+                name={name}
+                description={description}
+                features={features}
               />
             </Paper>
           </Col>

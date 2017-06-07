@@ -22,6 +22,7 @@ class ReactEditor extends React.PureComponent { // eslint-disable-line react/pre
           modules={modules}
           formats={formats}
           theme={'snow'}
+          value={this.props.value}
         >
           <div
             key="editor"
@@ -37,6 +38,7 @@ class ReactEditor extends React.PureComponent { // eslint-disable-line react/pre
 ReactEditor.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default ReactEditor;
