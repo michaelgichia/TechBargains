@@ -10,7 +10,7 @@ class CouponHeader extends React.PureComponent { // eslint-disable-line react/pr
   render() {
     return (
       <ul className="coupon-header">
-        <li>Trending Deals</li>
+        <li>Top Coupons</li>
       </ul>
     );
   }
