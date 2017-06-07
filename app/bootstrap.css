@@ -12,6 +12,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.tech-sidebar {
+  height: 100vh;
+}
 .coupon-btn-btn {
   border-radius: 2px !important;
   background-color: #26c6da;

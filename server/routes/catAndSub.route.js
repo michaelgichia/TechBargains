@@ -52,4 +52,20 @@ router.get('/featured-coupons', (req, res) => {
   });
 });
 
+router.get('/featured-deals', (req, res) => {
+  itemController.findFeaturedDeals(req.query, false)
+  .then((entities) => {
+    res.json({
+      confirmation: 'success',
+      results: entities,
+    });
+  })
+  .catch((err) => {
+    res.json({
+      confirmation: 'fail',
+      message: err,
+    });
+  });
+});
+
 module.exports = router;

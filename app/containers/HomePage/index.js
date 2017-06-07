@@ -8,11 +8,12 @@
  * reloading is not a necessity for you then you can refactor it and remove
  * the linting exception.
  */
+
+import Deal from 'containers/Deal';
+import Coupon from 'containers/Coupon';
 import Dropdown from 'components/Dropdown';
 import CarouselContainer from 'containers/CarouselContainer';
 import Product from 'containers/Product';
-import Cuopon from 'containers/Cuopon';
-import CouponHeader from 'components/CouponHeader';
 // import MobileProductDetail from 'containers/MobileProductDetail';
 import React from 'react';
 import MediaQuery from 'react-responsive';
@@ -45,8 +46,8 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   <Product />
                 </Col>
                 <Col xsHidden sm={4} md={4} lg={4}>
-                  <CouponHeader />
-                  <Cuopon />
+                  <Deal />
+                  <Coupon />
                 </Col>
               </Row>
               </Grid>
