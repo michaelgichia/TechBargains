@@ -19,7 +19,6 @@ export class Cuopon extends React.PureComponent { // eslint-disable-line react/p
     axios.get('/public-api/all/featured-coupons')
     .then((response) => {
       if (response.data.confirmation === 'success') {
-      	console.log('coupons', response.data.results)
         this.setState({ coupons: [...response.data.results] });
       } else {
         this.setState({ errors: response.data.message });
