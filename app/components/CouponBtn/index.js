@@ -6,7 +6,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'react-bootstrap/lib/Button';
+
 
 const style = {
   margin: 10,
@@ -18,18 +19,24 @@ class CouponBtn extends React.PureComponent { // eslint-disable-line react/prefe
       <div className="coupon-btn">
         {
           this.props.coupon !== null && this.props.coupon.length > 0 ?
-          (<RaisedButton
-            label="Reveal Code"
-            primary
-            style={style}
-          />
+          ( <Button 
+              bsStyle="primary" 
+              bsSize="sm" 
+              active
+              bsClass="coupon-btn-btn"
+            >
+              Reveal Code
+            </Button>
           )
           :
-          (<RaisedButton
-            label="See Deal"
-            primary
-            style={style}
-          />
+          ( <Button 
+              bsStyle="primary" 
+              bsSize="sm" 
+              active
+              bsClass="coupon-btn-btn"
+            >
+              See Deal
+            </Button>
           )
         }
       </div>
@@ -42,5 +49,4 @@ CouponBtn.propTypes = {
 };
 
 export default CouponBtn;
-
-        
+ 

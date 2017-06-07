@@ -12,13 +12,22 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.coupon-btn-btn {
+  border-radius: 2px !important;
+  background-color: #26c6da;
+  color: #fff;
+  padding: 5px 10px;
+}
 .coupon-prices-first {
-  height: 50%;
-  max-height: 50%;
+  height: 70%;
+  max-height: 70%;
+  margin-bottom: auto;
 }
 .coupon-prices-second {
-  height: 50%;
-  max-height: 50%;
+  height: 30%;
+  max-height: 30%;
+  padding: auto;
+  text-align: center;
 }
 .coupon-header {
   margin-top: 10px;
@@ -58,7 +67,7 @@ html {
   font-weight: 700;
 }
 .final-price > span {
-  font-size: 27px !important;
+  font-size: 24px !important;
   line-height: 1.1 !important;
   min-height: 27px !important;
   color: #e6251f !important;
@@ -109,6 +118,7 @@ html {
 }
 .coupon-prices {
   padding: 10px;
+  text-align: center;
 }
 .coupon-div {
   display: flex;

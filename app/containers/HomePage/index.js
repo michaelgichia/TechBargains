@@ -34,9 +34,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         {(matches) => {
           if (matches) {
             return (
-              <Grid>
+              <Grid fluid>
               <Row className="show-grid">
-                <Col xs={12} md={8}>
+                <Col xs={12} sm={8} md={8} lg={8}>
                   <CarouselContainer />
                   <Dropdown
                     handleDropdown={this.handleDropdown}
@@ -44,7 +44,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   />
                   <Product />
                 </Col>
-                <Col xs={6} md={4}>
+                <Col xsHidden sm={4} md={4} lg={4}>
                   <CouponHeader />
                   <Cuopon />
                 </Col>
