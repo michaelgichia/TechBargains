@@ -28,6 +28,7 @@ router.post('/create', (req, res, next) => {
   req.sanitize('themeColor').trim();
   req.sanitize('isFeatured').trim();
   req.sanitize('isCoupon').trim();
+  req.sanitize('isShipped').trim();
 
   // Errors
   const errors = req.validationErrors();
@@ -40,7 +41,6 @@ router.post('/create', (req, res, next) => {
   }
   controllers.create(req.body)
   .then((result) => {
-    console.log('Body', result)
     res.json({
       confirmation: 'success',
       result,
@@ -83,7 +83,7 @@ router.put('/update/:itemId', (req, res, next) => {
   req.sanitize('themeColor').trim();
   req.sanitize('isFeatured').trim();
   req.sanitize('isCoupon').trim();
-
+  req.sanitize('isShipped').trim();
 
   // Errors
   const errors = req.validationErrors();

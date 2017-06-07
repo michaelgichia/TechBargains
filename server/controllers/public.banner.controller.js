@@ -29,7 +29,11 @@ const findById = (id) =>
 
 const findCarousel = (params) =>
   new Promise((resolve, reject) => {
-    Banner.find({isFeatured: true}).sort('-date').limit(5).exec((err, banners) => {
+    Banner
+      .find({isFeatured: true})
+      .limit(5)
+      .sort('-date')
+      .exec((err, banners) => {
       if (err) {
         reject(err);
         return;

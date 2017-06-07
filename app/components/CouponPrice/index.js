@@ -5,25 +5,29 @@
 */
 
 import React from 'react';
+import CouponBtn from 'components/CouponBtn';
+import PropTypes from 'prop-types';
 
 
 class CouponPrice extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="coupon-prices">
-        <p>
-          <span className="last-price"> $99.99</span>
-          <span className="percentageOff">($50.00 Off)</span>
-        </p>
-        <p className="final-price"><span>$49.99</span></p>
-        <p className="shipping">+ free shipping</p>
+        <div className="coupon-prices-first">
+          <p className="final-price"><span>{`${this.props.percentage}% Off`}</span></p>
+          <p className="shipping">{ this.props.isShipped ? '+ free shipping' : '' }</p>
+        </div>
+        <div className="coupon-prices-second">
+          <CouponBtn coupon={this.props.coupon} />
+        </div>
       </div>
     );
   }
 }
 
 CouponPrice.propTypes = {
-
+  percentage: PropTypes.string.isRequired,
+  isShipped: PropTypes.bool.isRequired,
 };
 
 export default CouponPrice;

@@ -9,6 +9,17 @@ import BannerTable from 'components/BannerTable';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Paper from 'material-ui/Paper';
+
+const style = {
+  paper: {
+    padding: 30,
+    marginTop: 30,
+  },
+};
 
 export class Banner extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -34,10 +45,18 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     return (
-      <BannerTable
-        handleRowSelection={this.handleRowSelection}
-        banners={this.state.banners}
-      />
+      <Grid>
+        <Row>
+          <Col xs={12} md={8} mdPush={2}>
+            <Paper rounded={false} style={style.paper}>
+              <BannerTable
+                handleRowSelection={this.handleRowSelection}
+                banners={this.state.banners}
+              />
+            </Paper>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

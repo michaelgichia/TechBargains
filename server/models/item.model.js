@@ -70,6 +70,10 @@ const ItemSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  isShipped: {
+    type: Boolean,
+    default: false,
+  },
   created: {
     type: Date,
     default: Date.now,
@@ -94,6 +98,7 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
     themeColor: this.themeColor,
     isFeatured: this.isFeatured,
     isCoupon: this.isCoupon,
+    isShipped: this.isShipped,
   };
 
   return summary;

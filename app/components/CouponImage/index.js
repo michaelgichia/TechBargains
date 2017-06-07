@@ -5,19 +5,21 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CouponImage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div className="coupon-image">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Gfp-fridge-contents.jpg" alt="" />
+        <img src={this.props.image} alt={this.props.name} />
       </div>
     );
   }
 }
 
 CouponImage.propTypes = {
-
+	image: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
 };
 
 export default CouponImage;

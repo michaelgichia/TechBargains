@@ -61,7 +61,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       description: '',
       name: '',
       features: '',
-
+      isShipped: false,
     };
   }// eslint-disable-line
 
@@ -112,6 +112,13 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
   */
   handleIsCoupon = (e, i, value) => {
     this.setState({ isCoupon: value });
+  };
+
+  /**
+   * Update isShipping in the state and clear error.
+  */
+  handleShipping = (e, i, value) => {
+    this.setState({ isShipped: value });
   };
 
   /**
@@ -185,7 +192,9 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
+        { isShipped: this.state.isShipped },
       );
+      console.log('item', item);
       // Create.
       this.props.postDeal(item);
     }
@@ -274,6 +283,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       isFeatured,
       isCoupon,
       features,
+      isShipped
     } = this.state;
     const {
       percentage,
@@ -329,6 +339,8 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 isCoupon={isCoupon}
                 onCouponChange={this.handleIsCoupon}
                 onFeaturedChange={this.handleIsFeatured}
+                isShipped={isShipped}
+                onShippingChange={this.handleShipping}
               />
             </Paper>
           </Col>

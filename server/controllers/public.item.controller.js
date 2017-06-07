@@ -38,9 +38,9 @@ const findById = (id) =>
 const findFeaturedCoupon = (params) =>
   new Promise((resolve, reject) => {
     Item.find({  isCoupon: true, isFeatured: true })
-        .select('name percentage image')
-        .sort('-date')
         .limit(5)
+        .sort('-date')
+        .select('name percentage image isShipped backlink coupon')
         .exec((err, coupons) => {
       if (err) {
         reject(err);

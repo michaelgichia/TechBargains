@@ -5,20 +5,21 @@
 */
 
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 class CouponTitle extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <h2 className="coupon-title">
-        <a>Amazon Deal of the Day: Adobe Premiere Elements 15 Software $49.99</a>
+        	<div dangerouslySetInnerHTML={{ __html: this.props.name }}/>
       </h2>
     );
   }
 }
 
 CouponTitle.propTypes = {
-
+	name: PropTypes.string.isRequired,
 };
 
 export default CouponTitle;

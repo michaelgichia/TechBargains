@@ -141,6 +141,19 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           <MenuItem value={false} primaryText="No" />
         </SelectField>
         <br />
+        <SelectField
+          hintText="Free shipping ?"
+          floatingLabelText="Free shipping ?"
+          id="isShipped"
+          value={this.props.isShipped}
+          onChange={this.props.onShippingChange}
+          maxHeight={200}
+          fullWidth
+        >
+          <MenuItem value={true} primaryText="Yes, Free Shipping" />
+          <MenuItem value={false} primaryText="No" />
+        </SelectField>
+        <br />
         <RaisedButton
           label="Add Item"
           primary
@@ -183,6 +196,8 @@ AddDealForm.propTypes = {
   isCoupon: PropTypes.bool.isRequired,
   onCouponChange: PropTypes.func.isRequired,
   onFeaturedChange: PropTypes.func.isRequired,
+  isShipped: PropTypes.bool.isRequired,
+  onShippingChange: PropTypes.func.isRequired,
 };
 
 export default AddDealForm;

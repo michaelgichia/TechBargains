@@ -35,6 +35,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
       category: {},
       subCategory: '',
       expire: {},
+      isShipped: '',
     },
     errors: '',
     itemId: null,
@@ -66,6 +67,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
       subCategory,
       coupon,
       expire,
+      isShipped,
     } = this.state.itemData;
 
     return (
@@ -97,6 +99,8 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
                 <CardTitle subtitle={`Coupon: ${coupon || 'none'}`} />
                 <Divider />
                 <CardTitle subtitle={`Expires on: ${expire || 'none'}`} />
+                <Divider />
+                <CardTitle subtitle={`Free shipping: ${isShipped ? 'Yes':'No'}`} />
                 <Divider />
                 <CardText>
                   <CardTitle title="Features" />

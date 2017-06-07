@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import shortid from 'shortid';
 import axios from 'axios';
 import CouponDetail from 'components/CouponDetail';
 
@@ -27,9 +28,13 @@ export class Cuopon extends React.PureComponent { // eslint-disable-line react/p
     });
   }
 
+  renderCoupons = (coupons) => coupons.map(coupon => <CouponDetail coupon={coupon} key={shortid.generate()} />)
+
   render() {
     return (
-      <CouponDetail />
+      <div>
+        { this.renderCoupons(this.state.coupons) }
+      </div>
     );
   }
 }

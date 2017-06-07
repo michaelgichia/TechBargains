@@ -47,8 +47,6 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                 <Col xs={6} md={4}>
                   <CouponHeader />
                   <Cuopon />
-                  <Cuopon />
-                  <Cuopon />
                 </Col>
               </Row>
               </Grid>
