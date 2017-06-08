@@ -11,6 +11,7 @@
 
 import Deal from 'containers/Deal';
 import Coupon from 'containers/Coupon';
+import Stores from 'containers/Stores';
 import Dropdown from 'components/Dropdown';
 import CarouselContainer from 'containers/CarouselContainer';
 import Product from 'containers/Product';
@@ -48,6 +49,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                 <Col xsHidden sm={4} md={4} lg={4}>
                   <Deal />
                   <Coupon />
+                  <Stores />
                 </Col>
               </Row>
               </Grid>

@@ -30,18 +30,18 @@ const findById = (id) =>
 
 const findFeaturedStores = (params) =>
   new Promise((resolve, reject) => {
-    Item.find({ isFeatured: true, isCoupon: false })
+    Merchant.find({ isFeatured: true })
         .limit(8)
         .sort('-date')
-        .select('name percentage image isShipped backlink coupon')
-        .exec((err, deals) => {
+        .select('title imageUrl')
+        .exec((err, stores) => {
       if (err) {
         reject(err);
         return;
       }
       const summaries = [];
-      deals.forEach((deal) => {
-        summaries.push(deal.summary());
+      stores.forEach((store) => {
+        summaries.push(store.summary());
       });
       resolve(summaries);
     });

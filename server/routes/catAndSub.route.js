@@ -2,6 +2,7 @@ const express = require('express');
 const subController = require('../controllers/public.category.controller');
 const banController = require('../controllers/public.banner.controller');
 const itemController = require('../controllers/public.item.controller');
+const merchantController = require('../controllers/public.merchant.controller');
 const router = express.Router();
 
 router.get('/subcategory', (req, res) => {
@@ -54,6 +55,22 @@ router.get('/featured-coupons', (req, res) => {
 
 router.get('/featured-deals', (req, res) => {
   itemController.findFeaturedDeals(req.query, false)
+  .then((entities) => {
+    res.json({
+      confirmation: 'success',
+      results: entities,
+    });
+  })
+  .catch((err) => {
+    res.json({
+      confirmation: 'fail',
+      message: err,
+    });
+  });
+});
+
+router.get('/featured-stores', (req, res) => {
+  merchantController.findFeaturedStores(req.query, false)
   .then((entities) => {
     res.json({
       confirmation: 'success',

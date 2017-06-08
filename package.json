@@ -186,7 +186,12 @@
       "passport-local",
       "dotenv",
       "react-styled-flexboxgrid",
-      "styled-components"
+      "styled-components",
+      "node-gyp",
+      "tough-cookie",
+      "forever-agent",
+      "isexe",
+      "fs.realpath"
     ],
     "include": [
       "core-js",

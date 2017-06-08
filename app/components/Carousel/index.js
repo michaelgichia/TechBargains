@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import '!!style-loader!css-loader!slick-carousel/slick/slick.css';
 import '!!style-loader!css-loader!slick-carousel/slick/slick-theme.css';
+// import '!!file-loader!slick-carousel/slick/ajax-loader.gif'
+
 
 class Carousel extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

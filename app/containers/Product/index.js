@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import LazyLoad from 'react-lazyload';
 import ProductDetail from 'components/ProductDetail';
 import DealModal from 'components/DealModal';
 import shortid from 'shortid';
@@ -77,11 +78,13 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
           {
           this.state.products.map((product) => (
             <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+              <LazyLoad height={200} offset={200}>
               <ProductDetail
-                product={product}
-                key={shortid.generate()}
-                handleOpen={this.handleOpen}
-              />
+                  product={product}
+                  key={shortid.generate()}
+                  handleOpen={this.handleOpen}
+                />
+              </LazyLoad>
             </li>
           ))
           }

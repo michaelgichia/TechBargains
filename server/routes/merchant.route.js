@@ -10,7 +10,7 @@ router.post('/create', (req, res, next) => {
 
   req.sanitize('title').trim();
   req.sanitize('description').trim();
-  req.sanitize('description').trim();
+  req.sanitize('imageUrl').trim();
   req.sanitize('isFeatured').trim();
 
   // Errors
@@ -49,7 +49,7 @@ router.put('/update/:merchantId', (req, res, next) => {
 
   req.sanitize('title').trim();
   req.sanitize('description').trim();
-  req.sanitize('description').trim();
+  req.sanitize('imageUrl').trim();
   req.sanitize('isFeatured').trim();
 
   // Errors
