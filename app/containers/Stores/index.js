@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import LazyLoad from 'react-lazyload';
+import { Link } from 'react-router';
 import CouponHeader from 'components/CouponHeader';
 import { connect } from 'react-redux';
 import shortid from 'shortid';
@@ -22,6 +23,7 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('Store', nextProps.stores)
     if (nextProps.stores !== this.state.stores) {
       this.setState({ stores: nextProps.stores });
     }
@@ -33,8 +35,9 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
   renderStores = (stores) => (
     stores.map((store) => (
       <div className="featured-store" key={shortid.generate()}>
+        <Link to={`/${store.id}`}><span className="store-link"></span></Link>
         <LazyLoad height={250}>
-          <img src={store.imageUrl} alt={store.title} />
+            <img src={store.imageUrl} alt={store.title} />
         </LazyLoad>
       </div>
     ))

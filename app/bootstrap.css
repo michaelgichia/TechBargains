@@ -12,6 +12,82 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.amazon-coupon-btn {
+  margin: 5% 10px;
+}
+.amazon-text > p {
+  font-family: "SourceSans","Roboto Slab","Roboto", Helvetica, Arial;
+}
+.amazon-h1 > h1 {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "SourceSans","Roboto Slab","Roboto", Helvetica, Arial;
+}
+.amazon-desc {
+  max-height: 60px;
+}
+@media (max-width: 768px) {
+  .amazon-second {
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .amazon-first {
+    text-align: center;
+    margin-bottom: 0 10px;
+  }
+  .amazon-first > img {
+    max-width: 250px;
+    padding: 0;
+  }
+}
+.amazon-first {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.amazon-first > img {
+  max-width: 250px;
+  padding: 10px 0;
+}
+
+.show-grid {
+  margin: 10px 0 0 0;
+}
+.amazon-text {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/*.amazon-title {
+  font-weight: 700;
+}
+.amazon-row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.amazon-image {
+  margin: 0px;
+  text-align: center;
+  padding: 20px;
+}
+.amazon-desc {
+  margin: 5px;
+  padding: 10px;
+  height: 100%;
+  max-height: 100%;
+}*/
+.amazon {
+  background-color: red;
+  border: 2px solid black;
+}
+.store-link {
+  position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
 .featured-store {
   border-radius: 2px;
   height: 100px;

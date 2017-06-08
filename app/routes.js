@@ -310,6 +310,24 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/:storeId',
+      name: 'merchantPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MerchantPage/reducer'),
+          import('containers/MerchantPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('merchantPage', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
