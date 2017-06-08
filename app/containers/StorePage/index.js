@@ -62,7 +62,6 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     axios.get('/public-api/merchant')
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        console.log('response', response.data.results)
         this.setState({ merchants: [...response.data.results] });
       } else {
         this.setState({ errors: response.data.message });
@@ -129,7 +128,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
   };
 
   render() {
-    const { titleError, descriptionError, errors } = this.state;
+    const { titleError, descriptionError, errors, isFeatured } = this.state;
     const { title, description, imageUrl } = this.state.merchant;
     return (
       <Grid>
@@ -147,6 +146,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
                 header="Add a new merchant"
                 onToggle={this.handleToggle}
                 imageUrl={imageUrl}
+                toggled={isFeatured}
               />
             </Paper>
           </Col>

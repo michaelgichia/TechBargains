@@ -53,7 +53,7 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
         <br />
         <Toggle
           label="Is Featured?"
-          defaultToggled={false}
+          toggled={this.props.toggled}
           style={styles.toggle}
           onToggle={this.props.onToggle}
           labelPosition="right"
@@ -79,6 +79,7 @@ StoreForm.propTypes = {
   header: PropTypes.string.isRequired,
   onToggle: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  toggled: PropTypes.bool.isRequired,
 };
 
 export default StoreForm;

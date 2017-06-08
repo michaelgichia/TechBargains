@@ -29,28 +29,29 @@ const gems6 = {
   },
 };
 
-export class MerchantEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor() {
-    super();
-    this.state = {
-      merchant: {
-        title: '',
-        description: '',
-      },
-      titleError: '',
-      descriptionError: '',
-      errors: [],
-      merchantId: null,
-    };
-  }
-
+export class MerchantEdit extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  state = {
+    merchant: {
+      title: '',
+      description: '',
+      imageUrl: '',
+    },
+    isFeatured: false,
+    titleError: '',
+    descriptionError: '',
+    errors: [],
+    merchantId: null,
+  };
   componentDidMount() {
     const { merchantId } = this.props.params;
     this.setState({ merchantId });
     axios.get(`/public-api/merchant/${merchantId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        this.setState({ merchant: response.data.result });
+        this.setState({ 
+          isFeatured: response.data.result.isFeatured, 
+          merchant: response.data.result 
+        });
       } else {
         const newError = [];
 
@@ -97,6 +98,8 @@ export class MerchantEdit extends React.Component { // eslint-disable-line react
     this.setState({ merchant: updatedStore });
   };
 
+  handleToggle = (e, isInputChecked) => this.setState({ isFeatured: isInputChecked });
+
   updateMerchant = (merchant) => {
     const { merchantId } = this.state;
     axios.put(`/api/merchant/update/${merchantId}`, merchant)
@@ -130,15 +133,15 @@ export class MerchantEdit extends React.Component { // eslint-disable-line react
     if (validator.isEmpty(description)) {
       this.setState({ descriptionError: 'Description is required!' });
     } else {
-      const merchant = { ...this.state.merchant };
+      const merchant = { ...this.state.merchant, isFeatured: this.state.isFeatured };
       this.updateMerchant(merchant);
       this.resetState();
     }
   };
 
   render() {
-    const { titleError, descriptionError, errors } = this.state;
-    const { title, description } = this.state.merchant;
+    const { titleError, descriptionError, errors,isFeatured } = this.state;
+    const { title, description, imageUrl } = this.state.merchant;
     return (
       <Grid>
         <Row>
@@ -153,6 +156,9 @@ export class MerchantEdit extends React.Component { // eslint-disable-line react
                 description={description}
                 errors={errors}
                 header="Edit merchant"
+                onToggle={this.handleToggle}
+                imageUrl={imageUrl}
+                toggled={isFeatured}
               />
             </Paper>
           </Col>

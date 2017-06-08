@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import LazyLoad from 'react-lazyload';
 import { browserHistory } from 'react-router';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -40,7 +41,9 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
       description: '',
       title: '',
       id: '',
+      imageUrl: '',
     },
+    isFeatured: false,
   }
 
   componentDidMount() {
@@ -50,7 +53,10 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
     axios.get(`/public-api/merchant/${merchantId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        this.setState({ merchantData: response.data.result });
+        this.setState({ 
+          isFeatured: response.data.result.isFeatured,
+          merchantData: response.data.result,
+        });
       } else {
         this.setState({ errors: response.data.message });
       }
@@ -58,7 +64,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
   }
 
   handleAdd = () => {
-    const url = '/dashboard/merchants/create';
+    const url = '/dashboard/merchants';
     browserHistory.push(url);
   };
 
@@ -86,7 +92,8 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
   };
 
   render() {
-    const { title, id, description } = this.state.merchantData;
+    const { title, description, imageUrl } = this.state.merchantData;
+    const { isFeatured } = this.state;
     return (
       <Grid>
         <Row>
@@ -96,15 +103,21 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
                 title="Store Details"
                 subtitle={`Name of the Store: ${title}`}
               />
+              <LazyLoad height={250}>
+                <img src={imageUrl} style={{ maxHeight: 250, marginLeft: 50 }} alt={title} />
+              </LazyLoad>
               <CardText>
                 {`Description: ${description}`}
               </CardText>
+              <CardText>
+                {`Featured: ${isFeatured}`}
+              </CardText>
               <CardActions>
                 <Divider />
+                <RaisedButton primary style={gems5.button} label="Stores"onTouchTap={() => this.handleMerchants()} />
                 <RaisedButton primary style={gems5.button} label="Add" onTouchTap={() => this.handleAdd()} />
                 <RaisedButton primary style={gems5.button} label="Edit" onTouchTap={() => this.handleEdit()} />
                 <RaisedButton primary style={gems5.button} label="Delete"onTouchTap={() => this.handleDelete()} />
-                <RaisedButton primary style={gems5.button} label="Merchants"onTouchTap={() => this.handleMerchants()} />
               </CardActions>
             </Card>
           </Col>
