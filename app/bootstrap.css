@@ -12,6 +12,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+div .show-product-grid .row {
+  background-color: #edecec !important;
+}
 .amazon-coupon-btn {
   margin: 3.5% 10px;
 }
