@@ -79,11 +79,10 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
           this.state.products.map((product) => (
             <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
               <LazyLoad height={200} offset={200}>
-              <ProductDetail
-                  product={product}
-                  key={shortid.generate()}
-                  handleOpen={this.handleOpen}
-                />
+                <ProductDetail
+                    product={product}
+                    handleOpen={this.handleOpen}
+                  />
               </LazyLoad>
             </li>
           ))

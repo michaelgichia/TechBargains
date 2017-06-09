@@ -12,6 +12,22 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
+@media (max-width: 768px) {
+  #merchant-id {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+.merchant-profile {
+}
+.merchant-info {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.merchant-panel {
+  background-color: pink;
+}
 .merchant-header {
   font-size: 20px;
 }
@@ -19,30 +35,47 @@ html {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.merchant-products {}
 @media (max-width: 768px) {
-  #merchant-products {
+  .merchant-products {
     padding-left: 0px;
     padding-right: 0px;
   }
 }
+.show-grid {
+  margin: 0;
+  padding: 0 20px;
+  background-color: #f5f6f7 !important;
+}
 @media (max-width: 768px) {
-  .merchant-coupon {}
+  .show-product-grid > .row {
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+  }
+}
+@media (min-width: 768px) {
+  .show-product-grid > .row {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+  }
 }
 
-div .show-product-grid .row {
-  background-color: #f5f6f7 !important;
+.show-product-grid {
+  background-color: transparent;
+}
+.show-info-grid {
+  background-color: #fff;
 }
 .amazon-coupon-btn {
   margin: 3.5% 10px;
 }
 .amazon-text > p {
-  font-family: "SourceSans","Roboto Slab","Roboto", Helvetica, Arial;
+  font-family: "SourceSans","Roboto Slab",Roboto, Helvetica, Arial;
 }
 .amazon-h1 > h1 {
   font-size: 28px;
   font-weight: 600;
-  font-family: 'SourceSans', "Roboto Slab", "Roboto", sans-serif, Helvetica, Arial;
+  font-family: 'SourceSans', "Roboto Slab", Roboto, sans-serif, Helvetica, Arial;
   color: #595a5d;
   letter-spacing: -0.75px;
   margin-top: 0px;
@@ -79,19 +112,14 @@ div .show-product-grid .row {
   max-width: 225px;
   padding: 10px 0;
 }
-
-.show-grid {
-  margin: 20px 0 0 0;
-}
 .amazon-text {
   position: relative;
   margin-bottom: 10px;
 }
 .amazon-text > p {
-  font-family: 'SourceSans', "Roboto Slab", "Roboto", sans-serif, Helvetica, Arial;
+  font-family: 'SourceSans', "Roboto Slab", Roboto, sans-serif, Helvetica, Arial;
   color: #595a5d;
 }
-
 .amazon {
   background-color: red;
   border: 2px solid black;
@@ -132,7 +160,7 @@ div .show-product-grid .row {
   font-size: 14px;
   letter-spacing: 0px;
   opacity: 1;
-  font-family: "Roboto","Roboto Slab","Roboto", Helvetica, Arial;
+  font-family: Roboto,"Roboto Slab",Roboto, Helvetica, Arial;
 }
 .merchant-btn-btn:hover {
   background-color: #26c6da;
@@ -171,7 +199,7 @@ div .show-product-grid .row {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  font-family: "SourceSans","Roboto Slab","Roboto", Helvetica, Arial;
+  font-family: "SourceSans","Roboto Slab",Roboto, Helvetica, Arial;
 }
 .shipping {
   text-transform: lowercase;
@@ -276,7 +304,7 @@ div .show-product-grid .row {
   width: 100%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  font-family: "Roboto",Helvetica,Arial,sans-serif;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
 }
 
 .card-zindex:hover {
@@ -333,14 +361,14 @@ h2 {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  font-family: "SourceSans","Roboto Slab","Roboto", Helvetica, Arial;
+  font-family: "SourceSans","Roboto Slab",Roboto, Helvetica, Arial;
 }
 
 label.platinumbtn {
     display: inline-block;
     color: rgb(125, 125, 125);
     font-size: 13px;
-    font-family: "Roboto Slab","Roboto", Helvetica, Arial;
+    font-family: "Roboto Slab",Roboto, Helvetica, Arial;
     text-align: center;
     padding: 1px 2px;
     text-decoration: none;
@@ -454,46 +482,26 @@ label.platinumbtn {
   overflow: hidden;
   font-size: calc((1.5vh + 1.5vw) / 2);
 }
-.description-div {
-  margin: 0;
-  padding: 10;
-  border-radius: 0;
-  background: #fff;
-  width: 66.6667%;
-  min-height: 75%;
-  height: 75%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+
 .title-div > p {
-  font-size: 12px;
-  font-family: "Roboto", serif;
-  overflow: hidden;
-  color: #333;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 14px;
+  font-family: Roboto, Helvetica, Arial;
+  color:  #6F7072;
 }
 .title-div {
-  height: 30%;
-  min-height: 30%;
-  padding: 10px;
-  font-size: 13px !important;
-  font-family: "Roboto", serif;
-  color: #6F7072;
-  overflow: hidden;
-  letter-spacing: 0.026em;
+  font-size: 14px;
+  font-family: Roboto, Helvetica, Arial;
+  color:  #6F7072;
 }
+
 .imagi-div {
-  margin: 0;
-  padding: 10;
-  border-radius: 0;
-  background: #fff;
-  width: 33.3333%;
-  float: left;
-  min-height: 75%;
-  height: 75%;
-  overflow: hidden;
+  text-align: center;
+}
+.imagi-div > img {
+  width: 100%;
+  max-height: 200px;
+  max-width: 200px;
+  vertical-align: middle;
 }
 .buyer-div {
   height: 30%;
@@ -523,7 +531,7 @@ label.platinumbtn {
 detail-div
 buyerdiv*/
 .shamba {
-		font-family: "Roboto", Helvetica, Arial;
+		font-family: Roboto, Helvetica, Arial;
 		font-size: 18px;
 		text-align: left;
 		padding: 10px 10px;
@@ -545,7 +553,7 @@ buyerdiv*/
   padding: 10px 16px;
 }
 .mawe-p {
-  font-family: "Roboto", Helvetica, Arial;
+  font-family: Roboto, Helvetica, Arial;
   text-align: left;
   line-height: 1.1;
   font-size: 24px;
@@ -564,27 +572,42 @@ buyerdiv*/
 }
 .header-div > p {
   font-size: 16px;
-  font-family: "Roboto", serif;
+  font-family: Roboto, serif;
   line-height: 1em;
   overflow: hidden;
   margin-bottom: 5px;
   padding-top: 5px;
 }
+@media (max-width: 768px) {
+  .mango {
+    font-size: 18px !important;
+    word-spacing: 4px;
+  }
+}
+@media (min-width: 768px) {
+  .mango {
+	 font-size: 24px !important;
+   word-spacing: 3px;
+  }
+}
+@media (max-width: 992px) {
+  .mango {
+    font-size: 24px !important;
+    word-spacing: 3px;
+  }
+}
 .mango {
-	min-width: 100%;
-	border-radius: 0px;
-	min-height: 19%;
-	height: 19%;
-	text-align: center;
-	font-size: calc((2.5vh + 2.5vw) / 2) !important;
+  min-height: 1px;
+  padding: 15px;
+  min-width: 100%;
+  border-radius: 0px;
+  text-align: left;
 	font-weight: 500;
 	font-family: 'SourceSans', serif;
-	padding: 10px;
-	background: #fff;
-	letter-spacing: 0.03em;
-	margin-bottom: 5px;
-	overflow: hidden !important;
-  margin: 0;
+	background: transparent;
+  margin: 0 0 5px 0;
+  color: #1f7dd4;
+  line-height: 1.1;
 }
 
 .ql-container {
@@ -4234,7 +4257,7 @@ tbody.collapse.in {
   white-space: nowrap;
   font-weight: 400;
   font-size: 12px;
-  font-family: "Roboto", serif, Helvetica, Arial, sans-serif;
+  font-family: Roboto, serif, Helvetica, Arial, sans-serif;
 
 }
 .dropdown-menu > li > a:hover,
@@ -6155,13 +6178,13 @@ button.list-group-item-danger.active:focus {
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 .panel-body {
-  padding: 15px;
+  padding: 0;
 }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 5px 15px;
   border-bottom: 1px solid transparent;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -6385,9 +6408,7 @@ button.list-group-item-danger.active:focus {
   border-color: #ddd;
 }
 .panel-default > .panel-heading {
-  color: #333;
-  background-color: #f5f5f5;
-  border-color: #ddd;
+  background-color: #e0e0e0;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;

@@ -6,15 +6,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Col from 'react-bootstrap/lib/Col';
+
 
 class SecondDiv extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <img
-        alt="dealsexp"
-        className="imagi-div"
-        src={this.props.product.image}
-      />
+       <Col xs={12} sm={12} md={4} lg={4}>
+        <div className="imagi-div">
+          <img
+            alt="dealsexp"
+            src={this.props.product.image}
+          />
+        </div>
+      </Col>
     );
   }
 }
