@@ -7,7 +7,7 @@
 import { STORES } from './constants';
 
 const initialState = {
-	stores: [],
+  stores: [],
   errors: '',
 };
 
@@ -16,13 +16,13 @@ function storesReducer(state = initialState, action) {
     case STORES.SUCCESS:
       return {
         ...state,
-        stores: action.stores
+        stores: action.stores,
       };
 
     case STORES.ERROR:
       return {
         ...state,
-        errors: action.errors
+        errors: action.errors,
       };
 
     default:

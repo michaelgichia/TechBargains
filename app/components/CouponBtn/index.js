@@ -15,22 +15,22 @@ class CouponBtn extends React.PureComponent { // eslint-disable-line react/prefe
       <div className="coupon-btn">
         {
           this.props.coupon !== null && this.props.coupon.length > 0 ?
-          ( <Button 
-              bsStyle="primary" 
-              bsSize="sm" 
-              active
-              bsClass="coupon-btn-btn"
-            >
+          (<Button
+            bsStyle="primary"
+            bsSize="sm"
+            active
+            bsClass="coupon-btn-btn"
+          >
               Reveal Code
             </Button>
           )
           :
-          ( <Button 
-              bsStyle="primary" 
-              bsSize="sm" 
-              active
-              bsClass="coupon-btn-btn"
-            >
+          (<Button
+            bsStyle="primary"
+            bsSize="sm"
+            active
+            bsClass="coupon-btn-btn"
+          >
               See Deal
             </Button>
           )
@@ -45,4 +45,3 @@ CouponBtn.propTypes = {
 };
 
 export default CouponBtn;
- 

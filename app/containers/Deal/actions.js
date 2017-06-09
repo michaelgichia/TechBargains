@@ -12,19 +12,19 @@ export const fetchDeals = () => (dispatch) => {
     if (response.data.confirmation === 'success') {
       dispatch({
         type: DEALS.SUCCESS,
-        deals: response.data.results
+        deals: response.data.results,
       });
     } else {
       dispatch({
         type: DEALS.ERROR,
-        errors: response.data.message
-      })
+        errors: response.data.message,
+      });
     }
   })
   .catch((errors) => {
     dispatch({
       type: DEALS.ERROR,
-      errors
-    })
-  })
-}
+      errors,
+    });
+  });
+};

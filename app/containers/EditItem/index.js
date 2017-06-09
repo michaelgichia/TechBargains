@@ -321,7 +321,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       image,
       isCoupon,
       isFeatured,
-      isShipped
+      isShipped,
     } = this.state;
 
     const { categories, subcategories, merchants } = this.props;

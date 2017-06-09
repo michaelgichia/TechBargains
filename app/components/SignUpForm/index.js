@@ -54,7 +54,7 @@ class SignUpForm extends React.PureComponent { // eslint-disable-line react/pref
         <br />
         <div>Already have an account ?<Link to={'/login'}>Log in</Link></div>
       </div>
-);
+    );
   }
 }
 

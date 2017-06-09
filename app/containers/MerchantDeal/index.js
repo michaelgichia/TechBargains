@@ -17,7 +17,7 @@ import ThirdDiv from 'components/ThirdDiv';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import makeSelectMerchantDeal from './selectors';
- 
+
 const features = [
   '<li>#1 Best Seller in Door Bell Kits</li>',
   '<li>Amazon rated 4.1 out of 5 stars with over 6200 reviews</li>',
@@ -25,7 +25,7 @@ const features = [
   '<li>wide-angle night vision, infrared LED with 1080p video</li>',
   '<li>2 Way audio with noise cancellation</li>',
   '<li>Compatible with iOS or Android Smartphones</li>',
-]
+];
 
 export class MerchantDeal extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -36,7 +36,7 @@ export class MerchantDeal extends React.PureComponent { // eslint-disable-line r
       backlink: '#',
       themeColor: '#9BF0E9',
       image: 'https://static.ring.com/assets/static/showcase-images/ring-doorbell-pro/colors/ve-678b46c2a8ad59ecd55784fe0a18d683.jpg',
-      features: features,
+      features,
       id: 'wdkjnjnndjnknd',
     },
   }
@@ -49,8 +49,8 @@ export class MerchantDeal extends React.PureComponent { // eslint-disable-line r
   render() {
     return (
       <div>
-       <Panel header="Here we are again" className="merchant-panel">
-          <FirstDiv 
+        <Panel header="Here we are again" className="merchant-panel">
+          <FirstDiv
             product={this.state.product}
           />
           <Row>

@@ -80,9 +80,9 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
             <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
               <LazyLoad height={200} offset={200}>
                 <ProductDetail
-                    product={product}
-                    handleOpen={this.handleOpen}
-                  />
+                  product={product}
+                  handleOpen={this.handleOpen}
+                />
               </LazyLoad>
             </li>
           ))

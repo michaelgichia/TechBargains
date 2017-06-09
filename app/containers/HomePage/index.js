@@ -37,21 +37,21 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
           if (matches) {
             return (
               <Grid fluid>
-              <Row className="show-grid">
-                <Col xs={12} sm={8} md={8} lg={8}>
-                  <CarouselContainer />
-                  <Dropdown
-                    handleDropdown={this.handleDropdown}
-                    dropdownValue={this.state.dropdownValue}
-                  />
-                  <Product />
-                </Col>
-                <Col xsHidden sm={4} md={4} lg={4}>
-                  <Deal />
-                  <Coupon />
-                  <Stores />
-                </Col>
-              </Row>
+                <Row className="show-grid">
+                  <Col xs={12} sm={8} md={8} lg={8}>
+                    <CarouselContainer />
+                    <Dropdown
+                      handleDropdown={this.handleDropdown}
+                      dropdownValue={this.state.dropdownValue}
+                    />
+                    <Product />
+                  </Col>
+                  <Col xsHidden sm={4} md={4} lg={4}>
+                    <Deal />
+                    <Coupon />
+                    <Stores />
+                  </Col>
+                </Row>
               </Grid>
             );
           }

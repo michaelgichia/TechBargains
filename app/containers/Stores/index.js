@@ -23,7 +23,7 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('Store', nextProps.stores)
+    console.log('Store', nextProps.stores);
     if (nextProps.stores !== this.state.stores) {
       this.setState({ stores: nextProps.stores });
     }
@@ -37,7 +37,7 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
       <div className="featured-store" key={shortid.generate()}>
         <Link to={`/${store.id}`}><span className="store-link"></span></Link>
         <LazyLoad height={250}>
-            <img src={store.imageUrl} alt={store.title} />
+          <img src={store.imageUrl} alt={store.title} />
         </LazyLoad>
       </div>
     ))

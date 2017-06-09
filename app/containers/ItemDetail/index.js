@@ -79,11 +79,11 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
               <ListItem disabled leftAvatar={<Avatar>{`${percentage || 'none'}%`}</Avatar>} />
 
               <CardMedia
-                mediaStyle={{ maxHeight: 300 , height: 300}}
+                mediaStyle={{ maxHeight: 300, height: 300 }}
                 overlay={<CardTitle
-                  title={<div dangerouslySetInnerHTML={{__html: name}}/>}
-                  subtitle={`Merchant: ${merchant ? merchant.title : 'none'}`} 
-                  />
+                  title={<div dangerouslySetInnerHTML={{ __html: name }} />}
+                  subtitle={`Merchant: ${merchant ? merchant.title : 'none'}`}
+                />
                 }
                 style={{ marginTop: 10 }}
               >
@@ -100,15 +100,16 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
                 <Divider />
                 <CardTitle subtitle={`Expires on: ${expire || 'none'}`} />
                 <Divider />
-                <CardTitle subtitle={`Free shipping: ${isShipped ? 'Yes':'No'}`} />
+                <CardTitle subtitle={`Free shipping: ${isShipped ? 'Yes' : 'No'}`} />
                 <Divider />
                 <CardText>
                   <CardTitle title="Features" />
                   <ul>
                     {features ? features.map((feature) => (<li
-                      key={shortid.generate()}>
-                      <div dangerouslySetInnerHTML={{__html: feature}}/>
-                      </li>
+                      key={shortid.generate()}
+                    >
+                      <div dangerouslySetInnerHTML={{ __html: feature }} />
+                    </li>
                       )) : []
                     }
                   </ul>

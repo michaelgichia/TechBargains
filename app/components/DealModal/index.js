@@ -10,7 +10,7 @@ class DealModal extends React.PureComponent { // eslint-disable-line react/prefe
       <BuyButton currentStore={this.props.selected.merchant} url={this.props.selected.backlink} />,
       <BackButton onTouchTap={this.props.handleClose} />,
     ];
-    
+
     return (
       <Dialog
         title={this.props.selected.name}

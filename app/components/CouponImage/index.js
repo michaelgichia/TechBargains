@@ -18,8 +18,8 @@ class CouponImage extends React.PureComponent { // eslint-disable-line react/pre
 }
 
 CouponImage.propTypes = {
-	image: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default CouponImage;

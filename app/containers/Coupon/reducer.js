@@ -8,7 +8,7 @@ import { COUPON } from './constants';
 
 const initialState = {
   coupons: [],
-  errors: ''
+  errors: '',
 };
 
 function couponReducer(state = initialState, action) {
@@ -16,13 +16,13 @@ function couponReducer(state = initialState, action) {
     case COUPON.SUCCESS:
       return {
         ...state,
-        coupons: action.coupons
+        coupons: action.coupons,
       };
 
     case COUPON.ERROR:
       return {
         ...state,
-        errors: action.errors
+        errors: action.errors,
       };
 
     default:

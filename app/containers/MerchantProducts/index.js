@@ -13,11 +13,11 @@ class MerchantProducts extends React.PureComponent { // eslint-disable-line reac
   render() {
     return (
       <Col id="merchant-id"xs={12} sm={12} md={12} lg={8}>
-        <CouponHeader title="29 AMAZON COUPONS"/>
+        <CouponHeader title="29 AMAZON COUPONS" />
         <MerchantCoupon />
         <MerchantCoupon />
         <MerchantCoupon />
-        <CouponHeader title="29 AMAZON COUPONS"/>
+        <CouponHeader title="29 AMAZON COUPONS" />
         <MerchantDeal />
         <MerchantDeal />
       </Col>

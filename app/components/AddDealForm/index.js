@@ -15,9 +15,9 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
     return (
       <div>
         <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{ this.props.header }</Subheader>
-          <ul style={{ listStyle: 'none' }}>
-            {this.props.errors && this.props.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
-          </ul>
+        <ul style={{ listStyle: 'none' }}>
+          {this.props.errors && this.props.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
+        </ul>
         <ReactEditor
           id="name"
           placeholder="Name or Title"
@@ -127,7 +127,7 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           maxHeight={200}
           fullWidth
         >
-          <MenuItem value={true} primaryText="Yes, it's Coupon." />
+          <MenuItem value primaryText="Yes, it's Coupon." />
           <MenuItem value={false} primaryText="No, it's Deal." />
         </SelectField>
         <br />
@@ -140,7 +140,7 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           maxHeight={200}
           fullWidth
         >
-          <MenuItem value={true} primaryText="Yes" />
+          <MenuItem value primaryText="Yes" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
         <br />
@@ -153,7 +153,7 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           maxHeight={200}
           fullWidth
         >
-          <MenuItem value={true} primaryText="Yes, Free Shipping" />
+          <MenuItem value primaryText="Yes, Free Shipping" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
         <br />
@@ -162,7 +162,7 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           primary
           onClick={this.props.onClick}
         />
-    </div>
+      </div>
     );
   }
 }

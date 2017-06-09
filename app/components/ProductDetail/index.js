@@ -14,7 +14,7 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
           product={this.props.product}
         />
 
-        <FirstDiv 
+        <FirstDiv
           product={this.props.product}
         />
         <SecondDiv
@@ -26,7 +26,6 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
         />
       </Paper>
     );
-
   }
 }
 

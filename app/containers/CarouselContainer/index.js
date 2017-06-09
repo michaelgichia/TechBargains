@@ -12,28 +12,28 @@ import { connect } from 'react-redux';
 export class CarouselContainer extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
     banners: [],
-    errors: []
+    errors: [],
   }
 
   componentWillMount() {
     axios.get('/public-api/all/carousels')
     .then((response) => {
-      if (response.data.confirmation === "success") {
+      if (response.data.confirmation === 'success') {
         this.setState({ banners: response.data.results });
       } else {
-        this.setState({ errors: response.data.message })
+        this.setState({ errors: response.data.message });
         console.error(response.data);
       }
     })
     .catch((errors) => {
       this.setState({ errors });
       console.error(errors);
-    })
+    });
   }
 
   render() {
     return (
-      <Carousel 
+      <Carousel
         banners={this.state.banners}
       />
     );

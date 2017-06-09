@@ -89,7 +89,7 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
       imageUrl,
       backlink,
     } = this.state.item;
-    const { 
+    const {
       isFeatured,
       imageUrlError,
       titleError,

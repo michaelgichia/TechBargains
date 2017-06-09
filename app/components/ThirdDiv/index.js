@@ -6,7 +6,7 @@
 
 import React from 'react';
 import shortid from 'shortid';
-import YesNoBtn from 'components/YesNoBtn'
+import YesNoBtn from 'components/YesNoBtn';
 import CouponPrice from 'components/CouponPrice';
 import PropTypes from 'prop-types';
 import Col from 'react-bootstrap/lib/Col';
@@ -31,7 +31,7 @@ class ThirdDiv extends React.PureComponent { // eslint-disable-line react/prefer
             </div>
           </Col>
         </Row>
-        <Row style={{ margin: "0 20px 0 30px" }}>
+        <Row style={{ margin: '0 20px 0 30px' }}>
           <Col xsHidden smHidden>
             <div className="detail-div">
               <ul>
@@ -43,25 +43,25 @@ class ThirdDiv extends React.PureComponent { // eslint-disable-line react/prefer
                 <li>Compatible with iOS or Android Smartphones</li>
               </ul>
             </div>
-            </Col>
-          </Row>
-          <Row style={{ margin: "5px 10px" }}>
-            <Col xs={3} sm={6} md={6} lg={6}>
-              <div className="third-div-percentage">
-                <p>$22.99</p>
-                <h6>+ free shipping</h6>
-              </div>
-            </Col>
-            <Col xs={9} sm={6} mdPush={1} md={5} lg={6}>
-              <YesNoBtn
-                isCoupon
-                onTouchTap={this.handleOpen}
-              />
-            </Col>
-          </Row>
-          <Row style={{ margin: "0px 20px" }} className="third-div-footer">
-            <p>From  Amazon Coupons in Audio Components</p>
-          </Row>
+          </Col>
+        </Row>
+        <Row style={{ margin: '5px 10px' }}>
+          <Col xs={3} sm={6} md={6} lg={6}>
+            <div className="third-div-percentage">
+              <p>$22.99</p>
+              <h6>+ free shipping</h6>
+            </div>
+          </Col>
+          <Col xs={9} sm={6} mdPush={1} md={5} lg={6}>
+            <YesNoBtn
+              isCoupon
+              onTouchTap={this.handleOpen}
+            />
+          </Col>
+        </Row>
+        <Row style={{ margin: '0px 20px' }} className="third-div-footer">
+          <p>From  Amazon Coupons in Audio Components</p>
+        </Row>
       </Col>
     );
   }
@@ -75,8 +75,8 @@ ThirdDiv.propTypes = {
 };
 
 ThirdDiv.defaultProps = {
-  themeColor: "rgb(255, 132, 0)",
-}
+  themeColor: 'rgb(255, 132, 0)',
+};
 
 export default ThirdDiv;
 

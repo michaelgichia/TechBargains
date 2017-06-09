@@ -10,7 +10,7 @@ const styles = {
   toggle: {
     marginBottom: 16,
   },
-}
+};
 
 class StoreForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

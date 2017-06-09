@@ -53,7 +53,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
     axios.get(`/public-api/merchant/${merchantId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        this.setState({ 
+        this.setState({
           isFeatured: response.data.result.isFeatured,
           merchantData: response.data.result,
         });

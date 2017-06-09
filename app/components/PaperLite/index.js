@@ -12,7 +12,7 @@ class PaperLite extends React.PureComponent { // eslint-disable-line react/prefe
   render() {
     return (
       <div className="card">
-      {this.props.children}
+        {this.props.children}
       </div>
     );
   }

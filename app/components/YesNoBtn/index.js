@@ -14,14 +14,14 @@ class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
-      { this.props.isCoupon ?
+        { this.props.isCoupon ?
         (
           <RaisedButton
             label="REVEAL COUPON"
             primary
             onTouchTap={this.props.onTouchTap}
-            labelStyle={{fontSize: 12}}
-            />
+            labelStyle={{ fontSize: 12 }}
+          />
         )
         :
         (
@@ -30,7 +30,7 @@ class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer
             target="_blank"
             href="http://getbootstrap.com/"
             primary
-            labelStyle={{fontSize: 12}}
+            labelStyle={{ fontSize: 12 }}
           />
         )
       }

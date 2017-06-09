@@ -15,7 +15,7 @@ import { browserHistory, Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import { Card, CardActions,  CardMedia, CardTitle } from 'material-ui/Card';
+import { Card, CardActions, CardMedia, CardTitle } from 'material-ui/Card';
 
 // Styling
 const gems4 = {
@@ -44,7 +44,7 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
     axios.get(`/public-api/banner/${bannerId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        this.setState({ itemData: { ...response.data.result }});
+        this.setState({ itemData: { ...response.data.result } });
       } else {
         this.setState({ errors: response.data.message });
         console.error(response.data);
@@ -57,7 +57,7 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
     axios.delete(`/api/banner/${this.state.bannerId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        console.info('info', response.data)
+        console.info('info', response.data);
         browserHistory.push(url);
       } else {
         this.setState({ errors: response.data.errors });
@@ -72,20 +72,21 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
         <Row>
           <Col xs={12} md={8} mdPush={2}>
             <Card containerStyle={{ marginTop: 30 }}>
-              <CardMedia style={{ marginTop: 10, marginBottom: 20 }} mediaStyle={{ maxHeight: 300 , height: 300}}>
+              <CardMedia style={{ marginTop: 10, marginBottom: 20 }} mediaStyle={{ maxHeight: 300, height: 300 }}>
                 <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
               </CardMedia>
 
               <div>
-                <CardTitle 
-                  subtitleColor='#676d79'
-                  subtitle={`Backlink: ${ backlink ? backlink : 'none' }`} 
-                  style={{marginBottom: 20}} 
+                <CardTitle
+                  subtitleColor="#676d79"
+                  subtitle={`Backlink: ${backlink || 'none'}`}
+                  style={{ marginBottom: 20 }}
                 />
                 <Divider style={{ marginBottom: 20 }} />
                 <CardTitle
-                  subtitleColor='#676d79' 
-                  subtitle={`Image Url: ${ imageUrl ? imageUrl : 'none' }`} />
+                  subtitleColor="#676d79"
+                  subtitle={`Image Url: ${imageUrl || 'none'}`}
+                />
               </div>
 
               <CardActions>

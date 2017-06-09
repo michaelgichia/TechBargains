@@ -15,22 +15,22 @@ class MerchantBtn extends React.PureComponent { // eslint-disable-line react/pre
       <div className="merchant-btn">
         {
           this.props.coupon !== null && this.props.coupon.length > 0 ?
-          ( <Button 
-              bsStyle="primary" 
-              bsSize="sm" 
-              active
-              bsClass="merchant-btn-btn"
-            >
+          (<Button
+            bsStyle="primary"
+            bsSize="sm"
+            active
+            bsClass="merchant-btn-btn"
+          >
               Reveal Code
             </Button>
           )
           :
-          ( <Button 
-              bsStyle="primary" 
-              bsSize="sm" 
-              active
-              bsClass="merchant-btn-btn"
-            >
+          (<Button
+            bsStyle="primary"
+            bsSize="sm"
+            active
+            bsClass="merchant-btn-btn"
+          >
               See Deal
             </Button>
           )

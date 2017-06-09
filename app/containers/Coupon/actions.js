@@ -12,19 +12,19 @@ export const fetchCoupon = () => (dispatch) => {
     if (response.data.confirmation === 'success') {
       dispatch({
         type: COUPON.SUCCESS,
-        coupons: response.data.results
+        coupons: response.data.results,
       });
     } else {
       dispatch({
         type: COUPON.ERROR,
-        errors: response.data.message
-      })
+        errors: response.data.message,
+      });
     }
   })
   .catch((errors) => {
     dispatch({
       type: COUPON.ERROR,
-      errors
-    })
-  })
-}
+      errors,
+    });
+  });
+};

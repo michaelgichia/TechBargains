@@ -42,11 +42,11 @@ class LoginPage extends Component {
         <Row>
           <Col xs={12} md={8} mdPush={2}>
             <Paper zDepth={1} rounded={false} style={{ padding: 30, marginTop: 30 }}>
-            <LoginForm
-              onChange={this.handleChange}
-              onClick={this.login}
-              errors={this.state.errors}
-            />
+              <LoginForm
+                onChange={this.handleChange}
+                onClick={this.login}
+                errors={this.state.errors}
+              />
             </Paper>
           </Col>
         </Row>

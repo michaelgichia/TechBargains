@@ -8,7 +8,7 @@ import { DEALS } from './constants';
 
 const initialState = {
   deals: [],
-  errors: ''
+  errors: '',
 };
 
 function dealReducer(state = initialState, action) {
@@ -16,13 +16,13 @@ function dealReducer(state = initialState, action) {
     case DEALS.SUCCESS:
       return {
         ...state,
-        deals: action.deals
+        deals: action.deals,
       };
 
     case DEALS.ERROR:
       return {
         ...state,
-        errors: action.errors
+        errors: action.errors,
       };
 
     default:

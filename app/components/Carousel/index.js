@@ -26,15 +26,15 @@ class Carousel extends React.PureComponent { // eslint-disable-line react/prefer
     return (
       <div className="carousel-div">
         <Slider {...settings} className="carousel">
-          { 
+          {
             this.props.banners.length !== null && this.props.banners.length > 0 ?
 
-             (this.props.banners.map(banner => (
-                <div className="carousel-image" key={shortid.generate()}>
-                  <img src={banner.imageUrl} alt={banner.title}/>
-                </div>
+             (this.props.banners.map((banner) => (
+               <div className="carousel-image" key={shortid.generate()}>
+                 <img src={banner.imageUrl} alt={banner.title} />
+               </div>
                 ))
-              ) 
+              )
            :
               (<div></div>)
           }

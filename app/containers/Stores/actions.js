@@ -13,19 +13,19 @@ export const fetchStores = () => (dispatch) => {
     if (response.data.confirmation === 'success') {
       dispatch({
         type: STORES.SUCCESS,
-        stores: response.data.results
+        stores: response.data.results,
       });
     } else {
       dispatch({
         type: STORES.ERROR,
-        errors: response.data.message
-      })
+        errors: response.data.message,
+      });
     }
   })
   .catch((errors) => {
     dispatch({
       type: STORES.ERROR,
-      errors
-    })
-  })
-}
+      errors,
+    });
+  });
+};

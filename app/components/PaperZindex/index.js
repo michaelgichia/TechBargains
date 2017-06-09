@@ -12,7 +12,7 @@ class PaperZindex extends React.PureComponent { // eslint-disable-line react/pre
   render() {
     return (
       <div className="card-zindex">
-      	{this.props.children}
+        {this.props.children}
       </div>
     );
   }

@@ -48,9 +48,9 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
     axios.get(`/public-api/merchant/${merchantId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        this.setState({ 
-          isFeatured: response.data.result.isFeatured, 
-          merchant: response.data.result 
+        this.setState({
+          isFeatured: response.data.result.isFeatured,
+          merchant: response.data.result,
         });
       } else {
         const newError = [];
@@ -140,7 +140,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
   };
 
   render() {
-    const { titleError, descriptionError, errors,isFeatured } = this.state;
+    const { titleError, descriptionError, errors, isFeatured } = this.state;
     const { title, description, imageUrl } = this.state.merchant;
     return (
       <Grid>

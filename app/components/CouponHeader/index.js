@@ -18,7 +18,7 @@ class CouponHeader extends React.PureComponent { // eslint-disable-line react/pr
 }
 
 CouponHeader.propTypes = {
-	title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default CouponHeader;

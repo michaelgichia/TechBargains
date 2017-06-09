@@ -19,7 +19,7 @@ axios.defaults.headers.common.Authorization = token;
 
 
 export class BannerEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  
+
   state = {
     item: {
       title: '',
@@ -32,7 +32,7 @@ export class BannerEdit extends React.Component { // eslint-disable-line react/p
     backlinkError: '',
     errors: '',
     message: '',
-    bannerId: ''
+    bannerId: '',
   }; // eslint-disable-line
 
   componentDidMount() {
@@ -42,7 +42,7 @@ export class BannerEdit extends React.Component { // eslint-disable-line react/p
     axios.get(`/public-api/banner/${bannerId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        this.setState({ item: { ...response.data.result }, isFeatured: response.data.result.isFeatured});
+        this.setState({ item: { ...response.data.result }, isFeatured: response.data.result.isFeatured });
       } else {
         this.setState({ errors: response.data.message });
         console.error(response.data);
@@ -108,7 +108,7 @@ export class BannerEdit extends React.Component { // eslint-disable-line react/p
       imageUrl,
       backlink,
     } = this.state.item;
-    const { 
+    const {
       isFeatured,
       imageUrlError,
       titleError,

@@ -45,8 +45,8 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
           errorText={this.props.backlinkError}
           value={this.props.backlink}
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Toggle
           label="Is Banner featured ?"
           defaultToggled={false}
@@ -54,7 +54,7 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
           labelPosition="right"
           toggled={this.props.toggled}
         />
-        <br/>
+        <br />
         <RaisedButton
           label="Save"
           primary
