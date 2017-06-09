@@ -1,6 +1,6 @@
 /**
 *
-* CouponBtn
+* MerchantBtn
 *
 */
 
@@ -9,17 +9,17 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
 
 
-class CouponBtn extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class MerchantBtn extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="coupon-btn">
+      <div className="merchant-btn">
         {
           this.props.coupon !== null && this.props.coupon.length > 0 ?
           ( <Button 
               bsStyle="primary" 
               bsSize="sm" 
               active
-              bsClass="coupon-btn-btn"
+              bsClass="merchant-btn-btn"
             >
               Reveal Code
             </Button>
@@ -29,7 +29,7 @@ class CouponBtn extends React.PureComponent { // eslint-disable-line react/prefe
               bsStyle="primary" 
               bsSize="sm" 
               active
-              bsClass="coupon-btn-btn"
+              bsClass="merchant-btn-btn"
             >
               See Deal
             </Button>
@@ -40,9 +40,8 @@ class CouponBtn extends React.PureComponent { // eslint-disable-line react/prefe
   }
 }
 
-CouponBtn.propTypes = {
+MerchantBtn.propTypes = {
   coupon: PropTypes.string.isRequired,
 };
 
-export default CouponBtn;
- 
+export default MerchantBtn;

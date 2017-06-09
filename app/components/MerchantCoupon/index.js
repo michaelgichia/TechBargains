@@ -5,30 +5,31 @@
 */
 
 import React from 'react';
+import MerchantBtn from 'components/MerchantBtn';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import {cyan500} from 'material-ui/styles/colors';
 
 
 class MerchantCoupon extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-		  <Card style={{ margin: 10 }}>
+		  <Card className="merchant-coupon">
 		    <CardHeader
-		      title="Without Avatar"
-		      subtitle="Subtitle"
-		      actAsExpander={true}
-		      showExpandableButton={true}
+          className="merchant-header"
+          style={{ paddingBottom: 5 }}
+          titleColor={cyan500}
+          titleStyle={{ fontSize: 18, fontFamily: 'Roboto', marginBottom: 10 }}
+          subtitleStyle={{ fontSize: 13, color: '#b0b0b0',  fontFamily: 'Roboto', marginBottom: 0, paddingBottom: 0 }}
+		      title="5% Credit Back with Amazon.com Gift Card Reload (Most Users)"
+		      subtitle="From: Amazon"
 		    />
-		    <CardActions>
-		      <FlatButton label="Action1" />
-		      <FlatButton label="Action2" />
-		    </CardActions>
-		    <CardText expandable={true}>
-		      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-		      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-		      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-		      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-		    </CardText>
+        <CardActions>
+          <MerchantBtn
+            style={{ paddingLeft: '20 !important', paddingRight: '20 !important' }}
+            coupon={""}
+          />
+        </CardActions>
 		  </Card>
     );
   }

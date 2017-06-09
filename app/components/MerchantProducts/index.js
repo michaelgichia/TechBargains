@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/lib/Col';
 class MerchantProducts extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Col xs={12} sm={9} md={8} lg={8}>
+      <Col xs={12} sm={9} md={8} lg={8} id="merchant-products">
         <MerchantCoupon />
         <MerchantCoupon />
         <MerchantCoupon />

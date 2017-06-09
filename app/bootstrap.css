@@ -12,8 +12,26 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.merchant-header {
+  font-size: 20px;
+}
+.merchant-coupon {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  #merchant-products {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+@media (max-width: 768px) {
+  .merchant-coupon {}
+}
+
 div .show-product-grid .row {
-  background-color: #edecec !important;
+  background-color: #f5f6f7 !important;
 }
 .amazon-coupon-btn {
   margin: 3.5% 10px;
@@ -74,24 +92,6 @@ div .show-product-grid .row {
   color: #595a5d;
 }
 
-/*.amazon-title {
-  font-weight: 700;
-}
-.amazon-row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.amazon-image {
-  margin: 0px;
-  text-align: center;
-  padding: 20px;
-}
-.amazon-desc {
-  margin: 5px;
-  padding: 10px;
-  height: 100%;
-  max-height: 100%;
-}*/
 .amazon {
   background-color: red;
   border: 2px solid black;
@@ -122,6 +122,20 @@ div .show-product-grid .row {
 }
 .tech-sidebar {
   height: 100vh;
+}
+.merchant-btn-btn {
+  border-radius: 1px !important;
+  background-color: #00bcd4;
+  color: rgb(255, 255, 255);
+  padding: 5px 30px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0px;
+  opacity: 1;
+  font-family: "Roboto","Roboto Slab","Roboto", Helvetica, Arial;
+}
+.merchant-btn-btn:hover {
+  background-color: #26c6da;
 }
 .coupon-btn-btn {
   border-radius: 2px !important;
