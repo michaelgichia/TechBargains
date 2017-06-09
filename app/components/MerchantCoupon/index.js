@@ -19,7 +19,7 @@ class MerchantCoupon extends React.PureComponent { // eslint-disable-line react/
           className="merchant-header"
           style={{ paddingBottom: 5 }}
           titleColor={cyan500}
-          titleStyle={{ fontSize: 18, fontFamily: 'Roboto', marginBottom: 10 }}
+          titleStyle={{ fontSize: 18, fontFamily: 'Roboto', marginBottom: 5, lineHeight: '1.1' }}
           subtitleStyle={{ fontSize: 13, color: '#b0b0b0',  fontFamily: 'Roboto', marginBottom: 0, paddingBottom: 0 }}
 		      title="5% Credit Back with Amazon.com Gift Card Reload (Most Users)"
 		      subtitle="From: Amazon"

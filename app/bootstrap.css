@@ -164,10 +164,10 @@ div .show-product-grid .row {
 .coupon-header > li {
   list-style-type: none;
   overflow: hidden;
-  background-color: #fff;
+  background-color: transparent;
   border-bottom: solid 3px #676d79;
   color: #676d79;
-  padding: 5px 16px 5px 0px;
+  padding: 5px 16px 5px 5px;
   margin: 0;
   font-size: 20px;
   font-weight: 700;
@@ -197,7 +197,7 @@ div .show-product-grid .row {
   min-height: 27px !important;
   color: #e6251f !important;
   font-weight: 700 !important;
-  font-family: Roboto,Helvetica,Arial,sans-serif !important;
+  font-family: 'Roboto',Helvetica,Arial,sans-serif !important;
   text-align: center;
 }
 
