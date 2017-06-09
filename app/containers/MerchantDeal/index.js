@@ -63,22 +63,6 @@ export class MerchantDeal extends React.PureComponent { // eslint-disable-line r
             />
           </Row>
         </Panel>
-        <div>
-          <LazyLoad height={200} offset={200}>
-            <ProductDetail
-                product={this.state.product}
-                handleOpen={this.handleOpen}
-              />
-          </LazyLoad>
-        </div>
-        <div>
-          <LazyLoad height={200} offset={200}>
-            <ProductDetail
-                product={this.state.product}
-                handleOpen={this.handleOpen}
-              />
-          </LazyLoad>
-        </div>
       </div>
     );
   }

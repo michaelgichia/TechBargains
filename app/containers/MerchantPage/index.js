@@ -22,7 +22,7 @@ export class MerchantPage extends React.PureComponent { // eslint-disable-line r
           <MerchantInfo />
         </Row>
         <div className="show-product-grid">
-          <Row>
+          <Row className="show-dealss-grid">
             <MerchantProducts />
             <MerchantProfile />
           </Row>
