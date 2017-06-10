@@ -46,13 +46,13 @@ class ThirdDiv extends React.PureComponent { // eslint-disable-line react/prefer
           </Col>
         </Row>
         <Row style={{ margin: '5px 10px' }}>
-          <Col xs={3} sm={6} md={6} lg={6}>
+          <Col xs={4} sm={6} mdPush={1} md={5} lgPush={1} lg={3}>
             <div className="third-div-percentage">
               <p>$22.99</p>
               <h6>+ free shipping</h6>
             </div>
           </Col>
-          <Col xs={9} sm={6} mdPush={1} md={5} lg={6}>
+          <Col xs={8} sm={6} mdPush={1} md={5} lgPush={1} lg={5}>
             <YesNoBtn
               isCoupon
               onTouchTap={this.handleOpen}

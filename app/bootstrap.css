@@ -15,6 +15,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.material-ui-btn {
+  font-size: 12px;
+}
 .third-div-percentage > p {
   line-height: 1.1;
   color: #e6251f;
@@ -555,6 +558,10 @@ label.platinumbtn {
 }
 .imagi-div {
   text-align: center;
+  width: 100%;
+  max-height: 200px;
+  max-width: 200px;
+  padding-top: 20px;
 }
 .imagi-div > img {
   width: 100%;

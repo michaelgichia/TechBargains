@@ -18,9 +18,10 @@ class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer
         (
           <RaisedButton
             label="REVEAL COUPON"
+            className="material-ui-btn"
             primary
             onTouchTap={this.props.onTouchTap}
-            labelStyle={{ fontSize: 12 }}
+            labelStyle={{ paddingLeft: 5, paddingRight: 5, fontSize: 13 }}
           />
         )
         :
@@ -30,7 +31,7 @@ class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer
             target="_blank"
             href="http://getbootstrap.com/"
             primary
-            labelStyle={{ fontSize: 12 }}
+            labelStyle={{ paddingLeft: 5, paddingRight: 5, fontSize: 13 }}
           />
         )
       }
