@@ -23,7 +23,7 @@ class ThirdDiv extends React.PureComponent { // eslint-disable-line react/prefer
 
   render() {
     return (
-      <Col className="description-div" xs={12} sm={8} md={8} lg={8}>
+      <Col className="description-div" xs={8} sm={8} md={8} lg={8}>
         <Row style={{ margin: 0 }}>
           <Col>
             <div className="title-div">
