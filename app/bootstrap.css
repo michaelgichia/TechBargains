@@ -30,12 +30,12 @@ html {
 }
 @media (max-width: 480px) {
   .third-div-percentage > p {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 @media (min-width: 480px) and (max-width: 768px) {
   .third-div-percentage > p {
-    font-size: 27px;
+    font-size: 24px;
   }
 }
 @media (min-width: 768px) {
@@ -582,6 +582,9 @@ label.platinumbtn {
   font-size: 14px;
   font-family: Roboto, Helvetica, Arial;
   color: #333;
+}
+.detail-div > ul {
+  padding-left: 10px;
 }
 .deal-button {
   border: solid 0.15em;

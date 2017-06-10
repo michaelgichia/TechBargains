@@ -13,7 +13,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'right' }}>
         { this.props.isCoupon ?
         (
           <RaisedButton
