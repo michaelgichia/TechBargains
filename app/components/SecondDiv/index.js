@@ -4,21 +4,17 @@
 *
 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import Col from 'react-bootstrap/lib/Col';
+import React from "react";
+import PropTypes from "prop-types";
+import Col from "react-bootstrap/lib/Col";
 
-
-      // xs={12} sm={8} md={8} lg={8}
-class SecondDiv extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class SecondDiv extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Col xsPush={4} xs={4} mdPush={1} md={4}>
         <div className="imagi-div">
-          <img
-            alt="dealsexp"
-            src={this.props.product.image}
-          />
+          <img alt="dealsexp" src={this.props.product.image} />
         </div>
       </Col>
     );

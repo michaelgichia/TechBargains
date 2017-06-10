@@ -13,6 +13,7 @@ import Panel from 'react-bootstrap/lib/Panel';
 import SecondDiv from 'components/SecondDiv';
 import FirstDiv from 'components/FirstDiv';
 import ThirdDiv from 'components/ThirdDiv';
+import Topper from 'components/Topper';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -49,7 +50,11 @@ export class MerchantDeal extends React.PureComponent { // eslint-disable-line r
   render() {
     return (
       <div>
-        <Panel header="Here we are again" className="merchant-panel">
+        <Panel
+          header="Here we are again"
+          className="merchant-panel"
+          header={<Topper />}
+        >
           <FirstDiv
             product={this.state.product}
           />
