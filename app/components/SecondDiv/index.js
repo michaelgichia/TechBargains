@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/lib/Col';
 class SecondDiv extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Col xs={12} sm={4} md={4} lg={4}>
+      <Col xsPush={4} xs={4} mdPush={1} md={4}>
         <div className="imagi-div">
           <img
             alt="dealsexp"
