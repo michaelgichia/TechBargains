@@ -30,24 +30,24 @@ const findById = (id) =>
 const findCarousel = (params) =>
   new Promise((resolve, reject) => {
     Banner
-      .find({isFeatured: true})
+      .find({ isFeatured: true })
       .limit(5)
       .sort('-date')
       .exec((err, banners) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      const summaries = [];
-      banners.forEach((banner) => {
-        summaries.push(banner.summary());
+        if (err) {
+          reject(err);
+          return;
+        }
+        const summaries = [];
+        banners.forEach((banner) => {
+          summaries.push(banner.summary());
+        });
+        resolve(summaries);
       });
-      resolve(summaries);
-    });
   });
 
 module.exports = {
   find,
   findById,
-  findCarousel
+  findCarousel,
 };

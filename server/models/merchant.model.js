@@ -12,7 +12,7 @@ const MerchantSchema = new Schema({
     type: String,
     trim: true,
     max: 1000,
-    default: "",
+    default: '',
   },
   description: {
     type: String,

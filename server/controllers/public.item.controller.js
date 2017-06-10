@@ -37,21 +37,21 @@ const findById = (id) =>
 
 const findFeaturedCoupon = (params) =>
   new Promise((resolve, reject) => {
-    Item.find({  isCoupon: true, isFeatured: true })
+    Item.find({ isCoupon: true, isFeatured: true })
         .limit(8)
         .sort('-date')
         .select('name percentage image isShipped backlink coupon')
         .exec((err, coupons) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      const summaries = [];
-      coupons.forEach((coupon) => {
-        summaries.push(coupon.summary());
-      });
-      resolve(summaries);
-    });
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          coupons.forEach((coupon) => {
+            summaries.push(coupon.summary());
+          });
+          resolve(summaries);
+        });
   });
 
 const findFeaturedDeals = (params) =>
@@ -61,21 +61,21 @@ const findFeaturedDeals = (params) =>
         .sort('-date')
         .select('name percentage image isShipped backlink coupon')
         .exec((err, deals) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      const summaries = [];
-      deals.forEach((deal) => {
-        summaries.push(deal.summary());
-      });
-      resolve(summaries);
-    });
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          deals.forEach((deal) => {
+            summaries.push(deal.summary());
+          });
+          resolve(summaries);
+        });
   });
 
 module.exports = {
   find,
   findById,
   findFeaturedCoupon,
-  findFeaturedDeals
+  findFeaturedDeals,
 };

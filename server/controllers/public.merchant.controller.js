@@ -35,20 +35,20 @@ const findFeaturedStores = (params) =>
         .sort('-date')
         .select('title imageUrl')
         .exec((err, stores) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      const summaries = [];
-      stores.forEach((store) => {
-        summaries.push(store.summary());
-      });
-      resolve(summaries);
-    });
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          stores.forEach((store) => {
+            summaries.push(store.summary());
+          });
+          resolve(summaries);
+        });
   });
 
 module.exports = {
   find,
   findById,
-  findFeaturedStores
+  findFeaturedStores,
 };

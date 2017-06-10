@@ -14,8 +14,8 @@ class Dropdown extends React.PureComponent { // eslint-disable-line react/prefer
       <div className="gold">
         <ul>
           <li><h2>{ this.props.dropdownValue }</h2></li>
-          <li className="platinum" style={{ float: 'right' }}>
-            <label className="platinumbtn"><strong>{ this.props.dropdownValue }</strong></label>
+          <li id="platinumbtn" className="platinum" style={{ float: 'right' }}>
+            <label htmlFor="platinumbtn" className="platinumbtn"><strong>{ this.props.dropdownValue }</strong></label>
             <div className="platinum-content">
               <button onClick={this.props.handleDropdown} id="Expiring Soon">Expiring Soon</button>
               <button onClick={this.props.handleDropdown} id="Most Recent">Most Recent</button>

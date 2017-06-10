@@ -4,21 +4,20 @@
 *
 */
 
-import React from "react";
-import shortid from "shortid";
-import YesNoBtn from "components/YesNoBtn";
-import CouponPrice from "components/CouponPrice";
-import PropTypes from "prop-types";
-import Col from "react-bootstrap/lib/Col";
-import Row from "react-bootstrap/lib/Row";
+import React from 'react';
+import shortid from 'shortid';
+import YesNoBtn from 'components/YesNoBtn';
+import PropTypes from 'prop-types';
+import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
 
 class ThirdDiv extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   state = {
-    open: false
+    open: false,
   };
 
-  handleOpen = id => {
+  handleOpen = () => {
     this.setState({ open: true });
   };
 
@@ -38,7 +37,7 @@ class ThirdDiv extends React.PureComponent {
             </div>
           </Col>
         </Row>
-        <Row style={{ margin: "0 20px 0 30px" }}>
+        <Row style={{ margin: '0 20px 0 30px' }}>
           <Col xsHidden smHidden>
             <div className="detail-div">
               <ul>
@@ -52,7 +51,7 @@ class ThirdDiv extends React.PureComponent {
             </div>
           </Col>
         </Row>
-        <Row style={{ margin: "5px 10px" }}>
+        <Row style={{ margin: '5px 10px' }}>
           <Col xs={4} sm={6} mdPush={1} md={5} lgPush={1} lg={3}>
             <div className="third-div-percentage">
               <p>$22.99</p>
@@ -63,7 +62,7 @@ class ThirdDiv extends React.PureComponent {
             <YesNoBtn isCoupon onTouchTap={this.handleOpen} />
           </Col>
         </Row>
-        <Row style={{ margin: "0px 20px" }} className="third-div-footer">
+        <Row style={{ margin: '0px 20px' }} className="third-div-footer">
           <p>From Amazon Coupons in Audio Components</p>
         </Row>
       </Col>
@@ -79,7 +78,7 @@ ThirdDiv.propTypes = {
 };
 
 ThirdDiv.defaultProps = {
-  themeColor: "rgb(255, 132, 0)"
+  themeColor: 'rgb(255, 132, 0)',
 };
 
 export default ThirdDiv;

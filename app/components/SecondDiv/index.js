@@ -4,9 +4,9 @@
 *
 */
 
-import React from "react";
-import PropTypes from "prop-types";
-import Col from "react-bootstrap/lib/Col";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Col from 'react-bootstrap/lib/Col';
 
 class SecondDiv extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function

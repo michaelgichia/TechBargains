@@ -1,22 +1,29 @@
-import ReactEditor from 'components/ReactEditor';
-import React from 'react';
-import PropTypes from 'prop-types';
-import shortid from 'shortid';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import SelectField from 'material-ui/SelectField';
-import DatePicker from 'material-ui/DatePicker';
-import MenuItem from 'material-ui/MenuItem';
-import Subheader from 'material-ui/Subheader';
+import ReactEditor from "components/ReactEditor";
+import React from "react";
+import PropTypes from "prop-types";
+import shortid from "shortid";
+import TextField from "material-ui/TextField";
+import RaisedButton from "material-ui/RaisedButton";
+import SelectField from "material-ui/SelectField";
+import DatePicker from "material-ui/DatePicker";
+import MenuItem from "material-ui/MenuItem";
+import Subheader from "material-ui/Subheader";
 
-
-class AddDealForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class AddDealForm extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{ this.props.header }</Subheader>
-        <ul style={{ listStyle: 'none' }}>
-          {this.props.errors && this.props.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
+        <Subheader
+          style={{ fontSize: 24, textAlign: "center", color: "black" }}
+        >
+          {this.props.header}
+        </Subheader>
+        <ul style={{ listStyle: "none" }}>
+          {this.props.errors &&
+            this.props.errors.map(error =>
+              <li key={shortid.generate()}> <p>{error}</p> </li>
+            )}
         </ul>
         <ReactEditor
           id="name"
@@ -157,11 +164,7 @@ class AddDealForm extends React.PureComponent { // eslint-disable-line react/pre
           <MenuItem value={false} primaryText="No" />
         </SelectField>
         <br />
-        <RaisedButton
-          label="Add Item"
-          primary
-          onClick={this.props.onClick}
-        />
+        <RaisedButton label="Add Item" primary onClick={this.props.onClick} />
       </div>
     );
   }

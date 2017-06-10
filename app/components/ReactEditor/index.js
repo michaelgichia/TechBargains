@@ -39,6 +39,7 @@ ReactEditor.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ReactEditor;

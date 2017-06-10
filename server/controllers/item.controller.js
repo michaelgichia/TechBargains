@@ -19,7 +19,7 @@ const create = (body) =>
 const update = (id, params) =>
   new Promise((resolve, reject) => {
     // Convert string to array.
-    const paramsCopy = Object.assign({}, params); 
+    const paramsCopy = Object.assign({}, params);
     const featuresArray = paramsCopy.features.split('.').filter((feature) => feature.trim().length !== 0);
     paramsCopy.features = featuresArray;
 

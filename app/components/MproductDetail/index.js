@@ -5,12 +5,12 @@
 */
 
 import React from 'react';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardActions, CardMedia } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-const MproductDetail = ({}) => (
+const MproductDetail = () => (
   <Card className="card-mobile">
-    <CardMedia><img src="http://www.2015airjordans.com/images/nike/201311080203484712.jpg" /></CardMedia>
+    <CardMedia><img src="http://www.2015airjordans.com/images/nike/201311080203484712.jpg" alt="media" /></CardMedia>
     <div className="mawe">
       <p className="mawe-p">Dr.meter Soil Moisture Meter 3-in-1 Soil Tester $13.99</p>
     </div>
