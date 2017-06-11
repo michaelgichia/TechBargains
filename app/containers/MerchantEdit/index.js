@@ -37,6 +37,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
       imageUrl: '',
     },
     isFeatured: false,
+    about: '',
     titleError: '',
     descriptionError: '',
     errors: [],
@@ -50,6 +51,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
       if (response.data.confirmation === 'success') {
         this.setState({
           isFeatured: response.data.result.isFeatured,
+          about: response.data.result.about,
           merchant: response.data.result,
         });
       } else {
@@ -98,7 +100,14 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
     this.setState({ merchant: updatedStore });
   };
 
-  handleToggle = (e, isInputChecked) => this.setState({ isFeatured: isInputChecked });
+  /**
+   * Update isFeatured in the state and clear error.
+  */
+  handleIsFeatured = (e, i, value) => {
+    this.setState({ isFeatured: value });
+  };
+  
+  handleAbout = (about) => this.setState({ about });
 
   updateMerchant = (merchant) => {
     const { merchantId } = this.state;
@@ -133,14 +142,18 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
     if (validator.isEmpty(description)) {
       this.setState({ descriptionError: 'Description is required!' });
     } else {
-      const merchant = { ...this.state.merchant, isFeatured: this.state.isFeatured };
+      const merchant = { 
+        ...this.state.merchant,
+        isFeatured: this.state.isFeatured,
+        about: this.state.about,
+      };
       this.updateMerchant(merchant);
       this.resetState();
     }
   };
 
   render() {
-    const { titleError, descriptionError, errors, isFeatured } = this.state;
+    const { titleError, descriptionError, errors, isFeatured, about } = this.state;
     const { title, description, imageUrl } = this.state.merchant;
     return (
       <Grid>
@@ -156,9 +169,11 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
                 description={description}
                 errors={errors}
                 header="Edit merchant"
-                onToggle={this.handleToggle}
                 imageUrl={imageUrl}
                 toggled={isFeatured}
+                about={about}
+                onAboutChange={this.handleAbout}
+                onFeaturedChange={this.handleIsFeatured}
               />
             </Paper>
           </Col>

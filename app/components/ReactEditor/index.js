@@ -7,10 +7,14 @@ import '!!style-loader!css-loader!react-quill/dist/quill.snow.css';
 class ReactEditor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const modules = {
-      toolbar: [['bold', 'italic', 'underline'], ['link']],
+      toolbar: [
+        ['bold', 'italic', 'underline'],
+        ['link'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }]
+      ],
     };
     const formats = [
-      'bold', 'italic', 'underline', 'bullet', 'indent', 'link',
+      'bold', 'italic', 'underline', 'bullet', 'indent', 'link', 'list'
     ];
     return (
       <div className="text-editor">

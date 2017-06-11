@@ -18,6 +18,13 @@ const MerchantSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    max: 1000,
+  },
+  about: {
+    type: String,
+    default: '',
+    trim: true,
+    max: 10000,
   },
   isFeatured: {
     type: Boolean,
@@ -33,6 +40,7 @@ MerchantSchema.methods.summary = function () {// eslint-disable-line
     description: this.description,
     isFeatured: this.isFeatured,
     description: this.description,
+    about: this.about,
   };
 
   return summary;

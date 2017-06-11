@@ -42,6 +42,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
       title: '',
       id: '',
       imageUrl: '',
+      about: '',
     },
     isFeatured: false,
   }
@@ -92,7 +93,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
   };
 
   render() {
-    const { title, description, imageUrl } = this.state.merchantData;
+    const { title, description, imageUrl, about } = this.state.merchantData;
     const { isFeatured } = this.state;
     return (
       <Grid>
@@ -111,6 +112,13 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
               </CardText>
               <CardText>
                 {`Featured: ${isFeatured}`}
+              </CardText>
+              <CardText>
+                {
+                  <div
+                    dangerouslySetInnerHTML={{ __html: about }}
+                  />
+                }
               </CardText>
               <CardActions>
                 <Divider />

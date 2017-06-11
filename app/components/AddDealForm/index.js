@@ -145,7 +145,7 @@ class AddDealForm extends React.PureComponent {
           maxHeight={200}
           fullWidth
         >
-          <MenuItem value primaryText="Yes" />
+          <MenuItem value={true} primaryText="Yes" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
         <TextField

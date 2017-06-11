@@ -23,7 +23,6 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('Store', nextProps.stores);
     if (nextProps.stores !== this.state.stores) {
       this.setState({ stores: nextProps.stores });
     }

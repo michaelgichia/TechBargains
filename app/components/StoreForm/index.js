@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactEditor from "components/ReactEditor";
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
-import Toggle from 'material-ui/Toggle';
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
 
 const styles = {
   toggle: {
@@ -45,19 +47,31 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           fullWidth
           errorText={this.props.descriptionError}
           value={this.props.description}
-          rowsMax={10}
+          rowsMax={5}
           multiLine
-          rows={5}
+          rows={2}
+        />
+        <ReactEditor
+          id="about"
+          placeholder="About Store"
+          onChange={this.props.onAboutChange}
+          value={this.props.about}
         />
         <br />
+        <SelectField
+          hintText="Is Store / Merchant featured ?"
+          floatingLabelText="Is Store / Merchant featured ?"
+          id="isFeatured"
+          value={this.props.toggled}
+          onChange={this.props.onFeaturedChange}
+          maxHeight={200}
+          fullWidth
+        >
+          <MenuItem value={true} primaryText="Yes" />
+          <MenuItem value={false} primaryText="No" />
+        </SelectField>
         <br />
-        <Toggle
-          label="Is Featured?"
-          toggled={this.props.toggled}
-          style={styles.toggle}
-          onToggle={this.props.onToggle}
-          labelPosition="right"
-        />
+        <br />
         <RaisedButton
           label="Submit"
           primary
@@ -77,9 +91,12 @@ StoreForm.propTypes = {
   onClick: PropTypes.func.isRequired,
   errors: PropTypes.array.isRequired,
   header: PropTypes.string.isRequired,
-  onToggle: PropTypes.func.isRequired,
+  onFeaturedChange: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   toggled: PropTypes.bool.isRequired,
+  onAboutChange: PropTypes.func.isRequired,
+  about: PropTypes.string.isRequired,
+
 };
 
 export default StoreForm;

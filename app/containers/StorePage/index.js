@@ -55,6 +55,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     descriptionError: '',
     message: '',
     errors: [],
+    about: ''
   };
 
   componentDidMount() {
@@ -79,7 +80,14 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     this.setState({ merchant: updatedStore });
   };
 
-  handleToggle = (e, isInputChecked) => this.setState({ isFeatured: isInputChecked });
+  /**
+   * Update isFeatured in the state and clear error.
+  */
+  handleIsFeatured = (e, i, value) => {
+    this.setState({ isFeatured: value });
+  };
+
+  handleAbout = (about) => this.setState({ about });
 
   /**
    * Update the state from user input.
@@ -110,7 +118,11 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     if (validator.isEmpty(description)) {
       this.setState({ descriptionError: 'Description is required!' });
     } else {
-      const merchant = { ...this.state.merchant };
+      const merchant = { 
+        ...this.state.merchant,
+        isFeatured: this.state.isFeatured,
+        about: this.state.about,
+      };
       this.props.doSaveMerchant(merchant);
       this.resetState();
     }
@@ -128,7 +140,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
   };
 
   render() {
-    const { titleError, descriptionError, errors, isFeatured } = this.state;
+    const { titleError, descriptionError, errors, isFeatured, about } = this.state;
     const { title, description, imageUrl } = this.state.merchant;
     return (
       <Grid>
@@ -144,9 +156,11 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
                 description={description}
                 errors={errors}
                 header="Add a new merchant"
-                onToggle={this.handleToggle}
+                onFeaturedChange={this.handleIsFeatured}
                 imageUrl={imageUrl}
                 toggled={isFeatured}
+                about={about}
+                onAboutChange={this.handleAbout}
               />
             </Paper>
           </Col>
