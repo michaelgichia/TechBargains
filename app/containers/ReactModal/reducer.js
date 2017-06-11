@@ -10,6 +10,7 @@ import {
 
 const initialState = {
   open: false,
+  product: {},
 };
 
 function reactModalReducer(state = initialState, action) {
@@ -18,6 +19,7 @@ function reactModalReducer(state = initialState, action) {
       return {
         ...state,
         open: true,
+        product: action.product
       };
 
     case MODAL.CLOSE:

@@ -14,12 +14,30 @@ import { handleOpenModal, handleCloseModal } from './actions';
 
 export class ReactModal extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
-    open: false
+    open: false,
+    product: {
+      name: '',
+      features: '',
+      coupon: '',
+      backlink: '',
+      percentage: '',
+      image: '',
+      merchant: '',
+      category: '',
+      subCategory: '',
+      expire: {},
+      isFeatured: true,
+      isCoupon: false,
+      isShipped: '',
+    }
   };
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.open !== this.state.open) {
       this.setState((prevState, props) =>  ({open: props.open}));
+    }
+    if(nextProps.product !== this.state.product) {
+      this.setState((prevState, props) =>  ({product: props.product}));
     }
   };
 
@@ -40,7 +58,7 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
           title={
             <div className="modal-header">
               <h2>Copy the code below and paste at checkout</h2>
-              <div>I45TNAQP</div>
+              <div>{ this.state.product.coupon }</div>
             </div>
           }
           actions={actions}
@@ -51,7 +69,7 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
           <div className="modal-body">
             <div>
               <FlatButton 
-                label="go to Amazon"
+                label={`go to ${this.state.product.merchant}`}
                 backgroundColor="#2eba37"
                 labelStyle={{
                   color: "#fff",
@@ -75,7 +93,8 @@ ReactModal.propTypes = {
 };
 
 const mapStateToProps = ({ modal }) => ({
-  open: modal.open
+  open: modal.open,
+  product: modal.product,
 });
 
 const mapDispatchToProps = (dispatch) => ({

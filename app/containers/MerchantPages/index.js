@@ -56,6 +56,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
   };
   
   render() {
+    console.log('state', this.state)
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -64,7 +65,12 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
             <Col id="merchant-id"xs={12} sm={12} md={12} lg={8}>
-              <CouponHeader title="29 AMAZON COUPONS" />
+              {
+                this.state.coupons !== null && this.state.coupons.length > 0 ? 
+                 (<CouponHeader title={`${this.state.info.title} COUPONS`} />)
+                 :
+                 ('')
+              }
               <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
                 {
                   this.state.coupons.map((coupon) => (
@@ -74,7 +80,12 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                   ))
                 }
               </ul>
-              <CouponHeader title="29 AMAZON COUPONS" />
+              {
+                this.state.merchandize !== null && this.state.merchandize.length > 0 ? 
+                 (<CouponHeader title={`${this.state.info.title} DEALS`} />)
+                 :
+                 ('')
+              }
               <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
                 {
                 this.state.merchandize.map((product) => (
@@ -90,9 +101,12 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                 }
               </ul>
             </Col>
-            <MerchantProfile
-              info={this.state.info}
-            />
+              {
+                this.state.info !== null && this.state.info.length > 0 ? 
+                (<MerchantProfile info={this.state.info} />)
+                :
+                ('')
+              }
           </Row>
         </div>
       </Grid>
