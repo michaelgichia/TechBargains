@@ -310,18 +310,36 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
-      path: '/:storeId',
-      name: 'merchantPage',
+      path: '/storeId',
+      name: 'merchantPages',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/MerchantPage/reducer'),
-          import('containers/MerchantPage'),
+          import('containers/MerchantPages/reducer'),
+          import('containers/MerchantPages'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, component]) => {
-          injectReducer('merchantPage', reducer.default);
+          injectReducer('merchantPages', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/:storeId',
+      name: 'merchantPages',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/MerchantPages/reducer'),
+          import('containers/MerchantPages'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('merchantPages', reducer.default);
           renderRoute(component);
         });
 

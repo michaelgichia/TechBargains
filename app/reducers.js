@@ -21,6 +21,7 @@ import homepageReducer from 'containers/HomePage/reducer';
 import couponReducer from 'containers/Coupon/reducer';
 import dealReducer from 'containers/Deal/reducer';
 import storesReducer from 'containers/Stores/reducer';
+import merchantPagesReducer from 'containers/MerchantPages/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -43,6 +44,7 @@ export default function createReducer(asyncReducers) {
     coupons: couponReducer,
     deals: dealReducer,
     stores: storesReducer,
+    merchantPages: merchantPagesReducer,
     ...asyncReducers,
   });
 }

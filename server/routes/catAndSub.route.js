@@ -85,4 +85,24 @@ router.get('/featured-stores', (req, res) => {
   });
 });
 
+
+router.get('/specific-stores/:storeId', (req, res) => {
+
+  const id = req.params.storeId;
+
+  itemController.findSpecificDeals(id)
+  .then((entities) => {
+    res.json({
+      confirmation: 'success',
+      results: entities,
+    });
+  })
+  .catch((err) => {
+    res.json({
+      confirmation: 'fail',
+      message: err,
+    });
+  });
+});
+
 module.exports = router;

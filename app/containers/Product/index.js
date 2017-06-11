@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import LazyLoad from 'react-lazyload';
-import MerchantDeal from 'containers/MerchantDeal';
+import ProductDetail from 'components/ProductDetail';
 import DealModal from 'components/DealModal';
 import shortid from 'shortid';
 import axios from 'axios';
@@ -79,9 +79,9 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
           this.state.products.map((product) => (
             <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
               <LazyLoad height={200} offset={200}>
-                <MerchantDeal
+                <ProductDetail
                   product={product}
-                  handleOpen={this.handleOpen}
+                  onTouchTap={this.handleOpen}
                 />
               </LazyLoad>
             </li>

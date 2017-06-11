@@ -73,9 +73,31 @@ const findFeaturedDeals = (params) =>
         });
   });
 
+const findSpecificDeals = (id) =>
+  new Promise((resolve, reject) => {
+    Item.find({ merchant: id })
+        .limit(8)
+        .populate('subCategory', '-_id title')
+        .populate('category', '-_id name')
+        .populate('merchant', '-_id title')
+        .sort('-date')
+        .exec((err, deals) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          deals.forEach((deal) => {
+            summaries.push(deal.summary());
+          });
+          resolve(summaries);
+        });
+  });
+
 module.exports = {
   find,
   findById,
   findFeaturedCoupon,
   findFeaturedDeals,
+  findSpecificDeals
 };
