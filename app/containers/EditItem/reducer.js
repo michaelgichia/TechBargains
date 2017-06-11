@@ -29,8 +29,6 @@ function editItemReducer(state = initialState, action) {
   switch (action.type) {
 
     case ITEM_RECEIVED_SUCCESS: {
-      const featuresString = action.itemData.features.join(' ');
-      action.itemData.features = featuresString;
       return {
         ...state,
         itemData: action.itemData,

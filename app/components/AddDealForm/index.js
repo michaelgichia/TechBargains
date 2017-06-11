@@ -32,12 +32,6 @@ class AddDealForm extends React.PureComponent {
           value={this.props.name}
         />
         <ReactEditor
-          id="description"
-          placeholder="Description"
-          onChange={this.props.onDescriptionChange}
-          value={this.props.description}
-        />
-        <ReactEditor
           id="features"
           placeholder="Features"
           onChange={this.props.onFeaturesChange}
@@ -187,7 +181,6 @@ AddDealForm.propTypes = {
   header: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   onNameChange: PropTypes.func.isRequired,
-  onDescriptionChange: PropTypes.func.isRequired,
   onFeaturesChange: PropTypes.func.isRequired,
   isFeatured: PropTypes.bool.isRequired,
   isCoupon: PropTypes.bool.isRequired,
@@ -195,7 +188,6 @@ AddDealForm.propTypes = {
   onFeaturedChange: PropTypes.func.isRequired,
   isShipped: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   features: PropTypes.string.isRequired,
 };
 

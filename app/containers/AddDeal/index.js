@@ -59,7 +59,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       subCategory: '',
       expire: {},
       errors: [],
-      description: '',
       name: '',
       features: '',
     };
@@ -142,8 +141,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
 
   onNameChange = (name) => this.setState({ name });
 
-  onDescriptionChange = (description) => this.setState({ description });
-
   onFeaturesChange = (features) => this.setState({ features });
 
   /**
@@ -175,7 +172,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       const item = Object.assign(
         updatedState,
         { name: this.state.name },
-        { description: this.state.description },
         { features: this.state.features },
         { ...this.state.item },
         { category: this.state.category },
@@ -270,7 +266,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       merchant,
       expire,
       errors,
-      description,
       isFeatured,
       isCoupon,
       features,
@@ -322,9 +317,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 errors={errors}
                 header="Add a Deal or Coupon"
                 image={image}
-                description={description}
                 onNameChange={this.onNameChange}
-                onDescriptionChange={this.onDescriptionChange}
                 onFeaturesChange={this.onFeaturesChange}
                 name="Name"
                 isFeatured={isFeatured}
@@ -333,7 +326,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
                 name={name}
-                description={description}
                 features={features}
               />
             </Paper>

@@ -15,8 +15,6 @@ router.post('/create', (req, res, next) => {
   req.assert('expire', 'expire must not be empty').notEmpty();
 
   req.sanitize('name').trim();
-  req.sanitize('description').trim();
-  req.sanitize('features').trim();
   req.sanitize('backlink').trim();
   req.sanitize('percentage').trim();
   req.sanitize('subCategory').trim();
@@ -67,10 +65,8 @@ router.put('/update/:itemId', (req, res, next) => {
   req.assert('category', 'Category must not be empty').notEmpty();
   req.assert('merchant', 'Merchant must not be empty').notEmpty();
   req.assert('expire', 'expire must not be empty').notEmpty();
-  req.assert('features', 'features must not be empty').notEmpty();
 
   req.sanitize('name').trim();
-  req.sanitize('description').trim();
   req.sanitize('features').trim();
   req.sanitize('backlink').trim();
   req.sanitize('percentage').trim();

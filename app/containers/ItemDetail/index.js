@@ -104,15 +104,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
                 <Divider />
                 <CardText>
                   <CardTitle title="Features" />
-                  <ul>
-                    {features ? features.map((feature) => (<li
-                      key={shortid.generate()}
-                    >
-                      <div dangerouslySetInnerHTML={{ __html: feature }} />
-                    </li>
-                      )) : []
-                    }
-                  </ul>
+                    <div dangerouslySetInnerHTML={{ __html: features }} />
                 </CardText>
               </Paper>
 

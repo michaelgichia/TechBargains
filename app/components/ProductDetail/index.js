@@ -22,32 +22,12 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
             </div>
           </Col>
           <Col className="description-div" xs={12} md={8}>
-            <Row style={{ margin: '15px -10px' }}>
+            <Row style={{ margin: '0 20px 0 30px' }}>
               <Col>
                 <div
-                  className="title-div"
-                  dangerouslySetInnerHTML={{ __html: this.props.product.description }}
-                >
-                </div>
-              </Col>
-            </Row>
-            <Row style={{ margin: '0 20px 0 30px' }}>
-              <Col xsHidden smHidden>
-                <div className="detail-div">
-                  <ul>
-                    {
-                      this.props
-                      .product
-                      .features
-                      .splice(0, 5)
-                      .map((detail) => (
-                        <li key={shortid.generate()}>
-                          <div dangerouslySetInnerHTML={{ __html: this.props.product.detail }} />
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
+                  className="detail-div"
+                  dangerouslySetInnerHTML={{ __html: this.props.product.features }}
+                  />
               </Col>
             </Row>
             <Row style={{ margin: '15px 10px' }}>

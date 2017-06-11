@@ -9,16 +9,12 @@ const ItemSchema = new Schema({
     trim: true,
     max: 200,
   },
-  description: {
+  features: {
     type: String,
     trim: true,
-    max: 1000,
+    max: 10000,
     default: '',
   },
-  features: [{
-    type: String,
-    max: 1000,
-  }],
   backlink: {
     type: String,
     trim: true,
@@ -28,6 +24,7 @@ const ItemSchema = new Schema({
   percentage: {
     type: String,
     required: true,
+    default: '',
   },
   subCategory: {
     type: Schema.Types.ObjectId,
@@ -86,7 +83,6 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
     name: this.name,
-    description: this.description,
     backlink: this.backlink,
     percentage: this.percentage,
     category: this.category,

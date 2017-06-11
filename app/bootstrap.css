@@ -589,9 +589,7 @@ label.platinumbtn {
   font-family: Roboto, Helvetica, Arial;
   color: #333;
 }
-.detail-div > ul {
-  padding-left: 10px;
-}
+
 .deal-button {
   border: solid 0.15em;
   border-radius: 3;

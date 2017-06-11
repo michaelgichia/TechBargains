@@ -44,7 +44,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
 
   state = {
     name: '',
-    description: '',
     features: '',
     coupon: '',
     backlink: '',
@@ -79,9 +78,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     }
     if (nextProps.itemData.name !== this.state.name) {
       this.setState({ name: nextProps.itemData.name });
-    }
-    if (nextProps.itemData.description !== this.state.description) {
-      this.setState({ description: nextProps.itemData.description });
     }
     if (nextProps.itemData.features !== this.state.features) {
       this.setState({ features: nextProps.itemData.features });
@@ -178,8 +174,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
 
   onNameChange = (name) => this.setState({ name });
 
-  onDescriptionChange = (description) => this.setState({ description });
-
   onFeaturesChange = (features) => this.setState({ features });
 
 
@@ -205,7 +199,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
 
       const data = Object.assign(
         { name: this.state.name },
-        { description: this.state.description },
         { features: this.state.features },
         { coupon: this.state.coupon },
         { backlink: this.state.backlink },
@@ -305,7 +298,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       featuresError,
       percentageError,
       name,
-      description,
       merchant,
       expire,
       errors,
@@ -361,9 +353,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 message={message}
                 header="Edit an Item or a Coupon"
                 image={image}
-                description={description}
                 onNameChange={this.onNameChange}
-                onDescriptionChange={this.onDescriptionChange}
                 onFeaturesChange={this.onFeaturesChange}
                 isFeatured={isFeatured}
                 isCoupon={isCoupon}
@@ -371,7 +361,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
                 name={name}
-                description={description}
                 features={features}
               />
             </Paper>
