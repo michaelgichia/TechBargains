@@ -4,7 +4,7 @@
  *
  */
 
-import { SINGLE_STORE, baseAPI } from './constants';
+import { SINGLE_STORE_DEALS, baseAPI } from './constants';
 
 const initialState = {
   merchandize: [],
@@ -13,13 +13,13 @@ const initialState = {
 
 function merchantPagesReducer(state = initialState, action) {
   switch (action.type) {
-    case SINGLE_STORE.SUCCESS:
+    case SINGLE_STORE_DEALS.SUCCESS:
       return {
         ...state,
         merchandize: action.merchandize,
       };
 
-    case SINGLE_STORE.ERROR:
+    case SINGLE_STORE_DEALS.ERROR:
       return {
         ...state,
         errors: action.errors,

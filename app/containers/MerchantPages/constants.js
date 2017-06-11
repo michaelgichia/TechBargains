@@ -11,7 +11,9 @@ const asyncActionType = (type) => ({
 });
 
 // API
-export const baseAPI = '/public-api/all/specific-stores';
+export const dealsBaseAPI = '/public-api/all/specific-stores';
+export const couponBaseAPI = '/public-api/all/specific-coupons';
 
 // Action types
-export const SINGLE_STORE = asyncActionType('SINGLE_STORE');
+export const SINGLE_STORE_DEALS = asyncActionType('SINGLE_STORE_DEALS');
+export const SINGLE_STORE_COUPONS = asyncActionType('SINGLE_STORE_COUPONS');

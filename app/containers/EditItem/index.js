@@ -60,7 +60,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     merchantError: '',
     isFeatured: true,
     isCoupon: false,
-    isShipped: false,
+    isShipped: '',
     errors: [],
   };
 
@@ -107,6 +107,9 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     if (nextProps.itemData.subCategory.title !== this.state.subCategory) {
       this.setState({ subCategory: nextProps.itemData.subCategory.title });
     }
+    if (nextProps.itemData.subCategory.isShipped !== this.state.isShipped) {
+      this.setState({ isShipped: nextProps.itemData.isShipped });
+    }
   }
 
   /**
@@ -150,13 +153,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   */
   handleIsCoupon = (e, i, value) => {
     this.setState({ isCoupon: value });
-  };
-
-  /**
-   * Update isShipping in the state and clear error.
-  */
-  handleShipping = (e, i, value) => {
-    this.setState({ isShipped: value });
   };
 
   /**
@@ -374,7 +370,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 onCouponChange={this.handleIsCoupon}
                 onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
-                onShippingChange={this.handleShipping}
                 name={name}
                 description={description}
                 features={features}

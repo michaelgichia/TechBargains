@@ -66,11 +66,13 @@ const ItemSchema = new Schema({
     type: Boolean,
     default: true,
   },
-  isCoupon: {
-    type: Boolean,
-    default: false,
-  },
   isShipped: {
+    type: String,
+    trim: true,
+    max: 500,
+    default: '',
+  },
+  isCoupon: {
     type: Boolean,
     default: false,
   },

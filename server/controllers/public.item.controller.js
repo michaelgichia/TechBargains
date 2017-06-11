@@ -94,10 +94,32 @@ const findSpecificDeals = (id) =>
         });
   });
 
+const findSpecificCoupons = (id) =>
+  new Promise((resolve, reject) => {
+    Item.find({ merchant: id, isCoupon: true })
+        .limit(8)
+        .populate('category', '-_id name')
+        .populate('merchant', '-_id title')
+        .sort('-date')
+        .select('name isShipped merchant isCoupon backlink coupon')
+        .exec((err, deals) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          deals.forEach((deal) => {
+            summaries.push(deal.summary());
+          });
+          resolve(summaries);
+        });
+  });
+
 module.exports = {
   find,
   findById,
   findFeaturedCoupon,
   findFeaturedDeals,
-  findSpecificDeals
+  findSpecificDeals,
+  findSpecificCoupons,
 };

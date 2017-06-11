@@ -92,15 +92,15 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
               </CardMedia>
 
               <Paper zDepth={1} rounded={false}>
-                <CardTitle subtitle={`Category: ${category ? category.name : 'none'}`} />
+                <CardTitle subtitle={`Category: ${category ? category.name : 'Not defined'}`} />
                 <Divider />
-                <CardTitle subtitle={`Subcategory: ${subCategory ? subCategory.title : 'none'}`} />
+                <CardTitle subtitle={`Subcategory: ${subCategory ? subCategory.title : 'Not defined'}`} />
                 <Divider />
-                <CardTitle subtitle={`Coupon: ${coupon || 'none'}`} />
+                <CardTitle subtitle={`Coupon: ${coupon || 'Not defined'}`} />
                 <Divider />
-                <CardTitle subtitle={`Expires on: ${expire || 'none'}`} />
+                <CardTitle subtitle={`Expires on: ${expire || 'Not defined'}`} />
                 <Divider />
-                <CardTitle subtitle={`Free shipping: ${isShipped ? 'Yes' : 'No'}`} />
+                <CardTitle subtitle={isShipped ? isShipped: 'Item does not have any spefications like free shipping e.t.c'} />
                 <Divider />
                 <CardText>
                   <CardTitle title="Features" />

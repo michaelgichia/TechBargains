@@ -17,7 +17,7 @@ import shortid from 'shortid';
 import { connect } from 'react-redux';
 import LazyLoad from 'react-lazyload';
 
-import { fetchMerchandize } from './actions';
+import { fetchMerchandize, fetchSpecificCoupons } from './actions';
 
 
 export class MerchantPages extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -30,10 +30,10 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
   componentDidMount() {
     const { storeId } = this.props.params;
     this.props.fetchMerchandize(storeId);
+    this.props.fetchSpecificCoupons(storeId);
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps)
     if (nextProps.merchandize !== this.state.merchandize) {
       this.setState({ merchandize: nextProps.merchandize });
     }
@@ -93,6 +93,7 @@ const mapStateToProps = ({ merchantPages }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchMerchandize: (storeId) => dispatch(fetchMerchandize(storeId)),
+  fetchSpecificCoupons: (couponId) => dispatch(fetchSpecificCoupons(couponId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MerchantPages);

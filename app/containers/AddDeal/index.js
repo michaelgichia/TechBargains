@@ -46,6 +46,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         backlink: '',
         percentage: '',
         image: '',
+        isShipped: '',
       },
       categoryError: '',
       subCategoryError: '',
@@ -61,7 +62,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       description: '',
       name: '',
       features: '',
-      isShipped: false,
     };
   }// eslint-disable-line
 
@@ -112,13 +112,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
   */
   handleIsCoupon = (e, i, value) => {
     this.setState({ isCoupon: value });
-  };
-
-  /**
-   * Update isShipping in the state and clear error.
-  */
-  handleShipping = (e, i, value) => {
-    this.setState({ isShipped: value });
   };
 
   /**
@@ -192,7 +185,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
-        { isShipped: this.state.isShipped },
       );
       // Create.
       this.props.postDeal(item);
@@ -282,7 +274,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       isFeatured,
       isCoupon,
       features,
-      isShipped,
       name,
     } = this.state;
     const {
@@ -290,6 +281,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       backlink,
       coupon,
       image,
+      isShipped,
     } = this.state.item;
 
     const { categories, subcategories, merchants } = this.props;
@@ -340,7 +332,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 onCouponChange={this.handleIsCoupon}
                 onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
-                onShippingChange={this.handleShipping}
                 name={name}
                 description={description}
                 features={features}

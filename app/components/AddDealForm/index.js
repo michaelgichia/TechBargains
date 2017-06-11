@@ -124,7 +124,6 @@ class AddDealForm extends React.PureComponent {
           fullWidth
           value={this.props.expire}
         />
-        <br />
         <SelectField
           hintText="Is this a Coupon?"
           floatingLabelText="Is this a Coupon?"
@@ -137,7 +136,6 @@ class AddDealForm extends React.PureComponent {
           <MenuItem value primaryText="Yes, it's Coupon." />
           <MenuItem value={false} primaryText="No, it's Deal." />
         </SelectField>
-        <br />
         <SelectField
           hintText="Is Coupon/Deal featured ?"
           floatingLabelText="Is Coupon/Deal featured ?"
@@ -150,19 +148,15 @@ class AddDealForm extends React.PureComponent {
           <MenuItem value primaryText="Yes" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
-        <br />
-        <SelectField
-          hintText="Free shipping ?"
-          floatingLabelText="Free shipping ?"
+        <TextField
+          hintText="Free shipping / Promotions / Extra information ?"
+          floatingLabelText="Free shipping / Promotions / Extra information ?"
           id="isShipped"
+          onChange={this.props.onChange}
+          hintStyle={this.props.hintStyle}
           value={this.props.isShipped}
-          onChange={this.props.onShippingChange}
-          maxHeight={200}
           fullWidth
-        >
-          <MenuItem value primaryText="Yes, Free Shipping" />
-          <MenuItem value={false} primaryText="No" />
-        </SelectField>
+        />
         <br />
         <RaisedButton label="Add Item" primary onClick={this.props.onClick} />
       </div>
@@ -199,8 +193,7 @@ AddDealForm.propTypes = {
   isCoupon: PropTypes.bool.isRequired,
   onCouponChange: PropTypes.func.isRequired,
   onFeaturedChange: PropTypes.func.isRequired,
-  isShipped: PropTypes.bool.isRequired,
-  onShippingChange: PropTypes.func.isRequired,
+  isShipped: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   features: PropTypes.string.isRequired,

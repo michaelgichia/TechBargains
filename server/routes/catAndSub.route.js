@@ -105,4 +105,23 @@ router.get('/specific-stores/:storeId', (req, res) => {
   });
 });
 
+router.get('/specific-coupons/:couponsId', (req, res) => {
+
+  const id = req.params.couponsId;
+
+  itemController.findSpecificCoupons(id)
+  .then((entities) => {
+    res.json({
+      confirmation: 'success',
+      results: entities,
+    });
+  })
+  .catch((err) => {
+    res.json({
+      confirmation: 'fail',
+      message: err,
+    });
+  });
+});
+
 module.exports = router;
