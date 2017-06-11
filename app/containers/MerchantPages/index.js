@@ -56,7 +56,6 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
   };
   
   render() {
-    console.log('state', this.state)
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -101,12 +100,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                 }
               </ul>
             </Col>
-              {
-                this.state.info !== null && this.state.info.length > 0 ? 
-                (<MerchantProfile info={this.state.info} />)
-                :
-                ('')
-              }
+            <MerchantProfile info={this.state.info} />
           </Row>
         </div>
       </Grid>
