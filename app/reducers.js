@@ -22,6 +22,8 @@ import couponReducer from 'containers/Coupon/reducer';
 import dealReducer from 'containers/Deal/reducer';
 import storesReducer from 'containers/Stores/reducer';
 import merchantPagesReducer from 'containers/MerchantPages/reducer';
+import reactModalReducer from 'containers/ReactModal/reducer';
+import productReducer from 'containers/Product/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -45,6 +47,8 @@ export default function createReducer(asyncReducers) {
     deals: dealReducer,
     stores: storesReducer,
     merchantPages: merchantPagesReducer,
+    modal: reactModalReducer,
+    product: productReducer,
     ...asyncReducers,
   });
 }

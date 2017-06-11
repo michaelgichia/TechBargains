@@ -16,6 +16,7 @@ import React from 'react';
 import Navigation from 'containers/NavBar';
 import DashboardSidebar from 'containers/DashboardSidebar';
 import withProgressBar from 'components/ProgressBar';
+import ReactModal from 'containers/ReactModal';
 
 const style = {
   appBarStyle: {
@@ -42,6 +43,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
         :
           <Navigation />
         }
+        <ReactModal />
         <div style={style.appBarStyle} className={pathname.substring(1, 10) === 'dashboard' ? 'dashtech' : 'tech'}>
           {React.Children.toArray(this.props.children)}
         </div>

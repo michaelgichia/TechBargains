@@ -7,9 +7,10 @@
 import React, { PropTypes } from 'react';
 import LazyLoad from 'react-lazyload';
 import ProductDetail from 'components/ProductDetail';
-import DealModal from 'components/DealModal';
 import shortid from 'shortid';
 import axios from 'axios';
+import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
+
 
 import { connect } from 'react-redux';
 
@@ -50,10 +51,10 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
     }
   }
 
-  handleOpen = (id) => {
-    const selectedItem = this.state.products.filter((product) => product.id === id);
-    this.setState({ open: true, selected: selectedItem[0] });
-  };
+  // handleOpen = (id) => {
+  //   const selectedItem = this.state.products.filter((product) => product.id === id);
+  //   this.setState({ open: true, selected: selectedItem[0] });
+  // };
 
   handleClose = () => {
     axios.get('/public-api/item')
@@ -69,11 +70,11 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
   render() {
     return (
       <div>
-        <DealModal
+        {/*<DealModal
           handleClose={this.handleClose}
           open={this.state.open}
           selected={this.state.selected}
-        />
+        />*/}
         <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
           {
           this.state.products.map((product) => (
@@ -81,7 +82,7 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
               <LazyLoad height={200} offset={200}>
                 <ProductDetail
                   product={product}
-                  onTouchTap={this.handleOpen}
+                  onTouchTap={this.props.handleOpenModal}
                 />
               </LazyLoad>
             </li>
@@ -94,17 +95,15 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
 }
 
 Product.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
-Product.defaultProps = {
-  open: false,
-};
+const mapStateToProps = ({ modal }) => ({
+  show: modal.show
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  handleOpenModal: () => dispatch(handleOpenModal()),
+  handleCloseModal: () => dispatch(handleCloseModal()),
+});
 
-export default connect(null, mapDispatchToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

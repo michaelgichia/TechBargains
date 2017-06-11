@@ -346,6 +346,24 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/modal',
+      name: 'reactModal',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ReactModal/reducer'),
+          import('containers/ReactModal'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('reactModal', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
