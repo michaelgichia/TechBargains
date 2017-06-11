@@ -4,11 +4,12 @@
  *
  */
 
-import { SINGLE_STORE_DEALS, baseAPI } from './constants';
+import { SINGLE_STORE_DEALS, SINGLE_STORE_COUPONS } from './constants';
 
 const initialState = {
   merchandize: [],
-  errors: ''
+  coupons: [],
+  errors: []
 };
 
 function merchantPagesReducer(state = initialState, action) {
@@ -20,6 +21,18 @@ function merchantPagesReducer(state = initialState, action) {
       };
 
     case SINGLE_STORE_DEALS.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
+    case SINGLE_STORE_COUPONS.SUCCESS:
+      return {
+        ...state,
+        coupons: action.coupons,
+      };
+
+    case SINGLE_STORE_COUPONS.ERROR:
       return {
         ...state,
         errors: action.errors,

@@ -23,8 +23,9 @@ import { fetchMerchandize, fetchSpecificCoupons } from './actions';
 export class MerchantPages extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
     merchandize: [],
+    coupons: [],
     open: false,
-    errors: '',
+    errors: [],
   }
 
   componentDidMount() {
@@ -37,6 +38,9 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
     if (nextProps.merchandize !== this.state.merchandize) {
       this.setState({ merchandize: nextProps.merchandize });
     }
+    if (nextProps.coupons !== this.state.coupons) {
+      this.setState({ coupons: nextProps.coupons });
+    }
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -47,6 +51,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
   };
   
   render() {
+    console.log('state', this.state)
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -56,9 +61,15 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
           <Row className="show-dealss-grid">
             <Col id="merchant-id"xs={12} sm={12} md={12} lg={8}>
               <CouponHeader title="29 AMAZON COUPONS" />
-              <MerchantCoupon />
-              <MerchantCoupon />
-              <MerchantCoupon />
+              <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                {
+                  this.state.coupons.map((coupon) => (
+                    <li key={shortid.generate()}>
+                      <MerchantCoupon coupon={coupon} />
+                    </li>
+                  ))
+                }
+              </ul>
               <CouponHeader title="29 AMAZON COUPONS" />
               <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
                 {
@@ -88,6 +99,7 @@ MerchantPages.propTypes = {
 
 const mapStateToProps = ({ merchantPages }) => ({
   merchandize: merchantPages.merchandize,
+  coupons: merchantPages.coupons,
   errors: merchantPages.errors,
 });
 

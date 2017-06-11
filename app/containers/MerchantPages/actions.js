@@ -40,7 +40,6 @@ export const fetchSpecificCoupons = (couponsId) => (dispatch) => {
   axios.get(`${couponBaseAPI}/${couponsId}`)
   .then((response) => {
     if (response.data.confirmation === 'success') {
-      console.log({coupons: response.data.results})
       dispatch({
         type: SINGLE_STORE_COUPONS.SUCCESS,
         coupons: response.data.results,
