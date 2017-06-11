@@ -7,9 +7,11 @@
 import axios from 'axios';
 import { 
   SINGLE_STORE_DEALS,
+  SINGLE_STORE_COUPONS,
+  SINGLE_STORE_INFO,
   dealsBaseAPI, 
   couponBaseAPI,
-  SINGLE_STORE_COUPONS,
+  infoBaseAPI,
   } from './constants';
 
 
@@ -54,6 +56,30 @@ export const fetchSpecificCoupons = (couponsId) => (dispatch) => {
   .catch((errors) => {
     dispatch({
       type: SINGLE_STORE_COUPONS.ERROR,
+      errors,
+    });
+  });
+};
+
+export const fetchStoreInfo = (merchantId) => (dispatch) => {
+  axios.get(`${infoBaseAPI}/${merchantId}`)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      console.log({response: response.data})
+      dispatch({
+        type: SINGLE_STORE_INFO.SUCCESS,
+        info: response.data.result,
+      });
+    } else {
+      dispatch({
+        type: SINGLE_STORE_INFO.ERROR,
+        errors: response.data.message,
+      });
+    }
+  })
+  .catch((errors) => {
+    dispatch({
+      type: SINGLE_STORE_INFO.ERROR,
       errors,
     });
   });

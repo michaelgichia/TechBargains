@@ -17,13 +17,14 @@ import shortid from 'shortid';
 import { connect } from 'react-redux';
 import LazyLoad from 'react-lazyload';
 
-import { fetchMerchandize, fetchSpecificCoupons } from './actions';
+import { fetchMerchandize, fetchSpecificCoupons, fetchStoreInfo } from './actions';
 
 
 export class MerchantPages extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
     merchandize: [],
     coupons: [],
+    info: [],
     open: false,
     errors: [],
   }
@@ -32,6 +33,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
     const { storeId } = this.props.params;
     this.props.fetchMerchandize(storeId);
     this.props.fetchSpecificCoupons(storeId);
+    this.props.fetchStoreInfo(storeId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +42,9 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
     }
     if (nextProps.coupons !== this.state.coupons) {
       this.setState({ coupons: nextProps.coupons });
+    }
+    if (nextProps.info !== this.state.info) {
+      this.setState({ info: nextProps.info });
     }
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
@@ -51,7 +56,6 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
   };
   
   render() {
-    console.log('state', this.state)
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -101,11 +105,13 @@ const mapStateToProps = ({ merchantPages }) => ({
   merchandize: merchantPages.merchandize,
   coupons: merchantPages.coupons,
   errors: merchantPages.errors,
+  info: merchantPages.info
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchMerchandize: (storeId) => dispatch(fetchMerchandize(storeId)),
   fetchSpecificCoupons: (couponId) => dispatch(fetchSpecificCoupons(couponId)),
+  fetchStoreInfo: (merchantId) => dispatch(fetchStoreInfo(merchantId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MerchantPages);
