@@ -59,7 +59,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
-          <MerchantInfo />
+          <MerchantInfo info={this.state.info} />
         </Row>
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
@@ -90,7 +90,9 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                 }
               </ul>
             </Col>
-            <MerchantProfile />
+            <MerchantProfile
+              info={this.state.info}
+            />
           </Row>
         </div>
       </Grid>

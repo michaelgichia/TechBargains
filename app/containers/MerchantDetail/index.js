@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import CouponHeader from 'components/CouponHeader';
 import LazyLoad from 'react-lazyload';
 import { browserHistory } from 'react-router';
 import Grid from 'react-bootstrap/lib/Grid';
@@ -114,6 +115,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
                 {`Featured: ${isFeatured}`}
               </CardText>
               <CardText>
+                <CouponHeader title={`About ${title}`} />
                 {
                   <div
                     dangerouslySetInnerHTML={{ __html: about }}

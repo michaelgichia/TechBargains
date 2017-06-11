@@ -17,26 +17,25 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
       <div className="merchant-info" >
         <Col xs={12} sm={4} md={3} lg={3}>
           <div className="amazon-first">
-            <img src="http://media.corporate-ir.net/media_files/IROL/17/176060/img/logos/amazon_logo_RGB.jpg" alt="insjkjn" />
+            <img src={this.props.info.imageUrl} alt={this.props.info.title} />
           </div>
         </Col>
         <Col xs={12} sm={8} md={6} lg={6}>
           <div className="amazon-second">
-            <div className="amazon-h1"><h1>Amazon Deals & Coupons</h1></div>
+            <div className="amazon-h1"><h1>{`${this.props.info.title} Deals & Coupons`}</h1></div>
             <div className="amazon-description">
               <div className="amazon-text">
-                <p>Amazon consistently offers ultra-low prices on everything from electronics to groceries, and shoppers may also come across online coupons to  for additional savings on a rotating selection of items.
-                </p>
+                <p>{ this.props.info.description }</p>
               </div>
               <div className="amazon-button">
                 <RaisedButton
-                  label="29 Coupons"
+                  label="Coupons"
                   primary
                   icon={<CouponIcon />}
                   className="amazon-coupon-btn"
                 />
                 <RaisedButton
-                  label="30 Deals"
+                  label="Deals"
                   primary
                   icon={<DealsIcon />}
                   className="amazon-coupon-btn"
@@ -52,6 +51,13 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
 
 MerchantInfo.propTypes = {
 
+};
+
+MerchantInfo.defaultProps = {
+  info: {
+    title: '',
+    description: '',
+  }
 };
 
 export default MerchantInfo;

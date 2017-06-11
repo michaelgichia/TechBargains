@@ -134,9 +134,19 @@ html {
     text-align: center;
     margin-bottom: 0 10px;
   }
+}
+@media (max-width: 768px) {
   .amazon-first > img {
-    max-width: 250px;
+    max-width: 150px;
+    max-height: 150px;
     padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  .amazon-first > img {
+    max-width: 150px;
+    max-height: 150px;
+    padding: 10px 0;
   }
 }
 .amazon-first {
@@ -147,10 +157,6 @@ html {
 }
 .amazon-second {
   margin: 0px;
-}
-.amazon-first > img {
-  max-width: 225px;
-  padding: 10px 0;
 }
 .amazon-text {
   position: relative;

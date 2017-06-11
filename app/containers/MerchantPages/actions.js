@@ -65,7 +65,6 @@ export const fetchStoreInfo = (merchantId) => (dispatch) => {
   axios.get(`${infoBaseAPI}/${merchantId}`)
   .then((response) => {
     if (response.data.confirmation === 'success') {
-      console.log({response: response.data})
       dispatch({
         type: SINGLE_STORE_INFO.SUCCESS,
         info: response.data.result,
