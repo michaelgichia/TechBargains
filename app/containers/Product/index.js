@@ -51,18 +51,12 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
     }
   }
 
-  // handleOpen = (id) => {
-  //   const selectedItem = this.state.products.filter((product) => product.id === id);
-  //   this.setState({ open: true, selected: selectedItem[0] });
-  // };
-
   handleClose = () => {
     axios.get('/public-api/item')
     .then((response) => {
       if (response.data.confirmation === 'success') {
         this.setState({ products: response.data.results });
       }
-      // console.info('err', response.data.errors);
     });
     this.setState({ open: false });
   };

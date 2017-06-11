@@ -600,13 +600,11 @@ label.platinumbtn {
   width: 100%;
   max-height: 200px;
   max-width: 200px;
-  padding-top: 20px;
 }
 .imagi-div > img {
   width: 100%;
-  max-height: 150px;
+  max-height: 200px;
   max-width: 200px;
-  vertical-align: middle;
 }
 .buyer-div {
   text-align: left;
@@ -697,7 +695,7 @@ buyerdiv*/
   .mango {
    font-size: 24px !important;
    word-spacing: 3px;
-   padding: 15px;
+   padding: 15px 20px 0px 20px;
   }
 }
 
@@ -709,7 +707,7 @@ buyerdiv*/
   font-weight: 500;
   font-family: 'SourceSans', serif;
   background: transparent;
-  margin: 25px 0 5px 0;
+  margin: 10px 0 5px 0;
   color: #1f7dd4;
   line-height: 1.1;
 }

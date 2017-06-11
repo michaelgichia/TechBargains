@@ -16,13 +16,14 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
           dangerouslySetInnerHTML={{ __html: this.props.product.name }}
         />
         <Row>
-          <Col xsPush={4} xs={4} mdPush={1} md={4}>
-            <div className="imagi-div">
+          <Col sm={4} xs={4} md={4} style={{ textAlign: 'center', paddingRight: 0, paddingLeft: 30}}>
+            <div className="imagi-div" style={{position:'absolute', width:100, height:100}}>
               <img alt="dealsexp" src={this.props.product.image} />
             </div>
           </Col>
-          <Col className="description-div" xs={12} md={8}>
-            <Row style={{ margin: '0 20px 0 30px' }}>
+
+          <Col className="description-div" xs={8} md={8} style={{ paddingLeft: 0}}>
+            <Row style={{ margin: 0 }}>
               <Col>
                 <div
                   className="detail-div"
@@ -47,6 +48,7 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
               </p>
             </Row>
           </Col>
+
         </Row>
       </Panel>
     );
