@@ -26,14 +26,9 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
+        label="Back"
+        labelStyle={{color: "rgb(103, 109, 121)", fontWeight: 600}}
         primary={true}
-        onTouchTap={this.props.handleCloseModal}
-      />,
-      <FlatButton
-        label="Submit"
-        primary={true}
-        keyboardFocused={true}
         onTouchTap={this.props.handleCloseModal}
       />,
     ];
@@ -42,13 +37,34 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
       <div>
         <RaisedButton label="Dialog" onTouchTap={this.props.handleOpenModal} />
         <Dialog
-          title="Dialog With Actions"
+          title={
+            <div className="modal-header">
+              <h2>Copy the code below and paste at checkout</h2>
+              <div>I45TNAQP</div>
+            </div>
+          }
           actions={actions}
           modal={false}
           open={this.state.open}
-          onRequestClose={this.props.handleCloseModal}
+          onRequestClose={(e) => this.props.handleCloseModal(e)}
         >
-          The actions in this window were passed in as an array of React objects.
+          <div className="modal-body">
+            <div>
+              <FlatButton 
+                label="go to Amazon"
+                backgroundColor="#2eba37"
+                labelStyle={{
+                  color: "#fff",
+                  fontWeight: 600,
+                  fontSize: 20, 
+                  textTransform: "none",
+                }}
+                fullWidth
+                hoverColor="#7fdbb6"
+                keyboardFocused={true}
+              />
+            </div>
+          </div>
         </Dialog>
       </div>
     );

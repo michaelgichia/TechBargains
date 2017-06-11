@@ -70,11 +70,6 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
   render() {
     return (
       <div>
-        {/*<DealModal
-          handleClose={this.handleClose}
-          open={this.state.open}
-          selected={this.state.selected}
-        />*/}
         <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
           {
           this.state.products.map((product) => (
@@ -82,7 +77,7 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
               <LazyLoad height={200} offset={200}>
                 <ProductDetail
                   product={product}
-                  onTouchTap={this.props.handleOpenModal}
+                  onTouchTap={() => this.props.handleOpenModal(product)}
                 />
               </LazyLoad>
             </li>
@@ -102,7 +97,7 @@ const mapStateToProps = ({ modal }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleOpenModal: () => dispatch(handleOpenModal()),
+  handleOpenModal: (product) => dispatch(handleOpenModal(product)),
   handleCloseModal: () => dispatch(handleCloseModal()),
 });
 
