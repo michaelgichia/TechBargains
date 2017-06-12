@@ -4,16 +4,30 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
+import { 
+  TRENDING_DEALS,
+  dealsBaseAPI, 
 } from './constants';
 
-const initialState = {};
+const initialState = {
+  products: [],
+  errors: '',
+};
 
 function productReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case TRENDING_DEALS.SUCCESS:
+      return {
+        ...state,
+        products: action.products,
+      };
+
+    case TRENDING_DEALS.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
     default:
       return state;
   }

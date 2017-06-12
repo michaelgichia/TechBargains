@@ -40,7 +40,7 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
         <Row style={{ margin: 0 }} className="merchant-footer">
           <Col xsPush={4} xs={8} mdPush={4} md={8}>
             <p>
-              { `From ${this.props.product.merchant} in ${this.props.product.category} Components` }
+              { `From ${this.props.product.merchant.title} in ${this.props.product.category.name} Components` }
             </p>
           </Col>
         </Row>

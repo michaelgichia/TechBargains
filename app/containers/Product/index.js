@@ -8,58 +8,28 @@ import React, { PropTypes } from 'react';
 import LazyLoad from 'react-lazyload';
 import ProductDetail from 'components/ProductDetail';
 import shortid from 'shortid';
-import axios from 'axios';
-import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
-
-
 import { connect } from 'react-redux';
+import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
+import { fetchTrendingDeals } from './actions';
 
 export class Product extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   state = {
-    product: {
-      name: '',
-      description: '',
-      merchant: 'Amazon',
-      backlink: '#',
-      themeColor: '#9BF0E9',
-      image: '',
-      features: [],
-      id: '',
-    },
-    selected: {
-      merchant: '',
-      backlink: '',
-      name: '',
-    },
     products: [],
-    open: false,
+    errors: '',
   }
 
   componentDidMount() {
-    axios.get('/public-api/item')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        this.setState({ products: response.data.results });
-      }
-      // console.info('err', response.data.errors);
-    });
+    this.props.fetchTrendingDeals();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.open !== this.state.open) {
-      this.setState({ open: nextProps.open });
+    if (nextProps.products !== this.state.products) {
+      this.setState((prevState, props) =>  ({ products: props.products }));
+    }
+    if (nextProps.errors !== this.state.errors) {
+      this.setState((prevState, props) =>  ({errors: props.errors}));
     }
   }
-
-  handleClose = () => {
-    axios.get('/public-api/item')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        this.setState({ products: response.data.results });
-      }
-    });
-    this.setState({ open: false });
-  };
 
   render() {
     return (
@@ -86,13 +56,15 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
 Product.propTypes = {
 };
 
-const mapStateToProps = ({ modal }) => ({
-  show: modal.show
+const mapStateToProps = ({ product }) => ({
+  products: product.products,
+  errors: product.errors
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleOpenModal: (product) => dispatch(handleOpenModal(product)),
   handleCloseModal: () => dispatch(handleCloseModal()),
+  fetchTrendingDeals: () => dispatch(fetchTrendingDeals()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

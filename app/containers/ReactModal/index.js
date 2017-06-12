@@ -4,7 +4,7 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -29,23 +29,38 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
       isFeatured: true,
       isCoupon: false,
       isShipped: '',
-    }
+    },
   };
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.open !== this.state.open) {
+    if (nextProps.open !== this.state.open) {
       this.setState((prevState, props) =>  ({open: props.open}));
     }
-    if(nextProps.product !== this.state.product) {
+    if (nextProps.product !== this.state.product) {
       this.setState((prevState, props) =>  ({product: props.product}));
     }
-  };
+  }
+
+  handlePush = (url) => {
+    const ua = navigator.userAgent.toLowerCase();
+    const isIE = ua.indexOf('msie') !== -1;
+    const version = parseInt(ua.substr(4, 2), 10);
+
+    if (isIE && version < 9) {
+      const link = document.createElement('a');
+      link.href = url;
+      document.body.appendChild(link);
+      link.click();
+    } else { 
+      window.location.href = url; 
+    }
+  }
 
   render() {
     const actions = [
       <FlatButton
         label="Back"
-        labelStyle={{color: "rgb(103, 109, 121)", fontWeight: 600}}
+        labelStyle={{ color: "rgb(103, 109, 121)", fontWeight: 600 }}
         primary={true}
         onTouchTap={this.props.handleCloseModal}
       />,
@@ -69,7 +84,7 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
           <div className="modal-body">
             <div>
               <FlatButton 
-                label={`go to ${this.state.product.merchant}`}
+                label={`go to ${this.state.product.merchant.title}`}
                 backgroundColor="#2eba37"
                 labelStyle={{
                   color: "#fff",
@@ -77,9 +92,12 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
                   fontSize: 20, 
                   textTransform: "none",
                 }}
+                href={this.state.product.backlink}
+                target="_blank"
                 fullWidth
                 hoverColor="#7fdbb6"
                 keyboardFocused={true}
+                onTouchTap={() => this.handlePush(this.state.product.backlink)}
               />
             </div>
           </div>

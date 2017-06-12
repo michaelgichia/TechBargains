@@ -5,8 +5,10 @@ const Promise = require('bluebird');
 const find = (params) =>
   new Promise((resolve, reject) => {
     Item.find(params)
-    .populate('category', 'name')
-    .populate('subCategory', 'title')
+    .limit(50)
+    .populate('subCategory', '-_id title')
+    .populate('category', '-_id name')
+    .populate('merchant', '-_id title')
     .exec((err, items) => {
       if (err) {
         reject(err);
@@ -115,6 +117,27 @@ const findSpecificCoupons = (id) =>
         });
   });
 
+const findTrendingDeals = (id) =>
+  new Promise((resolve, reject) => {
+    Item.find({ merchant: id, isCoupon: true })
+        .limit(8)
+        .populate('category', '-_id name')
+        .populate('merchant', '-_id title')
+        .sort('-date')
+        .select('name isShipped merchant isCoupon backlink coupon')
+        .exec((err, deals) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          deals.forEach((deal) => {
+            summaries.push(deal.summary());
+          });
+          resolve(summaries);
+        });
+  });
+
 module.exports = {
   find,
   findById,
@@ -122,4 +145,5 @@ module.exports = {
   findFeaturedDeals,
   findSpecificDeals,
   findSpecificCoupons,
+  findTrendingDeals,
 };
