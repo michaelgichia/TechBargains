@@ -28,8 +28,8 @@ class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer
         (
           <RaisedButton
             label="SEE DEAL"
+            href={this.props.backlink}
             target="_blank"
-            href="http://getbootstrap.com/"
             primary
             labelStyle={{ paddingLeft: 5, paddingRight: 5, fontSize: 13 }}
           />
