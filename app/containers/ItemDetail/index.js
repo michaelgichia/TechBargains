@@ -30,6 +30,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
       coupon: '',
       features: '',
       backlink: '',
+      image: '',
       percentage: {},
       merchant: {},
       category: {},
@@ -68,6 +69,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
       coupon,
       expire,
       isShipped,
+      image,
     } = this.state.itemData;
 
     return (
@@ -76,7 +78,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
           <Col xs={12} md={8} mdPush={2}>
             <Card containerStyle={{ marginTop: 30 }}>
 
-              <ListItem disabled leftAvatar={<Avatar>{`${percentage || 'none'}%`}</Avatar>} />
+              <ListItem disabled leftAvatar={<Avatar>{`${percentage || ''}%`}</Avatar>} />
 
               <CardMedia
                 mediaStyle={{ maxHeight: 300, height: 300 }}
@@ -88,7 +90,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
                 style={{ marginTop: 10 }}
               >
                 {/* The deal image.*/}
-                <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
+                <img src={image} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
               </CardMedia>
 
               <Paper zDepth={1} rounded={false}>

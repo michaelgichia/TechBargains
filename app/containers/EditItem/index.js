@@ -182,9 +182,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
    * Merge several state object and save to the db.
   */
   handleSubmit = () => {
-    if (validator.isEmpty(this.state.percentage)) {
-      this.setState({ percentageError: 'Percentage is required!' });
-    }
     if (validator.isEmpty(this.state.category)) {
       this.setState({ categoryError: 'Category is required!' });
     }

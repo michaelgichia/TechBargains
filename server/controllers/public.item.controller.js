@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 
 const find = (params) =>
   new Promise((resolve, reject) => {
-    Item.find(params)
+    Item.find({params, isFeatured: true, isCoupon: false})
     .limit(50)
     .populate('subCategory', '-_id title')
     .populate('category', '-_id name')

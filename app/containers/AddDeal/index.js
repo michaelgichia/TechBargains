@@ -149,9 +149,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
    * Merge several state object and save to the db.
   */
   handleSubmit = () => {
-    if (validator.isEmpty(this.state.item.percentage)) {
-      this.setState({ percentageError: 'Percentage is required!' });
-    }
     if (validator.isEmpty(this.state.category)) {
       this.setState({ categoryError: 'Category is required!' });
     }

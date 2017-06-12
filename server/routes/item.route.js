@@ -8,7 +8,6 @@ router.post('/create', (req, res, next) => {
   // Check other data
   req.assert('name', 'Name must not be empty.').notEmpty();
   req.assert('backlink', 'Back-link must not be empty').notEmpty();
-  req.assert('percentage', 'Percentage must be a number between 1 and 99.').notEmpty();
   req.assert('subCategory', 'Sub-Category must not be empty').notEmpty();
   req.assert('category', 'Category must not be empty').notEmpty();
   req.assert('merchant', 'Merchant must not be empty').notEmpty();
@@ -60,7 +59,6 @@ router.put('/update/:itemId', (req, res, next) => {
   // Check other data
   req.assert('name', 'Name must not be empty.').notEmpty();
   req.assert('backlink', 'Back-link must not be empty').notEmpty();
-  req.assert('percentage', 'Percentage must not be empty').notEmpty();
   req.assert('subCategory', 'Sub-Category must not be empty').notEmpty();
   req.assert('category', 'Category must not be empty').notEmpty();
   req.assert('merchant', 'Merchant must not be empty').notEmpty();

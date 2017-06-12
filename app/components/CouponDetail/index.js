@@ -6,24 +6,53 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import CouponPrice from 'components/CouponPrice';
-import CouponTitle from 'components/CouponTitle';
-import CouponImage from 'components/CouponImage';
 import PaperZindex from 'components/PaperZindex';
+import Button from 'react-bootstrap/lib/Button';
+
 
 class CouponDetail extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    console.log('coupon', this.props.coupon)
     return (
       <PaperZindex>
-        <CouponTitle name={this.props.coupon.name} />
+        <h2 className="coupon-title">
+            <div dangerouslySetInnerHTML={{ __html: this.props.coupon.name }} />
+        </h2>
         <div className="coupon-div">
-          <CouponImage name={this.props.coupon.name} image={this.props.coupon.image} />
-          <CouponPrice
-            percentage={this.props.coupon.percentage}
-            isShipped={this.props.coupon.isShipped}
-            coupon={this.props.coupon.coupon}
-          />
+          <div className="coupon-image">
+            <img src={this.props.coupon.image} alt={this.props.coupon.name} />
+          </div>
+          <div className="coupon-prices">
+            <div className="coupon-prices-first">
+              <p className="final-price"><span>{`${this.props.coupon.percentage}% Off`}</span></p>
+              <p className="shipping">{ this.props.coupon.isShipped ?  this.props.coupon.isShipped : '' }</p>
+            </div>
+            <div className="coupon-prices-second">
+              <div className="coupon-btn">
+                {
+                  this.props.coupon.coupon !== null && this.props.coupon.coupon.length > 0 ?
+                  (<Button
+                    bsStyle="primary"
+                    bsSize="sm"
+                    active
+                    bsClass="coupon-btn-btn"
+                  >
+                      Reveal Code
+                    </Button>
+                  )
+                  :
+                  (<Button
+                    bsStyle="primary"
+                    bsSize="sm"
+                    active
+                    bsClass="coupon-btn-btn"
+                  >
+                      See Deal
+                    </Button>
+                  )
+                }
+              </div>
+            </div>
+          </div>
         </div>
       </PaperZindex>
     );
