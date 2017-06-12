@@ -13,6 +13,7 @@ import PaperZindex from 'components/PaperZindex';
 
 class CouponDetail extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log('coupon', this.props.coupon)
     return (
       <PaperZindex>
         <CouponTitle name={this.props.coupon.name} />
