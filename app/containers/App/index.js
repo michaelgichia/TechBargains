@@ -19,9 +19,6 @@ import withProgressBar from 'components/ProgressBar';
 import ReactModal from 'containers/ReactModal';
 
 const style = {
-  appBarStyle: {
-    background: '#fff',
-  },
   divi: {
     margin: 0,
     padding: 0,
@@ -44,7 +41,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
           <Navigation />
         }
         <ReactModal />
-        <div style={style.appBarStyle} className={pathname.substring(1, 10) === 'dashboard' ? 'dashtech' : 'tech'}>
+        <div className={pathname.substring(1, 10) === 'dashboard' ? 'dashtech' : 'tech'}>
           {React.Children.toArray(this.props.children)}
         </div>
       </div>

@@ -9,7 +9,7 @@ import LazyLoad from 'react-lazyload';
 import ProductDetail from 'components/ProductDetail';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
+import { handleOpenModal } from 'containers/ReactModal/actions';
 import { fetchTrendingDeals } from './actions';
 
 export class Product extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -63,7 +63,6 @@ const mapStateToProps = ({ product }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleOpenModal: (product) => dispatch(handleOpenModal(product)),
-  handleCloseModal: () => dispatch(handleCloseModal()),
   fetchTrendingDeals: () => dispatch(fetchTrendingDeals()),
 });
 

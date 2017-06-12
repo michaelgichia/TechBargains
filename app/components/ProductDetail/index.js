@@ -34,7 +34,7 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
             </div>
             <div className="merchant-info-btn">
               <YesNoBtn
-                isCoupon={this.props.product.isCoupon}
+                isCoupon
                 onTouchTap={this.props.onTouchTap}
                 backlink={this .props.product.backlink}
                 />

@@ -16,7 +16,7 @@ import ProductDetail from 'components/ProductDetail';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
 import LazyLoad from 'react-lazyload';
-
+import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
 import { fetchMerchandize, fetchSpecificCoupons, fetchStoreInfo } from './actions';
 
 
@@ -92,7 +92,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                     <LazyLoad height={200} offset={200}>
                       <ProductDetail
                         product={product}
-                        onTouchTap={this.handleOpen}
+                        onTouchTap={() => this.props.handleOpenModal(product)}
                       />
                     </LazyLoad>
                   </li>
@@ -122,6 +122,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMerchandize: (storeId) => dispatch(fetchMerchandize(storeId)),
   fetchSpecificCoupons: (couponId) => dispatch(fetchSpecificCoupons(couponId)),
   fetchStoreInfo: (merchantId) => dispatch(fetchStoreInfo(merchantId)),
+  handleOpenModal: (product) => dispatch(handleOpenModal(product)),
+  handleCloseModal: () => dispatch(handleCloseModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MerchantPages);

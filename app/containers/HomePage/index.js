@@ -32,7 +32,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
   render() {
     return (
       <Grid fluid>
-        <Row className="show-grid">
+        <Row>
           <Col xs={12} sm={12} md={12} lg={8}>
             <CarouselContainer />
             <Dropdown
