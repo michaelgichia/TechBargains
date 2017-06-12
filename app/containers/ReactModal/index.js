@@ -92,8 +92,6 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
                   fontSize: 20, 
                   textTransform: "none",
                 }}
-                href={this.state.product.backlink}
-                target="_blank"
                 fullWidth
                 hoverColor="#7fdbb6"
                 keyboardFocused={true}
