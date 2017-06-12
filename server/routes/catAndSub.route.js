@@ -124,4 +124,20 @@ router.get('/specific-coupons/:couponsId', (req, res) => {
   });
 });
 
+router.get('/trending-deals', (req, res) => {
+  itemController.findTrendingDeals(req.query, false)
+  .then((entities) => {
+    res.json({
+      confirmation: 'success',
+      results: entities,
+    });
+  })
+  .catch((err) => {
+    res.json({
+      confirmation: 'fail',
+      message: err,
+    });
+  });
+});
+
 module.exports = router;

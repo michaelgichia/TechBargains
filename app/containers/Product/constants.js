@@ -13,8 +13,7 @@ const asyncActionType = (type) => ({
 });
 
 // API
-export const dealsBaseAPI = '/public-api/item';
+export const dealsBaseAPI = '/public-api/all/trending-deals';
 
 // Action types
 export const TRENDING_DEALS = asyncActionType('TRENDING_DEALS');
-
