@@ -21,7 +21,7 @@ class YesNoBtn extends React.PureComponent { // eslint-disable-line react/prefer
             className="material-ui-btn"
             primary
             onTouchTap={this.props.onTouchTap}
-            labelStyle={{ paddingLeft: 5, paddingRight: 5, fontSize: 13 }}
+            labelStyle={{ fontSize: 13 }}
           />
         )
         :

@@ -16,14 +16,34 @@ class ProductDetail extends React.PureComponent { // eslint-disable-line react/p
           className="merchant-panel-header"
           dangerouslySetInnerHTML={{ __html: this.props.product.name }}
         />
-        <div className="merchant-panel-body">
+        <Row style={{ marginLeft: 0, marginRight: 0 }} className="merchant-panel-body">
           <div className="merchant-panel-body-image">
             <Image src={this.props.product.image} responsive />
           </div>
           <div className="merchant-panel-body-description"
           dangerouslySetInnerHTML={{ __html: this.props.product.features }}
           />
-        </div>
+        </Row>
+        <Row style={{ marginLeft: 0, marginRight: 0 }} className="merchant-info">
+          <Col xsPush={4} xs={8} mdPush={4} md={8}>
+            <div className="merchant-info-percentage">
+              <p>
+                <span className="percentage">{`${this.props.product.percentage}% Off `}</span>
+                <span>{this.props.product.isShipped}</span>
+               </p>
+            </div>
+            <div className="merchant-info-btn">
+              <YesNoBtn isCoupon onTouchTap={this.props.onTouchTap} />
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ margin: 0 }} className="merchant-footer">
+          <Col xsPush={4} xs={8} mdPush={4} md={8}>
+            <p>
+              { `From ${this.props.product.merchant} in ${this.props.product.category} Components` }
+            </p>
+          </Col>
+        </Row>
       </Panel>
     );
   }

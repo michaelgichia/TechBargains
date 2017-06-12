@@ -15,6 +15,34 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.merchant-footer {
+  min-width: 100%;
+  padding: 5px 20px 0px 5px;
+  color: #b0b0b0;
+}
+.merchant-info {
+  width: 100%;
+  min-width: 100%;
+}
+.merchant-info-btn {
+  float: right;
+  max-width: 50%;
+  padding-right: 10%;
+}
+.merchant-info-percentage {
+  float: left;
+  max-width: 50%;
+}
+.merchant-info-percentage > p {
+  color: #e6251f;
+  font-weight: 700;
+}
+p > .percentage {
+  line-height: 1.1;
+  font-size: 30px;
+  font-family: Roboto, sans-serif, Helvetica, Arial;
+}
+
 .merchant-panel-body-image {
   float: left;
   max-width: 33.3333%;
@@ -28,7 +56,7 @@ html {
 .merchant-panel-body {
   min-width: 100%;
   width: 100%;
-  padding: 5px 20px 20px 20px;
+  padding: 7px 20px 10px 20px;
 }
 .description-div {
   padding: 1px 10px 10px 10px !important;
@@ -6282,8 +6310,8 @@ button.list-group-item-danger.active:focus {
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 .panel-body {
-  padding: 0;
-  margin-bottom: 30px;
+  padding: 10px 0 0 0;
+  margin-bottom: 0px;
 }
 .panel-heading {
   padding: 0px;
