@@ -10,7 +10,7 @@ class Topper extends React.PureComponent { // eslint-disable-line react/prefer-s
   render() {
     return (
       <div className="topper">
-        <div className="allert">Top Seller</div>
+        <p>Top Seller</p>
       </div>
     );
   }
