@@ -328,7 +328,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
                 onDropChange={this.handleUpload}

@@ -75,7 +75,7 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Card containerStyle={{ marginTop: 30 }}>
 
               <ListItem disabled leftAvatar={<Avatar>{`${percentage || ''}%`}</Avatar>} />

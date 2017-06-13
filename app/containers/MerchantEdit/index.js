@@ -205,7 +205,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Paper zDepth={5} rounded={false} style={gems6.paper}>
               <StoreForm
                 onChange={this.handleChange}

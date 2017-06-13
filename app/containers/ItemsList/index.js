@@ -24,11 +24,10 @@ import Col from 'react-bootstrap/lib/Col';
 import { getItems } from './actions';
 
 const wrapperStyle = {
-  borderWidth: 1,
-  WebkitBorderRadius: 12,
-  borderRadius: 0,
   boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
   zIndex: 1,
+  padding: 10,
+  margin: 10,
 };
 
 const bodyStyle = {
@@ -106,7 +105,7 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Card style={{ marginTop: 20 }}>
               <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Items / Products / Services List" />
               <CardActions>
@@ -118,7 +117,7 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <span>
               <ul style={{ listStyle: 'none' }}>
                 {this.state.errors && this.state.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}

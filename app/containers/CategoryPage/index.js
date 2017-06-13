@@ -100,8 +100,8 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
-            <Paper zDepth={2} rounded={false} style={gems.paper}>
+          <Col xs={12} md={10} mdPush={1}>
+            <Paper zDepth={1} rounded={false} style={gems.paper}>
               <CategoryForm
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
@@ -116,7 +116,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <div style={gems.table}>
               <Table
                 fixedHeader

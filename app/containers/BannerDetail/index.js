@@ -70,7 +70,7 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Card containerStyle={{ marginTop: 30 }}>
               <CardMedia style={{ marginTop: 10, marginBottom: 20 }} mediaStyle={{ maxHeight: 300, height: 300 }}>
                 <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />

@@ -186,7 +186,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Paper zDepth={2} rounded={false} style={gemsgood.paper}>
               <StoreForm
                 onChange={this.handleChange}
