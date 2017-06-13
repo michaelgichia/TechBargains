@@ -12,6 +12,7 @@ const find = (params) =>
     .exec((err, items) => {
       if (err) {
         reject(err);
+        return;
       }
       const summaries = [];
       items.forEach((item) => {
@@ -30,6 +31,7 @@ const findById = (id) =>
     .exec((err, item) => {
       if (err) {
         reject(err);
+        return;
       }
       if (item !== null) {
         resolve(item.summary());
@@ -128,6 +130,7 @@ const findTrendingDeals = (params) =>
     .exec((err, items) => {
       if (err) {
         reject(err);
+        return;
       }
       const summaries = [];
       items.forEach((item) => {

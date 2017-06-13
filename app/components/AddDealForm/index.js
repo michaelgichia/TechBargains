@@ -151,7 +151,11 @@ class AddDealForm extends React.PureComponent {
           fullWidth
         />
         <br />
-        <RaisedButton label="Add Item" primary onClick={this.props.onClick} />
+        <RaisedButton
+          label="Add Item"
+          primary onClick={this.props.onClick}
+          disabled={this.props.disabled}
+        />
       </div>
     );
   }
@@ -190,6 +194,7 @@ AddDealForm.propTypes = {
   features: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
   image: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default AddDealForm;

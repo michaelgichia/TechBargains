@@ -23,6 +23,7 @@ const update = (id, params) =>
       (err, store) => {
         if (err) {
           reject(err);
+          return;
         }
         resolve(store.summary());
       });

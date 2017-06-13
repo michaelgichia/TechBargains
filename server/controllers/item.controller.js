@@ -19,9 +19,10 @@ const update = (id, params) =>
 
     const itemId = { _id: id };
 
-    Item.findByIdAndUpdate(itemId, params, { upsert: false, new: true }, (err, item) => {
+    Item.findOneAndUpdate(itemId, params, { upsert: true, new: true }, (err, item) => {
       if (err) {
         reject(err);
+        return;
       }
       resolve(item.summary());
     });
@@ -32,6 +33,7 @@ const deleteItem = (id) =>
     Item.findOneAndRemove(id, (err) => {
       if (err) {
         reject(err);
+        return;
       }
       resolve(null);
     });

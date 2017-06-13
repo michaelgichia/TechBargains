@@ -6,12 +6,11 @@ const router = express.Router();
 
 router.post('/create', (req, res, next) => {
   // Check other data
-  req.assert('name', 'Name must not be empty.').notEmpty();
-  req.assert('backlink', 'Back-link must not be empty').notEmpty();
-  req.assert('subCategory', 'Sub-Category must not be empty').notEmpty();
-  req.assert('category', 'Category must not be empty').notEmpty();
-  req.assert('merchant', 'Merchant must not be empty').notEmpty();
-  req.assert('expire', 'expire must not be empty').notEmpty();
+  req.assert('name', 'Name cannot not be empty.').notEmpty();
+  req.assert('backlink', 'Back-link cannot not be empty').notEmpty();
+  req.assert('subCategory', 'Sub-Category cannot not be empty').notEmpty();
+  req.assert('category', 'Category cannot not be empty').notEmpty();
+  req.assert('merchant', 'Merchant cannot not be empty').notEmpty();
   req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
 
   req.sanitize('name').trim();
@@ -60,12 +59,11 @@ router.put('/update/:itemId', (req, res, next) => {
   req.sanitize('id').escape();
 
   // Check other data
-  req.assert('name', 'Name must not be empty.').notEmpty();
-  req.assert('backlink', 'Back-link must not be empty').notEmpty();
-  req.assert('subCategory', 'Sub-Category must not be empty').notEmpty();
-  req.assert('category', 'Category must not be empty').notEmpty();
-  req.assert('merchant', 'Merchant must not be empty').notEmpty();
-  req.assert('expire', 'expire must not be empty').notEmpty();
+  req.assert('name', 'Name cannot not be empty.').notEmpty();
+  req.assert('backlink', 'Back-link cannot not be empty').notEmpty();
+  req.assert('subCategory', 'Sub-Category cannot not be empty').notEmpty();
+  req.assert('category', 'Category cannot not be empty').notEmpty();
+  req.assert('merchant', 'Merchant cannot not be empty').notEmpty();
   req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
 
   req.sanitize('name').trim();

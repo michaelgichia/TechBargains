@@ -64,6 +64,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       name: '',
       features: '',
       public_id: '',
+      disabled: '',
     };
   }// eslint-disable-line
 
@@ -111,8 +112,10 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
   /**
    * Update date.
   */
-  handleDate = (e, expire) => this.setState({ expire });
-
+  handleDate = (e, expire) => this.setState((prevState, props) => ({
+    expire: expire,
+    disabled: false
+  }));
   /**
    * Update merchant in the state and clear error.
   */
@@ -308,6 +311,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       features,
       image,
       name,
+      disabled,
     } = this.state;
     const {
       percentage,
@@ -365,6 +369,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 isShipped={isShipped}
                 name={name}
                 features={features}
+                disabled={disabled}
               />
             </Paper>
           </Col>

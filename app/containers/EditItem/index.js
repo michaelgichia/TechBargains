@@ -64,6 +64,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     isCoupon: false,
     isShipped: '',
     errors: [],
+    disabled: true,
   };
 
   componentDidMount() {
@@ -81,6 +82,9 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     }
     if (nextProps.itemData.name !== this.state.name) {
       this.setState({ name: nextProps.itemData.name });
+    }
+    if (nextProps.itemData.public_id !== this.state.public_id) {
+      this.setState({ public_id: nextProps.itemData.public_id });
     }
     if (nextProps.itemData.features !== this.state.features) {
       this.setState({ features: nextProps.itemData.features });
@@ -150,7 +154,10 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   /**
    * Update date.
   */
-  handleDate = (e, expire) => this.setState({ expire });
+  handleDate = (e, expire) => this.setState((prevState, props) => ({
+    expire: expire,
+    disabled: false
+  }));
 
   onNameChange = (name) => this.setState({ name });
 
@@ -217,22 +224,22 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
 
   onFeaturesChange = (features) => this.setState({ features });
 
-
   /**
    * Validate user input to avoid empty values sent to the db.
    * Merge several state object and save to the db.
   */
   handleSubmit = () => {
-    if (validator.isEmpty(this.state.category)) {
-      this.setState({ categoryError: 'Category is required!' });
-    }
     if (validator.isEmpty(this.state.subCategory)) {
       this.setState({ subCategoryError: 'Sub-category is required!' });
+    }
+    if (validator.isEmpty(this.state.category)) {
+      this.setState({ categoryError: 'Category is required!' });
     }
     if (validator.isEmpty(this.state.merchant)) {
       this.setState({ merchantError: 'Store is required!' });
     } else {
       // Merge.
+      this.setState((prevState, props) => ({disabled: false}));
       const selectedColor = this.generateThemeColors(themesColor);
 
       const data = Object.assign(
@@ -349,6 +356,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       isCoupon,
       isFeatured,
       isShipped,
+      disabled,
     } = this.state;
 
     const { categories, subcategories, merchants } = this.props;
@@ -403,6 +411,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 isShipped={isShipped}
                 name={name}
                 features={features}
+                disabled={disabled}
               />
             </Paper>
           </Col>
