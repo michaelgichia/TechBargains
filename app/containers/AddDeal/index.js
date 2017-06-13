@@ -2,6 +2,8 @@ import AddDealForm from 'components/AddDealForm';
 import React from 'react';
 import PropTypes from 'prop-types';
 import validator from 'validator';
+import sha1 from 'sha1'
+import superagent from 'superagent'
 // Material-ui
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
@@ -45,9 +47,9 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         coupon: '',
         backlink: '',
         percentage: '',
-        image: '',
         isShipped: '',
       },
+      image: 'Click or Drop files to upload',
       categoryError: '',
       subCategoryError: '',
       percentageError: '',
@@ -61,6 +63,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       errors: [],
       name: '',
       features: '',
+      public_id: '',
     };
   }// eslint-disable-line
 
@@ -68,6 +71,41 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
+  }
+
+  handleUpload = (files) => {
+    console.info('uploading file....')
+    const image = files[0]
+    const cloudName = 'dw3arrxnf'
+    const timestamp = Date.now()/1000
+    const uploadPreset = 'd9s7ezzn'
+    const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'wEvwDjpdDR5I_mMSdD55EaLNXOI'
+    const signature = sha1(paramsStr)
+    const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
+    const params = {
+      "api_key": "217319541859423",
+      "timestamp": timestamp,
+      "upload_preset": uploadPreset,
+      "signature": signature
+    }
+    let uploadRequest = superagent.post(url)
+    uploadRequest.attach('file', image)
+    Object.keys(params).forEach((key) => {
+      uploadRequest.field(key, params[key])
+    });
+
+    uploadRequest.end((err, resp) => {
+      if (err) {
+        console.error(err);
+        alert(err, null)
+        return;
+      }
+      console.info("uploading completed...");
+      this.setState((prevState, props) => ({
+        image: resp.body.secure_url,
+        public_id: resp.body.public_id
+      }))
+    })
   }
 
   /**
@@ -169,6 +207,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       const item = Object.assign(
         updatedState,
         { name: this.state.name },
+        { image: this.state.image },
         { features: this.state.features },
         { ...this.state.item },
         { category: this.state.category },
@@ -178,6 +217,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
+        { public_id: this.state.public_id },
       );
       // Create.
       this.props.postDeal(item);
@@ -266,13 +306,13 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       isFeatured,
       isCoupon,
       features,
+      image,
       name,
     } = this.state;
     const {
       percentage,
       backlink,
       coupon,
-      image,
       isShipped,
     } = this.state.item;
 
@@ -287,6 +327,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
           <Col xs={12} md={8} mdPush={2}>
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
+                onDropChange={this.handleUpload}
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
                 hintStyle={hintStyle}

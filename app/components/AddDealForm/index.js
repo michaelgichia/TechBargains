@@ -2,6 +2,7 @@ import ReactEditor from "components/ReactEditor";
 import React from "react";
 import PropTypes from "prop-types";
 import shortid from "shortid";
+import Dropzone from 'react-dropzone'
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import SelectField from "material-ui/SelectField";
@@ -92,15 +93,13 @@ class AddDealForm extends React.PureComponent {
           fullWidth
           value={this.props.backlink}
         />
-        <TextField
-          hintText="Image Link"
-          floatingLabelText="Image Link"
-          id="image"
-          onChange={this.props.onChange}
-          hintStyle={this.props.hintStyle}
-          fullWidth
-          value={this.props.image}
-        />
+        <Dropzone
+          onDrop={this.props.onDropChange}
+          className="redux-dropzone"
+          multiple={false}
+          >
+          <p>{this.props.image}</p>
+        </Dropzone>
         <TextField
           hintText="Coupon Code"
           floatingLabelText="Coupon Code"
@@ -158,6 +157,7 @@ class AddDealForm extends React.PureComponent {
   }
 }
 
+
 AddDealForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   hintStyle: PropTypes.object.isRequired,
@@ -179,7 +179,6 @@ AddDealForm.propTypes = {
   merchantArray: PropTypes.array.isRequired,
   errors: PropTypes.array.isRequired,
   header: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
   onNameChange: PropTypes.func.isRequired,
   onFeaturesChange: PropTypes.func.isRequired,
   isFeatured: PropTypes.bool.isRequired,
@@ -189,6 +188,8 @@ AddDealForm.propTypes = {
   isShipped: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   features: PropTypes.string.isRequired,
+  onDropChange: PropTypes.func.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default AddDealForm;

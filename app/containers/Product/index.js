@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import ProductDetail from 'components/ProductDetail';
 import shortid from 'shortid';
+import { CloudinaryContext } from 'cloudinary-react'
 import { connect } from 'react-redux';
 import { handleOpenModal } from 'containers/ReactModal/actions';
 import { fetchTrendingDeals } from './actions';
@@ -34,16 +35,18 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
     return (
       <div>
         <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
-          {
-          this.state.products.map((product) => (
-            <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
-              <ProductDetail
-                product={product}
-                onTouchTap={() => this.props.handleOpenModal(product)}
-              />
-            </li>
-          ))
-          }
+          <CloudinaryContext cloudName="dw3arrxnf">
+            {
+            this.state.products.map((product) => (
+              <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+                <ProductDetail
+                  product={product}
+                  onTouchTap={() => this.props.handleOpenModal(product)}
+                />
+              </li>
+            ))
+            }
+          </CloudinaryContext>
         </ul>
       </div>
     );

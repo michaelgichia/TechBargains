@@ -69,6 +69,11 @@ const ItemSchema = new Schema({
     max: 500,
     default: '',
   },
+  public_id: {
+    type: String,
+    max: 500,
+    default: '',
+  },
   isCoupon: {
     type: Boolean,
     default: false,
@@ -97,6 +102,7 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
     isFeatured: this.isFeatured,
     isCoupon: this.isCoupon,
     isShipped: this.isShipped,
+    public_id: this.public_id,
   };
 
   return summary;

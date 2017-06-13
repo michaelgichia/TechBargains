@@ -12,6 +12,8 @@ import Paper from 'material-ui/Paper';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
+import sha1 from 'sha1'
+import superagent from 'superagent'
 // Actions
 import { getCategories, getSubCategories, getMerchants } from 'containers/Dashboard/actions';
 import { fetchItem, updateItem } from './actions';
@@ -44,6 +46,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
 
   state = {
     name: '',
+    public_id: '',
     features: '',
     coupon: '',
     backlink: '',
@@ -108,10 +111,48 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     }
   }
 
+  handleUpload = (files) => {
+    console.info('uploading file....')
+    const image = files[0]
+    const cloudName = 'dw3arrxnf'
+    const timestamp = Date.now()/1000
+    const uploadPreset = 'd9s7ezzn'
+    const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'wEvwDjpdDR5I_mMSdD55EaLNXOI'
+    const signature = sha1(paramsStr)
+    const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
+    const params = {
+      "api_key": "217319541859423",
+      "timestamp": timestamp,
+      "upload_preset": uploadPreset,
+      "signature": signature,
+    }
+    this.setState((prevState, props) => ({image: 'uploading image...'}))
+    let uploadRequest = superagent.post(url)
+    uploadRequest.attach('file', image)
+    Object.keys(params).forEach((key) => {
+      uploadRequest.field(key, params[key])
+    });
+
+    uploadRequest.end((err, resp) => {
+      if (err) {
+        console.error(err);
+        alert(err, null)
+        return;
+      }
+      console.info("uploading completed...");
+      this.setState((prevState, props) => ({
+        image: resp.body.secure_url,
+        public_id: resp.body.public_id
+      }))
+    })
+  }
+
   /**
    * Update date.
   */
   handleDate = (e, expire) => this.setState({ expire });
+
+  onNameChange = (name) => this.setState({ name });
 
   /**
    * Update merchant in the state and clear error.
@@ -209,6 +250,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
         { isShipped: this.state.isShipped },
+        { public_id: this.state.public_id },
       );
       // Item id.
       const itemId = this.props.params.itemId;
@@ -320,6 +362,8 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
           <Col xs={12} md={8} mdPush={2}>
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
+                onDropChange={this.handleUpload}
+                onNameChange={this.onNameChange}
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
                 hintStyle={hintStyle}

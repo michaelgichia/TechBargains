@@ -12,6 +12,7 @@ router.post('/create', (req, res, next) => {
   req.assert('category', 'Category must not be empty').notEmpty();
   req.assert('merchant', 'Merchant must not be empty').notEmpty();
   req.assert('expire', 'expire must not be empty').notEmpty();
+  req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
 
   req.sanitize('name').trim();
   req.sanitize('backlink').trim();
@@ -26,6 +27,8 @@ router.post('/create', (req, res, next) => {
   req.sanitize('isFeatured').trim();
   req.sanitize('isCoupon').trim();
   req.sanitize('isShipped').trim();
+  req.sanitize('public_id').trim();
+
 
   // Errors
   const errors = req.validationErrors();
@@ -63,6 +66,7 @@ router.put('/update/:itemId', (req, res, next) => {
   req.assert('category', 'Category must not be empty').notEmpty();
   req.assert('merchant', 'Merchant must not be empty').notEmpty();
   req.assert('expire', 'expire must not be empty').notEmpty();
+  req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
 
   req.sanitize('name').trim();
   req.sanitize('features').trim();
@@ -78,6 +82,7 @@ router.put('/update/:itemId', (req, res, next) => {
   req.sanitize('isFeatured').trim();
   req.sanitize('isCoupon').trim();
   req.sanitize('isShipped').trim();
+  req.sanitize('public_id').trim();
 
   // Errors
   const errors = req.validationErrors();
