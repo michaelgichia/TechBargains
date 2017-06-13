@@ -5,6 +5,8 @@ import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import axios from 'axios';
+import sha1 from 'sha1'
+import superagent from 'superagent'
 import { connect } from 'react-redux';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -48,7 +50,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
     merchant: {
       title: '',
       description: '',
-      imageUrl: '',
+      imageUrl: 'Click or Drop files to upload',
     },
     isFeatured: false,
     titleError: '',
@@ -68,6 +70,41 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
         this.setState({ errors: response.data.message });
       }
     });
+  }
+  handleUpload = (files) => {
+    console.info('uploading file....')
+    const updateMerchant = {...this.state.merchant};
+    const image = files[0]
+    const cloudName = 'dw3arrxnf'
+    const timestamp = Date.now()/1000
+    const uploadPreset = 'd9s7ezzn'
+    const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'wEvwDjpdDR5I_mMSdD55EaLNXOI'
+    const signature = sha1(paramsStr)
+    const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
+    const params = {
+      "api_key": "217319541859423",
+      "timestamp": timestamp,
+      "upload_preset": uploadPreset,
+      "signature": signature,
+    }
+    updateMerchant.imageUrl = 'uploading image...' 
+    this.setState((prevState, props) => ({ merchant: updateMerchant }))
+    let uploadRequest = superagent.post(url)
+    uploadRequest.attach('file', image)
+    Object.keys(params).forEach((key) => {
+      uploadRequest.field(key, params[key])
+    });
+
+    uploadRequest.end((err, resp) => {
+      if (err) {
+        console.error(err);
+        alert(err, null)
+        return;
+      }
+      console.info("uploading completed...");
+      updateMerchant.imageUrl = resp.body.secure_url;
+      this.setState((prevState, props) => ({ merchant: updateMerchant }))
+    })
   }
 
   /**
@@ -161,6 +198,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
                 toggled={isFeatured}
                 about={about}
                 onAboutChange={this.handleAbout}
+                onDropChange={this.handleUpload}
               />
             </Paper>
           </Col>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactEditor from "components/ReactEditor";
 import PropTypes from 'prop-types';
+import Dropzone from 'react-dropzone'
 import shortid from 'shortid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -31,14 +32,14 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           errorText={this.props.titleError}
           value={this.props.title}
         />
-        <TextField
-          hintText="Image Url"
-          id="imageUrl"
-          floatingLabelText="Image Url"
-          onChange={this.props.onChange}
-          fullWidth
-          value={this.props.imageUrl}
-        />
+        <br/>
+        <Dropzone
+          onDrop={this.props.onDropChange}
+          className="redux-dropzone"
+          multiple={false}
+          >
+          <p>{this.props.imageUrl}</p>
+        </Dropzone>
         <TextField
           hintText="Description"
           id="description"
@@ -96,7 +97,7 @@ StoreForm.propTypes = {
   toggled: PropTypes.bool.isRequired,
   onAboutChange: PropTypes.func.isRequired,
   about: PropTypes.string.isRequired,
-
+  onDropChange: PropTypes.func.isRequired,
 };
 
 export default StoreForm;

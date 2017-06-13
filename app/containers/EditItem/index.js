@@ -45,7 +45,7 @@ const themesColor = [
 export class EditItem extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    name: '',
+    name: 'Click or Drop files to upload',
     public_id: '',
     features: '',
     coupon: '',
@@ -158,8 +158,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     expire: expire,
     disabled: false
   }));
-
-  onNameChange = (name) => this.setState({ name });
 
   /**
    * Update merchant in the state and clear error.
@@ -402,7 +400,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 message={message}
                 header="Edit an Item or a Coupon"
                 image={image}
-                onNameChange={this.onNameChange}
                 onFeaturesChange={this.onFeaturesChange}
                 isFeatured={isFeatured}
                 isCoupon={isCoupon}
