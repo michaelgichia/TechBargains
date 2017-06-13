@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/lib/Col';
 import RaisedButton from 'material-ui/RaisedButton';
 import CouponIcon from 'material-ui/svg-icons/action/shopping-cart';
 import DealsIcon from 'material-ui/svg-icons/maps/local-offer';
+import { Image } from 'cloudinary-react'
 
 
 class MerchantInfo extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -17,7 +18,12 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
       <div className="merchant-info" >
         <Col xs={12} sm={4} md={3} lg={3}>
           <div className="amazon-first">
-            <img src={this.props.info.imageUrl} alt={this.props.info.title} />
+            <Image
+              cloudName="dw3arrxnf"
+              publicId={this.props.info.public_id}
+              width="200"
+              crop="scale"
+            />
           </div>
         </Col>
         <Col xs={12} sm={8} md={6} lg={6}>
