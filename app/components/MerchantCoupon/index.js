@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import MerchantBtn from 'components/MerchantBtn';
+import YesNoBtn from 'components/YesNoBtn';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -29,10 +29,11 @@ class MerchantCoupon extends React.PureComponent { // eslint-disable-line react/
           subtitle={`From ${this.props.coupon.merchant.title} Coupons.`}
         />
         <CardActions>
-          <MerchantBtn
-            style={{ paddingLeft: '20 !important', paddingRight: '20 !important' }}
-            coupon={''}
-          />
+          <YesNoBtn
+            isCoupon={this .props.coupon.isCoupon}
+            onTouchTap={this.props.onTouchTap}
+            backlink={this .props.coupon.backlink}
+            />
         </CardActions>
       </Card>
     );

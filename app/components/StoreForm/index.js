@@ -33,6 +33,7 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           value={this.props.title}
         />
         <br/>
+        <br/>
         <Dropzone
           onDrop={this.props.onDropChange}
           className="redux-dropzone"

@@ -74,7 +74,10 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                 {
                   this.state.coupons.map((coupon) => (
                     <li key={shortid.generate()}>
-                      <MerchantCoupon coupon={coupon} />
+                      <MerchantCoupon
+                        coupon={coupon}
+                        onTouchTap={() => this.props.handleOpenModal(coupon)}
+                      />
                     </li>
                   ))
                 }

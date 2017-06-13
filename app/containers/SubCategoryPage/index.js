@@ -192,7 +192,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}
@@ -210,7 +210,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <div style={gemsawesome.table}>
               <Table
                 fixedHeader

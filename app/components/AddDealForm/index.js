@@ -93,6 +93,8 @@ class AddDealForm extends React.PureComponent {
           fullWidth
           value={this.props.backlink}
         />
+        <br/>
+        <br/>
         <Dropzone
           onDrop={this.props.onDropChange}
           className="redux-dropzone"
