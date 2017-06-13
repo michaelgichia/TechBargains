@@ -10,6 +10,8 @@ import PaperLite from 'components/PaperLite';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import validator from 'validator';
+import sha1 from 'sha1'
+import superagent from 'superagent'
 import axios from 'axios';
 import Auth from '../Utils';
 
@@ -21,8 +23,9 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
   state = {
     item: {
       title: '',
-      imageUrl: '',
+      imageUrl: 'Click or Drop files to upload',
       backlink: '',
+      public_id: '',
     },
     isFeatured: false,
     titleError: '',
@@ -31,6 +34,44 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
     errors: '',
     message: '',
   } // eslint-disable-line
+
+  handleUpload = (files) => {
+    const updatedItem = {...this.state.item};
+    console.info('uploading file....')
+    const image = files[0]
+    const cloudName = 'dw3arrxnf'
+    const timestamp = Date.now()/1000
+    const uploadPreset = 'd9s7ezzn'
+    const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'wEvwDjpdDR5I_mMSdD55EaLNXOI'
+    const signature = sha1(paramsStr)
+    const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
+    const params = {
+      "api_key": "217319541859423",
+      "timestamp": timestamp,
+      "upload_preset": uploadPreset,
+      "signature": signature
+    }
+    updatedItem.imageUrl = 'uploading image...' 
+    this.setState((prevState, props) => ({ item: updatedItem }))
+    let uploadRequest = superagent.post(url)
+    uploadRequest.attach('file', image)
+    Object.keys(params).forEach((key) => {
+      uploadRequest.field(key, params[key])
+    });
+
+    uploadRequest.end((err, resp) => {
+      if (err) {
+        console.error(err);
+        alert(err, null)
+        return;
+      }
+      console.info("uploading completed...");
+      const newImage = {...this.state.item};
+      newImage.imageUrl = resp.body.secure_url;
+      newImage.public_id = resp.body.public_id;
+      this.setState((prevState, props) => ({ item: newImage }))
+    })
+  }
 
   /**
    * Update the state from user input.
@@ -100,6 +141,7 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
     return (
       <PaperLite>
         <BannerForm
+          onDropChange={this.handleUpload}
           title={title}
           imageUrl={imageUrl}
           backlink={backlink}

@@ -20,6 +20,11 @@ const BannerSchema = new Schema({
     max: 1000,
     required: true,
   },
+  public_id: {
+    type: String,
+    default: '',
+    max: 500,
+  },
   isFeatured: {
     type: Boolean,
     default: false,
@@ -33,6 +38,7 @@ BannerSchema.methods.summary = function () {// eslint-disable-line
     backlink: this.backlink,
     imageUrl: this.imageUrl,
     isFeatured: this.isFeatured,
+    public_id: this.public_id,
   };
 
   return summary;

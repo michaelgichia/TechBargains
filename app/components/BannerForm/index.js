@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dropzone from 'react-dropzone'
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import Subheader from 'material-ui/Subheader';
@@ -28,15 +29,6 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
           value={this.props.title}
         />
         <TextField
-          hintText="Image Url"
-          id="imageUrl"
-          floatingLabelText="Image url"
-          onChange={this.props.onChange}
-          fullWidth
-          errorText={this.props.imageUrlError}
-          value={this.props.imageUrl}
-        />
-        <TextField
           hintText="Backlink"
           id="backlink"
           floatingLabelText="Backlink"
@@ -49,11 +41,19 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
         <br />
         <Toggle
           label="Is Banner featured ?"
-          defaultToggled={false}
           onToggle={this.props.onToggle}
           labelPosition="right"
           toggled={this.props.toggled}
         />
+        <br/>
+        <br/>
+        <Dropzone
+          onDrop={this.props.onDropChange}
+          className="redux-dropzone"
+          multiple={false}
+          >
+          <p>{this.props.imageUrl}</p>
+        </Dropzone>
         <br />
         <RaisedButton
           label="Save"
@@ -79,6 +79,7 @@ BannerForm.propTypes = {
   onToggle: PropTypes.func.isRequired,
   toggled: PropTypes.bool.isRequired,
   formTitle: PropTypes.string.isRequired,
+  onDropChange: PropTypes.func.isRequired,
 };
 
 export default BannerForm;

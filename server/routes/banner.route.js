@@ -8,10 +8,14 @@ router.post('/create', (req, res) => {
   req.assert('title', 'Title must not be empty.').notEmpty();
   req.assert('imageUrl', 'Image url must not be empty.').notEmpty();
   req.assert('isFeatured', 'isFeatured must not be empty.').notEmpty();
+  req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
+
   req.sanitize('title').trim();
   req.sanitize('imageUrl').trim();
   req.sanitize('backlink').trim();
   req.sanitize('isFeatured').trim();
+  req.sanitize('public_id').trim();
+
 
   // Errors
   const errors = req.validationErrors();
@@ -77,6 +81,16 @@ router.put('/update/:bannerId', (req, res) => {
   req.sanitize('id').escape();
   req.sanitize('id').trim();
 
+  req.assert('title', 'Title must not be empty.').notEmpty();
+  req.assert('imageUrl', 'Image url must not be empty.').notEmpty();
+  req.assert('isFeatured', 'isFeatured must not be empty.').notEmpty();
+  req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
+
+  req.sanitize('title').trim();
+  req.sanitize('imageUrl').trim();
+  req.sanitize('backlink').trim();
+  req.sanitize('isFeatured').trim();
+  req.sanitize('public_id').trim();
   // Errors
   const errors = req.validationErrors();
   if (errors.length > 0) {

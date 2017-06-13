@@ -10,6 +10,7 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import axios from 'axios';
+import { Image } from 'cloudinary-react'
 import { browserHistory, Link } from 'react-router';
 // Material
 import RaisedButton from 'material-ui/RaisedButton';
@@ -66,29 +67,23 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
   };
 
   render() {
-    const { backlink, imageUrl, title } = this.state.itemData;
+    const { backlink, imageUrl, title, public_id } = this.state.itemData;
     return (
       <Grid>
         <Row>
           <Col xs={12} md={10} mdPush={1}>
             <Card containerStyle={{ marginTop: 30 }}>
               <CardMedia style={{ marginTop: 10, marginBottom: 20 }} mediaStyle={{ maxHeight: 300, height: 300 }}>
-                <img src={backlink} style={{ maxHeight: 300, maxWidth: 300 }} alt={name} />
+                <Image cloudName="dw3arrxnf" publicId={public_id} width="300" height="300" crop="scale" />
               </CardMedia>
-
               <div>
                 <CardTitle
+                  title={`Name: ${title || 'none'}`}
                   subtitleColor="#676d79"
                   subtitle={`Backlink: ${backlink || 'none'}`}
                   style={{ marginBottom: 20 }}
                 />
-                <Divider style={{ marginBottom: 20 }} />
-                <CardTitle
-                  subtitleColor="#676d79"
-                  subtitle={`Image Url: ${imageUrl || 'none'}`}
-                />
               </div>
-
               <CardActions>
                 <Link to={'/dashboard/banner/create'} key={0}>
                   <RaisedButton label="Add" labelColor="#7c7c7c" />
