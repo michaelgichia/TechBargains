@@ -17,6 +17,7 @@ html {
 }
 .merchant-detail-image {
   text-align: center;
+  min-height: 200px
 }
 .redux-dropzone > p {
   margin-bottom: 0px;

@@ -101,7 +101,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
     return (
       <Grid>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Card style={{ marginTop: 30 }}>
               { this.state.errors.length > 0? <p>{ this.state.errors }</p>:""}
               <CardHeader
