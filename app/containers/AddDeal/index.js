@@ -64,7 +64,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       name: '',
       features: '',
       public_id: '',
-      disabled: '',
+      disabled: true,
     };
   }// eslint-disable-line
 

@@ -9,6 +9,7 @@ import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router';
 import CouponHeader from 'components/CouponHeader';
 import { connect } from 'react-redux';
+import { CloudinaryContext, Image, Transformation } from 'cloudinary-react'
 import shortid from 'shortid';
 import { fetchStores } from './actions';
 
@@ -35,21 +36,21 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
     stores.map((store) => (
       <div className="featured-store" key={shortid.generate()}>
         <Link to={`/${store.id}`}><span className="store-link"></span></Link>
-        <LazyLoad height={250}>
-          <img src={store.imageUrl} alt={store.title} />
-        </LazyLoad>
+          <Image publicId={store.imageUrl}>
+              <Transformation crop="scale"  height="90" dpr="auto" />
+          </Image>
       </div>
     ))
   );
 
   render() {
     return (
-      <div>
+      <CloudinaryContext cloudName="dw3arrxnf">
         <CouponHeader
           title="Popular Stores"
         />
         {this.renderStores(this.state.stores)}
-      </div>
+      </CloudinaryContext>
     );
   }
 }

@@ -71,6 +71,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
       }
     });
   }
+
   handleUpload = (files) => {
     console.info('uploading file....')
     const updateMerchant = {...this.state.merchant};

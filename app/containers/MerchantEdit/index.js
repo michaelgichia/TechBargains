@@ -9,6 +9,8 @@ import StoreForm from 'components/StoreForm';
 import validator from 'validator';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
+import sha1 from 'sha1'
+import superagent from 'superagent'
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -78,6 +80,44 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
     updatedStore.description = '';
     this.setState({ merchant: updatedStore });
   };
+
+  handleUpload = (files) => {
+    console.info('uploading file....')
+    const updateMerchant = {...this.state.merchant};
+    const image = files[0]
+    const cloudName = 'dw3arrxnf'
+    const timestamp = Date.now()/1000
+    const uploadPreset = 'd9s7ezzn'
+    const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'wEvwDjpdDR5I_mMSdD55EaLNXOI'
+    const signature = sha1(paramsStr)
+    const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
+    const params = {
+      "api_key": "217319541859423",
+      "timestamp": timestamp,
+      "upload_preset": uploadPreset,
+      "signature": signature,
+    }
+    updateMerchant.imageUrl = 'uploading image...' 
+    this.setState((prevState, props) => ({ merchant: updateMerchant }))
+    let uploadRequest = superagent.post(url)
+    uploadRequest.attach('file', image)
+    Object.keys(params).forEach((key) => {
+      uploadRequest.field(key, params[key])
+    });
+
+    uploadRequest.end((err, resp) => {
+      if (err) {
+        console.error(err);
+        alert(err, null)
+        return;
+      }
+      console.info("uploading completed...");
+      const newImage = {...this.state.merchant};
+      newImage.imageUrl = resp.body.secure_url;
+      this.setState((prevState, props) => ({ merchant: newImage }))
+    })
+  }
+
 
   /**
    * Handle error.
@@ -153,6 +193,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
   };
 
   render() {
+    console.log({state: this.state})
     const { titleError, descriptionError, errors, isFeatured, about } = this.state;
     const { title, description, imageUrl } = this.state.merchant;
     return (
@@ -174,6 +215,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
                 about={about}
                 onAboutChange={this.handleAbout}
                 onFeaturedChange={this.handleIsFeatured}
+                onDropChange={this.handleUpload}
               />
             </Paper>
           </Col>
