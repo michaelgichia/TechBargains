@@ -96,7 +96,6 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
   };
 
   render() {
-    console.log({state: this.state})
     const { title, description, imageUrl, about, public_id } = this.state.merchantData;
     const { isFeatured } = this.state;
     return (
@@ -109,7 +108,9 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
                 title="Store Details"
                 subtitle={`Name of the Store: ${title}`}
               />
-              <Image cloudName="dw3arrxnf" publicId={public_id} width="250" crop="scale" />
+              <div className="merchant-detail-image">
+                <Image cloudName="dw3arrxnf" publicId={public_id} width="250" crop="scale" />
+              </div>
               <CardText>
                 {`Description: ${description}`}
               </CardText>
