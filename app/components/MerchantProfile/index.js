@@ -12,7 +12,7 @@ class MerchantProfile extends React.PureComponent { // eslint-disable-line react
   render() {
     return (
       <Col xs={12} sm={12} md={12} lg={4} className="merchant-profile">
-        <CouponHeader title={`ABOUT ${this.props.info.title}`} />
+        <CouponHeader title={`About ${this.props.info.title}`} />
         <div
           dangerouslySetInnerHTML={{ __html: this.props.info.about }}
         />

@@ -66,7 +66,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
             <Col id="merchant-id"xs={12} sm={12} md={12} lg={8}>
               {
                 this.state.coupons !== null && this.state.coupons.length > 0 ? 
-                 (<CouponHeader title={`${this.state.info.title} COUPONS`} />)
+                 (<CouponHeader title={`${this.state.info.title} Coupons`} />)
                  :
                  ('')
               }
@@ -81,7 +81,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
               </ul>
               {
                 this.state.merchandize !== null && this.state.merchandize.length > 0 ? 
-                 (<CouponHeader title={`${this.state.info.title} DEALS`} />)
+                 (<CouponHeader title={`${this.state.info.title} Deals`} />)
                  :
                  ('')
               }
