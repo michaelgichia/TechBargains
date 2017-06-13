@@ -104,11 +104,10 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
         return;
       }
       console.info("uploading completed...");
-      updateMerchant.imageUrl = resp.body.secure_url;
-      this.setState((prevState, props) => ({ 
-        merchant: updateMerchant,
-        public_id: res.body.public_id
-      }))
+      const newImage = {...this.state.merchant};
+      newImage.imageUrl = resp.body.secure_url;
+      newImage.public_id = resp.body.public_id;
+      this.setState((prevState, props) => ({ merchant: newImage }))
     })
   }
 
@@ -164,7 +163,6 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
         about: this.state.about,
-        public_id: this.public_id,
       };
       this.props.doSaveMerchant(merchant);
       this.resetState();
