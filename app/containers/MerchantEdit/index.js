@@ -37,6 +37,8 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
       title: '',
       description: '',
       imageUrl: '',
+      public_id: '',
+
     },
     isFeatured: false,
     about: '',
@@ -114,6 +116,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
       console.info("uploading completed...");
       const newImage = {...this.state.merchant};
       newImage.imageUrl = resp.body.secure_url;
+      newImage.public_id = resp.body.public_id;
       this.setState((prevState, props) => ({ merchant: newImage }))
     })
   }
@@ -167,6 +170,9 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
         }
         this.setState({ errors: newError });
       }
+    })
+    .catch((errors) => {
+      this.setState({ errors });
     });
   }
 
@@ -186,6 +192,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
         about: this.state.about,
+
       };
       this.updateMerchant(merchant);
       this.resetState();
@@ -193,7 +200,6 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
   };
 
   render() {
-    console.log({state: this.state})
     const { titleError, descriptionError, errors, isFeatured, about } = this.state;
     const { title, description, imageUrl } = this.state.merchant;
     return (

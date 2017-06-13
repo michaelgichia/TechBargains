@@ -7,20 +7,21 @@ const router = express.Router();
 router.post('/create', (req, res, next) => {
   req.assert('title', 'Title must not be empty.').notEmpty();
   req.assert('description', 'Description must not be empty').notEmpty();
+  req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
 
   req.sanitize('title').trim();
   req.sanitize('description').trim();
   req.sanitize('imageUrl').trim();
   req.sanitize('isFeatured').trim();
   req.sanitize('about').trim();
+  req.sanitize('public_id').trim();
 
   // Errors
   const errors = req.validationErrors();
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: 'Form errors!',
-      errors,
+      message: errors,
     }).end();
   }
 
@@ -47,12 +48,14 @@ router.put('/update/:merchantId', (req, res, next) => {
   // Check other data
   req.assert('title', 'Title must not be empty.').notEmpty();
   req.assert('description', 'Description must not be empty').notEmpty();
+  req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
 
   req.sanitize('title').trim();
   req.sanitize('description').trim();
   req.sanitize('imageUrl').trim();
   req.sanitize('isFeatured').trim();
   req.sanitize('about').trim();
+  req.sanitize('public_id').trim();
 
 
   // Errors
@@ -60,8 +63,7 @@ router.put('/update/:merchantId', (req, res, next) => {
   if (errors) {
     return res.json({
       confirmation: 'fail',
-      message: 'Form errors!',
-      errors,
+      message: errors,
     }).end();
   }
 

@@ -6,8 +6,8 @@
 
 import React, { PropTypes } from 'react';
 import CouponHeader from 'components/CouponHeader';
-import LazyLoad from 'react-lazyload';
 import { browserHistory } from 'react-router';
+import { CloudinaryContext, Image, Transformation } from 'cloudinary-react'
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -44,8 +44,10 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
       id: '',
       imageUrl: '',
       about: '',
+      public_id: '',
     },
     isFeatured: false,
+    errors: '',
   }
 
   componentDidMount() {
@@ -94,20 +96,20 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
   };
 
   render() {
-    const { title, description, imageUrl, about } = this.state.merchantData;
+    console.log({state: this.state})
+    const { title, description, imageUrl, about, public_id } = this.state.merchantData;
     const { isFeatured } = this.state;
     return (
       <Grid>
         <Row>
           <Col xs={12} md={8} mdPush={2}>
             <Card style={{ marginTop: 30 }}>
+              { this.state.errors.length > 0? <p>{ this.state.errors }</p>:""}
               <CardHeader
                 title="Store Details"
                 subtitle={`Name of the Store: ${title}`}
               />
-              <LazyLoad height={250}>
-                <img src={imageUrl} style={{ maxHeight: 250, marginLeft: 50 }} alt={title} />
-              </LazyLoad>
+              <Image cloudName="dw3arrxnf" publicId={public_id} width="250" crop="scale" />
               <CardText>
                 {`Description: ${description}`}
               </CardText>

@@ -26,10 +26,16 @@ const MerchantSchema = new Schema({
     trim: true,
     max: 10000,
   },
+  public_id: {
+    type: String,
+    default: '',
+    max: 500,
+  },
   isFeatured: {
     type: Boolean,
     default: false,
   },
+  
 });
 
 MerchantSchema.methods.summary = function () {// eslint-disable-line
@@ -41,6 +47,7 @@ MerchantSchema.methods.summary = function () {// eslint-disable-line
     isFeatured: this.isFeatured,
     description: this.description,
     about: this.about,
+    public_id: this.public_id,
   };
 
   return summary;

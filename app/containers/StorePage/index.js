@@ -51,6 +51,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
       title: '',
       description: '',
       imageUrl: 'Click or Drop files to upload',
+      public_id: '',
     },
     isFeatured: false,
     titleError: '',
@@ -104,7 +105,10 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
       }
       console.info("uploading completed...");
       updateMerchant.imageUrl = resp.body.secure_url;
-      this.setState((prevState, props) => ({ merchant: updateMerchant }))
+      this.setState((prevState, props) => ({ 
+        merchant: updateMerchant,
+        public_id: res.body.public_id
+      }))
     })
   }
 
@@ -160,6 +164,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
         about: this.state.about,
+        public_id: this.public_id,
       };
       this.props.doSaveMerchant(merchant);
       this.resetState();

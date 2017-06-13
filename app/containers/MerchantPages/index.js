@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
+import { CloudinaryContext } from 'cloudinary-react'
 import MerchantInfo from 'components/MerchantInfo';
 import MerchantProfile from 'components/MerchantProfile';
 import MerchantCoupon from 'components/MerchantCoupon';
@@ -15,7 +16,6 @@ import CouponHeader from 'components/CouponHeader';
 import ProductDetail from 'components/ProductDetail';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-import LazyLoad from 'react-lazyload';
 import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
 import { fetchMerchandize, fetchSpecificCoupons, fetchStoreInfo } from './actions';
 
@@ -86,18 +86,18 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                  ('')
               }
               <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
-                {
-                this.state.merchandize.map((product) => (
-                  <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
-                    <LazyLoad height={200} offset={200}>
+                <CloudinaryContext cloudName="dw3arrxnf">
+                  {
+                  this.state.merchandize.map((product) => (
+                    <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
                       <ProductDetail
                         product={product}
                         onTouchTap={() => this.props.handleOpenModal(product)}
                       />
-                    </LazyLoad>
-                  </li>
-                ))
-                }
+                    </li>
+                  ))
+                  }
+                </CloudinaryContext>
               </ul>
             </Col>
             <MerchantProfile info={this.state.info} />
