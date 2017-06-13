@@ -808,7 +808,7 @@ buyerdiv*/
 
 @media (max-width: 768px) {
   .dashtech {
-    margin-top: 64px !important;
+    margin-top: 29px !important;
     background: #edecec !important;
     min-height: 100vh;
   }
@@ -816,7 +816,7 @@ buyerdiv*/
 
 @media (min-width: 768px) {
   .dashtech {
-    margin-top: 64px !important;
+    margin-top: 29px !important;
     background: #edecec !important;
     min-height: 100vh; 
   }
