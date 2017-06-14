@@ -9,8 +9,12 @@ import {
   fetchAPI,
   updateAPI,
   CATEGORY_ITEM,
+  DELETE_CATEGORY,
+  deleteAPI,
 } from './constants';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
+
 import Auth from '../Utils';
 
 // Token
@@ -65,3 +69,18 @@ export const fetchCategory = (categoryId) => (dispatch) => {
     });
   });
 };
+
+export const deleteCategory = (id) => (dispatch) => {
+  axios
+  .delete(`${deleteAPI}/${id}`)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      browserHistory.push('/dashboard/category');
+    } else {
+      dispatch({
+        type: DELETE_CATEGORY.ERROR,
+        errors: response.data.errors,
+      });
+    }
+  })
+}

@@ -6,15 +6,19 @@
 
 import React from 'react';
 import CategoryForm from 'components/CategoryForm';
+import shortid from 'shortid';
 import Paper from 'material-ui/Paper';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
 import Divider from 'material-ui/Divider';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import { connect } from 'react-redux';
 import { gems } from './gem';
-import { updateCategory, fetchCategory } from './actions';
+import { updateCategory, fetchCategory, deleteCategory } from './actions';
 
 export class CategoryBackendEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -78,6 +82,20 @@ export class CategoryBackendEdit extends React.Component { // eslint-disable-lin
       <Grid>
         <Row>
           <Col xs={12} md={10} mdPush={1}>
+            <Card style={{ marginTop: 20 }}>
+              <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Category Infomation" />
+              <CardActions>
+                <FlatButton
+                  icon={<DeleteIcon />}
+                  label="Delete"
+                  onTouchTap={() => this.props.deleteCategory(this.state.categoryId)}/>
+                <FlatButton icon={<ExitIcon />} label="Back to category list" href="/dashboard/category"/>
+              </CardActions>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={10} mdPush={1}>
             <Card style={{ marginTop: 30 }} initiallyExpanded>
               <CardHeader
                 title={name}
@@ -131,6 +149,7 @@ const mapStateToProps = ({ categoryEdit }) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateCategory: (id, category) => dispatch(updateCategory(id, category)),
   fetchCategory: (categoryId) => dispatch(fetchCategory(categoryId)),
+  deleteCategory: (id) => dispatch(deleteCategory(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryBackendEdit);

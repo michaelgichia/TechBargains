@@ -4,29 +4,16 @@
  *
  */
 
-import { DELETE_CATEGORY } from './constants';
+import {
+  DEFAULT_ACTION,
+} from './constants';
 
-const initialState = {
-  categories: [],
-  errors: '',
-  message: '',
-};
+const initialState = {};
 
 function categoryPageReducer(state = initialState, action) {
   switch (action.type) {
-    case DELETE_CATEGORY.SUCCESS:
-      return {
-        ...state,
-        categories: action.categories,
-      };
-
-    case DELETE_CATEGORY.ERROR:
-      return {
-        ...state,
-        errors: action.errors,
-        categories: action.categories,
-      };
-
+    case DEFAULT_ACTION:
+      return state;
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import CategoryForm from 'components/CategoryForm';
-import React, { PropTypes } from 'react';
+import React from 'react';
 import shortid from 'shortid';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -18,12 +18,7 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { gems } from './gems';
-import Auth from '../Utils';
-import { deleteCategory } from './actions';
 
-// token
-const token = `bearer ${Auth.getToken()}`;
-axios.defaults.headers.common.Authorization = token;
 
 export class CategoryPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -33,7 +28,6 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     errors: '',
     message: '',
     description: '',
-    isFeatured: false,
     categories: [],
   } // eslint-disable-line
 
@@ -48,17 +42,6 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.categories !== this.state.categories) {
-      this.setState({ categories: nextProps.categories });
-    }
-    if (nextProps.errors !== this.state.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-    if (nextProps.message !== this.state.message) {
-      this.setState({ message: nextProps.message });
-    }
-  }
 
   /**
    * Update isFeatured in the state and clear error.
@@ -93,15 +76,10 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     if (name.length < 1) {
       this.setState({ nameError: 'This field is required.' });
     } else {
-      const { name, isFeatured, description } = this.state;
+      const { isFeatured, description } = this.state;
       this.postCategory({ name, isFeatured, description });
       this.setState((prevState) => ({ name: '', isFeatured: false, description: '' }));
     }
-  };
-
-  handleRowSelection = (selectedRows) => {
-    const categoryId = this.state.categories[selectedRows].id;
-    this.props.deleteCategory(categoryId);
   };
 
   render() {
@@ -133,32 +111,30 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
               <Table
                 fixedHeader
                 selectable
-                height="500px"
+                height="300px"
                 bodyStyle={gems.bodyStyle}
                 wrapperStyle={gems.wrapperStyle}
               >
                 <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                   <TableRow>
-                    <TableHeaderColumn colSpan="12" tooltip="A List Of Categories" style={{ textAlign: 'center', fontSize: 24, color: 'black' }}>
+                    <TableHeaderColumn colSpan="12" tooltip="A List Of Categories" style={{ textAlign: 'center', fontSize: 28, color: 'black', padding: 10 }}>
                     A List Of Categories
                   </TableHeaderColumn>
                   </TableRow>
                   <TableRow>
-                    <TableHeaderColumn colSpan="7" >Categories</TableHeaderColumn>
-                    <TableHeaderColumn colSpan="2" >isFeatured</TableHeaderColumn>
-                    <TableHeaderColumn colSpan="3" >Delete</TableHeaderColumn>
+                    <TableHeaderColumn colSpan="10" style={{fontSize: 20}}>Categories</TableHeaderColumn>
+                    <TableHeaderColumn colSpan="2" style={{fontSize: 20}}>Featured</TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false} deselectOnClickaway preScanRows={false}>
                   {this.state.categories.map((row, index) => (
                     <TableRow key={shortid.generate()}>
-                      <TableRowColumn colSpan="7">
+                      <TableRowColumn colSpan="10">
                         <Link to={`/dashboard/category/${row.id}/update`}>
                         {row.name}
                         </Link>
                       </TableRowColumn>
                       <TableRowColumn colSpan="2">{row.isFeatured ? 'true' : 'false'}</TableRowColumn>
-                      <TableRowColumn colSpan="2">&times;</TableRowColumn>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -175,13 +151,11 @@ CategoryPage.propTypes = {
 };
 
 const mapStateToProps = ({ category }) => ({
-  categories: category.categories,
-  message: category.message,
-  errors: category.errors,
+  category
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteCategory: (id) => dispatch(deleteCategory(id)),
+  dispatch
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage);

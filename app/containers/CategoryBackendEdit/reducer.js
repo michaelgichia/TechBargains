@@ -6,11 +6,12 @@
 
 import {
   CATEGORY_ITEM,
+  DELETE_CATEGORY
 } from './constants';
 
 const initialState = {
   category: [],
-  errors: ''
+  errors: '',
 };
 
 function categoryBackendEditReducer(state = initialState, action) {
@@ -22,6 +23,12 @@ function categoryBackendEditReducer(state = initialState, action) {
       };
 
     case CATEGORY_ITEM.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
+    case DELETE_CATEGORY.ERROR:
       return {
         ...state,
         errors: action.errors,
