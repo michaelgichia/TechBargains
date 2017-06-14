@@ -1,12 +1,12 @@
 const express = require('express');
-const subController = require('../controllers/public.category.controller');
+const categoryController = require('../controllers/public.category.controller');
 const banController = require('../controllers/public.banner.controller');
 const itemController = require('../controllers/public.item.controller');
 const merchantController = require('../controllers/public.merchant.controller');
 const router = express.Router();
 
 router.get('/subcategory', (req, res) => {
-  subController.findCategoriesAndSubscategories(req.query, false)
+  categoryController.findCategoriesAndSubscategories(req.query, false)
   .then((entities) => {
     res.json({
       confirmation: 'success',

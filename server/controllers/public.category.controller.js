@@ -29,32 +29,24 @@ const findById = (id) =>
   });
 
 const findCategoriesAndSubscategories = (params) => {
-  const categories = [];
-  const summaries = [];
+  const categoriesArray = [];
   return new Promise((resolve, reject) => {
-    Category.find(params, (err, results) => {
+    Category.find(params, (err, categories) => {
       if (err) {
         reject(err);
         return;
       }
-      results.map((val) => categories.push(val));
+      categories.map((category) => categoriesArray.push(category.summaryName()));
 
-      categories.map((val, index) => {
-        summaries.push(new Object());
-        summaries[index].name = val.name;
-        summaries[index].id = val._id.toString();
-        summaries[index].categoryArray = [];
-      });
-
-      summaries.map((sub) => {
-        SubCategory.find({ category: sub.id }, (err, resultss) => {
+      categoriesArray.map((category) => {
+        SubCategory.find({ category: category.ids }, (err, navItems) => {
           if (err) {
             reject(err);
           }
-          resultss.map((result) => {
-            sub.categoryArray.push(result.title);
+          navItems.map((navItem) => {
+            category.categoryArray.push(navItem.summary());
           });
-          resolve(summaries);
+          resolve(categoriesArray);
         });
       });
     });

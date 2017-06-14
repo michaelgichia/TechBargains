@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import TopNav from 'containers/TopNav';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { fetchNavItems } from './actions';
 
@@ -43,7 +44,7 @@ class Navigation extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.navItems !== this.state.navItems) {
+    if (nextProps.navItems.length > 0 && nextProps.navItems !== this.state.navItems) {
       this.setState((prevState, props) => ({ navItems: props.navItems }));
     }
     if (nextProps.errors !== this.state.errors) {
@@ -57,14 +58,15 @@ class Navigation extends React.Component {
     this.setState({ expanded: !this.state.expanded });
   };
 
-  generateNavIndex = (index, i) => ((index + 1) + ((i + 1) / 10));
+  handleMenuItemOnselect = (eventKey, event) => browserHistory.push(`/category/${eventKey}`);;
 
-  displayItems = (items, index) => items.map((val, i) => (
+  displayItems = (navItems) => navItems.map((navItem) => (
     <MenuItem
+      onSelect={this.handleMenuItemOnselect}
       key={shortid.generate()}
-      eventKey={this.generateNavIndex(index, i)}
+      eventKey={navItem.id}
     >
-      {val}
+      { navItem.title }
     </MenuItem>
   ));
 
@@ -83,14 +85,14 @@ class Navigation extends React.Component {
           <NavbarCollapse>
             <Nav>
               {
-                this.state.navItems.map((value, index) => (
+                this.state.navItems.map((navItem, index) => (
                   <NavDropdown
-                    key={index}
-                    eventKey={index + 1}
-                    title={value.name}
+                    key={shortid.generate()}
+                    eventKey={navItem.id}
+                    title={navItem.name}
                     id="basic-nav-dropdown"
                   >
-                    { this.displayItems(value.categoryArray, index) }
+                    { this.displayItems(navItem.categoryArray) }
                   </NavDropdown>
                 ))
               }

@@ -19,7 +19,6 @@ SubCategorySchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
     title: this.title,
-    category: this.category,
   };
 
   return summary;

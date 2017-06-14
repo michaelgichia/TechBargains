@@ -346,6 +346,24 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/category/:categoryId',
+      name: 'categoryFrontPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/CategoryFrontPage/reducer'),
+          import('containers/CategoryFrontPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('categoryFrontPage', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

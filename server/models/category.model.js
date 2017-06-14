@@ -24,4 +24,15 @@ CategorySchema.methods.summary = function () {// eslint-disable-line
   return summary;
 };
 
+CategorySchema.methods.summaryName = function () {// eslint-disable-line
+  const summaryName = {
+    id: this._id.toString(),// eslint-disable-line
+    ids: this._id,// eslint-disable-line
+    name: this.name,
+    categoryArray: [],
+  };
+
+  return summaryName;
+};
+
 module.exports = mongoose.model('Category', CategorySchema);

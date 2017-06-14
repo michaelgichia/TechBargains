@@ -12,7 +12,6 @@ import {
 export const fetchNavItems = () => (dispatch) => {
   axios.get(navItemsBaseAPI)
   .then((response) => {
-    console.log({response: response.data.results})
     if (response.data.confirmation === 'success') {
       dispatch({
         type: NAVITEMS.SUCCESS,
