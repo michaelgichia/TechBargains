@@ -3,6 +3,8 @@ const categoryController = require('../controllers/public.category.controller');
 const banController = require('../controllers/public.banner.controller');
 const itemController = require('../controllers/public.item.controller');
 const merchantController = require('../controllers/public.merchant.controller');
+const categoryController = require('../controllers/public.category.controller');
+
 const router = express.Router();
 
 router.get('/subcategory', (req, res) => {
@@ -13,10 +15,10 @@ router.get('/subcategory', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -29,10 +31,10 @@ router.get('/carousels', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -45,10 +47,10 @@ router.get('/featured-coupons', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -61,10 +63,10 @@ router.get('/featured-deals', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -77,10 +79,10 @@ router.get('/featured-stores', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -97,10 +99,10 @@ router.get('/specific-stores/:storeId', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -116,10 +118,10 @@ router.get('/specific-coupons/:couponsId', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -132,10 +134,29 @@ router.get('/trending-deals', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
+    });
+  });
+});
+
+router.get('/specific-category/:categoryId', (req, res) => {
+
+  const id = req.params.categoryId;
+
+  itemController.findSpecificCategory(id)
+  .then((entities) => {
+    res.json({
+      confirmation: 'success',
+      results: entities,
+    });
+  })
+  .catch((errors) => {
+    res.json({
+      confirmation: 'fail',
+      errors,
     });
   });
 });

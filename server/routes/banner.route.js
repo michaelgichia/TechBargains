@@ -34,11 +34,11 @@ router.post('/create', (req, res) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Banner not saved!',
-      error: err,
+      error,
     });
   });
 });
@@ -54,7 +54,7 @@ router.delete('/:bannerId', (req, res) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -67,11 +67,11 @@ router.delete('/:bannerId', (req, res) => {
       message: 'Banner successfully deleted.',
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Banner not found.',
-      errors: err,
+      errors,
     });
   });
 });
@@ -96,7 +96,7 @@ router.put('/update/:bannerId', (req, res) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -109,10 +109,10 @@ router.put('/update/:bannerId', (req, res) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });

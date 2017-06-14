@@ -28,10 +28,10 @@ router.post('/create', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -47,7 +47,7 @@ router.delete('/:subcategoryId', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -60,11 +60,11 @@ router.delete('/:subcategoryId', (req, res, next) => {
       message: 'Sub-Category successfully deleted.',
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Sub-Category not found.',
-      errors: err,
+      errors,
     });
   });
 });

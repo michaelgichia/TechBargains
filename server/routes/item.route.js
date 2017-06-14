@@ -45,10 +45,10 @@ router.post('/create', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -100,10 +100,10 @@ router.put('/update/:itemId', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -118,7 +118,7 @@ router.post('/update/:itemId', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -131,10 +131,10 @@ router.post('/update/:itemId', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -151,7 +151,7 @@ router.delete('/:itemId', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -164,11 +164,11 @@ router.delete('/:itemId', (req, res, next) => {
       message: 'Item successfully deleted.',
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Item not found.',
-      errors: err,
+      errors,
     });
   });
 });

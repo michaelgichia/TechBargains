@@ -140,6 +140,27 @@ const findTrendingDeals = (params) =>
     });
   });
 
+const findSpecificCategory = (id) =>
+  new Promise((resolve, reject) => {
+    Item.find({ category: id })
+        .limit(20)
+        .sort('-date')
+        .populate('subCategory', '-_id title')
+        .populate('category', '-_id name')
+        .populate('merchant', '-_id title')
+        .exec((err, categories) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          categories.forEach((category) => {
+            summaries.push(category.summary());
+          });
+          resolve(summaries);
+        });
+  });
+
 module.exports = {
   find,
   findById,
@@ -148,4 +169,5 @@ module.exports = {
   findSpecificDeals,
   findSpecificCoupons,
   findTrendingDeals,
+  findSpecificCategory,
 };

@@ -21,10 +21,10 @@ router.get('/:resource', (req, res) => {
       results: entities,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -49,10 +49,11 @@ router.get('/:resource/:id', (req, res) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: 'Resource not found!' || err,
+      message: 'Resource not found!',
+      errors,
     }).end();
   });
 });

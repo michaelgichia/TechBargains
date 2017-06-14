@@ -21,7 +21,7 @@ router.post('/create', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -32,10 +32,10 @@ router.post('/create', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -63,7 +63,7 @@ router.put('/update/:merchantId', (req, res, next) => {
   if (errors) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -76,10 +76,10 @@ router.put('/update/:merchantId', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
-      message: err,
+      errors,
     });
   });
 });
@@ -95,7 +95,7 @@ router.delete('/:merchantId', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
@@ -108,11 +108,11 @@ router.delete('/:merchantId', (req, res, next) => {
       message: 'Merchant successfully deleted.',
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Merchant not found.',
-      errors: err,
+      errors,
     });
   });
 });
