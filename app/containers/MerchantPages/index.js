@@ -38,16 +38,16 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.merchandize !== this.state.merchandize) {
-      this.setState({ merchandize: nextProps.merchandize });
+      this.setState((prevState, props) => ({ merchandize: nextProps.merchandize }));
     }
     if (nextProps.coupons !== this.state.coupons) {
-      this.setState({ coupons: nextProps.coupons });
+      this.setState((prevState, props) => ({ coupons: nextProps.coupons }));
     }
     if (nextProps.info !== this.state.info) {
-      this.setState({ info: nextProps.info });
+      this.setState((prevState, props) => ({ info: nextProps.info }));
     }
     if (nextProps.errors !== this.state.errors) {
-      this.setState({ errors: nextProps.errors });
+      this.setState((prevState, props) => ({ errors: nextProps.errors }));
     }
   }
 

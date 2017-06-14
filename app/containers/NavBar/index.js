@@ -6,7 +6,8 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import TopNav from 'containers/TopNav';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchNavItems } from './actions';
 
 const gems65 = {
   navbar: {
@@ -38,13 +39,16 @@ class Navigation extends React.Component {
   };
 
   componentDidMount() {
-    axios.get('/public-api/all/subcategory')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        this.setState({ navItems: [...response.data.results] });
-      }
-      console.info('err', response.data.errors);
-    });
+    this.props.fetchNavItems();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.navItems !== this.state.navItems) {
+      this.setState((prevState, props) => ({ navItems: props.navItems }));
+    }
+    if (nextProps.errors !== this.state.errors) {
+      this.setState((prevState, props) => ({ errors: props.errors }));
+    }
   }
 
   handleToggle = () => this.setState({ expanded: !this.state.expanded });
@@ -98,5 +102,14 @@ class Navigation extends React.Component {
   }
 }
 
-export default Navigation;
+const mapStateToProps = ({ navItems }) => ({
+  navItems: navItems.navItems,
+  errors: navItems.errors,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchNavItems: () => dispatch(fetchNavItems()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
 

@@ -5,15 +5,28 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  NAVITEMS,
 } from './constants';
 
-const initialState = {};
+const initialState = {
+  navItems: [],
+  errors: '',
+};
 
 function navBarReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case NAVITEMS.SUCCESS:
+      return {
+        ...state,
+        navItems: action.navItems,
+      };
+
+    case NAVITEMS.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
     default:
       return state;
   }
