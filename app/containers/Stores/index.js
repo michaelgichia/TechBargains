@@ -5,7 +5,6 @@
  */
 
 import React, { PropTypes } from 'react';
-import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router';
 import CouponHeader from 'components/CouponHeader';
 import { connect } from 'react-redux';
@@ -35,7 +34,7 @@ export class Stores extends React.PureComponent { // eslint-disable-line react/p
   renderStores = (stores) => (
     stores.map((store) => (
       <div className="featured-store" key={shortid.generate()}>
-        <Link to={`/${store.id}`}><span className="store-link"></span></Link>
+        <Link to={`/merchant/${store.id}`}><span className="store-link"></span></Link>
           <Image publicId={store.imageUrl}>
               <Transformation crop="scale"  height="90" dpr="auto" />
           </Image>

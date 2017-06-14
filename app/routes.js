@@ -328,7 +328,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/:storeId',
+      path: '/merchant/:storeId',
       name: 'merchantPages',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -340,42 +340,6 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, component]) => {
           injectReducer('merchantPages', reducer.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/modal',
-      name: 'reactModal',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/ReactModal/reducer'),
-          import('containers/ReactModal'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('reactModal', reducer.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/modal/modal',
-      name: 'reactModal',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/ReactModal/reducer'),
-          import('containers/ReactModal'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('reactModal', reducer.default);
           renderRoute(component);
         });
 

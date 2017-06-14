@@ -21,7 +21,7 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
             <Image
               cloudName="dw3arrxnf"
               publicId={this.props.info.public_id}
-              width="200"
+              width="150"
               crop="scale"
             />
           </div>
