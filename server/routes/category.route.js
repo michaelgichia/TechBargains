@@ -9,6 +9,7 @@ router.post('/create', (req, res, next) => {
   req.assert('isFeatured', 'isFeatured must not be empty.').notEmpty();
   req.sanitize('name').trim();
   req.sanitize('isFeatured').trim();
+  req.sanitize('description').trim();
 
   // Errors
   const errors = req.validationErrors();
@@ -27,17 +28,55 @@ router.post('/create', (req, res, next) => {
       result,
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Category not saved!',
-      error: err,
+      errors,
     });
   });
 });
 
+router.put('/:id', (req, res) => {
+  // Sanitize id passed in.
+  req.sanitize('id').escape();
+  req.sanitize('id').trim();
+
+  req.assert('name', 'Name must not be empty.').notEmpty();
+  req.assert('isFeatured', 'isFeatured must not be empty.').notEmpty();
+  req.sanitize('name').trim();
+  req.sanitize('isFeatured').trim();
+  req.sanitize('description').trim();
+
+  // Errors
+  const errors = req.validationErrors();
+  if (errors.length > 0) {
+    return res.json({
+      confirmation: 'fail',
+      errors,
+    }).end();
+  }
+
+  const id = req.params.id;
+
+  controllers.update(id, req.body)
+  .then((result) => {
+    res.json({
+      confirmation: 'success',
+      result,
+    });
+  })
+  .catch((errors) => {
+    res.json({
+      confirmation: 'fail',
+      errors,
+    });
+  });
+});
+
+
 // delete Category.
-router.delete('/:categoryId', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   // Sanitize id passed in.
   req.sanitize('id').escape();
   req.sanitize('id').trim();
@@ -47,11 +86,11 @@ router.delete('/:categoryId', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      message: errors,
+      errors,
     }).end();
   }
 
-  const id = { _id: req.params.categoryId };
+  const id = { _id: req.params.id };
 
   controllers.deleteCategory(id)
   .then(() => {
@@ -60,11 +99,11 @@ router.delete('/:categoryId', (req, res, next) => {
       message: 'Category successfully deleted.',
     });
   })
-  .catch((err) => {
+  .catch((errors) => {
     res.json({
       confirmation: 'fail',
       message: 'Category not found.',
-      errors: err,
+      errors,
     });
   });
 });

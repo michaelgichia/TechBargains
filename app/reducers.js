@@ -25,6 +25,7 @@ import merchantPagesReducer from 'containers/MerchantPages/reducer';
 import reactModalReducer from 'containers/ReactModal/reducer';
 import productReducer from 'containers/Product/reducer';
 import navBarReducer from 'containers/NavBar/reducer';
+import categoryBackendEditReducer from 'containers/CategoryBackendEdit/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -36,6 +37,7 @@ export default function createReducer(asyncReducers) {
     auth: registerPageReducer,
     authorize: loginPageReducer,
     category: categoryPageReducer,
+    categoryEdit: categoryBackendEditReducer,
     panel: dashboardReducer,
     item: addDealReducer,
     merchant: storePageReducer,

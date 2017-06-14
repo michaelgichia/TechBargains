@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactEditor from "components/ReactEditor";
 import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from "material-ui/MenuItem";
 import Subheader from 'material-ui/Subheader';
 
 const gems = {
@@ -17,7 +19,7 @@ class CategoryForm extends React.PureComponent { // eslint-disable-line react/pr
       <div>
         {this.props.errors && <p>{this.props.errors}</p>}
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>Create Category</Subheader>
+        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{this.props.header}</Subheader>
         <TextField
           hintText="Category"
           floatingLabelText="category"
@@ -29,14 +31,26 @@ class CategoryForm extends React.PureComponent { // eslint-disable-line react/pr
           multiLine
           rows={1}
         />
-        <Toggle
-          label="Is Category featured ?"
-          defaultToggled={false}
-          style={gems.toggle}
-          onToggle={this.props.onToggle}
-          labelPosition="right"
-          toggled={this.props.toggled}
+        <br/>
+        <ReactEditor
+          id="description"
+          placeholder="Description"
+          onChange={this.props.onDescriptionChange}
+          value={this.props.description}
         />
+        <br/>
+        <SelectField
+          hintText="Is Category featured ?"
+          floatingLabelText="Is Category featured ?"
+          id="isFeatured"
+          value={this.props.isFeatured}
+          onChange={this.props.onFeaturedChange}
+          maxHeight={200}
+          fullWidth
+        >
+          <MenuItem value={true} primaryText="Yes, Category is featured!" />
+          <MenuItem value={false} primaryText="No" />
+        </SelectField>
         <RaisedButton
           label="Save"
           primary
@@ -54,8 +68,11 @@ CategoryForm.propTypes = {
   name: PropTypes.string.isRequired,
   errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  onToggle: PropTypes.func.isRequired,
-  toggled: PropTypes.bool.isRequired,
+  onDescriptionChange: PropTypes.func.isRequired,
+  description: PropTypes.string.isRequired,
+  isFeatured: PropTypes.bool.isRequired,
+  onFeaturedChange: PropTypes.func.isRequired,
+  header: PropTypes.string.isRequired,
 };
 
 export default CategoryForm;

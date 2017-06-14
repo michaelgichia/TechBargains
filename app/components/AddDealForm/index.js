@@ -1,5 +1,5 @@
-import ReactEditor from "components/ReactEditor";
 import React from "react";
+import ReactEditor from "components/ReactEditor";
 import PropTypes from "prop-types";
 import shortid from "shortid";
 import Dropzone from 'react-dropzone'

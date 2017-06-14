@@ -6,8 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import makeSelectCategoryFrontPage from './selectors';
+
 
 export class CategoryFrontPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -23,14 +22,12 @@ CategoryFrontPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  CategoryFrontPage: makeSelectCategoryFrontPage(),
+const mapStateToProps = ({ category }) => ({
+  category
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryFrontPage);

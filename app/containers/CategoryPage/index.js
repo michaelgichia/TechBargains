@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Paper from 'material-ui/Paper';
 import axios from 'axios';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 // Material
 import {
@@ -31,10 +32,12 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     nameError: '',
     errors: '',
     message: '',
+    description: '',
+    isFeatured: false,
     categories: [],
   } // eslint-disable-line
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get('/public-api/category')
     .then((response) => {
       if (response.data.confirmation === 'success') {
@@ -57,16 +60,21 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     }
   }
 
+  /**
+   * Update isFeatured in the state and clear error.
+  */
+  handleIsFeatured = (e, i, value) => this.setState({ isFeatured: value });
+
+  handleDescription = (description) => this.setState({ description });
+
   handleChange = (e) => {
     this.setState({ nameError: '' });
     this.setState({ name: e.target.value });
   };
 
-  handleToggle = (e, isInputChecked) => this.setState({ isFeatured: isInputChecked });
-
-  postCategory = (title) => {
+  postCategory = (data) => {
     const updateCategories = this.state.categories;
-    axios.post('/api/category/create', title)
+    axios.post('/api/category/create', data)
     .then((response) => {
       if (response.data.confirmation === 'success') {
         updateCategories.push(response.data.result);
@@ -85,8 +93,9 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
     if (name.length < 1) {
       this.setState({ nameError: 'This field is required.' });
     } else {
-      this.postCategory({ name: this.state.name, isFeatured: this.state.isFeatured });
-      this.setState({ name: '', isFeatured: false });
+      const { name, isFeatured, description } = this.state;
+      this.postCategory({ name, isFeatured, description });
+      this.setState((prevState) => ({ name: '', isFeatured: false, description: '' }));
     }
   };
 
@@ -96,21 +105,24 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
   };
 
   render() {
-    const { nameError, name, errors, message } = this.state;
+    const { nameError, name, errors, message, description, isFeatured } = this.state;
     return (
       <Grid>
         <Row>
           <Col xs={12} md={10} mdPush={1}>
             <Paper zDepth={1} rounded={false} style={gems.paper}>
               <CategoryForm
+                header="Create Category"
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
                 nameError={nameError}
                 name={name}
                 errors={errors}
                 message={message}
-                onToggle={this.handleToggle}
-                toggled={this.state.isFeatured}
+                onDescriptionChange={this.handleDescription}
+                description={description}
+                isFeatured={isFeatured}
+                onFeaturedChange={this.handleIsFeatured}
               />
             </Paper>
           </Col>
@@ -122,7 +134,6 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
                 fixedHeader
                 selectable
                 height="500px"
-                onRowSelection={this.handleRowSelection}
                 bodyStyle={gems.bodyStyle}
                 wrapperStyle={gems.wrapperStyle}
               >
@@ -141,7 +152,11 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
                 <TableBody displayRowCheckbox={false} deselectOnClickaway preScanRows={false}>
                   {this.state.categories.map((row, index) => (
                     <TableRow key={shortid.generate()}>
-                      <TableRowColumn colSpan="7">{row.name}</TableRowColumn>
+                      <TableRowColumn colSpan="7">
+                        <Link to={`/dashboard/category/${row.id}/update`}>
+                        {row.name}
+                        </Link>
+                      </TableRowColumn>
                       <TableRowColumn colSpan="2">{row.isFeatured ? 'true' : 'false'}</TableRowColumn>
                       <TableRowColumn colSpan="2">&times;</TableRowColumn>
                     </TableRow>

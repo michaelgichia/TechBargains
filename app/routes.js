@@ -310,24 +310,6 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
-      path: '/storeId',
-      name: 'merchantPages',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/MerchantPages/reducer'),
-          import('containers/MerchantPages'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('merchantPages', reducer.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    }, {
       path: '/merchant/:storeId',
       name: 'merchantPages',
       getComponent(nextState, cb) {
@@ -358,6 +340,25 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, component]) => {
           injectReducer('categoryFrontPage', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      onEnter: redirectToLogin,
+      path: '/dashboard/category/:categoryId/update',
+      name: 'categoryBackendEdit',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/CategoryBackendEdit/reducer'),
+          import('containers/CategoryBackendEdit'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('categoryBackendEdit', reducer.default);
           renderRoute(component);
         });
 

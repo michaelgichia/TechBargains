@@ -8,6 +8,12 @@ const CategorySchema = new Schema({
     trim: true,
     max: 100,
   },
+  description: {
+    type: String,
+    trim: true,
+    max: 10000,
+    default: '',
+  },
   isFeatured: {
     type: Boolean,
     default: false,
@@ -18,6 +24,7 @@ CategorySchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
     name: this.name,
+    description: this.description,
     isFeatured: this.isFeatured,
   };
 
