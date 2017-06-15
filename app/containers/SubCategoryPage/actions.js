@@ -1,33 +1,64 @@
 import axios from 'axios';
-import Auth from '../Utils';
 import {
-    SUBCATEGORY_SUCCESS,
-    SUBCATEGORY_ERROR } from './constants';
+  SUBCATEGORY,
+  SUBCATEGORY_SUBCATEGORY_ITEM,
+  SUBCATEGORY_CATEGORY_ITEMS,
+  categoryAPI,
+  createCategoryAPI,
+  subCategoryAPI,
+} from './constants';
 
-// token
-const token = `bearer ${Auth.getToken()}`;
-axios.defaults.headers.common.Authorization = token;
+export const postSubCategory = (subCategory) => (dispatch) => {
+  axios
+  .post(createCategoryAPI, subCategory)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      dispatch({
+        type: SUBCATEGORY.SUCCESS,
+        message: 'Subcategory is successfully saved.',
+        subCategory: response.data.result
+      });
+    } else {
+      dispatch({
+        type: SUBCATEGORY.ERROR,
+        errors: response.data.errors,
+      });
+    }
+  });
+};
 
-export const postSubCategory = (name) => (dispatch) => {
-  axios.post('/api/subcategory/create', name)
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        dispatch({
-          type: SUBCATEGORY_SUCCESS,
-          message: 'Subcategory is successfully saved.',
-        });
-      } else {
-      // Check if error is array or string.
-        const newError = [];
-        if (typeof response.data.message === 'string') {
-          newError.push(response.data.message);
-        } else {
-          response.data.message.map((error, i) => newError.push(error.msg));
-        }
-        dispatch({
-          type: SUBCATEGORY_ERROR,
-          errors: newError,
-        });
-      }
-    });
+export const getCategories = () => (dispatch) => {
+  axios
+  .get(categoryAPI)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      dispatch({
+        type: SUBCATEGORY_SUBCATEGORY_ITEM.SUCCESS,
+        categories: response.data.results,
+      });
+    } else {
+      dispatch({
+        type: SUBCATEGORY_SUBCATEGORY_ITEM.ERROR,
+        errors: response.data.errors,
+      });
+    }
+  });
+};
+
+export const getSubCategories = () => (dispatch) => {
+  axios
+  .get(subCategoryAPI)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      dispatch({
+        type: SUBCATEGORY_CATEGORY_ITEMS.SUCCESS,
+        subCategories: response.data.results,
+      });
+    } else {
+      dispatch({
+        type: SUBCATEGORY_CATEGORY_ITEMS.ERROR,
+        errors: response.data.errors,
+      });
+    }
+  });
 };

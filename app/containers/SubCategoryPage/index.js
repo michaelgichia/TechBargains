@@ -16,12 +16,11 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { connect } from 'react-redux';
-import { getCategories } from 'containers/Dashboard/actions';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Auth from '../Utils';
-import { postSubCategory } from './actions';
+import { postSubCategory, getCategories, getSubCategories } from './actions';
 
 // token
 const token = `bearer ${Auth.getToken()}`;
@@ -35,20 +34,14 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
     categoryError: '',
     errors: '',
     message: '',
-    subcategories: [],
+    subCategories: [],
     description: '',
+    categories: [],
   }// eslint-disable-line
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getCategories();
-    axios.get('/public-api/subcategory')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        this.setState({ subcategories: [...response.data.results] });
-      } else {
-        this.setState({ errors: response.data.errors });
-      }
-    });
+    this.props.getSubCategories();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -56,7 +49,13 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
       this.setState({ errors: nextProps.errors });
     }
     if (nextProps.message !== this.state.message) {
-      this.setState({ errors: [], message: nextProps.message });
+      this.setState({ errors: '', message: nextProps.message });
+    }
+    if (nextProps.categories !== this.state.categories) {
+      this.setState({ categories: nextProps.categories });
+    }
+    if (nextProps.subCategories !== this.state.subCategories) {
+      this.setState({ subCategories: nextProps.subCategories });
     }
   }
 
@@ -132,17 +131,17 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
    * add categories before adding a subcategory.
   */
   render() {
-    const { categories } = this.props;
-    const { title, category, titleError, categoryError, errors, message, description } = this.state;
+    const { 
+      categories,
+      title,
+      category,
+      titleError,
+      categoryError,
+      errors,
+      message,
+      description 
+    } = this.state;
     const categoryArray = this.displayCategories(categories);
-
-    if (categories.length < 1) {
-      return (
-        <div>
-          <h4>...loading</h4>
-        </div>
-      );
-    }
 
     return (
       <Grid>
@@ -158,6 +157,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
                 titleError={titleError}
                 categoryError={categoryError}
                 title={title}
+                header="Create Subcategory"
                 errors={errors}
                 message={message}
                 onDescriptionChange={this.handleDescription}
@@ -187,7 +187,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
                   </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false} deselectOnClickaway preScanRows={false}>
-                  {this.state.subcategories.map((row) => (
+                  {this.state.subCategories.map((row) => (
                     <TableRow key={shortid.generate()}>
                       <TableRowColumn colSpan="12">
                         <Link to={`/dashboard/sub-category/${row.id}/update`}>
@@ -212,15 +212,17 @@ SubCategoryPage.propTypes = {
   postSubCategory: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ panel, subcategory }) => ({
-  categories: panel.categories,
+const mapStateToProps = ({ subcategory }) => ({
+  categories: subcategory.categories,
+  subCategories: subcategory.subCategories,
   message: subcategory.message,
   errors: subcategory.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  postSubCategory: (sub) => dispatch(postSubCategory(sub)),
+  postSubCategory: (subCategory) => dispatch(postSubCategory(subCategory)),
   getCategories: () => dispatch(getCategories()),
+  getSubCategories: () => dispatch(getSubCategories()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryPage);
