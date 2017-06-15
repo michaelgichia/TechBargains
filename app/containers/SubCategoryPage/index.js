@@ -61,11 +61,19 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
 
   handleDescription = (description) => this.setState({ description });
 
+  // resetState = () => {
+  //   this.setState({
+  //     title: '',
+  //     category: '',
+  //   });
+  // };
+
   resetState = () => {
-    this.setState({
+    this.setState((prevState) => ({
       title: '',
       category: '',
-    });
+      description: ''
+    }));
   };
 
   /**
