@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import ProductDetail from 'components/ProductDetail';
 import CouponHeader from 'components/CouponHeader';
 import MerchantCoupon from 'components/MerchantCoupon';
+import MerchantProfile from 'components/MerchantProfile';
 import CategoryInfo from 'components/CategoryInfo';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -25,7 +26,8 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
     deals: [],
     coupons: [],
     info: {
-      title: ""
+      title: "",
+      about: "",
     },
     errors: "",
   }
@@ -38,7 +40,7 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
   }
 
   componentWillReceiveProps(nextProps) {
-
+    // console.log({nextProps})
     if (nextProps.deals !== this.state.deals) {
       this.setState((prevState, props) => ({ deals: nextProps.deals }));
     }
@@ -46,7 +48,10 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
       this.setState((prevState, props) => ({ coupons: nextProps.coupons }));
     }
     if (nextProps.info !== this.state.info) {
-      this.setState((prevState, props) => ({ info: nextProps.info }));
+      const updatedInfo = {...this.state.info};
+      updatedInfo.title = nextProps.info.title;
+      updatedInfo.about = nextProps.info.description;
+      this.setState((prevState, props) => ({ info: updatedInfo }));
     }
     if (nextProps.errors !== this.state.errors) {
       this.setState((prevState, props) => ({ errors: nextProps.errors }));
@@ -89,6 +94,7 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
                 }
               </ul>
             </Col>
+            <MerchantProfile info={this.state.info} />
           </Row>
         </div>
       </Grid>
