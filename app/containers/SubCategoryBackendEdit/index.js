@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import SubCategoryForm from 'components/SubCategoryForm';
 import MenuItem from 'material-ui/MenuItem';
 import shortid from 'shortid';
@@ -13,6 +14,7 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import { connect } from 'react-redux';
+import RaisedButton from 'material-ui/RaisedButton';
 import { updateSubCategory, fetchSubCategory, deleteSubCategory, getCategories } from './actions';
 
 export class SubCategoryBackendEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -144,6 +146,21 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
                 description={description}
                 header="Update SubCategory"
               />
+              <div style={{ minWidth: "100%" }}>
+                <RaisedButton
+                  label="Delete"
+                  primary={true} 
+                  style={style}
+                  onTouchTap={() => this.props.deleteSubCategory(this.state.subcategoryId)}
+                />
+              </div>
+              <div style={{ minWidth: "100%" }}>
+                 <RaisedButton
+                  label="Back"
+                  style={style}
+                  onTouchTap={() => browserHistory.push('/dashboard/sub-category')}
+                />
+              </div>
             </Paper>
           </Col>
         </Row>
@@ -170,6 +187,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 // subcategoryEdit
 export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryBackendEdit);
+
+const style = {
+  margin: "12px 0px",
+};
 
 const gemsawesome = {
   propContainer: {
