@@ -7,6 +7,8 @@
 import {
   dealsBaseAPI,
   couponsBaseAPI,
+  infoBaseAPI,
+  CATEGORY_INFO,
   CATEGORY_ITEMS,
   CATEGORY_COUPONS,
 } from './constants';
@@ -38,7 +40,6 @@ export const fetchCategoryDeals = (categoryId) => (dispatch) => {
 export const fetchCategoryCoupons = (couponsId) => (dispatch) => {
   axios.get(`${couponsBaseAPI}/${couponsId}`)
   .then((response) => {
-    console.log({response: response.data})
     if (response.data.confirmation === 'success') {
       dispatch({
         type: CATEGORY_COUPONS.SUCCESS,
@@ -54,6 +55,29 @@ export const fetchCategoryCoupons = (couponsId) => (dispatch) => {
   .catch((errors) => {
     dispatch({
       type: CATEGORY_COUPONS.ERROR,
+      errors,
+    });
+  });
+};
+
+export const fetchCategoryInfo = (categoryId) => (dispatch) => {
+  axios.get(`${infoBaseAPI}/${categoryId}`)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      dispatch({
+        type: CATEGORY_INFO.SUCCESS,
+        info: response.data.result,
+      });
+    } else {
+      dispatch({
+        type: CATEGORY_INFO.ERROR,
+        errors: response.data.errors,
+      });
+    }
+  })
+  .catch((errors) => {
+    dispatch({
+      type: CATEGORY_INFO.ERROR,
       errors,
     });
   });

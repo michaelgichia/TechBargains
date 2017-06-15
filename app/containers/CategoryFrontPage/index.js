@@ -16,7 +16,7 @@ import { CloudinaryContext } from 'cloudinary-react'
 import shortid from 'shortid';
 import { connect } from 'react-redux';
 import { handleOpenModal } from 'containers/ReactModal/actions';
-import { fetchCategoryDeals, fetchCategoryCoupons } from './actions';
+import { fetchCategoryDeals, fetchCategoryCoupons, fetchCategoryInfo } from './actions';
 
 
 export class CategoryFrontPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -24,6 +24,9 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
   state = {
     deals: [],
     coupons: [],
+    info: {
+      title: ""
+    },
     errors: "",
   }
 
@@ -31,6 +34,7 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
     const { categoryId } = this.props.params;
     this.props.fetchCategoryDeals(categoryId);
     this.props.fetchCategoryCoupons(categoryId);
+    this.props.fetchCategoryInfo(categoryId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +45,9 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
     if (nextProps.coupons !== this.state.coupons) {
       this.setState((prevState, props) => ({ coupons: nextProps.coupons }));
     }
+    if (nextProps.info !== this.state.info) {
+      this.setState((prevState, props) => ({ info: nextProps.info }));
+    }
     if (nextProps.errors !== this.state.errors) {
       this.setState((prevState, props) => ({ errors: nextProps.errors }));
     }
@@ -50,7 +57,7 @@ export class CategoryFrontPage extends React.Component { // eslint-disable-line 
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
-          <CategoryInfo />
+          <CategoryInfo title={this.state.info.title} />
         </Row>
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
@@ -95,12 +102,14 @@ CategoryFrontPage.propTypes = {
 const mapStateToProps = ({ categoryFront }) => ({
   deals: categoryFront.deals,
   coupons: categoryFront.coupons,
+  info: categoryFront.info,
   errors: categoryFront.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCategoryDeals: (categoryId) => dispatch(fetchCategoryDeals(categoryId)),
   fetchCategoryCoupons: (categoryId) => dispatch(fetchCategoryCoupons(categoryId)),
+  fetchCategoryInfo: (categoryId) => dispatch(fetchCategoryInfo(categoryId)),
   handleOpenModal: (product) => dispatch(handleOpenModal(product)),
 });
 

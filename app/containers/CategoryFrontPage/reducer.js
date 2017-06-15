@@ -7,11 +7,15 @@
 import {
   CATEGORY_ITEMS,
   CATEGORY_COUPONS,
+  CATEGORY_INFO,
 } from './constants';
 
 const initialState = {
   deals: [],
   coupons: [],
+  info: {
+    title: ""
+  },
   errors: ''
 };
 
@@ -36,6 +40,18 @@ function categoryFrontPageReducer(state = initialState, action) {
       };
 
     case CATEGORY_COUPONS.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
+    case CATEGORY_INFO.SUCCESS:
+      return {
+        ...state,
+        info: action.info,
+      };
+
+    case CATEGORY_INFO.ERROR:
       return {
         ...state,
         errors: action.errors,
