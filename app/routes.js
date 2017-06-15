@@ -365,6 +365,25 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      onEnter: redirectToLogin,
+      path: '/dashboard/sub-category/:subcategoryId/update',
+      name: 'subCategoryBackendEdit',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SubCategoryBackendEdit/reducer'),
+          import('containers/SubCategoryBackendEdit'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('subCategoryBackendEdit', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

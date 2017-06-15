@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   message: '',
-  errors: [],
+  errors: '',
 };
 
 function subCategoryPageReducer(state = initialState, action) {

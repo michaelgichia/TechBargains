@@ -1,62 +1,56 @@
+/*
+ *
+ * SubCategoryBackendEdit
+ *
+ */
+
+import React, { PropTypes } from 'react';
 import SubCategoryForm from 'components/SubCategoryForm';
-import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
 import shortid from 'shortid';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import { Link } from 'react-router';
-// Material
 import Paper from 'material-ui/Paper';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
-import { connect } from 'react-redux';
-import { getCategories } from 'containers/Dashboard/actions';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-import Auth from '../Utils';
-import { postSubCategory } from './actions';
+import { connect } from 'react-redux';
+import { getCategories } from 'containers/Dashboard/actions';
+import { updateSubCategory, fetchSubCategory, deleteSubCategory } from './actions';
 
-// token
-const token = `bearer ${Auth.getToken()}`;
-axios.defaults.headers.common.Authorization = token;
-
-class SubCategoryPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class SubCategoryBackendEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
     title: '',
     category: '',
+    description: '',
     titleError: '',
     categoryError: '',
+    subcategoryId: '',
+    categories: [],
     errors: '',
     message: '',
-    subcategories: [],
-    description: '',
-  }// eslint-disable-line
+  }
 
-  componentWillMount() {
-    this.props.getCategories();
-    axios.get('/public-api/subcategory')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        this.setState({ subcategories: [...response.data.results] });
-      } else {
-        this.setState({ errors: response.data.errors });
-      }
-    });
+  componentDidMount() {
+    const { subcategoryId } = this.props.params;
+    this.props.fetchSubCategory(subcategoryId);
+    this.setState((prevState) => ({ subcategoryId }));
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log({nextProps})
+    if (nextProps.subCategory.title !== this.state.title) {
+      this.setState({ title: nextProps.subCategory.title });
+    }
+    if (nextProps.subCategory.description !== this.state.description) {
+      this.setState({ description: nextProps.subCategory.description });
+    }
+    if (nextProps.subCategory.category !== this.state.category) {
+      this.setState({ category: nextProps.subCategory.category });
+    }
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
-    if (nextProps.message !== this.state.message) {
-      this.setState({ errors: [], message: nextProps.message });
+    if (nextProps.categories !== this.state.categories) {
+      this.setState({ categories: nextProps.categories });
     }
   }
 
@@ -100,7 +94,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
       this.setState({ categoryError: 'This field is required' });
     } else {
       const updatedSubcategory = Object.assign({ title }, { category }, { description });
-      this.props.postSubCategory(updatedSubcategory);
+      this.props.updateSubCategory(updatedSubcategory);
       this.resetState();
     }
   };
@@ -127,22 +121,9 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
     return categoryArray;
   }
 
-  /**
-   * If we don't have categories in the DB, allow the user to
-   * add categories before adding a subcategory.
-  */
   render() {
-    const { categories } = this.props;
-    const { title, category, titleError, categoryError, errors, message, description } = this.state;
+    const { categories, title, category, titleError, categoryError, errors, message, description } = this.state;
     const categoryArray = this.displayCategories(categories);
-
-    if (categories.length < 1) {
-      return (
-        <div>
-          <h4>...loading</h4>
-        </div>
-      );
-    }
 
     return (
       <Grid>
@@ -166,64 +147,29 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
             </Paper>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12} md={10} mdPush={1}>
-            <div style={gemsawesome.table}>
-              <Table
-                fixedHeader
-                selectable
-                bodyStyle={gemsawesome.bodyStyle}
-                height="500px"
-                wrapperStyle={gemsawesome.wrapperStyle}
-              >
-                <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-                  <TableRow>
-                    <TableHeaderColumn colSpan="12" tooltip="A List Of Categories" style={{ textAlign: 'center', fontSize: 24, color: 'black' }}>
-                    A List Of Categories
-                  </TableHeaderColumn>
-                  </TableRow>
-                  <TableRow>
-                    <TableHeaderColumn colSpan="12" >Categories</TableHeaderColumn>
-                  </TableRow>
-                </TableHeader>
-                <TableBody displayRowCheckbox={false} deselectOnClickaway preScanRows={false}>
-                  {this.state.subcategories.map((row) => (
-                    <TableRow key={shortid.generate()}>
-                      <TableRowColumn colSpan="12">
-                        <Link to={`/dashboard/sub-category/${row.id}/update`}>
-                          {row.title}
-                        </Link>
-                      </TableRowColumn>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </Col>
-        </Row>
       </Grid>
     );
   }
 }
 
-SubCategoryPage.propTypes = {
-  categories: PropTypes.array.isRequired,
-  getCategories: PropTypes.func.isRequired,
-  postSubCategory: PropTypes.func.isRequired,
+SubCategoryBackendEdit.propTypes = {
 };
 
-const mapStateToProps = ({ panel, subcategory }) => ({
+const mapStateToProps = ({ subcategoryEdit, panel }) => ({
+  subCategory: subcategoryEdit.subCategory,
+  errors: subcategoryEdit.errors,
   categories: panel.categories,
-  message: subcategory.message,
-  errors: subcategory.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  postSubCategory: (sub) => dispatch(postSubCategory(sub)),
+  updateSubCategory: (subcategoryId) => dispatch(updateSubCategory(subcategoryId)),
+  fetchSubCategory: (subcategoryId) => dispatch(fetchSubCategory(subcategoryId)),
+  deleteSubCategory: (subcategoryId) => dispatch(deleteSubCategory(subcategoryId)),
   getCategories: () => dispatch(getCategories()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryPage);
+// subcategoryEdit
+export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryBackendEdit);
 
 const gemsawesome = {
   propContainer: {

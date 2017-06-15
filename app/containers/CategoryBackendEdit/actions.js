@@ -3,8 +3,7 @@
  * CategoryBackendEdit actions
  *
  */
-updateAPI
-fetchAPI
+
 import {
   fetchAPI,
   updateAPI,
