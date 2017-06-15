@@ -58,7 +58,7 @@ class Navigation extends React.Component {
     this.setState({ expanded: !this.state.expanded });
   };
 
-  handleMenuItemOnselect = (eventKey, event) => browserHistory.push(`/category/${eventKey}`);;
+  handleMenuItemOnselect = (eventKey, event) => window.location.href = `/category/${eventKey}`;
 
   displayItems = (navItems) => navItems.map((navItem) => (
     <MenuItem
