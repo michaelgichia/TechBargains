@@ -32,7 +32,7 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
       if (response.data.confirmation === 'success') {
         this.setState({ banners: [...response.data.results] });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
         console.error(response.data);
       }
     });

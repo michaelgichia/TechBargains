@@ -21,7 +21,7 @@ export const fetchTrendingDeals = () => (dispatch) => {
     } else {
       dispatch({
         type: TRENDING_DEALS.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })

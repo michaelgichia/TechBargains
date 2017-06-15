@@ -20,7 +20,7 @@ export const fetchNavItems = () => (dispatch) => {
     } else {
       dispatch({
         type: NAVITEMS.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })

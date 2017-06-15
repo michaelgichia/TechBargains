@@ -21,7 +21,7 @@ export class CarouselContainer extends React.Component { // eslint-disable-line 
       if (response.data.confirmation === 'success') {
         this.setState({ banners: response.data.results });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
         console.error(response.data);
       }
     })

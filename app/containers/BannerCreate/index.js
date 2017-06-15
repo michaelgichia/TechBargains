@@ -102,7 +102,7 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
       if (response.data.confirmation === 'success') {
         browserHistory.push(`/dashboard/banner/${response.data.result.id}`);
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
         console.error(response.data);
       }
     })

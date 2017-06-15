@@ -47,7 +47,7 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
       if (response.data.confirmation === 'success') {
         this.setState({ itemData: { ...response.data.result } });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
         console.error(response.data);
       }
     });

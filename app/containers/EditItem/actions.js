@@ -28,7 +28,7 @@ export const fetchItem = (itemId) => (dispatch) => {
       } else {
         dispatch({
           type: ITEM_RECEIVED_ERROR,
-          errors: response.data.message,
+          errors: response.data.errors,
         });
       }
     });

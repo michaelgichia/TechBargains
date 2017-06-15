@@ -23,7 +23,7 @@ const ItemSchema = new Schema({
   },
   percentage: {
     type: String,
-    required: true,
+      max: 10,
     default: '',
   },
   subCategory: {

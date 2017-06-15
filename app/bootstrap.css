@@ -25,8 +25,8 @@ html {
 .redux-dropzone {
   width : 100%;
   height: 20%;
-  border-bottom: 3px solid rgb(82, 92, 101);
-  color: rgb(82, 92, 101);
+  border-bottom: 3px solid #00BCD4;
+  color: #00BCD4;
   padding: 5px 20px 5px 0px;
   border-radius: 0px;
   line-height: 28px;
@@ -124,6 +124,17 @@ p > .percentage {
 .third-div-percentage > p {
   line-height: 1.1;
   color: #e6251f;
+  font-weight: 700;
+}
+
+.category-info > h1 {
+  font-size: 28px;
+  font-family: 'SourceSans', "Roboto Slab", Roboto, sans-serif, Helvetica, Arial;
+  color: #595a5d;
+  letter-spacing: -0.75px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 20px;
   font-weight: 700;
 }
 @media (max-width: 480px) {

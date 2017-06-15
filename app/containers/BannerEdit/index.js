@@ -46,7 +46,7 @@ export class BannerEdit extends React.Component { // eslint-disable-line react/p
       if (response.data.confirmation === 'success') {
         this.setState({ item: { ...response.data.result }, isFeatured: response.data.result.isFeatured });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
         console.error(response.data);
       }
     });
@@ -120,8 +120,8 @@ export class BannerEdit extends React.Component { // eslint-disable-line react/p
       if (response.data.confirmation === 'success') {
         browserHistory.push(`/dashboard/banner/${response.data.result.id}`);
       } else {
-        this.setState({ errors: response.data.message });
-        console.log('error', response.data.message);
+        this.setState({ errors: response.data.errors });
+        console.error(response.data.errors);
       }
     })
     .catch((errors) => {

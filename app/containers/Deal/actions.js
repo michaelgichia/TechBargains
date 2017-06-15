@@ -17,7 +17,7 @@ export const fetchDeals = () => (dispatch) => {
     } else {
       dispatch({
         type: DEALS.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })

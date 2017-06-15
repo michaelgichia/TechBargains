@@ -29,7 +29,7 @@ export const loginUser = (user) => (dispatch) => {
     } else {
       dispatch({
         type: LOGIN_ERRORS,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
 
       // Redirect to login.

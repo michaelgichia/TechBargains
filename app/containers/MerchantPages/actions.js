@@ -26,7 +26,7 @@ export const fetchMerchandize = (storeId) => (dispatch) => {
     } else {
       dispatch({
         type: SINGLE_STORE_DEALS.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })
@@ -49,7 +49,7 @@ export const fetchSpecificCoupons = (couponsId) => (dispatch) => {
     } else {
       dispatch({
         type: SINGLE_STORE_COUPONS.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })
@@ -72,7 +72,7 @@ export const fetchStoreInfo = (merchantId) => (dispatch) => {
     } else {
       dispatch({
         type: SINGLE_STORE_INFO.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })

@@ -26,6 +26,7 @@ import reactModalReducer from 'containers/ReactModal/reducer';
 import productReducer from 'containers/Product/reducer';
 import navBarReducer from 'containers/NavBar/reducer';
 import categoryBackendEditReducer from 'containers/CategoryBackendEdit/reducer';
+import categoryFrontPageReducer from 'containers/CategoryFrontPage/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -53,6 +54,7 @@ export default function createReducer(asyncReducers) {
     modal: reactModalReducer,
     product: productReducer,
     navItems: navBarReducer,
+    categoryFront: categoryFrontPageReducer,
     ...asyncReducers,
   });
 }

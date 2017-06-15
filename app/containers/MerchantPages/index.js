@@ -16,7 +16,7 @@ import CouponHeader from 'components/CouponHeader';
 import ProductDetail from 'components/ProductDetail';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-import { handleOpenModal, handleCloseModal } from 'containers/ReactModal/actions';
+import { handleOpenModal } from 'containers/ReactModal/actions';
 import { fetchMerchandize, fetchSpecificCoupons, fetchStoreInfo } from './actions';
 
 
@@ -63,7 +63,7 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
         </Row>
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
-            <Col id="merchant-id"xs={12} sm={12} md={12} lg={8}>
+            <Col id="merchant-id" xs={12} sm={12} md={12} lg={8}>
               {
                 this.state.coupons !== null && this.state.coupons.length > 0 ? 
                  (<CouponHeader title={`${this.state.info.title} Coupons`} />)
@@ -88,20 +88,20 @@ export class MerchantPages extends React.Component { // eslint-disable-line reac
                  :
                  ('')
               }
-              <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
-                <CloudinaryContext cloudName="dw3arrxnf">
-                  {
-                  this.state.merchandize.map((product) => (
-                    <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
-                      <ProductDetail
-                        product={product}
-                        onTouchTap={() => this.props.handleOpenModal(product)}
-                      />
-                    </li>
-                  ))
-                  }
+              <CloudinaryContext cloudName="dw3arrxnf">
+                <ul style={{ listStyleType: 'none', paddingLeft: 0, marginTop: 20 }}>
+                    {
+                    this.state.merchandize.map((product) => (
+                      <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+                        <ProductDetail
+                          product={product}
+                          onTouchTap={() => this.props.handleOpenModal(product)}
+                        />
+                      </li>
+                    ))
+                    }
+                </ul>
                 </CloudinaryContext>
-              </ul>
             </Col>
             <MerchantProfile info={this.state.info} />
           </Row>
@@ -126,7 +126,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchSpecificCoupons: (couponId) => dispatch(fetchSpecificCoupons(couponId)),
   fetchStoreInfo: (merchantId) => dispatch(fetchStoreInfo(merchantId)),
   handleOpenModal: (product) => dispatch(handleOpenModal(product)),
-  handleCloseModal: () => dispatch(handleCloseModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MerchantPages);

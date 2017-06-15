@@ -18,7 +18,7 @@ export const fetchStores = () => (dispatch) => {
     } else {
       dispatch({
         type: STORES.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })

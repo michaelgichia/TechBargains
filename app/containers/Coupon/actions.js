@@ -17,7 +17,7 @@ export const fetchCoupon = () => (dispatch) => {
     } else {
       dispatch({
         type: COUPON.ERROR,
-        errors: response.data.message,
+        errors: response.data.errors,
       });
     }
   })

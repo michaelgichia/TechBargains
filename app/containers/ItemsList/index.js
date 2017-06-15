@@ -26,8 +26,6 @@ import { getItems } from './actions';
 const wrapperStyle = {
   boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
   zIndex: 1,
-  padding: 10,
-  margin: 10,
 };
 
 const bodyStyle = {
@@ -51,7 +49,7 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
       if (response.data.confirmation === 'success') {
         this.setState({ items: [...response.data.results] });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
       }
     });
   }

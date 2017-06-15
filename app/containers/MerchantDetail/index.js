@@ -62,7 +62,7 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
           merchantData: response.data.result,
         });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
       }
     });
   }

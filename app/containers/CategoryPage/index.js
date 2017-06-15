@@ -37,7 +37,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
       if (response.data.confirmation === 'success') {
         this.setState({ categories: [...response.data.results] });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
       }
     });
   }
@@ -63,7 +63,7 @@ export class CategoryPage extends React.Component { // eslint-disable-line react
         updateCategories.push(response.data.result);
         this.setState({ categories: updateCategories });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
       }
     })
     .catch((error) => {

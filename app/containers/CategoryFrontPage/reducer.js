@@ -5,15 +5,42 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  CATEGORY_ITEMS,
+  CATEGORY_COUPONS,
 } from './constants';
 
-const initialState = {};
+const initialState = {
+  deals: [],
+  coupons: [],
+  errors: ''
+};
 
 function categoryFrontPageReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case CATEGORY_ITEMS.SUCCESS:
+      return {
+        ...state,
+        deals: action.deals,
+      };
+
+    case CATEGORY_ITEMS.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
+    case CATEGORY_COUPONS.SUCCESS:
+      return {
+        ...state,
+        coupons: action.coupons,
+      };
+
+    case CATEGORY_COUPONS.ERROR:
+      return {
+        ...state,
+        errors: action.errors,
+      };
+
     default:
       return state;
   }

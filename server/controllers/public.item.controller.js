@@ -142,7 +142,7 @@ const findTrendingDeals = (params) =>
 
 const findSpecificCategory = (id) =>
   new Promise((resolve, reject) => {
-    Item.find({ category: id })
+    Item.find({ subCategory: id, isCoupon: false  })
         .limit(20)
         .sort('-date')
         .populate('subCategory', '-_id title')
@@ -161,6 +161,27 @@ const findSpecificCategory = (id) =>
         });
   });
 
+const findCategoryCoupons = (id) =>
+  new Promise((resolve, reject) => {
+    Item.find({ subCategory: id, isCoupon: true })
+        .limit(8)
+        .sort('-date')
+        .select('name isShipped merchant isCoupon backlink coupon')
+        .populate('category', '-_id name')
+        .populate('merchant', '-_id title')
+        .exec((err, deals) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          const summaries = [];
+          deals.forEach((deal) => {
+            summaries.push(deal.summary());
+          });
+          resolve(summaries);
+        });
+  });
+
 module.exports = {
   find,
   findById,
@@ -170,4 +191,5 @@ module.exports = {
   findSpecificCoupons,
   findTrendingDeals,
   findSpecificCategory,
+  findCategoryCoupons,
 };

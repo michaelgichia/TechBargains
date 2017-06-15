@@ -35,7 +35,7 @@ export class MerchantsList extends React.Component { // eslint-disable-line reac
       if (response.data.confirmation === 'success') {
         this.setState({ merchants: [...response.data.results] });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
       }
     });
   }

@@ -25,7 +25,7 @@ export const getItems = () => (dispatch) => {
       } else {
         dispatch({
           type: ITEMS_RECEIVED_ERROR,
-          errors: response.data.message,
+          errors: response.data.errors,
         });
       }
     });

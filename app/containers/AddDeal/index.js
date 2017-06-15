@@ -89,6 +89,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       "upload_preset": uploadPreset,
       "signature": signature
     }
+    this.setState((prevState, props) => ({ image: 'uploading image...' }))
     let uploadRequest = superagent.post(url)
     uploadRequest.attach('file', image)
     Object.keys(params).forEach((key) => {

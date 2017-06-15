@@ -78,7 +78,7 @@ class SubCategoryPage extends React.Component { // eslint-disable-line react/pre
       if (response.data.confirmation === 'success') {
         this.setState({ subcategories: [...response.data.results] });
       } else {
-        this.setState({ errors: response.data.message });
+        this.setState({ errors: response.data.errors });
       }
     });
   }
