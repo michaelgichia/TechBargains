@@ -23,7 +23,7 @@ export const getCategories = () => (dispatch) => {
     } else {
       dispatch({
         type: CATEGORIES_RECEIVED_ERROR,
-        error: response.err,
+        error: response.data.error,
       });
     }
   });

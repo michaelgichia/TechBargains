@@ -13,8 +13,7 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import { connect } from 'react-redux';
-import { getCategories } from 'containers/Dashboard/actions';
-import { updateSubCategory, fetchSubCategory, deleteSubCategory } from './actions';
+import { updateSubCategory, fetchSubCategory, deleteSubCategory, getCategories } from './actions';
 
 export class SubCategoryBackendEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -32,11 +31,11 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
   componentDidMount() {
     const { subcategoryId } = this.props.params;
     this.props.fetchSubCategory(subcategoryId);
+    this.props.getCategories();
     this.setState((prevState) => ({ subcategoryId }));
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log({nextProps})
     if (nextProps.subCategory.title !== this.state.title) {
       this.setState({ title: nextProps.subCategory.title });
     }
@@ -94,7 +93,7 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
       this.setState({ categoryError: 'This field is required' });
     } else {
       const updatedSubcategory = Object.assign({ title }, { category }, { description });
-      this.props.updateSubCategory(updatedSubcategory);
+      this.props.updateSubCategory(updatedSubcategory, this.state.subcategoryId);
       this.resetState();
     }
   };
@@ -143,6 +142,7 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
                 message={message}
                 onDescriptionChange={this.handleDescription}
                 description={description}
+                header="Update SubCategory"
               />
             </Paper>
           </Col>
@@ -155,14 +155,14 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
 SubCategoryBackendEdit.propTypes = {
 };
 
-const mapStateToProps = ({ subcategoryEdit, panel }) => ({
+const mapStateToProps = ({ subcategoryEdit }) => ({
   subCategory: subcategoryEdit.subCategory,
   errors: subcategoryEdit.errors,
-  categories: panel.categories,
+  categories: subcategoryEdit.categories,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateSubCategory: (subcategoryId) => dispatch(updateSubCategory(subcategoryId)),
+  updateSubCategory: (subCategory, subcategoryId) => dispatch(updateSubCategory(subCategory, subcategoryId)),
   fetchSubCategory: (subcategoryId) => dispatch(fetchSubCategory(subcategoryId)),
   deleteSubCategory: (subcategoryId) => dispatch(deleteSubCategory(subcategoryId)),
   getCategories: () => dispatch(getCategories()),

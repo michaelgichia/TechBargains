@@ -8,17 +8,25 @@ const SubCategorySchema = new Schema({
     trim: true,
     max: 100,
   },
-  category: [{
+  description: {
+    type: String,
+    trim: true,
+    max: 10000,
+    default: '',
+  },
+  category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true,
-  }],
+  },
 });
 
 SubCategorySchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
     title: this.title,
+    description: this.description,
+    category: this.category,
   };
 
   return summary;

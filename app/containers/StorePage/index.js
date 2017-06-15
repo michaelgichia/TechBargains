@@ -203,6 +203,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
                 about={about}
                 onAboutChange={this.handleAbout}
                 onDropChange={this.handleUpload}
+                header="Create SubCategory"
               />
             </Paper>
           </Col>

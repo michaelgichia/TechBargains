@@ -13,10 +13,10 @@ class SubCategoryForm extends React.PureComponent { // eslint-disable-line react
     return (
       <div>
         <ul style={{ listStyle: 'none' }}>
-          {this.props.errors && this.props.errors.map((error, i) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
+          { this.props.errors &&  <p>{ this.props.errors }</p> }
         </ul>
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>Create SubCategory</Subheader>
+        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{ this.props.header }</Subheader>
         <TextField
           hintText="Title"
           floatingLabelText="Title"
@@ -65,6 +65,7 @@ SubCategoryForm.propTypes = {
   message: PropTypes.string.isRequired,
   onDescriptionChange: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired,
 };
 
 export default SubCategoryForm;

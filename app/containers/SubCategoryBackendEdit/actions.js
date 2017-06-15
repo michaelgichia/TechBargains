@@ -9,7 +9,9 @@ import {
   fetchSubCategoryAPI,
   editSubCategoryAPI,
   deleteSubCategoryAPI,
+  categoryAPI,
   SUB_CATEGORY_ITEM,
+  SUBCATEGORY_CATEGORY_ITEM,
 } from './constants';
 import Auth from '../Utils';
 
@@ -18,9 +20,9 @@ const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
 
 
-export const updateSubCategory = (subCategory, subCategoryId) => (dispatch) => {
+export const updateSubCategory = (subCategory, subcategoryId) => (dispatch) => {
   axios
-  .put(`${editSubCategoryAPI}/${subCategoryId}`, subCategory)
+  .put(`${editSubCategoryAPI}/${subcategoryId}`, subCategory)
   .then((response) => {
     if (response.data.confirmation === 'success') {
       browserHistory.push('/dashboard/sub-category');
@@ -77,3 +79,20 @@ export const deleteSubCategory = (subCategoryId) => (dispatch) => {
     }
   })
 }
+
+export const getCategories = () => (dispatch) => {
+  axios.get(categoryAPI)
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      dispatch({
+        type: SUBCATEGORY_CATEGORY_ITEM.SUCCESS,
+        categories: response.data.results,
+      });
+    } else {
+      dispatch({
+        type: SUBCATEGORY_CATEGORY_ITEM.ERROR,
+        error: response.data.error,
+      });
+    }
+  });
+};

@@ -20,7 +20,7 @@ const update = (id, params) =>
         reject(err);
         return;
       }
-      resolve(payload);
+      resolve(payload.summary());
     });
   });
 
