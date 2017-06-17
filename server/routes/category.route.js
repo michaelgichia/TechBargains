@@ -110,3 +110,17 @@ router.delete('/:id', (req, res, next) => {
 
 
 module.exports = router;
+
+
+// controllers.create(req.body)
+// .then((result) => {
+//   categoryIndex.addObject(result, function(err, content) {
+//     if(err) {    
+//       console.log(err);
+//     }
+//   });
+//   res.json({
+//     confirmation: 'success',
+//     result,
+//   });
+// })

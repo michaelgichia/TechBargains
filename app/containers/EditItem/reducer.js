@@ -13,7 +13,7 @@ const initialState = {
   itemData: {
     name: '',
     coupon: '',
-    features: [],
+    features: '',
     backlink: '',
     percentage: '',
     merchant: '',

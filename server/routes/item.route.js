@@ -1,5 +1,8 @@
 const express = require('express');
 const controllers = require('../controllers/item.controller');
+const algoliasearch = require('algoliasearch');
+const client = algoliasearch('YNZ7XXV49B', '6bab08a4370c5d546b65e485a0f802ab');
+const itemIndex = client.initIndex('item');
 
 // Initialize router
 const router = express.Router();
@@ -95,6 +98,11 @@ router.put('/update/:itemId', (req, res, next) => {
   const id = req.params.itemId;
   controllers.update(id, req.body)
   .then((result) => {
+    itemIndex.addObject(result, function(err, content) {
+      if(err) {    
+        console.log(err);
+      }
+    });
     res.json({
       confirmation: 'success',
       result,
@@ -108,36 +116,36 @@ router.put('/update/:itemId', (req, res, next) => {
   });
 });
 
-router.post('/update/:itemId', (req, res, next) => {
-  // Sanitize id passed in.
-  req.sanitize('id').escape();
-  req.sanitize('id').trim();
+// router.post('/update/:itemId', (req, res, next) => {
+//   // Sanitize id passed in.
+//   req.sanitize('id').escape();
+//   req.sanitize('id').trim();
 
-  // Errors
-  const errors = req.validationErrors();
-  if (errors.length > 0) {
-    return res.json({
-      confirmation: 'fail',
-      errors,
-    }).end();
-  }
+//   // Errors
+//   const errors = req.validationErrors();
+//   if (errors.length > 0) {
+//     return res.json({
+//       confirmation: 'fail',
+//       errors,
+//     }).end();
+//   }
 
-  const id = req.params.id;
+//   const id = req.params.id;
 
-  controllers.update(id, req.body)
-  .then((result) => {
-    res.json({
-      confirmation: 'success',
-      result,
-    });
-  })
-  .catch((errors) => {
-    res.json({
-      confirmation: 'fail',
-      errors,
-    });
-  });
-});
+//   controllers.update(id, req.body)
+//   .then((result) => {
+//     res.json({
+//       confirmation: 'success',
+//       result,
+//     });
+//   })
+//   .catch((errors) => {
+//     res.json({
+//       confirmation: 'fail',
+//       errors,
+//     });
+//   });
+// });
 
 
 // delete Item

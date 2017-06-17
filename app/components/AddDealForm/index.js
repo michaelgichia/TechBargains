@@ -164,6 +164,12 @@ class AddDealForm extends React.PureComponent {
   }
 }
 
+AddDealForm.defaultProps = {
+  isShipped: "",
+  image: "",
+
+};
+
 
 AddDealForm.propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -192,11 +198,9 @@ AddDealForm.propTypes = {
   isCoupon: PropTypes.bool.isRequired,
   onCouponChange: PropTypes.func.isRequired,
   onFeaturedChange: PropTypes.func.isRequired,
-  isShipped: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   features: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
-  image: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
 };
 

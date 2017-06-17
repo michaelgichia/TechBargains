@@ -331,6 +331,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   }
 
   render() {
+    console.log({state: this.state})
     const {
       categoryError,
       subCategoryError,
