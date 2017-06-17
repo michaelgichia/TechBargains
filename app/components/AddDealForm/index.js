@@ -184,7 +184,7 @@ AddDealForm.propTypes = {
   subCategoryError: PropTypes.string.isRequired,
   subCategoryArray: PropTypes.array.isRequired,
   onDateChange: PropTypes.func.isRequired,
-  expire: PropTypes.object.isRequired,
+  expire: PropTypes.any.isRequired,
   merchantError: PropTypes.string.isRequired,
   coupon: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,

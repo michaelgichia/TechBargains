@@ -191,7 +191,8 @@
       "tough-cookie",
       "forever-agent",
       "isexe",
-      "fs.realpath"
+      "fs.realpath",
+      "mongoose-ts"
     ],
     "include": [
       "core-js",
@@ -250,13 +251,17 @@
     "material-ui": "^0.18.1",
     "minimist": "1.2.0",
     "mongoose": "^4.10.4",
+    "mongoose-ts": "^0.1.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "qs": "^6.4.0",
     "react": "15.4.1",
     "react-bootstrap": "^0.31.0",
     "react-dom": "15.4.1",
     "react-dropzone": "^3.13.2",
     "react-helmet": "3.2.2",
+    "react-instantsearch": "^4.0.3",
+    "react-instantsearch-theme-algolia": "^4.0.3",
     "react-intl": "2.1.5",
     "react-lazyload": "^2.2.7",
     "react-quill": "^1.0.0-rc.2",

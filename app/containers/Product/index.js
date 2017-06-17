@@ -5,21 +5,46 @@
  */
 
 import React, { PropTypes } from 'react';
+import {
+  InstantSearch,
+  Hits,
+  SortBy,
+} from 'react-instantsearch/dom';
+import 'react-instantsearch-theme-algolia/style.css';
 import ProductDetail from 'components/ProductDetail';
-import shortid from 'shortid';
-import { CloudinaryContext } from 'cloudinary-react'
+import { CloudinaryContext } from 'cloudinary-react';
 import { connect } from 'react-redux';
 import { handleOpenModal } from 'containers/ReactModal/actions';
 import { fetchTrendingDeals } from './actions';
 
-export class Product extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+// const Hit = ({hit}) => {
+//   console.log({hit})
+//   return <Image src={hit.image} responsive />
+//  }
+
+const Hit = ({ hit }) => (
+  <ProductDetail
+    product={hit}
+    onTouchTap={() => this.props.handleOpenModal(product)}
+  />
+);
+
+const Content = () => (
+  <CloudinaryContext cloudName="dw3arrxnf">
+    <Hits hitComponent={Hit} />
+  </CloudinaryContext>
+);
+
+export class Product extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
     products: [],
     errors: '',
+    searchState: {},
   }
 
   componentDidMount() {
     this.props.fetchTrendingDeals();
+    console.log({location: this});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,20 +59,21 @@ export class Product extends React.PureComponent { // eslint-disable-line react/
   render() {
     return (
       <div>
-        <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
-          <CloudinaryContext cloudName="dw3arrxnf">
-            {
-            this.state.products.map((product) => (
-              <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
-                <ProductDetail
-                  product={product}
-                  onTouchTap={() => this.props.handleOpenModal(product)}
-                />
-              </li>
-            ))
-            }
-          </CloudinaryContext>
-        </ul>
+        <InstantSearch
+          appId="YNZ7XXV49B"
+          apiKey="90550ee45080bb58130f0ac76a4e28f5"
+          indexName="item"
+        >
+        <SortBy
+          items={[
+            { value: 'item', label: 'Featured' },
+            { value: 'item_price_asc', label: 'Price asc.' },
+            { value: 'item_price_desc', label: 'Price desc.' },
+          ]}
+          defaultRefinement="item"
+        />
+          <Content />
+        </InstantSearch> 
       </div>
     );
   }
@@ -58,7 +84,7 @@ Product.propTypes = {
 
 const mapStateToProps = ({ product }) => ({
   products: product.products,
-  errors: product.errors
+  errors: product.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -67,3 +93,19 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
+
+        // <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+        //   <CloudinaryContext cloudName="dw3arrxnf">
+        //     {
+        //     this.state.products.map((product) => (
+        //       <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+        //         <ProductDetail
+        //           product={product}
+        //           onTouchTap={() => this.props.handleOpenModal(product)}
+        //         />
+        //       </li>
+        //     ))
+        //     }
+        //   </CloudinaryContext>
+        // </ul>
+        

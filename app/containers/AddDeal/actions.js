@@ -21,18 +21,10 @@ export const postDeal = (item) => (dispatch) => {
         const itemId = response.data.result.id;
         browserHistory.push(`/dashboard/items-list/${itemId}`);
       } else {
-      // Check if error is array or string.
-        const newError = [];
-        if (typeof response.data.errors === 'string') {
-          newError.push(response.data.errors);
-        } else if (typeof response.data.message === 'object') {
-          newError.push(response.data.message.message);
-        } else {
-          response.data.errors.map((error) => newError.push(error.msg));
-        }
+        console.error(response.data.errors)
         dispatch({
           type: ITEMS_RECEIVED_ERROR,
-          errors: newError,
+          errors: response.data.errors,
         });
       }
     });

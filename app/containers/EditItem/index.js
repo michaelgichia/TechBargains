@@ -101,18 +101,18 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     if (nextProps.itemData.image !== this.state.image) {
       this.setState({ image: nextProps.itemData.image });
     }
-    if (nextProps.itemData.merchant.title !== this.state.merchant) {
-      this.setState({ merchant: nextProps.itemData.merchant.title });
-    }
-    if (nextProps.itemData.category.name !== this.state.category) {
-      this.setState({ category: nextProps.itemData.category.name });
-    }
-    if (nextProps.itemData.subCategory.title !== this.state.subCategory) {
-      this.setState({ subCategory: nextProps.itemData.subCategory.title });
-    }
-    if (nextProps.itemData.subCategory.isShipped !== this.state.isShipped) {
-      this.setState({ isShipped: nextProps.itemData.isShipped });
-    }
+    // if (nextProps.itemData.merchant.title !== this.state.merchant) {
+    //   this.setState({ merchant: nextProps.itemData.merchant.title });
+    // }
+    // if (nextProps.itemData.category.name !== this.state.category) {
+    //   this.setState({ category: nextProps.itemData.category.name });
+    // }
+    // if (nextProps.itemData.subCategory.title !== this.state.subCategory) {
+    //   this.setState({ subCategory: nextProps.itemData.subCategory.title });
+    // }
+    // if (nextProps.itemData.subCategory.isShipped !== this.state.isShipped) {
+    //   this.setState({ isShipped: nextProps.itemData.isShipped });
+    // }
   }
 
   handleUpload = (files) => {
@@ -250,7 +250,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
         { category: this.state.category },
         { merchant: this.state.merchant },
         { subCategory: this.state.subCategory },
-        { expire: this.state.expire },
+        { expire: +new Date(this.state.expire) },
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
@@ -331,7 +331,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   }
 
   render() {
-    console.log({state: this.state})
     const {
       categoryError,
       subCategoryError,

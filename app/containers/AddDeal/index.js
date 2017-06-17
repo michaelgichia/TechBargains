@@ -217,7 +217,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         { category: this.state.category },
         { merchant: this.state.merchant },
         { subCategory: this.state.subCategory },
-        { expire: this.state.expire },
+        { expire: +new Date(this.state.expire) },
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },

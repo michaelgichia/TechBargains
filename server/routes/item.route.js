@@ -116,38 +116,6 @@ router.put('/update/:itemId', (req, res, next) => {
   });
 });
 
-// router.post('/update/:itemId', (req, res, next) => {
-//   // Sanitize id passed in.
-//   req.sanitize('id').escape();
-//   req.sanitize('id').trim();
-
-//   // Errors
-//   const errors = req.validationErrors();
-//   if (errors.length > 0) {
-//     return res.json({
-//       confirmation: 'fail',
-//       errors,
-//     }).end();
-//   }
-
-//   const id = req.params.id;
-
-//   controllers.update(id, req.body)
-//   .then((result) => {
-//     res.json({
-//       confirmation: 'success',
-//       result,
-//     });
-//   })
-//   .catch((errors) => {
-//     res.json({
-//       confirmation: 'fail',
-//       errors,
-//     });
-//   });
-// });
-
-
 // delete Item
 router.delete('/:itemId', (req, res, next) => {
   // Sanitize id passed in.
