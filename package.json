@@ -251,7 +251,6 @@
     "material-ui": "^0.18.1",
     "minimist": "1.2.0",
     "mongoose": "^4.10.4",
-    "mongoose-ts": "^0.1.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "qs": "^6.4.0",

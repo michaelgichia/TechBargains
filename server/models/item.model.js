@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const timestamps = require('mongoose-ts');
-
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
@@ -48,6 +46,7 @@ const ItemSchema = new Schema({
   },
   expire: { 
     type: Number,
+    max: 100,
   },
   image: {
     type: String,
@@ -80,12 +79,10 @@ const ItemSchema = new Schema({
     default: false,
   },
   created: {
-    type: Date,
-    default: Date.now,
+    type: Number,
+    default:  new Date().getTime(),
   },
 });
-
-ItemSchema.plugin(timestamps);
 
 ItemSchema.methods.summary = function () {// eslint-disable-line
   const summary = {

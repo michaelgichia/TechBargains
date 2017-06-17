@@ -77,6 +77,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log({nextProps})
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
