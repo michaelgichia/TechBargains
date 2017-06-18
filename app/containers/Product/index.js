@@ -16,6 +16,7 @@ import { CloudinaryContext } from 'cloudinary-react';
 import { connect } from 'react-redux';
 import { handleOpenModal } from 'containers/ReactModal/actions';
 import { fetchTrendingDeals } from './actions';
+import '!!style-loader!css-loader!./style.css';
 
 
 export class Product extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -23,6 +24,7 @@ export class Product extends React.Component { // eslint-disable-line react/pref
     products: [],
     errors: '',
     searchState: {},
+    dropdownValue: 'Most Recent',
   }
 
   componentDidMount() {
@@ -46,13 +48,22 @@ export class Product extends React.Component { // eslint-disable-line react/pref
           apiKey="90550ee45080bb58130f0ac76a4e28f5"
           indexName="item"
         >
-        <SortBy
-          items={[
-            { value: 'expire', label: 'Expire soon' },
-            { value: 'item', label: 'Most Recent' },
-          ]}
-          defaultRefinement="item"
-        />
+        <div className="gold">
+          <ul>
+            <li id="platinumbtn" className="platinum" style={{ float: 'right' }}>
+              <SortBy
+                items={[
+                  { value: 'expire', label: 'Expire soon' },
+                  { value: 'item', label: 'Most Recent' },
+                ]}
+                defaultRefinement="item"
+              />
+            </li>
+            <li id="platinum-id" className="platinum-label" style={{ float: 'right' }}>
+              <label htmlFor="platinum-id">Refine by:</label>
+            </li>
+          </ul>
+        </div>
           <CloudinaryContext cloudName="dw3arrxnf">
             <Hits hitComponent={
               ({hit}) => {

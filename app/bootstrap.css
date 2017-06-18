@@ -499,7 +499,7 @@ h2 {
 }
 .gold > ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 0 5px 0;
   overflow: hidden;
   background-color: #fff;
   border-bottom: solid 3px #676d79;

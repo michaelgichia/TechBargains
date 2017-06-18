@@ -68,7 +68,7 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
         <Row style={{ margin: 0 }} className="merchant-footer">
           <Col xsPush={4} xs={8} mdPush={4} md={8}>
             <p>
-              { `From ${this.props.product.merchant.title} in ${this.props.product.category.name} Components` }
+              { `From ${this.props.product.merchant.title} in ${this.props.product.category.name} Category` }
             </p>
           </Col>
         </Row>
