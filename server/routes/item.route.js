@@ -1,8 +1,8 @@
 const express = require('express');
 const controllers = require('../controllers/item.controller');
-const algoliasearch = require('algoliasearch');
-const client = algoliasearch('YNZ7XXV49B', '6bab08a4370c5d546b65e485a0f802ab');
-const itemIndex = client.initIndex('item');
+// const algoliasearch = require('algoliasearch');
+// const client = algoliasearch('YNZ7XXV49B', '6bab08a4370c5d546b65e485a0f802ab');
+// const itemIndex = client.initIndex('item');
 
 // Initialize router
 const router = express.Router();
@@ -98,11 +98,11 @@ router.put('/update/:itemId', (req, res, next) => {
   const id = req.params.itemId;
   controllers.update(id, req.body)
   .then((result) => {
-    itemIndex.addObject(result, function(err, content) {
-      if(err) {    
-        console.log(err);
-      }
-    });
+    // itemIndex.addObject(result, function(err, content) {
+    //   if(err) {    
+    //     console.log(err);
+    //   }
+    // });
     res.json({
       confirmation: 'success',
       result,

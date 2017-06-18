@@ -6,9 +6,6 @@ const find = (params) =>
   new Promise((resolve, reject) => {
     Item.find(params)
     .sort('-date')
-    .populate('subCategory', '-_id title')
-    .populate('category', '-_id name')
-    .populate('merchant', '-_id title')
     .exec((err, items) => {
       if (err) {
         reject(err);
@@ -25,9 +22,6 @@ const find = (params) =>
 const findById = (id) =>
   new Promise((resolve, reject) => {
     Item.findById(id)
-    .populate('subCategory', '-_id title')
-    .populate('category', '-_id name')
-    .populate('merchant', '-_id title')
     .exec((err, item) => {
       if (err) {
         reject(err);
@@ -81,9 +75,6 @@ const findSpecificDeals = (id) =>
   new Promise((resolve, reject) => {
     Item.find({ merchant: id })
         .limit(8)
-        .populate('subCategory', '-_id title')
-        .populate('category', '-_id name')
-        .populate('merchant', '-_id title')
         .sort('-date')
         .exec((err, deals) => {
           if (err) {
@@ -104,8 +95,6 @@ const findSpecificCoupons = (id) =>
         .limit(8)
         .sort('-date')
         .select('name isShipped merchant isCoupon backlink coupon')
-        .populate('category', '-_id name')
-        .populate('merchant', '-_id title')
         .exec((err, deals) => {
           if (err) {
             reject(err);
@@ -124,9 +113,6 @@ const findTrendingDeals = (params) =>
     Item.find({ isFeatured: true, isCoupon: false })
     .limit(50)
     .sort('-date')
-    .populate('subCategory', '-_id title')
-    .populate('category', '-_id name')
-    .populate('merchant', '-_id title')
     .exec((err, items) => {
       if (err) {
         reject(err);
@@ -145,9 +131,6 @@ const findSpecificCategory = (id) =>
     Item.find({ subCategory: id, isCoupon: false  })
         .limit(20)
         .sort('-date')
-        .populate('subCategory', '-_id title')
-        .populate('category', '-_id name')
-        .populate('merchant', '-_id title')
         .exec((err, categories) => {
           if (err) {
             reject(err);
@@ -167,8 +150,6 @@ const findCategoryCoupons = (id) =>
         .limit(8)
         .sort('-date')
         .select('name isShipped merchant isCoupon backlink coupon')
-        .populate('category', '-_id name')
-        .populate('merchant', '-_id title')
         .exec((err, deals) => {
           if (err) {
             reject(err);

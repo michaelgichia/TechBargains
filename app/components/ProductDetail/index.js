@@ -3,16 +3,37 @@ import PropTypes from 'prop-types';
 import YesNoBtn from 'components/YesNoBtn';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-// import Image from 'react-bootstrap/lib/Image';
 import { Image, Transformation } from 'cloudinary-react'
 import Panel from 'react-bootstrap/lib/Panel';
-import Topper from 'components/Topper';
 import shortid from 'shortid';
 
-class ProductDetail extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class ProductDetail extends React.Component { // eslint-disable-line react/prefer-stateless-function
+ 
+ timeConversion = (expire) => {
+    const millisec = expire - new Date().getTime();
+    const seconds = (millisec / 1000).toFixed(1);
+    const minutes = (millisec / (1000 * 60)).toFixed(1);
+    const hours = (millisec / (1000 * 60 * 60)).toFixed(1);
+    const days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
+
+    if (seconds < 60) {
+      return seconds + " Sec";
+    } else if (minutes < 60) {
+      return minutes + " Min";
+    } else if (hours < 24) {
+      return hours + " Hrs";
+    } else {
+      return days + " Days"
+    }
+  };
+
   render() {
     return (
-      <Panel className="merchant-panel" header={<Topper />}>
+      <Panel className="merchant-panel" header={
+        <div className="topper">
+          <p>{`Expire: ${this.timeConversion(this.props.product.expire)}`}</p>
+        </div>
+      }>
         <div
           className="merchant-panel-header"
           dangerouslySetInnerHTML={{ __html: this.props.product.name }}

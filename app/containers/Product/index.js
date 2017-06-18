@@ -17,23 +17,6 @@ import { connect } from 'react-redux';
 import { handleOpenModal } from 'containers/ReactModal/actions';
 import { fetchTrendingDeals } from './actions';
 
-// const Hit = ({hit}) => {
-//   console.log({hit})
-//   return <Image src={hit.image} responsive />
-//  }
-
-const Hit = ({ hit }) => (
-  <ProductDetail
-    product={hit}
-    onTouchTap={() => this.props.handleOpenModal(product)}
-  />
-);
-
-const Content = () => (
-  <CloudinaryContext cloudName="dw3arrxnf">
-    <Hits hitComponent={Hit} />
-  </CloudinaryContext>
-);
 
 export class Product extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -44,7 +27,6 @@ export class Product extends React.Component { // eslint-disable-line react/pref
 
   componentDidMount() {
     this.props.fetchTrendingDeals();
-    console.log({location: this});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -66,13 +48,22 @@ export class Product extends React.Component { // eslint-disable-line react/pref
         >
         <SortBy
           items={[
-            { value: 'item', label: 'Featured' },
-            { value: 'item_price_asc', label: 'Price asc.' },
-            { value: 'item_price_desc', label: 'Price desc.' },
+            { value: 'expire', label: 'Expire soon' },
+            { value: 'item', label: 'Most Recent' },
           ]}
           defaultRefinement="item"
         />
-          <Content />
+          <CloudinaryContext cloudName="dw3arrxnf">
+            <Hits hitComponent={
+              ({hit}) => {
+                console.log({hit})
+                return <ProductDetail
+                  product={hit}
+                  onTouchTap={() => this.props.handleOpenModal(hit)}
+                />
+              }
+            } />
+          </CloudinaryContext>
         </InstantSearch> 
       </div>
     );
