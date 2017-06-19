@@ -8,6 +8,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import SelectField from "material-ui/SelectField";
 import DatePicker from "material-ui/DatePicker";
 import MenuItem from "material-ui/MenuItem";
+import ChipInput from 'material-ui-chip-input'
 import Subheader from "material-ui/Subheader";
 
 class AddDealForm extends React.PureComponent {
@@ -37,6 +38,15 @@ class AddDealForm extends React.PureComponent {
           placeholder="Features"
           onChange={this.props.onFeaturesChange}
           value={this.props.features}
+        />
+        <ChipInput
+          value={this.props.tags}
+          fullWidthInput
+          fullWidth
+          floatingLabelText="Add Item Tags"
+          hintText="Add Item Tags"
+          onRequestAdd={this.props.onRequestAdd}
+          onRequestDelete={this.props.onRequestDelete}
         />
         <TextField
           hintText="Percentage Discount"

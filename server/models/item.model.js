@@ -51,7 +51,6 @@ const ItemSchema = new Schema({
   },
   expire: { 
     type: Number,
-    max: 100,
   },
   image: {
     type: String,
@@ -83,6 +82,10 @@ const ItemSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  tags: [{
+    type: String,
+    required: true,
+  }],
   created: {
     type: Number,
     default:  new Date().getTime(),
@@ -119,6 +122,7 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
     isCoupon: this.isCoupon,
     isShipped: this.isShipped,
     public_id: this.public_id,
+    tags: this.tags,
   };
 
   return summary;

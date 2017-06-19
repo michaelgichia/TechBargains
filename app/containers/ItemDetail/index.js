@@ -13,6 +13,7 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import Chip from 'material-ui/Chip';
 // Actions
 import { deleteItem } from './actions';
 
@@ -35,8 +36,11 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
       merchant: {},
       category: {},
       subCategory: '',
-      expire: {},
+      expire: 0,
       isShipped: '',
+      created: 0,
+      isFeatured: false,
+      tags: [],
     },
     errors: '',
     itemId: null,
@@ -57,6 +61,26 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
     });
   }
 
+ timeConversion = (expire, currentTime) => {
+    const millisec = expire - currentTime;
+    const seconds = (millisec / 1000).toFixed(1);
+    const minutes = (millisec / (1000 * 60)).toFixed(1);
+    const hours = (millisec / (1000 * 60 * 60)).toFixed(1);
+    const days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
+
+    if (seconds < 60) {
+      return seconds + " Sec";
+    } else if (minutes < 60) {
+      return minutes + " Min";
+    } else if (hours < 24) {
+      return hours + " Hrs";
+    } else {
+      return days + " Days"
+    }
+  };
+
+  convertToDate = (millisec) => new Date(millisec).toString('yyyy MM dd');
+
   render() {
     const {
       name,
@@ -70,6 +94,9 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
       expire,
       isShipped,
       image,
+      created,
+      isFeatured,
+      tags,
     } = this.state.itemData;
 
     return (
@@ -94,18 +121,30 @@ export class ItemDetail extends React.Component { // eslint-disable-line react/p
               </CardMedia>
 
               <Paper zDepth={1} rounded={false}>
+                <CardTitle subtitle={`Backlink: ${backlink}`} />
+                <Divider />
                 <CardTitle subtitle={`Category: ${category ? category.name : 'Not defined'}`} />
                 <Divider />
                 <CardTitle subtitle={`Subcategory: ${subCategory ? subCategory.title : 'Not defined'}`} />
                 <Divider />
-                <CardTitle subtitle={`Coupon: ${coupon || 'Not defined'}`} />
+                <CardTitle subtitle={`Featured: ${isFeatured ? 'Yes': 'No'}`} />
                 <Divider />
-                <CardTitle subtitle={`Expires on: ${expire || 'Not defined'}`} />
+                <CardTitle subtitle={`Coupon: ${coupon || 'Empty'}`} />
+                <Divider />
+                <Divider />
+                <CardTitle subtitle={`Expire: ${this.timeConversion(expire, new Date().getTime())}`} />
+                <Divider />
+                <CardTitle subtitle={`Created: ${this.convertToDate(created)}`} />
                 <Divider />
                 <CardTitle subtitle={isShipped ? isShipped: 'Item does not have any spefications like free shipping e.t.c'} />
                 <Divider />
                 <CardText>
-                  <CardTitle title="Features" />
+                  <CardTitle subtitle='Tags' /> 
+                    {tags.map((tag) => (<div key={shortid.generate()} dangerouslySetInnerHTML={{ __html: tag }} />))}
+                </CardText>
+                <Divider />
+                <CardText>
+                  <CardTitle subtitle="Features" />
                     <div dangerouslySetInnerHTML={{ __html: features }} />
                 </CardText>
               </Paper>

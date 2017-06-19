@@ -1,33 +1,17 @@
 import React from 'react';
+import AutoComplete from 'components/AutoComplete';
 import PropTypes from 'prop-types';
-import AppBar from 'material-ui/AppBar';
-import {InstantSearch, Hits, SearchBox, Pagination, Highlight} from 'react-instantsearch/dom';
 import EventListener, { withOptions } from 'react-event-listener';
-import { jewels } from './jewels';
-// import styled from 'styled-components';
+// Material-ui
+import AppBar from 'material-ui/AppBar';
+// Algolia
+import { InstantSearch, Configure, Index } from 'react-instantsearch/dom';
+// style
+import 'react-instantsearch-theme-algolia/style.css';
+import { style } from './style';
 
-function Product({hit}) {
-  return (
-    <div style={{marginTop: '10px'}}>
-      <span className="hit-name">
-        <Highlight attributeName="name" hit={hit} />
-      </span>
-    </div>
-  );
-};
-
-function Search() {
-  return (
-    <div className="container">
-      <SearchBox />
-      <Hits hitComponent={Product} />
-      <Pagination />
-    </div>
-  );
-}
 
 class TopNav extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
   state = {
     windowWidth: window.innerWidth,
   }
@@ -48,18 +32,18 @@ class TopNav extends React.Component { // eslint-disable-line react/prefer-state
         title="Title"
         showMenuIconButton={this.state.windowWidth < 768}
         onLeftIconButtonTouchTap={this.props.onLeftIconButtonTouchTap}
-        titleStyle={jewels.titleStyle}
-        style={jewels.appBar}
-        iconStyleLeft={jewels.iconStyleLeft}
+        titleStyle={style.titleStyle}
+        style={style.appBar}
+        iconStyleLeft={style.iconStyleLeft}
       >
-        {/*<InstantSearch
+        <InstantSearch
+          style={{maginRight: 20, paddingRight: 20}}
           appId="YNZ7XXV49B"
           apiKey="90550ee45080bb58130f0ac76a4e28f5"
           indexName="item"
         >
-         <Search/>
+          <AutoComplete />
         </InstantSearch>
-      */}
       </AppBar>
     );
   }

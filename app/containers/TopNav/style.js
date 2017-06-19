@@ -1,4 +1,4 @@
-export const jewels = {
+export const style = {
   titleStyle: {
     fontSize: 24,
     margin: '-10px 8px 0px -10px',

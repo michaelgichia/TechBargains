@@ -1,8 +1,5 @@
 const express = require('express');
 const controllers = require('../controllers/item.controller');
-// const algoliasearch = require('algoliasearch');
-// const client = algoliasearch('YNZ7XXV49B', '6bab08a4370c5d546b65e485a0f802ab');
-// const itemIndex = client.initIndex('item');
 
 // Initialize router
 const router = express.Router();
@@ -15,6 +12,7 @@ router.post('/create', (req, res, next) => {
   req.assert('category', 'Category cannot not be empty').notEmpty();
   req.assert('merchant', 'Merchant cannot not be empty').notEmpty();
   req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
+  req.assert('tags', 'Tags cannot be empty.').isArray();
 
   req.sanitize('name').trim();
   req.sanitize('backlink').trim();
@@ -30,6 +28,9 @@ router.post('/create', (req, res, next) => {
   req.sanitize('isCoupon').trim();
   req.sanitize('isShipped').trim();
   req.sanitize('public_id').trim();
+  for (const i in req.body.tags) {
+    req.sanitize(i).trim();
+  }
 
 
   // Errors
@@ -68,6 +69,8 @@ router.put('/update/:itemId', (req, res, next) => {
   req.assert('category', 'Category cannot not be empty').notEmpty();
   req.assert('merchant', 'Merchant cannot not be empty').notEmpty();
   req.assert('public_id', 'Upload the image again. Public id is missing').notEmpty();
+  req.assert('tags', 'Tags cannot be empty.').isArray();
+
 
   req.sanitize('name').trim();
   req.sanitize('features').trim();
@@ -84,6 +87,9 @@ router.put('/update/:itemId', (req, res, next) => {
   req.sanitize('isCoupon').trim();
   req.sanitize('isShipped').trim();
   req.sanitize('public_id').trim();
+  for (const i in req.body.tags) {
+    req.sanitize(i).trim();
+  }
 
   // Errors
   const errors = req.validationErrors();
@@ -94,15 +100,9 @@ router.put('/update/:itemId', (req, res, next) => {
       errors,
     }).end();
   }
-
   const id = req.params.itemId;
   controllers.update(id, req.body)
   .then((result) => {
-    // itemIndex.addObject(result, function(err, content) {
-    //   if(err) {    
-    //     console.log(err);
-    //   }
-    // });
     res.json({
       confirmation: 'success',
       result,

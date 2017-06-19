@@ -65,6 +65,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       features: '',
       public_id: '',
       disabled: true,
+      tags: [],
     };
   }// eslint-disable-line
 
@@ -185,6 +186,10 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
 
   onFeaturesChange = (features) => this.setState({ features });
 
+  handleRequestAdd = (...tags) => this.setState({ tags: [...this.state.tags, ...tags] });
+
+  handleRequestDelete = (deletedChip) => this.setState({ tags: this.state.tags.filter((c) => c !== deletedChip) })
+
   /**
    * Validate user input to avoid empty values sent to the db.
    * Convert percentage value to a Number.
@@ -222,6 +227,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
         { public_id: this.state.public_id },
+        { tags: [...this.state.tags] }
       );
       // Create.
       this.props.postDeal(item);
@@ -313,6 +319,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       image,
       name,
       disabled,
+      tags
     } = this.state;
     const {
       percentage,
@@ -371,6 +378,9 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 name={name}
                 features={features}
                 disabled={disabled}
+                tags={tags}
+                onRequestAdd={(tags) => this.handleRequestAdd(tags)}
+                onRequestDelete={this.handleRequestDelete}
               />
             </Paper>
           </Col>

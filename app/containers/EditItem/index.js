@@ -65,6 +65,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     isShipped: '',
     errors: [],
     disabled: true,
+    tags: [],
   };
 
   componentDidMount() {
@@ -102,18 +103,9 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
     if (nextProps.itemData.image !== this.state.image) {
       this.setState({ image: nextProps.itemData.image });
     }
-    // if (nextProps.itemData.merchant.title !== this.state.merchant) {
-    //   this.setState({ merchant: nextProps.itemData.merchant.title });
-    // }
-    // if (nextProps.itemData.category.name !== this.state.category) {
-    //   this.setState({ category: nextProps.itemData.category.name });
-    // }
-    // if (nextProps.itemData.subCategory.title !== this.state.subCategory) {
-    //   this.setState({ subCategory: nextProps.itemData.subCategory.title });
-    // }
-    // if (nextProps.itemData.subCategory.isShipped !== this.state.isShipped) {
-    //   this.setState({ isShipped: nextProps.itemData.isShipped });
-    // }
+    if (nextProps.itemData.tags !== this.state.tags) {
+      this.setState({ tags: nextProps.itemData.tags });
+    }
   }
 
   handleUpload = (files) => {
@@ -223,6 +215,11 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
 
   onFeaturesChange = (features) => this.setState({ features });
 
+  handleRequestAdd = (...tags) => this.setState({ tags: [...this.state.tags, ...tags] });
+
+  handleRequestDelete = (deletedChip) => this.setState({ tags: this.state.tags.filter((c) => c !== deletedChip) })
+
+
   /**
    * Validate user input to avoid empty values sent to the db.
    * Merge several state object and save to the db.
@@ -257,7 +254,10 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
         { isCoupon: this.state.isCoupon },
         { isShipped: this.state.isShipped },
         { public_id: this.state.public_id },
+        { tags: [...this.state.tags] }
+
       );
+      console.log({data})
       // Item id.
       const itemId = this.props.params.itemId;
       // Create.
@@ -356,6 +356,7 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
       isFeatured,
       isShipped,
       disabled,
+      tags,
     } = this.state;
 
     const { categories, subcategories, merchants } = this.props;
@@ -410,6 +411,9 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
                 name={name}
                 features={features}
                 disabled={disabled}
+                tags={tags}
+                onRequestAdd={(tags) => this.handleRequestAdd(tags)}
+                onRequestDelete={this.handleRequestDelete}
               />
             </Paper>
           </Col>
