@@ -23,7 +23,6 @@ const renderSuggestion = (hit) => (
 const AutoComplete = connectAutoComplete(({ hits, currentRefinement, refine }) => (
     <Autosuggest
       suggestions={hits}
-      alwaysRenderSuggestions
       onSuggestionsFetchRequested={({ value }) => refine(value)}
       onSuggestionsClearRequested={() => refine('')}
       getSuggestionValue={(hit) => (hit.subCategory._id)}
