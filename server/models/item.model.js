@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const autopopulate = require("mongoose-autopopulate");
 const mongooseAlgolia = require('mongoose-algolia');
 
 const ItemSchema = new Schema({
@@ -30,19 +29,16 @@ const ItemSchema = new Schema({
   subCategory: {
     type: Schema.Types.ObjectId,
     ref: 'SubCategory',
-    autopopulate: true,
     required: true,
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
-    autopopulate: true,
     required: true,
   },
   merchant: {
     type: Schema.Types.ObjectId,
     ref: 'Merchant',
-    autopopulate: true,
     required: true,
   },
   coupon: {
@@ -92,9 +88,6 @@ const ItemSchema = new Schema({
   },
 });
 
-// autopopulate
-ItemSchema.plugin(autopopulate);
-
 ItemSchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
@@ -124,6 +117,17 @@ ItemSchema.plugin(mongooseAlgolia,{
   appId: process.env.appId,
   apiKey: process.env.apiKey,
   indexName: 'item',
+  selector: '-_v -themeColor',
+  populate: [{
+    path: 'subCategory',
+    select: '_id title'
+  },{
+    path: 'category',
+    select: '_id name'
+  },{
+    path: 'merchant',
+    select: '_id title'
+  }],
   debug: true,
   mappings: {
     tags: function(value) {
@@ -132,13 +136,10 @@ ItemSchema.plugin(mongooseAlgolia,{
   }
 
 });
+
 let Model = mongoose.model('Item', ItemSchema);
 
 Model.SyncToAlgolia();
-Model.SetAlgoliaSettings({
-  searchableAttributes: ['name','features']
-});
-
 
 module.exports = Model;
 

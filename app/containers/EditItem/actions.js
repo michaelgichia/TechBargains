@@ -52,7 +52,9 @@ export const updateItem = (item, itemId) => (dispatch) => {
         } else if (typeof response.data.message === 'object') {
           newError.push(response.data.message.message);
         } else {
-          response.data.errors.map((error) => newError.push(error.msg));
+          console.log({response: response.data})
+          // response.data.errors.map((error) => newError.push(error.msg));
+          newError.push(response.data.errors);
         }
 
         dispatch({
