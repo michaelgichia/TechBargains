@@ -67,7 +67,6 @@ export class Product extends React.Component { // eslint-disable-line react/pref
           <CloudinaryContext cloudName="dw3arrxnf">
             <Hits hitComponent={
               ({hit}) => {
-                console.log({hit})
                 return <ProductDetail
                   product={hit}
                   onTouchTap={() => this.props.handleOpenModal(hit)}

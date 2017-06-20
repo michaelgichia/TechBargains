@@ -30,19 +30,19 @@ const ItemSchema = new Schema({
   subCategory: {
     type: Schema.Types.ObjectId,
     ref: 'SubCategory',
-    autopopulate: { select: 'title' },
+    autopopulate: true,
     required: true,
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
-    autopopulate: { select: 'name' },
+    autopopulate: true,
     required: true,
   },
   merchant: {
     type: Schema.Types.ObjectId,
     ref: 'Merchant',
-    autopopulate: { select: 'title' },
+    autopopulate: true,
     required: true,
   },
   coupon: {
@@ -95,14 +95,6 @@ const ItemSchema = new Schema({
 // autopopulate
 ItemSchema.plugin(autopopulate);
 
-// Sync with algolia
-ItemSchema.plugin(mongooseAlgolia,{
-  appId: "YNZ7XXV49B",
-  apiKey: "6bab08a4370c5d546b65e485a0f802ab",
-  indexName: 'item',
-  debug: true
-});
-
 ItemSchema.methods.summary = function () {// eslint-disable-line
   const summary = {
     id: this._id.toString(),// eslint-disable-line
@@ -128,12 +120,28 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
   return summary;
 };
 
+// ItemSchema.post('remove', function() {
+//   // Sync with algolia
+// });
+ItemSchema.plugin(mongooseAlgolia,{
+  appId: "YNZ7XXV49B",
+  apiKey: "6bab08a4370c5d546b65e485a0f802ab",
+  indexName: 'item',
+  debug: true,
+  mappings: {
+    tags: function(value) {
+      return value.join(' ');
+    }
+  }
+
+});
 let Model = mongoose.model('Item', ItemSchema);
 
 Model.SyncToAlgolia();
 Model.SetAlgoliaSettings({
   searchableAttributes: ['name','features']
 });
+
 
 module.exports = Model;
 

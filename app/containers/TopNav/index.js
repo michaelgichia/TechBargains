@@ -1,11 +1,10 @@
 import React from 'react';
 import AutoComplete from 'components/AutoComplete';
 import PropTypes from 'prop-types';
-import EventListener, { withOptions } from 'react-event-listener';
 // Material-ui
 import AppBar from 'material-ui/AppBar';
 // Algolia
-import { InstantSearch, Configure, Index } from 'react-instantsearch/dom';
+import { InstantSearch, Configure } from 'react-instantsearch/dom';
 // style
 import 'react-instantsearch-theme-algolia/style.css';
 import { style } from './style';
@@ -37,12 +36,12 @@ class TopNav extends React.Component { // eslint-disable-line react/prefer-state
         iconStyleLeft={style.iconStyleLeft}
       >
         <InstantSearch
-          style={{maginRight: 20, paddingRight: 20}}
           appId="YNZ7XXV49B"
           apiKey="90550ee45080bb58130f0ac76a4e28f5"
-          indexName="item"
+          indexName="Products"
         >
           <AutoComplete />
+          <Configure hitsPerPage={1} />
         </InstantSearch>
       </AppBar>
     );
