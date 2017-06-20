@@ -352,7 +352,7 @@ p > .percentage {
   overflow: hidden;
   background-color: transparent;
   border-bottom: solid 3px #676d79;
-  color: #676d79;
+  color: #525c65;
   padding: 5px 16px 5px 5px;
   margin: 0;
   font-size: 20px;
@@ -594,12 +594,13 @@ label.platinumbtn {
   border-radius:0;
 }
 .topper {
+  font-family: Roboto, Helvetica, Arial;
   background-color: #e6251f;
   border-radius:0;
-  height: 28px;
+  height: 27px;
   text-align: left;
-  max-width: 300px;
-  padding-left: 10px;
+  max-width: 130px;
+  padding-left: 5px;
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -4360,7 +4361,7 @@ tbody.collapse.in {
 .caret:hover,
 .caret:focus,
 .caret:active {
-  color: #ea4d46;
+  color: #e6251f;
 }
 
 .caret {
@@ -4891,7 +4892,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eee;
-  border-color: #ea4d46;
+  border-color: #e6251f;
 }
 .nav .nav-divider {
   height: 1px;
@@ -5415,7 +5416,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color:  #ea4d46;
+  color:  #e6251f;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -6370,7 +6371,7 @@ button.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  max-height: 28px;
+  max-height: 27px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -6378,8 +6379,9 @@ button.list-group-item-danger.active:focus {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 13px;
   color: inherit;
+  text-transform: none;
 }
 .panel-title > a,
 .panel-title > small,
