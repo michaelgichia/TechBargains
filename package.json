@@ -193,7 +193,9 @@
       "isexe",
       "fs.realpath",
       "mongoose-ts",
-      "react-instantsearch-theme-algolia"
+      "react-instantsearch-theme-algolia",
+      "mongoose-algolia",
+      "mongoose-autopopulate"
     ],
     "include": [
       "core-js",
@@ -251,14 +253,12 @@
     "lodash": "^4.17.4",
     "material-ui": "^0.18.1",
     "material-ui-chip-input": "^0.15.0",
-    "material-ui-search-bar": "^0.2.1",
     "minimist": "1.2.0",
     "mongoose": "^4.10.4",
     "mongoose-algolia": "^1.7.0",
     "mongoose-autopopulate": "^0.5.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "qs": "^6.4.0",
     "react": "15.4.1",
     "react-autosuggest": "^9.1.0",
     "react-bootstrap": "^0.31.0",
@@ -268,7 +268,6 @@
     "react-instantsearch": "^4.0.3",
     "react-instantsearch-theme-algolia": "^4.0.3",
     "react-intl": "2.1.5",
-    "react-isolated-scroll": "^0.1.0",
     "react-lazyload": "^2.2.7",
     "react-quill": "^1.0.0-rc.2",
     "react-redux": "4.4.6",
