@@ -1,6 +1,6 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-export const theme = getMuiTheme({
+export const muiTheme = getMuiTheme({
   palette: {
     textColor: '#525c65',
   },
@@ -10,5 +10,6 @@ export const theme = getMuiTheme({
   appBar: {
     zIndex: 5,
     width: '100%',
+    backgroundColor: '#fff',
   },
 });

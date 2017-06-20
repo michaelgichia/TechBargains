@@ -11,30 +11,6 @@ import { connectAutoComplete } from 'react-instantsearch/connectors';
 import { SearchBox } from 'react-instantsearch/dom';
 import '!!style-loader!css-loader!./style.css';
 
-// const renderInputComponent = (inputProps) => (
-//   <div className="algolia-input">
-//     <input {...inputProps} type="text" name="search" placeholder="Search.."  />
-//   </div>
-// );
-
-const handleSubmit = () => {
-  console.log('submitted!!!');
-}
-
-// function onSuggestionSelected(event, 
-// { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {
-//   console.log({suggestion, suggestionValue, suggestionIndex, sectionIndex, method})
-// }
-
-
-const renderInputComponent = (inputProps) => (
-  <div className="algolia-input">
-    <SearchBox
-    {...inputProps}
-    />
-  </div>
-);
-
 const renderSuggestion = (hit) => (
   <div
     key={shortid.generate()}
@@ -47,6 +23,7 @@ const renderSuggestion = (hit) => (
 const AutoComplete = connectAutoComplete(({ hits, currentRefinement, refine }) => (
     <Autosuggest
       suggestions={hits}
+      alwaysRenderSuggestions
       onSuggestionsFetchRequested={({ value }) => refine(value)}
       onSuggestionsClearRequested={() => refine('')}
       getSuggestionValue={(hit) => (hit.subCategory._id)}
@@ -58,7 +35,6 @@ const AutoComplete = connectAutoComplete(({ hits, currentRefinement, refine }) =
       }}
       renderSectionTitle={(section) => (section.index)}
       getSectionSuggestions={(section) => (section.hits)}
-      renderInputComponent={(inputProps) => renderInputComponent(inputProps)}
     />
   )
 );

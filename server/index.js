@@ -52,18 +52,6 @@ app.use(expressValidator({
  }
 }));
 
-// custome sanitizer
-// app.use(expressValidator({
-//  customSanitizers: {
-//     toSanitizeSomehow: function(value) {
-//         var newValue = value;//some operations
-//         return newValue;
-//     },
-//  }
-// }));
-
-// If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', myApi);
 app.use('/api', authCheckMiddleware);
 
 // routes

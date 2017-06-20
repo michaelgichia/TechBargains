@@ -27,7 +27,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
-import '!file-loader?name=[name].[ext]!./favicon.ico';
+import '!file-loader?name=[name].[ext]!./logo_Sel_icon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 // import 'file-loader?name=[name].[ext]!./.htaccess';
 // Bootstraps imports
@@ -44,7 +44,7 @@ import { translationMessages } from './i18n';
 // import './global-styles';
 
 // Import theme to override Material-ui.
-import { theme } from './muiTheme';
+import { muiTheme } from './muiTheme';
 
 // Import root routes
 import createRoutes from './routes';
@@ -71,7 +71,7 @@ const rootRoute = {
 
 const render = (messages) => {
   ReactDOM.render(
-    <MuiThemeProvider muiTheme={theme}>
+    <MuiThemeProvider muiTheme={muiTheme}>
       <Provider store={store}>
         <LanguageProvider messages={messages}>
           <Router

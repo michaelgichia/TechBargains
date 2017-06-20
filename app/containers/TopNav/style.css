@@ -1,0 +1,15 @@
+.home-icon > svg:not(:root) {
+  overflow: visible;
+  vertical-align: sub;
+}
+
+.home-icon > span {
+}
+.home-icon .first {
+  color: #ea4d46;
+  font-family: 'BowlbyOne', Helvetica, Roboto, sans-serif;
+}
+.home-icon .second {
+  font-family: 'Mogra', Helvetica, Roboto, sans-serif;
+}
+

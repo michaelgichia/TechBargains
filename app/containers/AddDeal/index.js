@@ -74,7 +74,6 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       this.setState({ errors: nextProps.errors });
     }
   }
-
   handleUpload = (files) => {
     console.info('uploading file....')
     const image = files[0]
@@ -85,7 +84,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
     const signature = sha1(paramsStr)
     const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
     const params = {
-      "api_key": "217319541859423",
+      "api_key": process.env.IMAGE_API_KEY,
       "timestamp": timestamp,
       "upload_preset": uploadPreset,
       "signature": signature

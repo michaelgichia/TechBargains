@@ -920,7 +920,7 @@ img {
   border: 0;
 }
 svg:not(:root) {
-  overflow: hidden;
+  overflow: visible;
 }
 figure {
   margin: 1em 40px;
@@ -1100,9 +1100,20 @@ th {
 }
 
 @font-face {
+  font-family: 'BowlbyOne';
+  src: url('./fonts/BowlbyOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Mogra';
+  src: url('./fonts/Mogra-Regular.ttf');
+}
+
+@font-face {
   font-family: 'SourceSansPro';
   src: url('./fonts/SourceSansPro.ttf');
 }
+
 
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -4346,6 +4357,12 @@ tbody.collapse.in {
     display: none !important;
   }
 }
+.caret:hover,
+.caret:focus,
+.caret:active {
+  color: #ea4d46;
+}
+
 .caret {
   display: block;
   border: 0;
@@ -4874,7 +4891,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eee;
-  border-color: #ff8400;
+  border-color: #ea4d46;
 }
 .nav .nav-divider {
   height: 1px;
@@ -5398,7 +5415,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #ff8400;
+  color:  #ea4d46;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,

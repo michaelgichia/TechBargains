@@ -120,12 +120,9 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
   return summary;
 };
 
-// ItemSchema.post('remove', function() {
-//   // Sync with algolia
-// });
 ItemSchema.plugin(mongooseAlgolia,{
-  appId: "YNZ7XXV49B",
-  apiKey: "6bab08a4370c5d546b65e485a0f802ab",
+  appId: process.env.appId,
+  apiKey: process.env.apiKey,
   indexName: 'item',
   debug: true,
   mappings: {
