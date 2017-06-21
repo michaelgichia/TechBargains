@@ -257,6 +257,7 @@
     "minimist": "1.2.0",
     "mongoose": "^4.10.4",
     "mongoose-algolia": "^1.7.0",
+    "mongoose-autopopulate": "^0.5.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "15.4.1",

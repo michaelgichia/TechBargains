@@ -78,7 +78,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log({nextProps})
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
@@ -257,7 +256,6 @@ export class EditItem extends React.Component { // eslint-disable-line react/pre
         { tags: [...this.state.tags] }
 
       );
-      console.log({data})
       // Item id.
       const itemId = this.props.params.itemId;
       // Create.

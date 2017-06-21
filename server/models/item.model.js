@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const autopopulate = require('mongoose-autopopulate');
 const mongooseAlgolia = require('mongoose-algolia');
 
 const ItemSchema = new Schema({
@@ -29,16 +30,19 @@ const ItemSchema = new Schema({
   subCategory: {
     type: Schema.Types.ObjectId,
     ref: 'SubCategory',
+    autopopulate: true,
     required: true,
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
+    autopopulate: true,
     required: true,
   },
   merchant: {
     type: Schema.Types.ObjectId,
     ref: 'Merchant',
+    autopopulate: true,
     required: true,
   },
   coupon: {
@@ -87,6 +91,8 @@ const ItemSchema = new Schema({
     default:  new Date().getTime(),
   },
 });
+
+ItemSchema.plugin(autopopulate);
 
 ItemSchema.methods.summary = function () {// eslint-disable-line
   const summary = {
