@@ -52,6 +52,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
       description: '',
       imageUrl: 'Click or Drop files to upload',
       public_id: '',
+      backlink: '',
     },
     isFeatured: false,
     titleError: '',
@@ -182,7 +183,7 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
 
   render() {
     const { titleError, descriptionError, errors, isFeatured, about } = this.state;
-    const { title, description, imageUrl } = this.state.merchant;
+    const { title, description, imageUrl, backlink } = this.state.merchant;
     return (
       <Grid>
         <Row>
@@ -203,7 +204,8 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
                 about={about}
                 onAboutChange={this.handleAbout}
                 onDropChange={this.handleUpload}
-                header="Create SubCategory"
+                header="Create Store"
+                backlink={backlink}
               />
             </Paper>
           </Col>

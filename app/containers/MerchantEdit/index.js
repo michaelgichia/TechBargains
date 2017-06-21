@@ -38,6 +38,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
       description: '',
       imageUrl: '',
       public_id: '',
+      backlink: '',
 
     },
     isFeatured: false,
@@ -192,7 +193,6 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
         about: this.state.about,
-
       };
       this.updateMerchant(merchant);
       this.resetState();
@@ -201,7 +201,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
 
   render() {
     const { titleError, descriptionError, errors, isFeatured, about } = this.state;
-    const { title, description, imageUrl } = this.state.merchant;
+    const { title, description, imageUrl, backlink } = this.state.merchant;
     return (
       <Grid>
         <Row>
@@ -222,6 +222,7 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
                 onAboutChange={this.handleAbout}
                 onFeaturedChange={this.handleIsFeatured}
                 onDropChange={this.handleUpload}
+                backlink={backlink}
               />
             </Paper>
           </Col>

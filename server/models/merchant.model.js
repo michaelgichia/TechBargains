@@ -14,6 +14,12 @@ const MerchantSchema = new Schema({
     max: 1000,
     default: '',
   },
+  backlink: {
+    type: String,
+    trim: true,
+    max: 1000,
+    default: '',
+  },
   description: {
     type: String,
     required: true,
@@ -43,6 +49,7 @@ MerchantSchema.methods.summary = function () {// eslint-disable-line
     id: this._id.toString(),// eslint-disable-line
     title: this.title,
     imageUrl: this.imageUrl,
+    backlink: this.backlink,
     description: this.description,
     isFeatured: this.isFeatured,
     description: this.description,

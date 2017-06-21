@@ -128,7 +128,7 @@ class AddDealForm extends React.PureComponent {
           onChange={this.props.onDateChange}
           fullWidth
           value={this.props.expire}
-          hintStyle={{color: '#00BCD4'}}
+          hintStyle={{color: '#e6251f'}}
         />
         <SelectField
           hintText="Is this a Coupon?"

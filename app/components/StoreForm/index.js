@@ -32,6 +32,15 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           errorText={this.props.titleError}
           value={this.props.title}
         />
+        <TextField
+          hintText="Back Link"
+          floatingLabelText="Back Link"
+          id="backlink"
+          onChange={this.props.onChange}
+          hintStyle={this.props.hintStyle}
+          fullWidth
+          value={this.props.backlink}
+        />
         <br/>
         <br/>
         <Dropzone
@@ -99,6 +108,7 @@ StoreForm.propTypes = {
   onAboutChange: PropTypes.func.isRequired,
   about: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
+  backlink: PropTypes.string.isRequired,
 };
 
 export default StoreForm;
