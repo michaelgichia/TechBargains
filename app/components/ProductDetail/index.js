@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import YesNoBtn from 'components/YesNoBtn';
 import Row from 'react-bootstrap/lib/Row';
+import Clearfix from 'react-bootstrap/lib/Clearfix';
+import Grid from 'react-bootstrap/lib/Grid';
 import Col from 'react-bootstrap/lib/Col';
 import { Image, Transformation } from 'cloudinary-react'
 import Panel from 'react-bootstrap/lib/Panel';
 import shortid from 'shortid';
+import "!!style-loader!css-loader!./style.css";
+
 
 class ProductDetail extends React.Component { // eslint-disable-line react/prefer-stateless-function
  
@@ -29,49 +33,76 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     return (
-      <Panel className="merchant-panel" header={
-        <div className="topper">
-          <p>{`Expire: ${this.timeConversion(this.props.product.expire)}`}</p>
-        </div>
-      }>
+      <Panel
+        className="merchant-panel"
+        header={
+          <div className="topper">
+            <p>{`Expire: ${this.timeConversion(this.props.product.expire)}`}</p>
+          </div>
+        }
+      >
         <div
           className="merchant-panel-header"
           dangerouslySetInnerHTML={{ __html: this.props.product.name }}
         />
-        <Row style={{ marginLeft: 0, marginRight: 0 }} className="merchant-panel-body">
-          <div className="merchant-panel-body-image">
-            <Image publicId={this.props.product.public_id}>
-                <Transformation width="200" crop="scale"  height="200" dpr="auto" />
-            </Image>
-          </div>
-          <div className="merchant-panel-body-description"
-          dangerouslySetInnerHTML={{ __html: this.props.product.features }}
-          />
-        </Row>
-        <Row style={{ marginLeft: 0, marginRight: 0 }} className="merchant-info">
-          <Col xsPush={4} xs={8} mdPush={4} md={8}>
-            <div className="merchant-info-percentage">
-              <p>
-                <span className="percentage">{`${this.props.product.percentage}% Off `}</span>
-                <span>{this.props.product.isShipped}</span>
-               </p>
+        <Grid fluid>
+
+          <Row>
+
+            <div className="product-detail-image">
+              <Col
+                xs={4}
+                sm={4}
+                md={4}
+                lg={4}
+              > 
+                <div className="product-detail-image-image">
+                  <Image publicId={this.props.product.public_id} >
+                      <Transformation
+                        width="200"
+                        crop="scale" 
+                        height="200"
+                        dpr="auto"
+                      />
+                  </Image>
+                </div>
+              </Col>
             </div>
-            <div className="merchant-info-btn">
-              <YesNoBtn
-                isCoupon={this .props.product.isCoupon}
-                onTouchTap={this.props.onTouchTap}
-                backlink={this .props.product.backlink}
+            <Col
+              className="product-detail-features"
+              xs={8}
+              sm={8}
+              md={8}
+              lg={8}
+            > 
+              <div className="line-clamp-wrapper">
+                <div
+                  className="line-clamp"
+                  dangerouslySetInnerHTML={{ __html: this.props.product.features }}
                 />
-            </div>
-          </Col>
-        </Row>
-        <Row style={{ margin: 0 }} className="merchant-footer">
-          <Col xsPush={4} xs={8} mdPush={4} md={8}>
-            <p>
-              { `From ${this.props.product.merchant.title} in ${this.props.product.category.name} Category` }
-            </p>
-          </Col>
-        </Row>
+                <div>
+              </div>
+                <p>
+                  <span>{`${this.props.product.percentage}% Off `}</span>
+                  <span>{this.props.product.isShipped}</span>
+                 </p>
+              </div>
+              <div>
+                <YesNoBtn
+                  isCoupon={this .props.product.isCoupon}
+                  onTouchTap={this.props.onTouchTap}
+                  backlink={this .props.product.backlink}
+                  />
+              </div>
+              <p>
+                { `From ${this.props.product.merchant.title} in ${this.props.product.category.name} Category` }
+              </p>
+            </Col>
+
+          </Row>
+          
+        </Grid>
+
       </Panel>
     );
   }

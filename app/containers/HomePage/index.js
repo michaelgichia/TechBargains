@@ -32,8 +32,8 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
   render() {
     return (
       <Grid fluid>
-        <Row>
-          <Col xs={12} sm={12} md={12} lg={8}>
+        <Row style={{ marginRight: 0, marginLeft: 0 }} >
+          <Col style={{ paddingLeft: 1, paddingRight: 1 }} xs={12} sm={12} md={12} lg={8}>
             <CarouselContainer />
             <Product />
           </Col>

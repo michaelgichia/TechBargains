@@ -250,6 +250,7 @@
     "invariant": "2.2.2",
     "ip": "1.1.4",
     "jsonwebtoken": "^7.4.1",
+    "line-clamp": "^0.0.4",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.1",
     "material-ui-chip-input": "^0.15.0",

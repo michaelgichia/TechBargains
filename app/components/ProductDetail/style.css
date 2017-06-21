@@ -1,0 +1,153 @@
+@media (max-width: 480px) {
+  .product-detail-image .col-xs-4 {
+    width: 100% !important;
+    min-width: 100% !important; 
+  }
+}
+
+@media (max-width: 480px) {
+  .product-detail-image-image {
+    width: 100% !important;
+    min-width: 100% !important;
+    text-align: center;
+  }
+  .product-detail-image-image > img {
+    max-width: 125px !important;
+    max-height: 125px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-detail-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .product-detail-features{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .line-clamp-wrapper {
+    height: 60px;
+    overflow: hidden;
+  }
+  .line-clamp {
+    width: 100%;
+    line-height: 20px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 991px) {
+  .product-detail-image {
+    text-align: center !important;
+  }
+}
+
+.merchant-panel-body-image {
+  float: left;
+  max-width: 33.3333%;
+  padding-right: 10px;
+}
+
+.merchant-panel-body-description {
+  float: right;
+  max-width: 66.6666%;
+  padding-left: 10px;
+}
+
+.merchant-panel-body {
+  min-width: 100%;
+  width: 100%;
+  padding: 7px 20px 10px 20px;
+}
+
+@media (max-width: 480px) {
+  .merchant-panel-header {
+    font-size: 18px !important;
+    word-spacing: 4px;
+  }
+}
+
+@media (min-width: 992px) {
+  .merchant-panel-header {
+    font-size: 26px !important;
+    word-spacing: 4px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 992px) {
+  .merchant-panel-header {
+    font-size: 24px !important;
+    word-spacing: 3px;
+  }
+}
+
+.merchant-panel-header {
+  min-height: 1px;
+  min-width: 100%;
+  border-radius: 0px;
+  text-align: left;
+  font-weight: 500;
+  font-family: 'SourceSans', serif;
+  background: transparent;
+  margin: 0px;
+  color: #1f7dd4;
+  line-height: 1.1;
+  padding: 5px 20px;
+}
+
+.topper {
+  font-family: Roboto, Helvetica, Arial;
+  background-color: #e6251f;
+  border-radius: 0;
+  height: 27px;
+  text-align: left;
+  max-width: 130px;
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.topper > p {
+  margin-bottom: 0px;
+  color: #fff;
+}
+
+.merchant-info {
+  width: 100%;
+  min-width: 100%;
+}
+
+.merchant-info-btn {
+  float: right;
+  max-width: 50%;
+  padding-right: 10%;
+}
+
+.merchant-info-percentage {
+  float: left;
+  max-width: 50%;
+}
+
+.merchant-info-percentage > p {
+  color: #e6251f;
+  font-weight: 700;
+}
+
+p > .percentage {
+  line-height: 1.1;
+  font-size: 30px;
+  font-family: Roboto, sans-serif, Helvetica, Arial;
+}
+
+.merchant-footer {
+  min-width: 100%;
+  padding: 5px 20px 0px 5px;
+  color: #b0b0b0;
+}

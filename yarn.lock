@@ -4637,10 +4637,6 @@ isobject@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.0.tgz#39565217f3661789e8a0a0c080d5f7e6bc46e1a0"
 
-isolated-scroll@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/isolated-scroll/-/isolated-scroll-0.1.0.tgz#463126c5adaabb5b759c721498ece090d8bef7a7"
-
 isomorphic-fetch@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
@@ -5138,6 +5134,10 @@ liftoff@^2.2.0:
     lodash.mapvalues "^4.4.0"
     rechoir "^0.6.2"
     resolve "^1.1.7"
+
+line-clamp@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/line-clamp/-/line-clamp-0.0.4.tgz#a4314de7f43d89c310af423ff9c28c7b393b7b17"
 
 lint-staged@3.2.1:
   version "3.2.1"
@@ -5638,12 +5638,6 @@ material-ui-chip-input@^0.15.0:
   dependencies:
     prop-types "^15.5.7"
 
-material-ui-search-bar@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/material-ui-search-bar/-/material-ui-search-bar-0.2.1.tgz#df8c501ea0bd2e92b68ded2be49485735ca030ef"
-  dependencies:
-    prop-types "^15.5.8"
-
 material-ui@^0.18.1:
   version "0.18.1"
   resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.18.1.tgz#1c8a47d7e930ff0b07064dd8633035984a5a3569"
@@ -5855,10 +5849,6 @@ mongoose-algolia@^1.7.0:
     algoliasearch "^3.19.1"
     cli-color "^1.1.0"
     deep-keys "^0.4.0"
-
-mongoose-autopopulate@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/mongoose-autopopulate/-/mongoose-autopopulate-0.5.0.tgz#c5595256c061754e146a55cd40dcbba3fc7d5abf"
 
 mongoose@^4.10.4:
   version "4.10.4"
@@ -6990,7 +6980,7 @@ qs@6.2.0, qs@~6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
-qs@6.4.0, qs@^6.1.0, qs@^6.2.1, qs@^6.4.0, qs@~6.4.0:
+qs@6.4.0, qs@^6.1.0, qs@^6.2.1, qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
@@ -7159,12 +7149,6 @@ react-intl@2.1.5:
     intl-messageformat "^1.3.0"
     intl-relativeformat "^1.3.0"
     invariant "^2.1.1"
-
-react-isolated-scroll@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/react-isolated-scroll/-/react-isolated-scroll-0.1.0.tgz#401c3924c6407c32abae1cdcb5bf9e7335ea224e"
-  dependencies:
-    isolated-scroll "^0.1.0"
 
 react-lazyload@^2.2.7:
   version "2.2.7"
