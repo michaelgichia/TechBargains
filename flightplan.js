@@ -44,6 +44,10 @@ plan.remote(function(remote) {
   remote.log('============================================================================================');
   remote.sudo('mkdir current', {user: remote.runtime.username});
 
+  remote.log('Copy to .env');
+  remote.log('============================================================================================');
+  remote.sudo('cp -R .env current/', {user: remote.runtime.username});
+
   remote.log('Copy to current.');
   remote.log('============================================================================================');
   remote.sudo('cp -R repo/* current/', {user: remote.runtime.username});
