@@ -31,7 +31,7 @@ const findById = id =>
 const findCategoriesAndSubscategories = params => {
   const categoriesArray = [];
   return new Promise((resolve, reject) => {
-    Category.find(params, (err, categories) => {
+    Category.find({ isFeatured: true }, (err, categories) => {
       if (err) {
         reject(err);
         return;

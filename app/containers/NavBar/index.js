@@ -74,7 +74,7 @@ class Navigation extends React.Component {
         >
           <NavbarCollapse>
             <Nav>
-              {this.state.navItems.map((navItem, index) =>
+              {this.state.navItems.slice(0, 7).map((navItem, index) =>
                 <NavDropdown
                   key={shortid.generate()}
                   eventKey={navItem.id}
