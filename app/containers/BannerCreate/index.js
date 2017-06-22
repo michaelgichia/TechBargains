@@ -54,7 +54,7 @@ export class BannerCreate extends React.Component {
     const url =
       "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
     const params = {
-      api_key: process.env.IMAGE_API_KEY,
+      api_key: "217319541859423",
       timestamp: timestamp,
       upload_preset: uploadPreset,
       signature: signature
@@ -100,20 +100,6 @@ export class BannerCreate extends React.Component {
 
   handleToggle = (e, isInputChecked) =>
     this.setState({ isFeatured: isInputChecked });
-
-  // postBanner = () => {
-  //   const updateBanner = Object.assign(this.state.item, {
-  //     isFeatured: this.state.isFeatured
-  //   });
-  //   axios.post("/api/banner/create", updateBanner).then(response => {
-  //     if (response.data.confirmation === "success") {
-  //       window.location.href = `/dashboard/banner/${response.data.result.id}`;
-  //     } else {
-  //       this.setState({ errors: response.data.errors });
-  //       console.error(response.data);
-  //     }
-  //   })
-  // };
 
   handleSubmit = () => {
     if (validator.isEmpty(this.state.item.title)) {

@@ -74,7 +74,6 @@ module.exports = (options) => ({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         appId: JSON.stringify(process.env.appId),
         apiKey: JSON.stringify(process.env.apiKey),
-        IMAGE_API_KEY: JSON.stringify(process.env.IMAGE_API_KEY),
       },
     }),
     new webpack.NamedModulesPlugin(),

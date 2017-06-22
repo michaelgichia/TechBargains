@@ -87,7 +87,7 @@ export class AddDeal extends React.Component {
     const url =
       "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
     const params = {
-      api_key: process.env.IMAGE_API_KEY,
+      api_key: "217319541859423",
       timestamp: timestamp,
       upload_preset: uploadPreset,
       signature: signature
