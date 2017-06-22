@@ -1,8 +1,8 @@
-const SubCategory = require('../models/subcategory.model');
+const SubCategory = require("../models/subcategory.model");
 
-const Promise = require('bluebird');
+const Promise = require("bluebird");
 
-const find = (params) =>
+const find = params =>
   new Promise((resolve, reject) => {
     SubCategory.find(params, (err, payload) => {
       if (err) {
@@ -10,14 +10,14 @@ const find = (params) =>
         return;
       }
       const summaries = [];
-      payload.forEach((category) => {
+      payload.forEach(category => {
         summaries.push(category.summary());
       });
       resolve(summaries);
     });
   });
 
-const findById = (id) =>
+const findById = id =>
   new Promise((resolve, reject) => {
     SubCategory.findById(id, (err, payload) => {
       if (err) {
@@ -30,5 +30,5 @@ const findById = (id) =>
 
 module.exports = {
   find,
-  findById,
+  findById
 };

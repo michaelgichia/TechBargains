@@ -1,102 +1,105 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const autopopulate = require('mongoose-autopopulate');
-const mongooseAlgolia = require('mongoose-algolia');
+const autopopulate = require("mongoose-autopopulate");
+const mongooseAlgolia = require("mongoose-algolia");
 
 const ItemSchema = new Schema({
   name: {
     type: String,
     required: true,
     trim: true,
-    max: 200,
+    max: 200
   },
   features: {
     type: String,
     trim: true,
     max: 10000,
-    default: '',
+    default: ""
   },
   backlink: {
     type: String,
     trim: true,
     max: 1000,
-    default: '',
+    default: ""
   },
   percentage: {
     type: String,
-      max: 10,
-    default: '',
+    max: 10,
+    default: ""
   },
   subCategory: {
     type: Schema.Types.ObjectId,
-    ref: 'SubCategory',
+    ref: "SubCategory",
     autopopulate: true,
-    required: true,
+    required: true
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: "Category",
     autopopulate: true,
-    required: true,
+    required: true
   },
   merchant: {
     type: Schema.Types.ObjectId,
-    ref: 'Merchant',
+    ref: "Merchant",
     autopopulate: true,
-    required: true,
+    required: true
   },
   coupon: {
     type: String,
-    default: '',
+    default: ""
   },
-  expire: { 
-    type: Number,
+  expire: {
+    type: Number
   },
   image: {
     type: String,
     trim: true,
     max: 1000,
-    default: '',
+    default: ""
   },
   themeColor: {
     type: String,
-    default: '',
-    max: 10,
+    default: "",
+    max: 10
   },
   isFeatured: {
     type: Boolean,
-    default: true,
+    default: true
   },
   isShipped: {
     type: String,
     trim: true,
     max: 500,
-    default: '',
+    default: ""
   },
   public_id: {
     type: String,
     max: 500,
-    default: '',
+    default: ""
   },
   isCoupon: {
     type: Boolean,
-    default: false,
+    default: false
   },
-  tags: [{
-    type: String,
-    required: true,
-  }],
+  tags: [
+    {
+      type: String,
+      required: true
+    }
+  ],
   created: {
     type: Number,
-    default:  new Date().getTime(),
-  },
+    default: new Date().getTime()
+  }
 });
 
 ItemSchema.plugin(autopopulate);
 
-ItemSchema.methods.summary = function () {// eslint-disable-line
+ItemSchema.methods.summary = function() {
+  // eslint-disable-line
   const summary = {
-    id: this._id.toString(),// eslint-disable-line
+    id: this._id.toString(), // eslint-disable-line
     name: this.name,
     backlink: this.backlink,
     percentage: this.percentage,
@@ -113,7 +116,7 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
     isCoupon: this.isCoupon,
     isShipped: this.isShipped,
     public_id: this.public_id,
-    tags: this.tags,
+    tags: this.tags
   };
 
   return summary;
@@ -143,9 +146,8 @@ ItemSchema.methods.summary = function () {// eslint-disable-line
 
 // });
 
-let Model = mongoose.model('Item', ItemSchema);
+let Model = mongoose.model("Item", ItemSchema);
 
 // Model.SyncToAlgolia();
 
 module.exports = Model;
-

@@ -1,7 +1,7 @@
-const Banner = require('../models/banner.model');
-const Promise = require('bluebird');
+const Banner = require("../models/banner.model");
+const Promise = require("bluebird");
 
-const find = (params) =>
+const find = params =>
   new Promise((resolve, reject) => {
     Banner.find(params, (err, banners) => {
       if (err) {
@@ -9,14 +9,14 @@ const find = (params) =>
         return;
       }
       const summaries = [];
-      banners.forEach((banner) => {
+      banners.forEach(banner => {
         summaries.push(banner.summary());
       });
       resolve(summaries);
     });
   });
 
-const findById = (id) =>
+const findById = id =>
   new Promise((resolve, reject) => {
     Banner.findById(id, (err, banner) => {
       if (err) {
@@ -27,19 +27,18 @@ const findById = (id) =>
     });
   });
 
-const findCarousel = (params) =>
+const findCarousel = params =>
   new Promise((resolve, reject) => {
-    Banner
-      .find({ isFeatured: true })
+    Banner.find({ isFeatured: true })
       .limit(5)
-      .sort('-date')
+      .sort("-date")
       .exec((err, banners) => {
         if (err) {
           reject(err);
           return;
         }
         const summaries = [];
-        banners.forEach((banner) => {
+        banners.forEach(banner => {
           summaries.push(banner.summary());
         });
         resolve(summaries);
@@ -49,5 +48,5 @@ const findCarousel = (params) =>
 module.exports = {
   find,
   findById,
-  findCarousel,
+  findCarousel
 };

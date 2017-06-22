@@ -1,8 +1,8 @@
-const Category = require('../models/category.model');
+const Category = require("../models/category.model");
 
-const Promise = require('bluebird');
+const Promise = require("bluebird");
 
-const create = (body) =>
+const create = body =>
   new Promise((resolve, reject) => {
     Category.create(body, (err, category) => {
       if (err) {
@@ -24,9 +24,9 @@ const update = (id, params) =>
     });
   });
 
-const deleteCategory = (id) =>
+const deleteCategory = id =>
   new Promise((resolve, reject) => {
-    Category.findOneAndRemove(id, (err) => {
+    Category.findOneAndRemove(id, err => {
       if (err) {
         reject(err);
         return;
@@ -38,5 +38,5 @@ const deleteCategory = (id) =>
 module.exports = {
   create,
   update,
-  deleteCategory,
+  deleteCategory
 };

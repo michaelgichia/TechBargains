@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MerchantSchema = new Schema({
@@ -6,47 +6,47 @@ const MerchantSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    max: 100,
+    max: 100
   },
   imageUrl: {
     type: String,
     trim: true,
     max: 1000,
-    default: '',
+    default: ""
   },
   backlink: {
     type: String,
     trim: true,
     max: 1000,
-    default: '',
+    default: ""
   },
   description: {
     type: String,
     required: true,
     trim: true,
-    max: 1000,
+    max: 1000
   },
   about: {
     type: String,
-    default: '',
+    default: "",
     trim: true,
-    max: 10000,
+    max: 10000
   },
   public_id: {
     type: String,
-    default: '',
-    max: 500,
+    default: "",
+    max: 500
   },
   isFeatured: {
     type: Boolean,
-    default: false,
-  },
-  
+    default: false
+  }
 });
 
-MerchantSchema.methods.summary = function () {// eslint-disable-line
+MerchantSchema.methods.summary = function() {
+  // eslint-disable-line
   const summary = {
-    id: this._id.toString(),// eslint-disable-line
+    id: this._id.toString(), // eslint-disable-line
     title: this.title,
     imageUrl: this.imageUrl,
     backlink: this.backlink,
@@ -54,11 +54,10 @@ MerchantSchema.methods.summary = function () {// eslint-disable-line
     isFeatured: this.isFeatured,
     description: this.description,
     about: this.about,
-    public_id: this.public_id,
+    public_id: this.public_id
   };
 
   return summary;
 };
 
-
-module.exports = mongoose.model('Merchant', MerchantSchema);
+module.exports = mongoose.model("Merchant", MerchantSchema);

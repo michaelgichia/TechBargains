@@ -1,7 +1,7 @@
-const Banner = require('../models/banner.model');
-const Promise = require('bluebird');
+const Banner = require("../models/banner.model");
+const Promise = require("bluebird");
 
-const create = (body) =>
+const create = body =>
   new Promise((resolve, reject) => {
     Banner.create(body, (err, banner) => {
       if (err) {
@@ -23,9 +23,9 @@ const update = (id, params) =>
     });
   });
 
-const deleteBanner = (id) =>
+const deleteBanner = id =>
   new Promise((resolve, reject) => {
-    Banner.findOneAndRemove(id, (err) => {
+    Banner.findOneAndRemove(id, err => {
       if (err) {
         reject(err);
         return;
@@ -37,5 +37,5 @@ const deleteBanner = (id) =>
 module.exports = {
   create,
   update,
-  deleteBanner,
+  deleteBanner
 };

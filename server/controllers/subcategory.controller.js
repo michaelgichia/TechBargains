@@ -1,8 +1,8 @@
-const SubCategory = require('../models/subcategory.model');
+const SubCategory = require("../models/subcategory.model");
 
-const Promise = require('bluebird');
+const Promise = require("bluebird");
 
-const create = (body) =>
+const create = body =>
   new Promise((resolve, reject) => {
     SubCategory.create(body, (err, payload) => {
       if (err) {
@@ -24,9 +24,9 @@ const update = (id, params) =>
     });
   });
 
-const deleteSubCategory = (id) =>
+const deleteSubCategory = id =>
   new Promise((resolve, reject) => {
-    SubCategory.findOneAndRemove(id, (err) => {
+    SubCategory.findOneAndRemove(id, err => {
       if (err) {
         reject(err);
         return;
@@ -38,5 +38,5 @@ const deleteSubCategory = (id) =>
 module.exports = {
   create,
   update,
-  deleteSubCategory,
+  deleteSubCategory
 };

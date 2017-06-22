@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SubCategorySchema = new Schema({
@@ -6,31 +6,31 @@ const SubCategorySchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    max: 100,
+    max: 100
   },
   description: {
     type: String,
     trim: true,
     max: 10000,
-    default: '',
+    default: ""
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true,
-  },
+    ref: "Category",
+    required: true
+  }
 });
 
-SubCategorySchema.methods.summary = function () {// eslint-disable-line
+SubCategorySchema.methods.summary = function() {
+  // eslint-disable-line
   const summary = {
-    id: this._id.toString(),// eslint-disable-line
+    id: this._id.toString(), // eslint-disable-line
     title: this.title,
     description: this.description,
-    category: this.category,
+    category: this.category
   };
 
   return summary;
 };
 
-
-module.exports = mongoose.model('SubCategory', SubCategorySchema);
+module.exports = mongoose.model("SubCategory", SubCategorySchema);

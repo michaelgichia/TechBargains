@@ -1,8 +1,8 @@
-const Merchant = require('../models/merchant.model');
+const Merchant = require("../models/merchant.model");
 
-const Promise = require('bluebird');
+const Promise = require("bluebird");
 
-const create = (body) =>
+const create = body =>
   new Promise((resolve, reject) => {
     Merchant.create(body, (err, store) => {
       if (err) {
@@ -26,12 +26,13 @@ const update = (id, params) =>
           return;
         }
         resolve(store.summary());
-      });
+      }
+    );
   });
 
-const deleteStore = (id) =>
+const deleteStore = id =>
   new Promise((resolve, reject) => {
-    Merchant.findOneAndRemove(id, (err) => {
+    Merchant.findOneAndRemove(id, err => {
       if (err) {
         reject(err);
         return;
@@ -43,5 +44,5 @@ const deleteStore = (id) =>
 module.exports = {
   create,
   update,
-  deleteStore,
+  deleteStore
 };

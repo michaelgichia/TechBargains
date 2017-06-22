@@ -1,8 +1,8 @@
-const Category = require('../models/category.model');
-const SubCategory = require('../models/subcategory.model');
-const Promise = require('bluebird');
+const Category = require("../models/category.model");
+const SubCategory = require("../models/subcategory.model");
+const Promise = require("bluebird");
 
-const find = (params) =>
+const find = params =>
   new Promise((resolve, reject) => {
     Category.find(params, (err, categories) => {
       if (err) {
@@ -10,14 +10,14 @@ const find = (params) =>
         return;
       }
       const summaries = [];
-      categories.forEach((category) => {
+      categories.forEach(category => {
         summaries.push(category.summary());
       });
       resolve(summaries);
     });
   });
 
-const findById = (id) =>
+const findById = id =>
   new Promise((resolve, reject) => {
     Category.findById(id, (err, category) => {
       if (err) {
@@ -28,7 +28,7 @@ const findById = (id) =>
     });
   });
 
-const findCategoriesAndSubscategories = (params) => {
+const findCategoriesAndSubscategories = params => {
   const categoriesArray = [];
   return new Promise((resolve, reject) => {
     Category.find(params, (err, categories) => {
@@ -36,14 +36,14 @@ const findCategoriesAndSubscategories = (params) => {
         reject(err);
         return;
       }
-      categories.map((category) => categoriesArray.push(category.summaryName()));
+      categories.map(category => categoriesArray.push(category.summaryName()));
 
-      categoriesArray.map((category) => {
+      categoriesArray.map(category => {
         SubCategory.find({ category: category.ids }, (err, navItems) => {
           if (err) {
             reject(err);
           }
-          navItems.map((navItem) => {
+          navItems.map(navItem => {
             category.categoryArray.push(navItem.summary());
           });
           resolve(categoriesArray);
@@ -56,5 +56,5 @@ const findCategoriesAndSubscategories = (params) => {
 module.exports = {
   find,
   findById,
-  findCategoriesAndSubscategories,
+  findCategoriesAndSubscategories
 };
