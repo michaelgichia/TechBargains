@@ -11,38 +11,41 @@
  * the linting exception.
  */
 
-import React from 'react';
+import React from "react";
 // Material-ui
-import Navigation from 'containers/NavBar';
-import DashboardSidebar from 'containers/DashboardSidebar';
-import withProgressBar from 'components/ProgressBar';
-import ReactModal from 'containers/ReactModal';
-import FlashMessage from 'containers/FlashMessage';
+import Navigation from "containers/NavBar";
+import DashboardSidebar from "containers/DashboardSidebar";
+import withProgressBar from "components/ProgressBar";
+import ReactModal from "containers/ReactModal";
+import FlashMessage from "containers/FlashMessage";
 
 const style = {
   divi: {
     margin: 0,
-    padding: 0,
-  },
+    padding: 0
+  }
 };
 
-class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class App extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    children: React.PropTypes.node,
+    children: React.PropTypes.node
   };
 
   render() {
     const { pathname } = this.props.location;
     return (
       <div style={style.divi}>
-        { pathname.substring(1, 10) === 'dashboard' ?
-          <DashboardSidebar />
-        :
-          <Navigation />
-        }
+        {pathname.substring(1, 10) === "dashboard"
+          ? <DashboardSidebar />
+          : <Navigation />}
         <ReactModal />
-        <div className={pathname.substring(1, 10) === 'dashboard' ? 'dashtech' : 'tech'}>
+        <div
+          className={
+            pathname.substring(1, 10) === "dashboard" ? "dashtech" : "tech"
+          }
+        >
           {React.Children.toArray(this.props.children)}
         </div>
         <FlashMessage />

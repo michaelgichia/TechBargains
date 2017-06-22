@@ -4,11 +4,7 @@
  *
  */
 
-import {
-  CATEGORY_ITEMS,
-  CATEGORY_COUPONS,
-  CATEGORY_INFO,
-} from './constants';
+import { CATEGORY_ITEMS, CATEGORY_COUPONS, CATEGORY_INFO } from "./constants";
 
 const initialState = {
   deals: [],
@@ -16,7 +12,7 @@ const initialState = {
   info: {
     title: ""
   },
-  errors: ''
+  errors: ""
 };
 
 function categoryFrontPageReducer(state = initialState, action) {
@@ -24,37 +20,37 @@ function categoryFrontPageReducer(state = initialState, action) {
     case CATEGORY_ITEMS.SUCCESS:
       return {
         ...state,
-        deals: action.deals,
+        deals: action.deals
       };
 
     case CATEGORY_ITEMS.ERROR:
       return {
         ...state,
-        errors: action.errors,
+        errors: action.errors
       };
 
     case CATEGORY_COUPONS.SUCCESS:
       return {
         ...state,
-        coupons: action.coupons,
+        coupons: action.coupons
       };
 
     case CATEGORY_COUPONS.ERROR:
       return {
         ...state,
-        errors: action.errors,
+        errors: action.errors
       };
 
     case CATEGORY_INFO.SUCCESS:
       return {
         ...state,
-        info: action.info,
+        info: action.info
       };
 
     case CATEGORY_INFO.ERROR:
       return {
         ...state,
-        errors: action.errors,
+        errors: action.errors
       };
 
     default:

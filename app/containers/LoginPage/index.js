@@ -1,24 +1,20 @@
-import LoginForm from 'components/LoginForm';
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Paper from 'material-ui/Paper';
-
-import { loginUser } from './actions';
+import LoginForm from "components/LoginForm";
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+import Paper from "material-ui/Paper";
+import { loginUser } from "./actions";
 
 class LoginPage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      errors: '',
-      visitor: {
-        email: '',
-        password: '',
-      },
-    };
-  }
+  state = {
+    errors: "",
+    visitor: {
+      email: "",
+      password: ""
+    }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors !== this.state.errors) {
@@ -26,7 +22,7 @@ class LoginPage extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const updatedVistor = { ...this.state.visitor };
     updatedVistor[e.target.id] = e.target.value;
     this.setState({ visitor: updatedVistor });
@@ -41,7 +37,11 @@ class LoginPage extends Component {
       <Grid>
         <Row>
           <Col xs={12} md={8} mdPush={2}>
-            <Paper zDepth={1} rounded={false} style={{ padding: 30, marginTop: 30 }}>
+            <Paper
+              zDepth={1}
+              rounded={false}
+              style={{ padding: 30, marginTop: 30 }}
+            >
               <LoginForm
                 onChange={this.handleChange}
                 onClick={this.login}
@@ -57,17 +57,16 @@ class LoginPage extends Component {
 
 LoginPage.propTypes = {
   errors: PropTypes.string.isRequired,
-  loginUser: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ authorize }) => ({
   errors: authorize.errors,
-  authenticated: authorize.authenticated,
+  authenticated: authorize.authenticated
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  loginUser: (response) => dispatch(loginUser(response)),
+const mapDispatchToProps = dispatch => ({
+  loginUser: response => dispatch(loginUser(response))
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

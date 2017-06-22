@@ -1,52 +1,42 @@
-import React from 'react';
-import shortid from 'shortid';
+import React from "react";
+import shortid from "shortid";
 // Material-ui
-import { Card, CardActions, CardHeader } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import { Card, CardActions, CardHeader } from "material-ui/Card";
+import FlatButton from "material-ui/FlatButton";
 import {
   Table,
   TableBody,
   TableHeader,
   TableHeaderColumn,
   TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+  TableRowColumn
+} from "material-ui/Table";
 // Material-ui Icons
-import FilterIcon from 'material-ui/svg-icons/content/filter-list';
-import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
-import axios from 'axios';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
+import FilterIcon from "material-ui/svg-icons/content/filter-list";
+import RefreshIcon from "material-ui/svg-icons/navigation/refresh";
+import axios from "axios";
+import { connect } from "react-redux";
+import { Link } from "react-router";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 
-import { getItems } from './actions';
+import { getItems } from "./actions";
 
-const wrapperStyle = {
-  boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
-  zIndex: 1,
-};
-
-const bodyStyle = {
-  backgroundColor: 'rgb(255, 255, 255)',
-  color: 'rgba(0, 0, 0, 0.87)',
-};
-
-export class ItemsList extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class ItemsList extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
 
   state = {
     selected: [],
     items: [],
-    errors: '',
-    message: '',
-  }
+    errors: "",
+    message: ""
+  };
 
   componentDidMount() {
     // Api call to get items.
-    axios.get('/public-api/item')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
+    axios.get("/public-api/item").then(response => {
+      if (response.data.confirmation === "success") {
         this.setState({ items: [...response.data.results] });
       } else {
         this.setState({ errors: response.data.errors });
@@ -59,44 +49,46 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
       this.setState({ errors: nextProps.errors });
     }
     if (nextProps.message !== this.state.message) {
-      this.setState({ errors: '', message: nextProps.message });
+      this.setState({ errors: "", message: nextProps.message });
     }
   }
 
-  handleRowSelection = (selectedRows) => {
+  handleRowSelection = selectedRows => {
     this.setState({
-      selected: selectedRows,
+      selected: selectedRows
     });
   };
 
-  isSelected = (index) => this.state.selected.indexOf(index) !== -1;
-  displayItems = (items) => (
-    <Table onRowSelection={this.handleRowSelection} wrapperStyle={wrapperStyle} bodyStyle={bodyStyle}>
+  isSelected = index => this.state.selected.indexOf(index) !== -1;
+  displayItems = items =>
+    <Table
+      onRowSelection={this.handleRowSelection}
+      wrapperStyle={wrapperStyle}
+      bodyStyle={bodyStyle}
+    >
       <TableHeader>
         <TableRow>
           <TableHeaderColumn colSpan="10">Name</TableHeaderColumn>
         </TableRow>
       </TableHeader>
-      <TableBody
-        displayRowCheckbox={false}
-        showRowHover
-      >
-        { items.map((item, index) => (
+      <TableBody displayRowCheckbox={false} showRowHover>
+        {items.map((item, index) =>
           <TableRow selected={this.isSelected(index)} key={shortid.generate()}>
             <TableRowColumn colSpan="10">
-              <Link to={`/dashboard/items-list/${item.id}`}><div dangerouslySetInnerHTML={{ __html: item.name }} /></Link>
+              <Link to={`/dashboard/items-list/${item.id}`}>
+                <div dangerouslySetInnerHTML={{ __html: item.name }} />
+              </Link>
             </TableRowColumn>
           </TableRow>
-      ))}
+        )}
       </TableBody>
-    </Table>
-  );
+    </Table>;
 
   render() {
     if (this.state.errors.length > 0) {
       return (
         <div>
-          { this.state.errors }
+          {this.state.errors}
         </div>
       );
     }
@@ -105,11 +97,27 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
         <Row>
           <Col xs={12} md={10} mdPush={1}>
             <Card style={{ marginTop: 20 }}>
-              <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Items / Products / Services List" />
+              <CardHeader
+                titleStyle={{ fontSize: 26, fontFamily: "Roboto slab" }}
+                titleColor="black"
+                title="Items / Products / Services List"
+              />
               <CardActions>
-                <FlatButton key={shortid.generate()} icon={<RefreshIcon />} label="Refresh" />
-                <FlatButton key={shortid.generate()} icon={<FilterIcon />} label="Filter Deals" />
-                <FlatButton key={shortid.generate()} icon={<FilterIcon />} label="Filter Coupons" />
+                <FlatButton
+                  key={shortid.generate()}
+                  icon={<RefreshIcon />}
+                  label="Refresh"
+                />
+                <FlatButton
+                  key={shortid.generate()}
+                  icon={<FilterIcon />}
+                  label="Filter Deals"
+                />
+                <FlatButton
+                  key={shortid.generate()}
+                  icon={<FilterIcon />}
+                  label="Filter Coupons"
+                />
               </CardActions>
             </Card>
           </Col>
@@ -117,12 +125,15 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
         <Row>
           <Col xs={12} md={10} mdPush={1}>
             <span>
-              <ul style={{ listStyle: 'none' }}>
-                {this.state.errors && this.state.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
+              <ul style={{ listStyle: "none" }}>
+                {this.state.errors &&
+                  this.state.errors.map(error =>
+                    <li key={shortid.generate()}> <p>{error}</p> </li>
+                  )}
               </ul>
               {this.state.message && <p>{this.state.message}</p>}
             </span>
-            { this.displayItems(this.state.items) }
+            {this.displayItems(this.state.items)}
           </Col>
         </Row>
       </Grid>
@@ -130,17 +141,27 @@ export class ItemsList extends React.Component { // eslint-disable-line react/pr
   }
 }
 
-ItemsList.propTypes = {
-};
+ItemsList.propTypes = {};
 
 const mapStateToProps = ({ itemlist }) => ({
   items: itemlist.items,
   errors: itemlist.errors,
-  message: itemlist.message,
+  message: itemlist.message
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getItems: () => dispatch(getItems()),
+const mapDispatchToProps = dispatch => ({
+  getItems: () => dispatch(getItems())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);
+
+// Styles
+const wrapperStyle = {
+  boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
+  zIndex: 1
+};
+
+const bodyStyle = {
+  backgroundColor: "rgb(255, 255, 255)",
+  color: "rgba(0, 0, 0, 0.87)"
+};

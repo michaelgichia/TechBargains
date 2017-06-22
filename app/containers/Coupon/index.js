@@ -4,18 +4,20 @@
  *
  */
 
-import CouponHeader from 'components/CouponHeader';
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import shortid from 'shortid';
-import CouponDetail from 'components/CouponDetail';
-import { fetchCoupon } from './actions';
+import CouponHeader from "components/CouponHeader";
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import shortid from "shortid";
+import CouponDetail from "components/CouponDetail";
+import { fetchCoupon } from "./actions";
 
-export class Coupon extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class Coupon extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
     coupons: [],
-    errors: '',
-  }
+    errors: ""
+  };
+  
   componentDidMount() {
     this.props.fetchCoupon();
   }
@@ -29,13 +31,16 @@ export class Coupon extends React.PureComponent { // eslint-disable-line react/p
     }
   }
 
-  renderCoupons = (coupons) => coupons.map((coupon) => <CouponDetail coupon={coupon} key={shortid.generate()} />);
+  renderCoupons = coupons =>
+    coupons.map(coupon =>
+      <CouponDetail coupon={coupon} key={shortid.generate()} />
+    );
 
   render() {
     return (
       <div>
         <CouponHeader title="Top Coupons" />
-        { this.renderCoupons(this.state.coupons) }
+        {this.renderCoupons(this.state.coupons)}
       </div>
     );
   }
@@ -44,16 +49,16 @@ export class Coupon extends React.PureComponent { // eslint-disable-line react/p
 Coupon.propTypes = {
   coupons: PropTypes.array.isRequired,
   errors: PropTypes.string.isRequired,
-  fetchCoupon: PropTypes.func.isRequired,
+  fetchCoupon: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ coupons }) => ({
   coupons: coupons.coupons,
-  errors: coupons.errors,
+  errors: coupons.errors
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchCoupon: () => dispatch(fetchCoupon()),
+const mapDispatchToProps = dispatch => ({
+  fetchCoupon: () => dispatch(fetchCoupon())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Coupon);

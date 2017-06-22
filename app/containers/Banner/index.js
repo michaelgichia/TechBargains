@@ -4,32 +4,32 @@
  *
  */
 
-import React from 'react';
-import BannerTable from 'components/BannerTable';
-import axios from 'axios';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Paper from 'material-ui/Paper';
+import React from "react";
+import BannerTable from "components/BannerTable";
+import axios from "axios";
+import { connect } from "react-redux";
+import { browserHistory } from "react-router";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+import Paper from "material-ui/Paper";
 
 const style = {
   paper: {
     padding: 30,
-    marginTop: 30,
-  },
+    marginTop: 30
+  }
 };
 
-export class Banner extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class Banner extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
-    banners: [],
-  }
+    banners: []
+  };
 
   componentDidMount() {
-    axios.get('/public-api/banner')
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
+    axios.get("/public-api/banner").then(response => {
+      if (response.data.confirmation === "success") {
         this.setState({ banners: [...response.data.results] });
       } else {
         this.setState({ errors: response.data.errors });
@@ -38,7 +38,7 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
     });
   }
 
-  handleRowSelection = (selectedRows) => {
+  handleRowSelection = selectedRows => {
     const bannerId = this.state.banners[selectedRows].id;
     //browserHistory.push(`/dashboard/banner/${bannerId}`);
     window.location.href = `/dashboard/banner/${bannerId}`;
@@ -62,7 +62,6 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-Banner.propTypes = {
-};
+Banner.propTypes = {};
 
 export default Banner;

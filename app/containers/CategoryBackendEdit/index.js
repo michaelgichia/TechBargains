@@ -4,36 +4,37 @@
  *
  */
 
-import React from 'react';
-import CategoryForm from 'components/CategoryForm';
-import shortid from 'shortid';
-import Paper from 'material-ui/Paper';
-import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
-import ExitIcon from 'material-ui/svg-icons/action/exit-to-app';
-import Divider from 'material-ui/Divider';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import { connect } from 'react-redux';
-import { gems } from './gem';
-import { updateCategory, fetchCategory, deleteCategory } from './actions';
+import React from "react";
+import CategoryForm from "components/CategoryForm";
+import shortid from "shortid";
+import Paper from "material-ui/Paper";
+import { Card, CardHeader, CardText, CardActions } from "material-ui/Card";
+import FlatButton from "material-ui/FlatButton";
+import DeleteIcon from "material-ui/svg-icons/action/delete";
+import ExitIcon from "material-ui/svg-icons/action/exit-to-app";
+import Divider from "material-ui/Divider";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+import { connect } from "react-redux";
+import { gems } from "./gem";
+import { updateCategory, fetchCategory, deleteCategory } from "./actions";
 
-export class CategoryBackendEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class CategoryBackendEdit extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
-    name: '',
+    name: "",
     isFeatured: false,
-    description: '',
-    nameError: '',
-    errors: '',
-    message: '',
-    categoryId: '',
-  } // eslint-disable-line
+    description: "",
+    nameError: "",
+    errors: "",
+    message: "",
+    categoryId: ""
+  }; // eslint-disable-line
 
   componentDidMount() {
     const { categoryId } = this.props.params;
-    this.setState((prevState) => ({ categoryId }));
+    this.setState(prevState => ({ categoryId }));
     this.props.fetchCategory(categoryId);
   }
 
@@ -57,39 +58,61 @@ export class CategoryBackendEdit extends React.Component { // eslint-disable-lin
   */
   handleIsFeatured = (e, i, value) => this.setState({ isFeatured: value });
 
-  handleDescription = (description) => this.setState({ description });
+  handleDescription = description => this.setState({ description });
 
-  handleChange = (e) => {
-    this.setState({ nameError: '' });
+  handleChange = e => {
+    this.setState({ nameError: "" });
     this.setState({ name: e.target.value });
   };
 
-  resetState = () => this.setState((prevState) => ({ name: '', isFeatured: false, description: '' }));
+  resetState = () =>
+    this.setState(prevState => ({
+      name: "",
+      isFeatured: false,
+      description: ""
+    }));
 
   handleSubmit = () => {
     const { name, isFeatured, description, categoryId } = this.state;
     if (name.length < 1) {
-      this.setState({ nameError: 'This field is required.' });
+      this.setState({ nameError: "This field is required." });
     } else {
       this.props.updateCategory({ name, isFeatured, description }, categoryId);
-      this.resetState()
+      this.resetState();
     }
   };
 
   render() {
-    const { nameError, name, errors, message, description, isFeatured } = this.state;
+    const {
+      nameError,
+      name,
+      errors,
+      message,
+      description,
+      isFeatured
+    } = this.state;
     return (
       <Grid>
         <Row>
           <Col xs={12} md={10} mdPush={1}>
             <Card style={{ marginTop: 20 }}>
-              <CardHeader titleStyle={{ fontSize: 26, fontFamily: 'Roboto slab' }} titleColor="black" title="Category Infomation" />
+              <CardHeader
+                titleStyle={{ fontSize: 26, fontFamily: "Roboto slab" }}
+                titleColor="black"
+                title="Category Infomation"
+              />
               <CardActions>
                 <FlatButton
                   icon={<DeleteIcon />}
                   label="Delete"
-                  onTouchTap={() => this.props.deleteCategory(this.state.categoryId)}/>
-                <FlatButton icon={<ExitIcon />} label="Back to category list" href="/dashboard/category"/>
+                  onTouchTap={() =>
+                    this.props.deleteCategory(this.state.categoryId)}
+                />
+                <FlatButton
+                  icon={<ExitIcon />}
+                  label="Back to category list"
+                  href="/dashboard/category"
+                />
               </CardActions>
             </Card>
           </Col>
@@ -138,18 +161,19 @@ export class CategoryBackendEdit extends React.Component { // eslint-disable-lin
   }
 }
 
-CategoryBackendEdit.propTypes = {
-};
+CategoryBackendEdit.propTypes = {};
 
 const mapStateToProps = ({ categoryEdit }) => ({
   category: categoryEdit.category,
-  errors: categoryEdit.errors,
+  errors: categoryEdit.errors
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   updateCategory: (id, category) => dispatch(updateCategory(id, category)),
-  fetchCategory: (categoryId) => dispatch(fetchCategory(categoryId)),
-  deleteCategory: (id) => dispatch(deleteCategory(id)),
+  fetchCategory: categoryId => dispatch(fetchCategory(categoryId)),
+  deleteCategory: id => dispatch(deleteCategory(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryBackendEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  CategoryBackendEdit
+);

@@ -1,127 +1,131 @@
-import AddDealForm from 'components/AddDealForm';
-import React from 'react';
-import PropTypes from 'prop-types';
-import validator from 'validator';
-import sha1 from 'sha1'
-import superagent from 'superagent'
+import AddDealForm from "components/AddDealForm";
+import React from "react";
+import PropTypes from "prop-types";
+import validator from "validator";
+import sha1 from "sha1";
+import superagent from "superagent";
 // Material-ui
-import MenuItem from 'material-ui/MenuItem';
-import Paper from 'material-ui/Paper';
-import { connect } from 'react-redux';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
+import MenuItem from "material-ui/MenuItem";
+import Paper from "material-ui/Paper";
+import { connect } from "react-redux";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 
 // Actions
-import { postDeal } from './actions';
-
+import { postDeal } from "./actions";
 
 const hintStyle = {
-  marginTop: 0,
+  marginTop: 0
 };
 
 const style = {
   paper: {
     padding: 30,
-    marginTop: 30,
-  },
+    marginTop: 30
+  }
 };
 
 const themesColor = [
-  '#9BF0E9',
-  '#ff8400',
-  '#C3D6E4',
-  '#9f0',
-  '#185f9d',
-  '#bf46ba',
-  '#62bcff',
-  '#e87448',
-  '#fbaca8',
+  "#9BF0E9",
+  "#ff8400",
+  "#C3D6E4",
+  "#9f0",
+  "#185f9d",
+  "#bf46ba",
+  "#62bcff",
+  "#e87448",
+  "#fbaca8"
 ];
 
-export class AddDeal extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  constructor() {
-    super();
-    this.state = {
-      item: {
-        coupon: '',
-        backlink: '',
-        percentage: '',
-        isShipped: '',
-      },
-      image: 'Click or Drop files to upload',
-      categoryError: '',
-      subCategoryError: '',
-      percentageError: '',
-      merchantError: '',
-      isFeatured: true,
-      isCoupon: false,
-      merchant: '',
-      category: '',
-      subCategory: '',
-      expire: {},
-      errors: [],
-      name: '',
-      features: '',
-      public_id: '',
-      disabled: true,
-      tags: [],
-    };
-  }// eslint-disable-line
+export class AddDeal extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
+  state = {
+    item: {
+      coupon: "",
+      backlink: "",
+      percentage: "",
+      isShipped: ""
+    },
+    image: "Click or Drop files to upload",
+    categoryError: "",
+    subCategoryError: "",
+    percentageError: "",
+    merchantError: "",
+    isFeatured: true,
+    isCoupon: false,
+    merchant: "",
+    category: "",
+    subCategory: "",
+    expire: {},
+    errors: [],
+    name: "",
+    features: "",
+    public_id: "",
+    disabled: true,
+    tags: []
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
-  handleUpload = (files) => {
-    console.info('uploading file....')
-    const image = files[0]
-    const cloudName = 'dw3arrxnf'
-    const timestamp = Date.now()/1000
-    const uploadPreset = 'd9s7ezzn'
-    const paramsStr = 'timestamp='+timestamp+'&upload_preset='+uploadPreset+'wEvwDjpdDR5I_mMSdD55EaLNXOI'
-    const signature = sha1(paramsStr)
-    const url = 'https://api.cloudinary.com/v1_1/'+cloudName+'/image/upload'
+  handleUpload = files => {
+    console.info("uploading file....");
+    const image = files[0];
+    const cloudName = "dw3arrxnf";
+    const timestamp = Date.now() / 1000;
+    const uploadPreset = "d9s7ezzn";
+    const paramsStr =
+      "timestamp=" +
+      timestamp +
+      "&upload_preset=" +
+      uploadPreset +
+      "wEvwDjpdDR5I_mMSdD55EaLNXOI";
+    const signature = sha1(paramsStr);
+    const url =
+      "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
     const params = {
-      "api_key": process.env.IMAGE_API_KEY,
-      "timestamp": timestamp,
-      "upload_preset": uploadPreset,
-      "signature": signature
-    }
-    this.setState((prevState, props) => ({ image: 'uploading image...' }))
-    let uploadRequest = superagent.post(url)
-    uploadRequest.attach('file', image)
-    Object.keys(params).forEach((key) => {
-      uploadRequest.field(key, params[key])
+      api_key: process.env.IMAGE_API_KEY,
+      timestamp: timestamp,
+      upload_preset: uploadPreset,
+      signature: signature
+    };
+    this.setState((prevState, props) => ({ image: "uploading image..." }));
+    let uploadRequest = superagent.post(url);
+    uploadRequest.attach("file", image);
+    Object.keys(params).forEach(key => {
+      uploadRequest.field(key, params[key]);
     });
 
     uploadRequest.end((err, resp) => {
       if (err) {
         console.error(err);
-        alert(err, null)
+        alert(err, null);
         return;
       }
       console.info("uploading completed...");
       this.setState((prevState, props) => ({
         image: resp.body.secure_url,
         public_id: resp.body.public_id
-      }))
-    })
-  }
+      }));
+    });
+  };
 
   /**
    * Update date.
   */
-  handleDate = (e, expire) => this.setState((prevState, props) => ({
-    expire: expire,
-    disabled: false
-  }));
+  handleDate = (e, expire) =>
+    this.setState((prevState, props) => ({
+      expire: expire,
+      disabled: false
+    }));
   /**
    * Update merchant in the state and clear error.
   */
   handleMerchantChange = (e, i, value) => {
-    this.setState({ merchantError: '' });
+    this.setState({ merchantError: "" });
     this.setState({ merchant: value });
   };
 
@@ -129,7 +133,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
    * Update category in the state and clear error.
   */
   handleCategory = (e, i, value) => {
-    this.setState({ categoryError: '' });
+    this.setState({ categoryError: "" });
     this.setState({ category: value });
   };
 
@@ -137,7 +141,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
    * Update subCategory in the state and clear error.
   */
   handleSubcategory = (e, i, value) => {
-    this.setState({ subCategoryError: '' });
+    this.setState({ subCategoryError: "" });
     this.setState({ subCategory: value });
   };
 
@@ -159,10 +163,10 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
    * Update the state from user input.
    * Clear error using dynamic keys on the setState.
   */
-  handleChange = (e) => {
+  handleChange = e => {
     const errorObject = {};
     const errorName = `${e.target.id}Error`;
-    const errorValue = '';
+    const errorValue = "";
     // Create a current error object.
     errorObject[errorName] = errorValue;
     // Reset clear from the current field.
@@ -172,22 +176,27 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
     this.setState({ item: updateItem });
   };
 
-  handleCoupon = (e, isInputChecked) => this.setState({ isCoupon: isInputChecked });
+  handleCoupon = (e, isInputChecked) =>
+    this.setState({ isCoupon: isInputChecked });
 
-  handleFeatured = (e, isInputChecked) => this.setState({ isFeatured: isInputChecked });
+  handleFeatured = (e, isInputChecked) =>
+    this.setState({ isFeatured: isInputChecked });
 
   /**
    * Auto generate theme color.
   */
-  generateThemeColors = (colors) => colors[Math.floor(Math.random() * colors.length)];
+  generateThemeColors = colors =>
+    colors[Math.floor(Math.random() * colors.length)];
 
-  onNameChange = (name) => this.setState({ name });
+  onNameChange = name => this.setState({ name });
 
-  onFeaturesChange = (features) => this.setState({ features });
+  onFeaturesChange = features => this.setState({ features });
 
-  handleRequestAdd = (...tags) => this.setState({ tags: [...this.state.tags, ...tags] });
+  handleRequestAdd = (...tags) =>
+    this.setState({ tags: [...this.state.tags, ...tags] });
 
-  handleRequestDelete = (deletedChip) => this.setState({ tags: this.state.tags.filter((c) => c !== deletedChip) })
+  handleRequestDelete = deletedChip =>
+    this.setState({ tags: this.state.tags.filter(c => c !== deletedChip) });
 
   /**
    * Validate user input to avoid empty values sent to the db.
@@ -196,13 +205,13 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
   */
   handleSubmit = () => {
     if (validator.isEmpty(this.state.category)) {
-      this.setState({ categoryError: 'Category is required!' });
+      this.setState({ categoryError: "Category is required!" });
     }
     if (validator.isEmpty(this.state.subCategory)) {
-      this.setState({ subCategoryError: 'Sub-category is required!' });
+      this.setState({ subCategoryError: "Sub-category is required!" });
     }
     if (validator.isEmpty(this.state.merchant)) {
-      this.setState({ merchantError: 'Store is required!' });
+      this.setState({ merchantError: "Store is required!" });
     } else {
       // Merge
       const updatedState = { ...this.state.item };
@@ -231,73 +240,79 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       // Create.
       this.props.postDeal(item);
     }
-  }
+  };
 
-  displayCategories = (categories) => {
+  displayCategories = categories => {
     const categoryArray = [];
     if (categories !== undefined && categories.length > 0) {
-      categories.map((category) => (
-        categoryArray.push(<MenuItem
-          value={category.id}
-          key={category.id}
-          primaryText={category.name}
-        />
+      categories.map(category =>
+        categoryArray.push(
+          <MenuItem
+            value={category.id}
+            key={category.id}
+            primaryText={category.name}
+          />
         )
-      ));
+      );
     } else {
-      categoryArray.push(<MenuItem
-        value={'59087201dc2e353c2d440030'}
-        key={'categoryid'}
-        primaryText={'No categories found. please add them.'}
-      />
+      categoryArray.push(
+        <MenuItem
+          value={"59087201dc2e353c2d440030"}
+          key={"categoryid"}
+          primaryText={"No categories found. please add them."}
+        />
       );
     }
     return categoryArray;
-  }
+  };
 
-  displaySubCategories = (subcategories) => {
+  displaySubCategories = subcategories => {
     const subCategoryArray = [];
     if (subcategories !== undefined && subcategories.length > 0) {
-      subcategories.map((subcategory) => (
-        subCategoryArray.push(<MenuItem
-          value={subcategory.id}
-          key={subcategory.id}
-          primaryText={subcategory.title}
-        />
+      subcategories.map(subcategory =>
+        subCategoryArray.push(
+          <MenuItem
+            value={subcategory.id}
+            key={subcategory.id}
+            primaryText={subcategory.title}
+          />
         )
-      ));
+      );
     } else {
-      subCategoryArray.push(<MenuItem
-        value={'59087201dc2e353c2d440030'}
-        key={'subcategorid'}
-        primaryText={'No sub-categories found. please add them.'}
-      />
+      subCategoryArray.push(
+        <MenuItem
+          value={"59087201dc2e353c2d440030"}
+          key={"subcategorid"}
+          primaryText={"No sub-categories found. please add them."}
+        />
       );
     }
     return subCategoryArray;
-  }
+  };
 
-  displayMerchants = (merchants) => {
+  displayMerchants = merchants => {
     const merchantArray = [];
     if (merchants !== undefined && merchants.length > 0) {
-      merchants.map((merchant) => (
-        merchantArray.push(<MenuItem
-          value={merchant.id}
-          key={merchant.id}
-          primaryText={merchant.title}
-        />
+      merchants.map(merchant =>
+        merchantArray.push(
+          <MenuItem
+            value={merchant.id}
+            key={merchant.id}
+            primaryText={merchant.title}
+          />
         )
-      ));
+      );
     } else {
-      merchantArray.push(<MenuItem
-        value={'59087201dc2e353c2d440030'}
-        key={'merchantid'}
-        primaryText={'No merchants found. please add them.'}
-      />
+      merchantArray.push(
+        <MenuItem
+          value={"59087201dc2e353c2d440030"}
+          key={"merchantid"}
+          primaryText={"No merchants found. please add them."}
+        />
       );
     }
     return merchantArray;
-  }
+  };
 
   render() {
     const {
@@ -320,12 +335,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
       disabled,
       tags
     } = this.state;
-    const {
-      percentage,
-      backlink,
-      coupon,
-      isShipped,
-    } = this.state.item;
+    const { percentage, backlink, coupon, isShipped } = this.state.item;
 
     const { categories, subcategories, merchants } = this.props;
     const categoryArray = this.displayCategories(categories);
@@ -378,7 +388,7 @@ export class AddDeal extends React.Component { // eslint-disable-line react/pref
                 features={features}
                 disabled={disabled}
                 tags={tags}
-                onRequestAdd={(tags) => this.handleRequestAdd(tags)}
+                onRequestAdd={tags => this.handleRequestAdd(tags)}
                 onRequestDelete={this.handleRequestDelete}
               />
             </Paper>
@@ -394,18 +404,18 @@ AddDeal.propTypes = {
   errors: PropTypes.array.isRequired,
   categories: PropTypes.array.isRequired,
   merchants: PropTypes.array.isRequired,
-  subcategories: PropTypes.array.isRequired,
+  subcategories: PropTypes.array.isRequired
 };
 
 const mapStateToProps = ({ panel, item }) => ({
   categories: panel.categories,
   subcategories: panel.subcategories,
   merchants: panel.merchants,
-  errors: item.errors,
+  errors: item.errors
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  postDeal: (item) => dispatch(postDeal(item)),
+const mapDispatchToProps = dispatch => ({
+  postDeal: item => dispatch(postDeal(item))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddDeal);

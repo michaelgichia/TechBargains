@@ -17,7 +17,6 @@ function flashMessageReducer(state = initialState, action) {
   switch (action.type) {
 
     case FLASH_MESSAGE.OPEN:
-      console.log({second: action})
       return {
         ...state,
         errors: action.errors,

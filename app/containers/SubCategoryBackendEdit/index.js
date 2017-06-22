@@ -4,37 +4,43 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { browserHistory } from 'react-router';
-import SubCategoryForm from 'components/SubCategoryForm';
-import MenuItem from 'material-ui/MenuItem';
-import shortid from 'shortid';
-import Paper from 'material-ui/Paper';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
-import { updateSubCategory, fetchSubCategory, deleteSubCategory, getCategories } from './actions';
+import React, { PropTypes } from "react";
+import { browserHistory } from "react-router";
+import SubCategoryForm from "components/SubCategoryForm";
+import MenuItem from "material-ui/MenuItem";
+import shortid from "shortid";
+import Paper from "material-ui/Paper";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
+import { connect } from "react-redux";
+import RaisedButton from "material-ui/RaisedButton";
+import {
+  updateSubCategory,
+  fetchSubCategory,
+  deleteSubCategory,
+  getCategories
+} from "./actions";
 
-export class SubCategoryBackendEdit extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class SubCategoryBackendEdit extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
-    title: '',
-    category: '',
-    description: '',
-    titleError: '',
-    categoryError: '',
-    subcategoryId: '',
+    title: "",
+    category: "",
+    description: "",
+    titleError: "",
+    categoryError: "",
+    subcategoryId: "",
     categories: [],
-    errors: '',
-    message: '',
-  }
+    errors: "",
+    message: ""
+  };
 
   componentDidMount() {
     const { subcategoryId } = this.props.params;
     this.props.fetchSubCategory(subcategoryId);
     this.props.getCategories();
-    this.setState((prevState) => ({ subcategoryId }));
+    this.setState(prevState => ({ subcategoryId }));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,20 +61,20 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
     }
   }
 
-  handleDescription = (description) => this.setState({ description });
+  handleDescription = description => this.setState({ description });
 
   resetState = () => {
     this.setState({
-      title: '',
-      category: '',
+      title: "",
+      category: ""
     });
   };
 
   /**
    * Update title in the state.
   */
-  handleChange = (e) => {
-    this.setState({ titleError: '' });
+  handleChange = e => {
+    this.setState({ titleError: "" });
     this.setState({ title: e.target.value });
   };
 
@@ -77,7 +83,7 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
    * Clear text error if the field is not empty.
   */
   handlecategory = (e, i, value) => {
-    this.setState({ categoryError: '' });
+    this.setState({ categoryError: "" });
     this.setState({ category: value });
   };
 
@@ -89,41 +95,59 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
     const { title, category, description } = this.state;
 
     if (title.length < 1) {
-      this.setState({ titleError: 'This field is required' });
+      this.setState({ titleError: "This field is required" });
     }
     if (category.length < 1) {
-      this.setState({ categoryError: 'This field is required' });
+      this.setState({ categoryError: "This field is required" });
     } else {
-      const updatedSubcategory = Object.assign({ title }, { category }, { description });
-      this.props.updateSubCategory(updatedSubcategory, this.state.subcategoryId);
+      const updatedSubcategory = Object.assign(
+        { title },
+        { category },
+        { description }
+      );
+      this.props.updateSubCategory(
+        updatedSubcategory,
+        this.state.subcategoryId
+      );
       this.resetState();
     }
   };
 
-  displayCategories = (categories) => {
+  displayCategories = categories => {
     const categoryArray = [];
     if (categories !== undefined && categories.length > 0) {
-      categories.map((category) => (
-        categoryArray.push(<MenuItem
-          value={category.id}
-          key={shortid.generate()}
-          primaryText={category.name}
-        />
+      categories.map(category =>
+        categoryArray.push(
+          <MenuItem
+            value={category.id}
+            key={shortid.generate()}
+            primaryText={category.name}
+          />
         )
-      ));
+      );
     } else {
-      categoryArray.push(<MenuItem
-        value={'59087201dc2e353c2d440030'}
-        key={shortid.generate()}
-        primaryText={'No categories found. please add them.'}
-      />
+      categoryArray.push(
+        <MenuItem
+          value={"59087201dc2e353c2d440030"}
+          key={shortid.generate()}
+          primaryText={"No categories found. please add them."}
+        />
       );
     }
     return categoryArray;
-  }
+  };
 
   render() {
-    const { categories, title, category, titleError, categoryError, errors, message, description } = this.state;
+    const {
+      categories,
+      title,
+      category,
+      titleError,
+      categoryError,
+      errors,
+      message,
+      description
+    } = this.state;
     const categoryArray = this.displayCategories(categories);
 
     return (
@@ -149,16 +173,18 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
               <div style={{ minWidth: "100%" }}>
                 <RaisedButton
                   label="Delete"
-                  primary={true} 
+                  primary={true}
                   style={style}
-                  onTouchTap={() => this.props.deleteSubCategory(this.state.subcategoryId)}
+                  onTouchTap={() =>
+                    this.props.deleteSubCategory(this.state.subcategoryId)}
                 />
               </div>
               <div style={{ minWidth: "100%" }}>
-                 <RaisedButton
+                <RaisedButton
                   label="Back"
                   style={style}
-                  onTouchTap={() => window.location.href = '/dashboard/sub-category'}
+                  onTouchTap={() =>
+                    (window.location.href = "/dashboard/sub-category")}
                 />
               </div>
             </Paper>
@@ -169,56 +195,60 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
   }
 }
 
-SubCategoryBackendEdit.propTypes = {
-};
+SubCategoryBackendEdit.propTypes = {};
 
 const mapStateToProps = ({ subcategoryEdit }) => ({
   subCategory: subcategoryEdit.subCategory,
   errors: subcategoryEdit.errors,
-  categories: subcategoryEdit.categories,
+  categories: subcategoryEdit.categories
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateSubCategory: (subCategory, subcategoryId) => dispatch(updateSubCategory(subCategory, subcategoryId)),
-  fetchSubCategory: (subcategoryId) => dispatch(fetchSubCategory(subcategoryId)),
-  deleteSubCategory: (subcategoryId) => dispatch(deleteSubCategory(subcategoryId)),
-  getCategories: () => dispatch(getCategories()),
+const mapDispatchToProps = dispatch => ({
+  updateSubCategory: (subCategory, subcategoryId) =>
+    dispatch(updateSubCategory(subCategory, subcategoryId)),
+  fetchSubCategory: subcategoryId => dispatch(fetchSubCategory(subcategoryId)),
+  deleteSubCategory: subcategoryId =>
+    dispatch(deleteSubCategory(subcategoryId)),
+  getCategories: () => dispatch(getCategories())
 });
 
 // subcategoryEdit
-export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryBackendEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  SubCategoryBackendEdit
+);
 
 const style = {
-  margin: "12px 0px",
+  margin: "12px 0px"
 };
 
 const gemsawesome = {
   propContainer: {
     width: 200,
-    overflow: 'hidden',
-    margin: '20px auto 0',
+    overflow: "hidden",
+    margin: "20px auto 0"
   },
   propToggleHeader: {
-    margin: '20px auto 10px',
+    margin: "20px auto 10px"
   },
   table: {
-    marginTop: 100,
+    marginTop: 100
   },
   paper: {
     padding: 30,
-    marginTop: 30,
+    marginTop: 30
   },
   open: false,
   bodyStyle: {
-    backgroundColor: 'rgb(255, 255, 255)',
-    color: 'rgba(0, 0, 0, 0.87)',
-    marginBottom: 50,
+    backgroundColor: "rgb(255, 255, 255)",
+    color: "rgba(0, 0, 0, 0.87)",
+    marginBottom: 50
   },
   wrapperStyle: {
     borderWidth: 1,
     WebkitBorderRadius: 12,
     borderRadius: 0,
-    boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px',
-    zIndex: 1,
-  },
+    boxShadow:
+      "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
+    zIndex: 1
+  }
 };

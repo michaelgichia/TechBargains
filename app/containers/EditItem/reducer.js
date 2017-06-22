@@ -4,41 +4,37 @@
  *
  */
 
-import {
-  ITEM_RECEIVED_SUCCESS,
-    ITEM_RECEIVED_ERROR,
-} from './constants';
+import { ITEM_RECEIVED_SUCCESS, ITEM_RECEIVED_ERROR } from "./constants";
 
 const initialState = {
   itemData: {
-    name: '',
-    coupon: '',
-    features: '',
-    backlink: '',
-    percentage: '',
-    merchant: '',
-    category: '',
-    subCategory: '',
-    expire: {},
+    name: "",
+    coupon: "",
+    features: "",
+    backlink: "",
+    percentage: "",
+    merchant: "",
+    category: "",
+    subCategory: "",
+    expire: {}
   },
   errors: [],
-  message: '',
+  message: ""
 };
 
 function editItemReducer(state = initialState, action) {
   switch (action.type) {
-
     case ITEM_RECEIVED_SUCCESS: {
       return {
         ...state,
-        itemData: action.itemData,
+        itemData: action.itemData
       };
     }
 
     case ITEM_RECEIVED_ERROR:
       return {
         ...state,
-        errors: action.errors,
+        errors: action.errors
       };
 
     default:

@@ -10,57 +10,54 @@ import {
   infoBaseAPI,
   CATEGORY_INFO,
   CATEGORY_ITEMS,
-  CATEGORY_COUPONS,
-} from './constants';
-import axios from 'axios';
+  CATEGORY_COUPONS
+} from "./constants";
+import axios from "axios";
 
-export const fetchCategoryDeals = (categoryId) => (dispatch) => {
-  axios.get(`${dealsBaseAPI}/${categoryId}`)
-  .then((response) => {
-    if (response.data.confirmation === 'success') {
+export const fetchCategoryDeals = categoryId => dispatch => {
+  axios.get(`${dealsBaseAPI}/${categoryId}`).then(response => {
+    if (response.data.confirmation === "success") {
       dispatch({
         type: CATEGORY_ITEMS.SUCCESS,
-        deals: response.data.results,
+        deals: response.data.results
       });
     } else {
       dispatch({
-        type: 'FLASH_MESSAGE_OPEN',
-        errors: response.data.errors.message,
-      })
+        type: "FLASH_MESSAGE_OPEN",
+        errors: response.data.errors.message
+      });
     }
-  })
+  });
 };
 
-export const fetchCategoryCoupons = (couponsId) => (dispatch) => {
-  axios.get(`${couponsBaseAPI}/${couponsId}`)
-  .then((response) => {
-    if (response.data.confirmation === 'success') {
+export const fetchCategoryCoupons = couponsId => dispatch => {
+  axios.get(`${couponsBaseAPI}/${couponsId}`).then(response => {
+    if (response.data.confirmation === "success") {
       dispatch({
         type: CATEGORY_COUPONS.SUCCESS,
-        coupons: response.data.results,
+        coupons: response.data.results
       });
     } else {
       dispatch({
-        type: 'FLASH_MESSAGE_OPEN',
-        errors: response.data.errors.message,
-      })
+        type: "FLASH_MESSAGE_OPEN",
+        errors: response.data.errors.message
+      });
     }
-  })
+  });
 };
 
-export const fetchCategoryInfo = (categoryId) => (dispatch) => {
-  axios.get(`${infoBaseAPI}/${categoryId}`)
-  .then((response) => {
-    if (response.data.confirmation === 'success') {
+export const fetchCategoryInfo = categoryId => dispatch => {
+  axios.get(`${infoBaseAPI}/${categoryId}`).then(response => {
+    if (response.data.confirmation === "success") {
       dispatch({
         type: CATEGORY_INFO.SUCCESS,
-        info: response.data.result,
+        info: response.data.result
       });
     } else {
       dispatch({
-        type: 'FLASH_MESSAGE_OPEN',
-        errors: response.data.errors.message,
-      })
+        type: "FLASH_MESSAGE_OPEN",
+        errors: response.data.errors.message
+      });
     }
-  })
+  });
 };

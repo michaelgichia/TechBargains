@@ -4,21 +4,22 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import ProductDetail from 'components/ProductDetail';
-import Row from 'react-bootstrap/lib/Row';
-import Panel from 'react-bootstrap/lib/Panel';
+import React, { PropTypes } from "react";
+import ProductDetail from "components/ProductDetail";
+import Row from "react-bootstrap/lib/Row";
+import Panel from "react-bootstrap/lib/Panel";
 // Custom
-import SecondDiv from 'components/SecondDiv';
-import FirstDiv from 'components/FirstDiv';
-import ThirdDiv from 'components/ThirdDiv';
-import Topper from 'components/Topper';
+import SecondDiv from "components/SecondDiv";
+import FirstDiv from "components/FirstDiv";
+import ThirdDiv from "components/ThirdDiv";
+import Topper from "components/Topper";
 
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import makeSelectMerchantDeal from './selectors';
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import makeSelectMerchantDeal from "./selectors";
 
-export class MerchantDeal extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class MerchantDeal extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
@@ -27,7 +28,10 @@ export class MerchantDeal extends React.PureComponent { // eslint-disable-line r
           <FirstDiv product={this.props.product} />
           <Row>
             <SecondDiv product={this.props.product} />
-            <ThirdDiv product={this.props.product} handleOpen={this.props.handleOpen} />
+            <ThirdDiv
+              product={this.props.product}
+              handleOpen={this.props.handleOpen}
+            />
           </Row>
         </Panel>
       </div>
@@ -36,16 +40,16 @@ export class MerchantDeal extends React.PureComponent { // eslint-disable-line r
 }
 
 MerchantDeal.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = createStructuredSelector({
-  MerchantDeal: makeSelectMerchantDeal(),
+  MerchantDeal: makeSelectMerchantDeal()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 

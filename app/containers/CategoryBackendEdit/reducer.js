@@ -4,14 +4,11 @@
  *
  */
 
-import {
-  CATEGORY_ITEM,
-  DELETE_CATEGORY
-} from './constants';
+import { CATEGORY_ITEM, DELETE_CATEGORY } from "./constants";
 
 const initialState = {
   category: [],
-  errors: '',
+  errors: ""
 };
 
 function categoryBackendEditReducer(state = initialState, action) {
@@ -19,19 +16,19 @@ function categoryBackendEditReducer(state = initialState, action) {
     case CATEGORY_ITEM.SUCCESS:
       return {
         ...state,
-        category: action.category,
+        category: action.category
       };
 
     case CATEGORY_ITEM.ERROR:
       return {
         ...state,
-        errors: action.errors,
+        errors: action.errors
       };
 
     case DELETE_CATEGORY.ERROR:
       return {
         ...state,
-        errors: action.errors,
+        errors: action.errors
       };
 
     default:

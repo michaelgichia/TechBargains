@@ -9,35 +9,41 @@
  * the linting exception.
  */
 
-import Deal from 'containers/Deal';
-import Coupon from 'containers/Coupon';
-import Stores from 'containers/Stores';
+import Deal from "containers/Deal";
+import Coupon from "containers/Coupon";
+import Stores from "containers/Stores";
 // import Dropdown from 'components/Dropdown';
-import CarouselContainer from 'containers/CarouselContainer';
-import Product from 'containers/Product';
+import CarouselContainer from "containers/CarouselContainer";
+import Product from "containers/Product";
 // import MobileProductDetail from 'containers/MobileProductDetail';
-import React from 'react';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
+import React from "react";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 
-
-class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class HomePage extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
-    dropdownValue: 'Most Recent',
-  }
+    dropdownValue: "Most Recent"
+  };
 
-  handleDropdown = (e) => this.setState({ dropdownValue: e.target.id });
+  handleDropdown = e => this.setState({ dropdownValue: e.target.id });
 
   render() {
     return (
       <Grid fluid>
-        <Row style={{ marginRight: 0, marginLeft: 0 }} >
-          <Col style={{ paddingLeft: 1, paddingRight: 1 }} xs={12} sm={12} md={12} lg={8}>
+        <Row style={{ marginRight: 0, marginLeft: 0 }}>
+          <Col
+            style={{ paddingLeft: 1, paddingRight: 1 }}
+            xs={12}
+            sm={12}
+            md={12}
+            lg={8}
+          >
             <CarouselContainer />
             <Product />
           </Col>
-          <Col xsHidden sm={4} smHidden  md={4} mdHidden  lg={4}>
+          <Col xsHidden sm={4} smHidden md={4} mdHidden lg={4}>
             <Deal />
             <Coupon />
             <Stores />
@@ -48,7 +54,6 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
   }
 }
 
-HomePage.propTypes = {
-};
+HomePage.propTypes = {};
 
 export default HomePage;
