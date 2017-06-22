@@ -17,6 +17,7 @@ import Navigation from 'containers/NavBar';
 import DashboardSidebar from 'containers/DashboardSidebar';
 import withProgressBar from 'components/ProgressBar';
 import ReactModal from 'containers/ReactModal';
+import FlashMessage from 'containers/FlashMessage';
 
 const style = {
   divi: {
@@ -44,6 +45,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
         <div className={pathname.substring(1, 10) === 'dashboard' ? 'dashtech' : 'tech'}>
           {React.Children.toArray(this.props.children)}
         </div>
+        <FlashMessage />
       </div>
     );
   }

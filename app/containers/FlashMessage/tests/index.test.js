@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { MobilePoductDetail } from '../index';
+// import { FlashMessage } from '../index';
 
-describe('<MobilePoductDetail />', () => {
+describe('<FlashMessage />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

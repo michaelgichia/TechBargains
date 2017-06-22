@@ -100,7 +100,8 @@ export class BannerCreate extends React.Component { // eslint-disable-line react
     axios.post('/api/banner/create', updateBanner)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        browserHistory.push(`/dashboard/banner/${response.data.result.id}`);
+        // browserHistory.push(`/dashboard/banner/${response.data.result.id}`);
+        window.location.href = `/dashboard/banner/${response.data.result.id}`
       } else {
         this.setState({ errors: response.data.errors });
         console.error(response.data);

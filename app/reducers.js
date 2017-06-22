@@ -28,12 +28,15 @@ import navBarReducer from 'containers/NavBar/reducer';
 import categoryBackendEditReducer from 'containers/CategoryBackendEdit/reducer';
 import categoryFrontPageReducer from 'containers/CategoryFrontPage/reducer';
 import subCategoryBackendEditReducer from 'containers/SubCategoryBackendEdit/reducer';
+import flashMessageReducer from 'containers/FlashMessage/reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
 export default function createReducer(asyncReducers) {
   return combineReducers({
+    flash: flashMessageReducer,
+    modal: reactModalReducer,
     routing: routerReducer,
     language: languageProviderReducer,
     auth: registerPageReducer,
@@ -52,7 +55,6 @@ export default function createReducer(asyncReducers) {
     deals: dealReducer,
     stores: storesReducer,
     merchantPages: merchantPagesReducer,
-    modal: reactModalReducer,
     product: productReducer,
     navItems: navBarReducer,
     categoryFront: categoryFrontPageReducer,

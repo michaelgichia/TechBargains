@@ -25,15 +25,16 @@ export const loginUser = (user) => (dispatch) => {
       });
 
       // Redirect to dashboard.
-      browserHistory.push('/dashboard');
+      // browserHistory.push('/dashboard');
+      window.location.href = '/dashboard';
     } else {
       dispatch({
-        type: LOGIN_ERRORS,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
-
       // Redirect to login.
-      browserHistory.push('/login');
+      // browserHistory.push('/login');
+      window.location.href = '/login';
     }
   });
 };

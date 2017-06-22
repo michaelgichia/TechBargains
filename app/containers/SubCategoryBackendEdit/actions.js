@@ -5,6 +5,7 @@
  */
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import { handleOpenFlash } from 'containers/FlashMessage/actions';
 import {
   fetchSubCategoryAPI,
   editSubCategoryAPI,
@@ -12,6 +13,7 @@ import {
   categoryAPI,
   SUB_CATEGORY_ITEM,
   SUBCATEGORY_CATEGORY_ITEM,
+  FLASH_MESSAGE,
 } from './constants';
 import Auth from '../Utils';
 
@@ -25,20 +27,15 @@ export const updateSubCategory = (subCategory, subcategoryId) => (dispatch) => {
   .put(`${editSubCategoryAPI}/${subcategoryId}`, subCategory)
   .then((response) => {
     if (response.data.confirmation === 'success') {
-      browserHistory.push('/dashboard/sub-category');
+      // browserHistory.push('/dashboard/sub-category');
+      window.location.href = '/dashboard/sub-category';
     } else {
       dispatch({
-        type: SUB_CATEGORY_ITEM.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: SUB_CATEGORY_ITEM.ERROR,
-      errors,
-    });
-  });
 };
 
 export const fetchSubCategory = (subCategoryId) => (dispatch) => {
@@ -52,8 +49,8 @@ export const fetchSubCategory = (subCategoryId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SUB_CATEGORY_ITEM.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
@@ -70,11 +67,12 @@ export const deleteSubCategory = (subCategoryId) => (dispatch) => {
   .delete(`${deleteSubCategoryAPI}/${subCategoryId}`)
   .then((response) => {
     if (response.data.confirmation === 'success') {
-      browserHistory.push('/dashboard/sub-category');
+      // browserHistory.push('/dashboard/sub-category');
+      window.location.href = '/dashboard/sub-category';
     } else {
       dispatch({
-        type: SUB_CATEGORY_ITEM.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
@@ -90,8 +88,8 @@ export const getCategories = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SUBCATEGORY_CATEGORY_ITEM.ERROR,
-        error: response.data.error,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });

@@ -27,8 +27,8 @@ export const fetchItem = (itemId) => (dispatch) => {
         });
       } else {
         dispatch({
-          type: ITEM_RECEIVED_ERROR,
-          errors: response.data.errors,
+          type: 'FLASH_MESSAGE_OPEN',
+          errors: response.data.errors.message,
         });
       }
     });
@@ -36,31 +36,20 @@ export const fetchItem = (itemId) => (dispatch) => {
 
 export const updateItem = (item, itemId) => (dispatch) => {
   axios.put(`/api/item/update/${itemId}`, item)
-    .then((response) => {
-      if (response.data.confirmation === 'success') {
-        const itemid = response.data.result.id;
-        dispatch({
-          type: ITEM_RECEIVED_SUCCESS,
-          itemData: response.data.result,
-        });
-        browserHistory.push(`/dashboard/items-list/${itemid}`);
-      } else {
-      // Check if error is array or string.
-        const newError = [];
-        if (typeof response.data.errors === 'string') {
-          newError.push(response.data.errors);
-        } else if (typeof response.data.message === 'object') {
-          newError.push(response.data.message.message);
-        } else {
-          console.log({response: response.data})
-          // response.data.errors.map((error) => newError.push(error.msg));
-          newError.push(response.data.errors);
-        }
-
-        dispatch({
-          type: ITEM_RECEIVED_ERROR,
-          errors: newError,
-        });
-      }
-    });
+  .then((response) => {
+    if (response.data.confirmation === 'success') {
+      const itemid = response.data.result.id;
+      dispatch({
+        type: ITEM_RECEIVED_SUCCESS,
+        itemData: response.data.result,
+      });
+      // browserHistory.push(`/dashboard/items-list/${itemid}`);
+      window.location.href = `/dashboard/items-list/${itemid}`;
+    } else {
+      dispatch({
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      });
+    }
+  });
 };

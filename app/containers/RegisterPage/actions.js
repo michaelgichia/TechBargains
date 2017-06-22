@@ -19,18 +19,12 @@ export const registerUser = (user) => (dispatch) => {
         type: REGISTRATION_SUCCESS,
         message: response.data.message,
       });
-      browserHistory.push('/confirm-email');
+      // browserHistory.push('/confirm-email');
+      window.location.href = '/confirm-email';
     } else {
-      // Check if error is array or string.
-      const newError = [];
-      if (typeof response.data.errors === 'string') {
-        newError.concat(response.data.errors);
-      } else {
-        response.data.errors.map((error) => newError.push(error.msg));
-      }
       dispatch({
-        type: REGISTRATION_ERROR,
-        errors: newError,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });

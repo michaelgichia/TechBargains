@@ -25,17 +25,11 @@ export const fetchMerchandize = (storeId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SINGLE_STORE_DEALS.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: SINGLE_STORE_DEALS.ERROR,
-      errors,
-    });
-  });
 };
 
 export const fetchSpecificCoupons = (couponsId) => (dispatch) => {
@@ -48,17 +42,11 @@ export const fetchSpecificCoupons = (couponsId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SINGLE_STORE_COUPONS.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: SINGLE_STORE_COUPONS.ERROR,
-      errors,
-    });
-  });
 };
 
 export const fetchStoreInfo = (merchantId) => (dispatch) => {
@@ -71,15 +59,9 @@ export const fetchStoreInfo = (merchantId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SINGLE_STORE_INFO.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: SINGLE_STORE_INFO.ERROR,
-      errors,
-    });
-  });
 };

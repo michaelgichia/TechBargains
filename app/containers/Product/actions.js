@@ -20,15 +20,9 @@ export const fetchTrendingDeals = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: TRENDING_DEALS.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: TRENDING_DEALS.ERROR,
-      errors,
-    });
-  });
 };

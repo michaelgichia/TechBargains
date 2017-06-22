@@ -42,7 +42,8 @@ export class MerchantsList extends React.Component { // eslint-disable-line reac
 
   handleRowSelection = (selectedRows) => {
     const merchantId = this.state.merchants[selectedRows].id;
-    browserHistory.push(`/dashboard/merchants/${merchantId}`);
+    // browserHistory.push(`/dashboard/merchants/${merchantId}`);
+    window.location.href = `/dashboard/merchants/${merchantId}`;
   };
 
   render() {

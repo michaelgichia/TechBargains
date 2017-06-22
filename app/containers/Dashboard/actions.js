@@ -22,9 +22,9 @@ export const getCategories = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: CATEGORIES_RECEIVED_ERROR,
-        error: response.data.error,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   });
 };
@@ -39,8 +39,8 @@ export const getSubCategories = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SUBCATEGORIES_RECEIVED_ERROR,
-        error: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });
@@ -56,8 +56,8 @@ export const getMerchants = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: MERCHANTS_RECEIVED_ERROR,
-        error: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });

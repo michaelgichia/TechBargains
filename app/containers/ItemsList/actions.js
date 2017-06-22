@@ -24,8 +24,8 @@ export const getItems = () => (dispatch) => {
         });
       } else {
         dispatch({
-          type: ITEMS_RECEIVED_ERROR,
-          errors: response.data.errors,
+          type: 'FLASH_MESSAGE_OPEN',
+          errors: response.data.errors.message,
         });
       }
     });

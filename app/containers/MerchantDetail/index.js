@@ -69,13 +69,15 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
 
   handleAdd = () => {
     const url = '/dashboard/merchants';
-    browserHistory.push(url);
+    // browserHistory.push(url);
+    window.location.href = url;
   };
 
   handleEdit = () => {
     const { merchantId } = this.state;
     const url = `/dashboard/merchants/${merchantId}/update`;
-    browserHistory.push(url);
+    // browserHistory.push(url);
+    window.location.href = url;
   };
 
   handleDelete = () => {
@@ -83,7 +85,8 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
     axios.delete(`/api/merchant/${this.state.merchantId}`)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        browserHistory.push(url);
+        // browserHistory.push(url);
+        window.location.href = url;
       } else {
         this.setState({ errors: response.data.errors });
       }
@@ -92,7 +95,8 @@ export class MerchantDetail extends React.Component { // eslint-disable-line rea
 
   handleMerchants = () => {
     const url = '/dashboard/merchants';
-    browserHistory.push(url);
+    // browserHistory.push(url);
+    window.location.href = url;
   };
 
   render() {

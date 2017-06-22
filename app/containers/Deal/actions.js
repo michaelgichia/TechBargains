@@ -16,15 +16,9 @@ export const fetchDeals = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: DEALS.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: DEALS.ERROR,
-      errors,
-    });
-  });
 };

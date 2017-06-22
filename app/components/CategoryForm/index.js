@@ -66,7 +66,6 @@ CategoryForm.propTypes = {
   onClick: PropTypes.func.isRequired,
   nameError: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onDescriptionChange: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,

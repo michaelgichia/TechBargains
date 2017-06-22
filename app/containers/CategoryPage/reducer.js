@@ -4,16 +4,21 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import { CATEGORY_PAGE_CREATE } from "./constants";
 
-const initialState = {};
+
+const initialState = {
+  category: {},
+};
 
 function categoryPageReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case CATEGORY_PAGE_CREATE.SUCCESS:
+      return {
+        ...state,
+        category: action.category,
+      };
+
     default:
       return state;
   }

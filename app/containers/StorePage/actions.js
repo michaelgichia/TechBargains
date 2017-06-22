@@ -13,19 +13,12 @@ export const doSaveMerchant = (merchant) => (dispatch) => {
   .then((response) => {
     if (response.data.confirmation === 'success') {
       const merchantId = response.data.result.id;
-      browserHistory.push(`/dashboard/merchants/${merchantId}`);
+      // browserHistory.push(`/dashboard/merchants/${merchantId}`);
+      window.location.href = `/dashboard/merchants/${merchantId}`;
     } else {
-      // Check if error is array or string.
-      const newError = [];
-      if (typeof response.data.message === 'string') {
-        newError.push(response.data.message);
-      } else {
-        response.data.message.map((error) => newError.push(error.msg));
-      }
-
       dispatch({
-        type: MERCHANT_RECEIVED_ERROR,
-        errors: newError,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });

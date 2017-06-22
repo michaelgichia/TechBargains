@@ -16,15 +16,9 @@ export const fetchCoupon = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: COUPON.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: COUPON.ERROR,
-      errors,
-    });
-  });
 };

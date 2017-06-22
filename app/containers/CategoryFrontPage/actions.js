@@ -24,17 +24,11 @@ export const fetchCategoryDeals = (categoryId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: CATEGORY_ITEMS.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: CATEGORY_ITEMS.ERROR,
-      errors,
-    });
-  });
 };
 
 export const fetchCategoryCoupons = (couponsId) => (dispatch) => {
@@ -47,17 +41,11 @@ export const fetchCategoryCoupons = (couponsId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: CATEGORY_COUPONS.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: CATEGORY_COUPONS.ERROR,
-      errors,
-    });
-  });
 };
 
 export const fetchCategoryInfo = (categoryId) => (dispatch) => {
@@ -70,15 +58,9 @@ export const fetchCategoryInfo = (categoryId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: CATEGORY_INFO.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: CATEGORY_INFO.ERROR,
-      errors,
-    });
-  });
 };

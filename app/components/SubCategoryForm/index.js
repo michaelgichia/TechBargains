@@ -61,7 +61,6 @@ SubCategoryForm.propTypes = {
   categoryError: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   titleError: PropTypes.string.isRequired,
-  errors: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onDescriptionChange: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,

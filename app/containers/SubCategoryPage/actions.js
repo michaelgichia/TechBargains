@@ -20,8 +20,8 @@ export const postSubCategory = (subCategory) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SUBCATEGORY.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });
@@ -38,8 +38,8 @@ export const getCategories = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SUBCATEGORY_SUBCATEGORY_ITEM.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });
@@ -56,8 +56,8 @@ export const getSubCategories = () => (dispatch) => {
       });
     } else {
       dispatch({
-        type: SUBCATEGORY_CATEGORY_ITEMS.ERROR,
-        errors: response.data.errors,
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
       });
     }
   });

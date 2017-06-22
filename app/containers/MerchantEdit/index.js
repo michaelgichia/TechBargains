@@ -158,7 +158,8 @@ export class MerchantEdit extends React.PureComponent { // eslint-disable-line r
     axios.put(`/api/merchant/update/${merchantId}`, merchant)
     .then((response) => {
       if (response.data.confirmation === 'success') {
-        browserHistory.push(`/dashboard/merchants/${merchantId}`);
+        // browserHistory.push(`/dashboard/merchants/${merchantId}`);
+        window.location.href = `/dashboard/merchants/${merchantId}`;
       } else {
         const newError = [];
 

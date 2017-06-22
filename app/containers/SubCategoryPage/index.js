@@ -3,7 +3,6 @@ import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Link } from 'react-router';
 // Material
 import Paper from 'material-ui/Paper';
@@ -22,9 +21,6 @@ import Col from 'react-bootstrap/lib/Col';
 import Auth from '../Utils';
 import { postSubCategory, getCategories, getSubCategories } from './actions';
 
-// token
-const token = `bearer ${Auth.getToken()}`;
-axios.defaults.headers.common.Authorization = token;
 
 class SubCategoryPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   state = {

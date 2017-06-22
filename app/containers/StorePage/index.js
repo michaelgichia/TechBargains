@@ -178,7 +178,8 @@ export class StorePage extends React.Component { // eslint-disable-line react/pr
 
   handleRowSelection = (selectedRows) => {
     const merchantId = this.state.merchants[selectedRows].id;
-    browserHistory.push(`/dashboard/merchants/${merchantId}`);
+    // browserHistory.push(`/dashboard/merchants/${merchantId}`);
+    window.location.href = `/dashboard/merchants/${merchantId}`;
   };
 
   render() {

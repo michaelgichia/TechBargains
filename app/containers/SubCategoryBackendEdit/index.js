@@ -158,7 +158,7 @@ export class SubCategoryBackendEdit extends React.Component { // eslint-disable-
                  <RaisedButton
                   label="Back"
                   style={style}
-                  onTouchTap={() => browserHistory.push('/dashboard/sub-category')}
+                  onTouchTap={() => window.location.href = '/dashboard/sub-category'}
                 />
               </div>
             </Paper>

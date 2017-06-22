@@ -41,7 +41,7 @@ passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
 // pass the authorization checker middleware
-const authCheckMiddleware = require('./middleware/auth-check');
+const authCheckMiddleware = require('./middlewares/auth-check');
 
 // custome validator
 app.use(expressValidator({

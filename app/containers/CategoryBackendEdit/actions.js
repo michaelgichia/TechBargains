@@ -32,17 +32,11 @@ export const updateCategory = (category, categoryId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: CATEGORY_ITEM.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: CATEGORY_ITEM.ERROR,
-      errors,
-    });
-  });
 };
 
 export const fetchCategory = (categoryId) => (dispatch) => {
@@ -56,17 +50,11 @@ export const fetchCategory = (categoryId) => (dispatch) => {
       });
     } else {
       dispatch({
-        type: CATEGORY_ITEM.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
-  .catch((errors) => {
-    dispatch({
-      type: CATEGORY_ITEM.ERROR,
-      errors,
-    });
-  });
 };
 
 export const deleteCategory = (id) => (dispatch) => {
@@ -74,12 +62,13 @@ export const deleteCategory = (id) => (dispatch) => {
   .delete(`${deleteAPI}/${id}`)
   .then((response) => {
     if (response.data.confirmation === 'success') {
-      browserHistory.push('/dashboard/category');
+      // browserHistory.push('/dashboard/category');
+      window.location.href = '/dashboard/category';
     } else {
       dispatch({
-        type: DELETE_CATEGORY.ERROR,
-        errors: response.data.errors,
-      });
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      })
     }
   })
 }

@@ -384,6 +384,24 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/flash/flash/flash',
+      name: 'flashMessage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/FlashMessage/reducer'),
+          import('containers/FlashMessage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('flashMessage', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

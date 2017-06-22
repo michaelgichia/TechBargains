@@ -40,7 +40,8 @@ export class Banner extends React.Component { // eslint-disable-line react/prefe
 
   handleRowSelection = (selectedRows) => {
     const bannerId = this.state.banners[selectedRows].id;
-    browserHistory.push(`/dashboard/banner/${bannerId}`);
+    //browserHistory.push(`/dashboard/banner/${bannerId}`);
+    window.location.href = `/dashboard/banner/${bannerId}`;
   };
 
   render() {

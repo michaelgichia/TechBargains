@@ -59,7 +59,8 @@ export class BannerDetail extends React.Component { // eslint-disable-line react
     .then((response) => {
       if (response.data.confirmation === 'success') {
         console.info('info', response.data);
-        browserHistory.push(url);
+        // browserHistory.push(url);
+        window.location.href = url;
       } else {
         this.setState({ errors: response.data.errors });
       }

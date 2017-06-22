@@ -1,5 +1,6 @@
 const express = require('express');
 const controllers = require('../controllers/category.controller');
+const errorsHandler = require('../middlewares/errorsHandler');
 
 // Initialize router
 const router = express.Router();
@@ -17,7 +18,7 @@ router.post('/create', (req, res, next) => {
     return res.json({
       confirmation: 'fail',
       message: 'Form errors!',
-      errors,
+      errors: errorsHandler(errors),
     }).end();
   }
 
@@ -53,7 +54,7 @@ router.put('/:id', (req, res) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      errors,
+      errors: errorsHandler(errors),
     }).end();
   }
 
@@ -86,7 +87,7 @@ router.delete('/:id', (req, res, next) => {
   if (errors.length > 0) {
     return res.json({
       confirmation: 'fail',
-      errors,
+      errors: errorsHandler(errors),
     }).end();
   }
 

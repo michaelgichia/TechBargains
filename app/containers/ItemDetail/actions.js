@@ -19,8 +19,12 @@ export const deleteItem = (itemId) => (dispatch) => {
     if (response.data.confirmation === 'success') {
       dispatch(itemDeleted(response.data.message));
     } else {
-      dispatch(deleteError(response.data.message));
+      dispatch({
+        type: 'FLASH_MESSAGE_OPEN',
+        errors: response.data.errors.message,
+      });    
     }
   });
-  browserHistory.push('/dashboard/items-list');
+  // browserHistory.push('/dashboard/items-list');
+  window.location.href = '/dashboard/items-list';
 };
