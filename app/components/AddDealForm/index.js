@@ -2,16 +2,16 @@ import React from "react";
 import ReactEditor from "components/ReactEditor";
 import PropTypes from "prop-types";
 import shortid from "shortid";
-import Dropzone from 'react-dropzone'
+import Dropzone from "react-dropzone";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import SelectField from "material-ui/SelectField";
 import DatePicker from "material-ui/DatePicker";
 import MenuItem from "material-ui/MenuItem";
-import ChipInput from 'material-ui-chip-input'
+import ChipInput from "material-ui-chip-input";
 import Subheader from "material-ui/Subheader";
 
-class AddDealForm extends React.PureComponent {
+class AddDealForm extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -103,13 +103,13 @@ class AddDealForm extends React.PureComponent {
           fullWidth
           value={this.props.backlink}
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Dropzone
           onDrop={this.props.onDropChange}
           className="redux-dropzone"
           multiple={false}
-          >
+        >
           <p>{this.props.image}</p>
         </Dropzone>
         <TextField
@@ -128,7 +128,7 @@ class AddDealForm extends React.PureComponent {
           onChange={this.props.onDateChange}
           fullWidth
           value={this.props.expire}
-          hintStyle={{color: '#e6251f'}}
+          hintStyle={{ color: "#e6251f" }}
         />
         <SelectField
           hintText="Is this a Coupon?"
@@ -166,7 +166,8 @@ class AddDealForm extends React.PureComponent {
         <br />
         <RaisedButton
           label="Add Item"
-          primary onClick={this.props.onClick}
+          primary
+          onClick={this.props.onClick}
           disabled={this.props.disabled}
         />
       </div>
@@ -176,10 +177,8 @@ class AddDealForm extends React.PureComponent {
 
 AddDealForm.defaultProps = {
   isShipped: "",
-  image: "",
-
+  image: ""
 };
-
 
 AddDealForm.propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -211,7 +210,7 @@ AddDealForm.propTypes = {
   name: PropTypes.string.isRequired,
   features: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default AddDealForm;

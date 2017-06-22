@@ -1,20 +1,27 @@
-import CustomToolbar from 'components/CustomToolbar';
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactQuill from 'react-quill';
-import '!!style-loader!css-loader!react-quill/dist/quill.snow.css';
+import CustomToolbar from "components/CustomToolbar";
+import React from "react";
+import PropTypes from "prop-types";
+import ReactQuill from "react-quill";
+import "!!style-loader!css-loader!react-quill/dist/quill.snow.css";
 
-class ReactEditor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class ReactEditor extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     const modules = {
       toolbar: [
-        ['bold', 'italic', 'underline'],
-        ['link'],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }]
-      ],
+        ["bold", "italic", "underline"],
+        ["link"],
+        [{ list: "ordered" }, { list: "bullet" }]
+      ]
     };
     const formats = [
-      'bold', 'italic', 'underline', 'bullet', 'indent', 'link', 'list'
+      "bold",
+      "italic",
+      "underline",
+      "bullet",
+      "indent",
+      "link",
+      "list"
     ];
     return (
       <div className="text-editor">
@@ -25,14 +32,10 @@ class ReactEditor extends React.PureComponent { // eslint-disable-line react/pre
           placeholder={this.props.placeholder}
           modules={modules}
           formats={formats}
-          theme={'snow'}
+          theme={"snow"}
           value={this.props.value}
         >
-          <div
-            key="editor"
-            ref="editor"
-            className="quill-contents"
-          />
+          <div key="editor" ref="editor" className="quill-contents" />
         </ReactQuill>
       </div>
     );
@@ -43,7 +46,7 @@ ReactEditor.propTypes = {
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default ReactEditor;

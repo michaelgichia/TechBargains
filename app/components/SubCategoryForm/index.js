@@ -1,22 +1,26 @@
-import React from 'react';
-import shortid from 'shortid';
-import PropTypes from 'prop-types';
+import React from "react";
+import shortid from "shortid";
+import PropTypes from "prop-types";
 import ReactEditor from "components/ReactEditor";
-import SelectField from 'material-ui/SelectField';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import Subheader from 'material-ui/Subheader';
+import SelectField from "material-ui/SelectField";
+import RaisedButton from "material-ui/RaisedButton";
+import TextField from "material-ui/TextField";
+import Subheader from "material-ui/Subheader";
 
-
-class SubCategoryForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class SubCategoryForm extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <ul style={{ listStyle: 'none' }}>
-          { this.props.errors &&  <p>{ this.props.errors }</p> }
+        <ul style={{ listStyle: "none" }}>
+          {this.props.errors && <p>{this.props.errors}</p>}
         </ul>
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{ this.props.header }</Subheader>
+        <Subheader
+          style={{ fontSize: 24, textAlign: "center", color: "black" }}
+        >
+          {this.props.header}
+        </Subheader>
         <TextField
           hintText="Title"
           floatingLabelText="Title"
@@ -25,14 +29,14 @@ class SubCategoryForm extends React.PureComponent { // eslint-disable-line react
           errorText={this.props.titleError}
           value={this.props.title}
         />
-        <br/>
+        <br />
         <ReactEditor
           id="description"
           placeholder="Description"
           onChange={this.props.onDescriptionChange}
           value={this.props.description}
         />
-        <br/>
+        <br />
         <SelectField
           floatingLabelText="Choose a category."
           value={this.props.category}
@@ -43,11 +47,7 @@ class SubCategoryForm extends React.PureComponent { // eslint-disable-line react
         >
           {this.props.categoryArray}
         </SelectField>
-        <RaisedButton
-          label="Save"
-          primary
-          onClick={this.props.onClick}
-        />
+        <RaisedButton label="Save" primary onClick={this.props.onClick} />
       </div>
     );
   }
@@ -64,7 +64,7 @@ SubCategoryForm.propTypes = {
   message: PropTypes.string.isRequired,
   onDescriptionChange: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,
-  header: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired
 };
 
 export default SubCategoryForm;

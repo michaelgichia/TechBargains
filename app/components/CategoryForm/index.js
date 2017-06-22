@@ -1,25 +1,30 @@
-import React from 'react';
+import React from "react";
 import ReactEditor from "components/ReactEditor";
-import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
+import PropTypes from "prop-types";
+import RaisedButton from "material-ui/RaisedButton";
+import TextField from "material-ui/TextField";
+import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
-import Subheader from 'material-ui/Subheader';
+import Subheader from "material-ui/Subheader";
 
 const gems = {
   toggle: {
-    marginBottom: 16,
-  },
+    marginBottom: 16
+  }
 };
 
-class CategoryForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class CategoryForm extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         {this.props.errors && <p>{this.props.errors}</p>}
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{this.props.header}</Subheader>
+        <Subheader
+          style={{ fontSize: 24, textAlign: "center", color: "black" }}
+        >
+          {this.props.header}
+        </Subheader>
         <TextField
           hintText="Category"
           floatingLabelText="category"
@@ -31,14 +36,14 @@ class CategoryForm extends React.PureComponent { // eslint-disable-line react/pr
           multiLine
           rows={1}
         />
-        <br/>
+        <br />
         <ReactEditor
           id="description"
           placeholder="Description"
           onChange={this.props.onDescriptionChange}
           value={this.props.description}
         />
-        <br/>
+        <br />
         <SelectField
           hintText="Is Category featured ?"
           floatingLabelText="Is Category featured ?"
@@ -51,11 +56,7 @@ class CategoryForm extends React.PureComponent { // eslint-disable-line react/pr
           <MenuItem value={true} primaryText="Yes, Category is featured!" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
-        <RaisedButton
-          label="Save"
-          primary
-          onClick={this.props.onClick}
-        />
+        <RaisedButton label="Save" primary onClick={this.props.onClick} />
       </div>
     );
   }
@@ -71,7 +72,7 @@ CategoryForm.propTypes = {
   description: PropTypes.string.isRequired,
   isFeatured: PropTypes.bool.isRequired,
   onFeaturedChange: PropTypes.func.isRequired,
-  header: PropTypes.string.isRequired,
+  header: PropTypes.string.isRequired
 };
 
 export default CategoryForm;

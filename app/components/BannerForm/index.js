@@ -4,21 +4,26 @@
 *
 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
-import Dropzone from 'react-dropzone'
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
-import Subheader from 'material-ui/Subheader';
+import React from "react";
+import PropTypes from "prop-types";
+import RaisedButton from "material-ui/RaisedButton";
+import Dropzone from "react-dropzone";
+import TextField from "material-ui/TextField";
+import Toggle from "material-ui/Toggle";
+import Subheader from "material-ui/Subheader";
 
-class BannerForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class BannerForm extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         {this.props.errors && <p>{this.props.errors}</p>}
         {this.props.message && <p>{this.props.message}</p>}
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{this.props.formTitle}</Subheader>
+        <Subheader
+          style={{ fontSize: 24, textAlign: "center", color: "black" }}
+        >
+          {this.props.formTitle}
+        </Subheader>
         <TextField
           hintText="Title"
           id="title"
@@ -45,21 +50,17 @@ class BannerForm extends React.PureComponent { // eslint-disable-line react/pref
           labelPosition="right"
           toggled={this.props.toggled}
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Dropzone
           onDrop={this.props.onDropChange}
           className="redux-dropzone"
           multiple={false}
-          >
+        >
           <p>{this.props.imageUrl}</p>
         </Dropzone>
         <br />
-        <RaisedButton
-          label="Save"
-          primary
-          onClick={this.props.onClick}
-        />
+        <RaisedButton label="Save" primary onClick={this.props.onClick} />
       </div>
     );
   }
@@ -79,7 +80,7 @@ BannerForm.propTypes = {
   onToggle: PropTypes.func.isRequired,
   toggled: PropTypes.bool.isRequired,
   formTitle: PropTypes.string.isRequired,
-  onDropChange: PropTypes.func.isRequired,
+  onDropChange: PropTypes.func.isRequired
 };
 
 export default BannerForm;
