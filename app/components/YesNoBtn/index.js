@@ -7,17 +7,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import RaisedButton from "material-ui/RaisedButton";
-// import styled from 'styled-components';
+import "!!style-loader!css-loader!./style.css";
+
 
 class YesNoBtn extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div style={{ textAlign: "right" }}>
+      <div className="yes-no-btn-wrapper">
         {this.props.isCoupon
           ? <RaisedButton
               label="REVEAL COUPON"
-              className="material-ui-btn"
               primary
               onTouchTap={this.props.onTouchTap}
               labelStyle={{ fontSize: 13 }}

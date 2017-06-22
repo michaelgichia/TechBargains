@@ -1,19 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import YesNoBtn from 'components/YesNoBtn';
-import Row from 'react-bootstrap/lib/Row';
-import Clearfix from 'react-bootstrap/lib/Clearfix';
-import Grid from 'react-bootstrap/lib/Grid';
-import Col from 'react-bootstrap/lib/Col';
-import { Image, Transformation } from 'cloudinary-react'
-import Panel from 'react-bootstrap/lib/Panel';
-import shortid from 'shortid';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router";
+import YesNoBtn from "components/YesNoBtn";
+import Row from "react-bootstrap/lib/Row";
+import Clearfix from "react-bootstrap/lib/Clearfix";
+import Grid from "react-bootstrap/lib/Grid";
+import Col from "react-bootstrap/lib/Col";
+import { Image, Transformation } from "cloudinary-react";
+import Panel from "react-bootstrap/lib/Panel";
+import shortid from "shortid";
 import "!!style-loader!css-loader!./style.css";
 
+class ProductDetail extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
 
-class ProductDetail extends React.Component { // eslint-disable-line react/prefer-stateless-function
- 
- timeConversion = (expire) => {
+  timeConversion = expire => {
     const millisec = expire - new Date().getTime();
     const seconds = (millisec / 1000).toFixed(1);
     const minutes = (millisec / (1000 * 60)).toFixed(1);
@@ -21,13 +22,13 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
     const days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
 
     if (seconds < 60) {
-      return seconds + " Sec";
+      return seconds + " SEC";
     } else if (minutes < 60) {
-      return minutes + " Min";
+      return minutes + " MIN";
     } else if (hours < 24) {
-      return hours + " Hrs";
+      return hours + " HRS";
     } else {
-      return days + " Days"
+      return days + " DAYS";
     }
   };
 
@@ -37,7 +38,7 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
         className="merchant-panel"
         header={
           <div className="topper">
-            <p>{`Expire: ${this.timeConversion(this.props.product.expire)}`}</p>
+            {`EXPIRE: ${this.timeConversion(this.props.product.expire)}`}
           </div>
         }
       >
@@ -50,20 +51,15 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
           <Row>
 
             <div className="product-detail-image">
-              <Col
-                xs={4}
-                sm={4}
-                md={4}
-                lg={4}
-              > 
+              <Col xs={4} sm={4} md={4} lg={4}>
                 <div className="product-detail-image-image">
-                  <Image publicId={this.props.product.public_id} >
-                      <Transformation
-                        width="200"
-                        crop="scale" 
-                        height="200"
-                        dpr="auto"
-                      />
+                  <Image publicId={this.props.product.public_id}>
+                    <Transformation
+                      width="200"
+                      crop="scale"
+                      height="200"
+                      dpr="auto"
+                    />
                   </Image>
                 </div>
               </Col>
@@ -74,33 +70,41 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
               sm={8}
               md={8}
               lg={8}
-            > 
+            >
               <div className="line-clamp-wrapper">
                 <div
                   className="line-clamp"
-                  dangerouslySetInnerHTML={{ __html: this.props.product.features }}
+                  dangerouslySetInnerHTML={{
+                    __html: this.props.product.features
+                  }}
                 />
-                <div>
-              </div>
-                <p>
-                  <span>{`${this.props.product.percentage}% Off `}</span>
-                  <span>{this.props.product.isShipped}</span>
-                 </p>
-              </div>
-              <div>
-                <YesNoBtn
-                  isCoupon={this .props.product.isCoupon}
-                  onTouchTap={this.props.onTouchTap}
-                  backlink={this .props.product.backlink}
+                <div className="more-details-wrapper">
+                  <Link to={`/product/${this.props.product.id}`} className="more-details">More Details</Link>
+                </div>
+                <div className="price">
+                  <div className="price-wrapper">
+                    <p>
+                      <span className="price-first-span">{`${this.props.product.percentage}% Off `}</span>
+                      <span className="price-second-span">{this.props.product.isShipped}</span>
+                    </p>
+                  </div>
+                  <YesNoBtn
+                    isCoupon={this.props.product.isCoupon}
+                    onTouchTap={this.props.onTouchTap}
+                    backlink={this.props.product.backlink}
                   />
+                </div>
+                <div className="bottom-wrapper">
+                  <p>
+                    {`From ${this.props.product.merchant.title} in ${this.props
+                      .product.category.name} Category`}
+                  </p>
+                </div>
               </div>
-              <p>
-                { `From ${this.props.product.merchant.title} in ${this.props.product.category.name} Category` }
-              </p>
             </Col>
 
           </Row>
-          
+
         </Grid>
 
       </Panel>
@@ -110,10 +114,9 @@ class ProductDetail extends React.Component { // eslint-disable-line react/prefe
 
 ProductDetail.propTypes = {
   product: PropTypes.object.isRequired,
-  onTouchTap: PropTypes.func.isRequired,
+  onTouchTap: PropTypes.func.isRequired
 };
 
-ProductDetail.defaultProps = {
-};
+ProductDetail.defaultProps = {};
 
 export default ProductDetail;
