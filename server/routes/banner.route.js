@@ -22,13 +22,12 @@ router.post("/create", (req, res) => {
   // Errors
   const errors = req.validationErrors();
   if (errors.length > 0) {
-    return res
-      .json({
-        confirmation: "fail",
-        message: "Form errors!",
-        errors: errorsHandler(errors)
-      })
-      .end();
+    res.json({
+      confirmation: "fail",
+      message: "Form errors!",
+      errors: errorsHandler(errors)
+    })
+    return;
   }
 
   controllers
@@ -49,7 +48,7 @@ router.post("/create", (req, res) => {
 });
 
 // delete Category.
-router.delete("/:bannerId", (req, res) => {
+router.delete("/delete/:bannerId", (req, res) => {
   // Sanitize id passed in.
   req.sanitize("id").escape();
   req.sanitize("id").trim();
@@ -57,12 +56,12 @@ router.delete("/:bannerId", (req, res) => {
   // Errors
   const errors = req.validationErrors();
   if (errors.length > 0) {
-    return res
-      .json({
-        confirmation: "fail",
-        errors: errorsHandler(errors)
-      })
-      .end();
+    res.json({
+      confirmation: "fail",
+      message: "Form errors!",
+      errors: errorsHandler(errors)
+    })
+    return;
   }
 
   const id = { _id: req.params.bannerId };
@@ -104,18 +103,17 @@ router.put("/update/:bannerId", (req, res) => {
   // Errors
   const errors = req.validationErrors();
   if (errors.length > 0) {
-    return res
-      .json({
-        confirmation: "fail",
-        errors: errorsHandler(errors)
-      })
-      .end();
+    res.json({
+      confirmation: "fail",
+      errors: errorsHandler(errors)
+    })
+    return;
   }
 
-  const id = req.params.bannerId;
+  const { bannerId }= req.params;
 
   controllers
-    .update(id, req.body)
+    .update(bannerId, req.body)
     .then(result => {
       res.json({
         confirmation: "success",

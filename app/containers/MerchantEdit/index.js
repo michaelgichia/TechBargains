@@ -7,6 +7,7 @@
 import React from "react";
 import StoreForm from "components/StoreForm";
 import validator from "validator";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { browserHistory } from "react-router";
 import sha1 from "sha1";
@@ -19,11 +20,11 @@ import axios from "axios";
 // Material-ui
 import Paper from "material-ui/Paper";
 import Auth from "../Utils";
+import { postMerchant, fetchMerchant } from "./actions";
 
 // Token
 const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
-
 
 export class MerchantEdit extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -45,27 +46,20 @@ export class MerchantEdit extends React.Component {
 
   componentDidMount() {
     const { merchantId } = this.props.params;
+    this.props.fetchMerchant(merchantId);
     this.setState({ merchantId });
-    axios.get(`/public-api/merchant/${merchantId}`).then(response => {
-      if (response.data.confirmation === "success") {
-        this.setState({
-          isFeatured: response.data.result.isFeatured,
-          about: response.data.result.about,
-          merchant: response.data.result
-        });
-      } else {
-        const newError = [];
+  }
 
-        if (typeof response.data.errors === "string") {
-          newError.push(response.data.errors);
-        } else if (typeof response.data.message === "object") {
-          newError.push(response.data.message.message);
-        } else {
-          response.data.errors.map(error => newError.push(error.msg));
-        }
-        this.setState({ errors: newError });
-      }
-    });
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.merchant !== this.state.merchant) {
+      this.setState(() => ({ merchant: nextProps.merchant }));
+    }
+    if (nextProps.isFeatured !== this.state.isFeatured) {
+      this.setState(() => ({ isFeatured: nextProps.isFeatured }));
+    }
+    if (nextProps.about !== this.state.about) {
+      this.setState(() => ({ about: nextProps.about }));
+    }
   }
 
   /**
@@ -154,28 +148,7 @@ export class MerchantEdit extends React.Component {
 
   updateMerchant = merchant => {
     const { merchantId } = this.state;
-    axios
-      .put(`/api/merchant/update/${merchantId}`, merchant)
-      .then(response => {
-        if (response.data.confirmation === "success") {
-          // browserHistory.push(`/dashboard/merchants/${merchantId}`);
-          window.location.href = `/dashboard/merchants/${merchantId}`;
-        } else {
-          const newError = [];
-
-          if (typeof response.data.message === "string") {
-            newError.push(response.data.message);
-          } else if (typeof response.data.message === "object") {
-            newError.push(response.data.message.message);
-          } else {
-            response.data.errors.map((error, i) => newError.push(error.msg));
-          }
-          this.setState({ errors: newError });
-        }
-      })
-      .catch(errors => {
-        this.setState({ errors });
-      });
+    this.props.postMerchant(merchantId, merchant);
   };
 
   /**
@@ -241,7 +214,19 @@ export class MerchantEdit extends React.Component {
 
 MerchantEdit.propTypes = {};
 
-export default MerchantEdit;
+const mapStateToProps = ({ merchantEdit }) => ({
+  merchant: merchantEdit.merchant,
+  isFeatured: merchantEdit.isFeatured,
+  about: merchantEdit.about
+});
+
+const mapDispatchToProps = dispatch => ({
+  postMerchant: (merchantId, merchant) =>
+    dispatch(postMerchant(merchantId, merchant)),
+  fetchMerchant: merchantId => dispatch(fetchMerchant(merchantId))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MerchantEdit);
 
 //Styles
 const gems6 = {

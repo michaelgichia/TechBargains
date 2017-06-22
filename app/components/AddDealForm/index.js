@@ -122,13 +122,13 @@ class AddDealForm extends React.Component {
           value={this.props.coupon}
         />
         <DatePicker
-          hintText="Expires on? Tap to pick a date."
+          hintText="Item expires on ? Tap to pick a date"
           id="expire"
           mode="landscape"
           onChange={this.props.onDateChange}
           fullWidth
           value={this.props.expire}
-          hintStyle={{ color: "#e6251f" }}
+          hintStyle={{ color: "#e6251f", fontWeight: 700 }}
         />
         <SelectField
           hintText="Is this a Coupon?"

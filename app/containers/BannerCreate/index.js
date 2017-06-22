@@ -14,6 +14,7 @@ import sha1 from "sha1";
 import superagent from "superagent";
 import axios from "axios";
 import Auth from "../Utils";
+import { postBanner } from './actions';
 
 // token
 const token = `bearer ${Auth.getToken()}`;
@@ -100,25 +101,19 @@ export class BannerCreate extends React.Component {
   handleToggle = (e, isInputChecked) =>
     this.setState({ isFeatured: isInputChecked });
 
-  postBanner = () => {
-    const updateBanner = Object.assign(this.state.item, {
-      isFeatured: this.state.isFeatured
-    });
-    axios
-      .post("/api/banner/create", updateBanner)
-      .then(response => {
-        if (response.data.confirmation === "success") {
-          // browserHistory.push(`/dashboard/banner/${response.data.result.id}`);
-          window.location.href = `/dashboard/banner/${response.data.result.id}`;
-        } else {
-          this.setState({ errors: response.data.errors });
-          console.error(response.data);
-        }
-      })
-      .catch(errors => {
-        this.setState({ errors });
-      });
-  };
+  // postBanner = () => {
+  //   const updateBanner = Object.assign(this.state.item, {
+  //     isFeatured: this.state.isFeatured
+  //   });
+  //   axios.post("/api/banner/create", updateBanner).then(response => {
+  //     if (response.data.confirmation === "success") {
+  //       window.location.href = `/dashboard/banner/${response.data.result.id}`;
+  //     } else {
+  //       this.setState({ errors: response.data.errors });
+  //       console.error(response.data);
+  //     }
+  //   })
+  // };
 
   handleSubmit = () => {
     if (validator.isEmpty(this.state.item.title)) {
@@ -130,7 +125,10 @@ export class BannerCreate extends React.Component {
     if (validator.isEmpty(this.state.item.backlink)) {
       this.setState({ backlinkError: "Backlink is required!" });
     } else {
-      this.postBanner();
+      const updateBanner = Object.assign(this.state.item, {
+        isFeatured: this.state.isFeatured
+      });
+      this.props.postBanner(updateBanner);
     }
   };
   render() {
@@ -167,13 +165,10 @@ export class BannerCreate extends React.Component {
 }
 
 BannerCreate.propTypes = {
-  dispatch: PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  postBanner: (banner) => dispatch(postBanner(banner)),
+});
 
 export default connect(null, mapDispatchToProps)(BannerCreate);

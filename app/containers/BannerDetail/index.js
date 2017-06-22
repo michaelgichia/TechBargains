@@ -14,16 +14,8 @@ import { Image } from "cloudinary-react";
 import { browserHistory, Link } from "react-router";
 // Material
 import RaisedButton from "material-ui/RaisedButton";
-import Divider from "material-ui/Divider";
-import Paper from "material-ui/Paper";
 import { Card, CardActions, CardMedia, CardTitle } from "material-ui/Card";
-
-// Styling
-const gems4 = {
-  button: {
-    margin: 12
-  }
-};
+import { deleteBanner } from "./actions";
 
 export class BannerDetail extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -41,7 +33,7 @@ export class BannerDetail extends React.Component {
 
   componentDidMount() {
     const bannerId = this.props.params.bannerId;
-    this.setState({ bannerId });
+    this.setState(() => ({ bannerId }));
 
     axios.get(`/public-api/banner/${bannerId}`).then(response => {
       if (response.data.confirmation === "success") {
@@ -52,19 +44,6 @@ export class BannerDetail extends React.Component {
       }
     });
   }
-
-  handleDelete = () => {
-    const url = "/dashboard/banner";
-    axios.delete(`/api/banner/${this.state.bannerId}`).then(response => {
-      if (response.data.confirmation === "success") {
-        console.info("info", response.data);
-        // browserHistory.push(url);
-        window.location.href = url;
-      } else {
-        this.setState({ errors: response.data.errors });
-      }
-    });
-  };
 
   render() {
     const { backlink, imageUrl, title, public_id } = this.state.itemData;
@@ -111,7 +90,8 @@ export class BannerDetail extends React.Component {
                     label="Delete"
                     style={gems4.button}
                     labelColor="#7c7c7c"
-                    onTouchTap={() => this.handleDelete()}
+                    onTouchTap={() =>
+                      this.props.deleteBanner(this.state.bannerId)}
                   />
                 </Link>
 
@@ -136,4 +116,19 @@ export class BannerDetail extends React.Component {
 
 BannerDetail.propTypes = {};
 
-export default BannerDetail;
+const mapStateToProps = ({ bannerDetail }) => ({
+  bannerDetail
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteBanner: bannerId => dispatch(deleteBanner(bannerId))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BannerDetail);
+
+// Styling
+const gems4 = {
+  button: {
+    margin: 12
+  }
+};

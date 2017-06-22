@@ -5,15 +5,26 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  MerchantEdit,
 } from './constants';
 
-const initialState = {};
+const initialState = {
+  isFeatured: null,
+  about: '',
+  merchant: {},
+};
 
 function merchantEditReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+
+    case MerchantEdit.SUCCESS:
+      return {
+        ...state,
+        isFeatured: action.merchant.isFeatured,
+        about: action.merchant.about,
+        merchant: action.merchant
+      };
+
     default:
       return state;
   }
