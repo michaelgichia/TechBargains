@@ -71,5 +71,5 @@ plan.remote(function(remote) {
   remote.log('Reload application');
   remote.log('============================================================================================');
   remote.exec('pm2 stop all', {failsafe: true});
-  remote.exec('pm2 start npm -- run start:prod');
+  // remote.exec('pm2 start npm -- run start:prod');
 });
