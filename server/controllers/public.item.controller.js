@@ -104,7 +104,7 @@ const findSpecificCoupons = id =>
 
 const findTrendingDeals = params =>
   new Promise((resolve, reject) => {
-    Item.find({ isFeatured: true, isCoupon: false })
+    Item.find({ isFeatured: true })
       .limit(50)
       .sort("-date")
       .exec((err, items) => {

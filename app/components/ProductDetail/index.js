@@ -82,12 +82,21 @@ class ProductDetail extends React.Component {
                 </div>
                 <div className="price">
                   <div className="more-details-wrapper">
-                    <Link to={`/product/${this.props.product.id}`} className="more-details">More Details</Link>
+                    <Link
+                      to={`/product/${this.props.product.id}`}
+                      className="more-details"
+                    >
+                      More Details
+                    </Link>
                   </div>
                   <div className="price-wrapper">
                     <p>
-                      <span className="price-first-span">{this.props.product.percentage}</span>
-                      <span className="price-second-span">{this.props.product.isShipped}</span>
+                      <span className="price-first-span">
+                        {this.props.product.percentage}
+                      </span>
+                      <span className="price-second-span">
+                        {this.props.product.isShipped}
+                      </span>
                     </p>
                   </div>
                   <YesNoBtn
@@ -97,8 +106,24 @@ class ProductDetail extends React.Component {
                   />
                   <div className="bottom-wrapper">
                     <p>
-                      {`From ${this.props.product.merchant.title} in ${this.props
-                        .product.category.name} Category`}
+                      From{" "}
+                      <Link
+                        style={{
+                          color: "#b0b0b0",
+                          textDecoration: "underline"
+                        }}
+                      >
+                        {this.props.product.merchant.title}
+                      </Link>{" "}
+                      in{" "}
+                      <Link
+                        style={{
+                          color: "#b0b0b0",
+                          textDecoration: "underline"
+                        }}
+                      >
+                        {this.props.product.category.name}
+                      </Link>
                     </p>
                   </div>
                 </div>

@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 import RaisedButton from "material-ui/RaisedButton";
 import "!!style-loader!css-loader!./style.css";
 
-
 class YesNoBtn extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -17,17 +16,22 @@ class YesNoBtn extends React.Component {
       <div className="yes-no-btn-wrapper">
         {this.props.isCoupon
           ? <RaisedButton
-              label="REVEAL COUPON"
+              label="Reveal Code"
               primary
               onTouchTap={this.props.onTouchTap}
-              labelStyle={{ fontSize: 13 }}
+              labelStyle={{ textTransform: "none", fontSize: 16 }}
             />
           : <RaisedButton
-              label="SEE DEAL"
+              label="See Deal"
               href={this.props.backlink}
               target="_blank"
               primary
-              labelStyle={{ paddingLeft: 5, paddingRight: 5, fontSize: 13 }}
+              labelStyle={{
+                textTransform: "none",
+                paddingLeft: 30,
+                paddingRight: 30,
+                fontSize: 16
+              }}
             />}
       </div>
     );
