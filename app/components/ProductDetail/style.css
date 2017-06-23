@@ -4,94 +4,93 @@
   }
 }
 
+.bottom-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #b0b0b0;
+  font-family: Helvetica, Arial, Roboto, serif;
+}
+
 @media (min-width: 768px) {
   .bottom-wrapper {
-    font-family: Helvetica, Arial, Roboto, serif;
     min-width: 100%;
     width: 100%;
-    margin-top: 20px;
-    margin-bottom: 10px;
     float: left;
     text-align: left;
     font-size: 13px;
-    color: #b0b0b0;
     line-height: 1.3;
   }
 }
 
-@media (min-width: 768px) {
-  .price-wrapper {
-    width: 50%;
-    float: left;
-  }
+.price-wrapper {
+  width: 60%;
+  float: left;
 }
 
-@media (min-width: 768px) {
-  .price {
-    min-width: 100%;
-  }
+.price {
+  min-width: 100%;
 }
 
-@media (min-width: 768px) {
-  .price {
-    display: inline-block;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    vertical-align: bottom;
-    float: left;
-    width: calc(100% - 200px);
-  }
-  .price-first-span {
-    font-size: 29px;
-    line-height: 1.1;
-    min-height: 27px;
-    color: #e6251f;
-    font-weight: 700;
-  }
-  .price-second-span {
-    text-transform: lowercase;
-    font-size: 14px;
-    font-weight: 700;
-    color: #e6251f;
-    white-space: nowrap;
-  }
+.price {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  vertical-align: bottom;
+  float: left;
+  width: calc(100% - 200px);
 }
-.more-details-wrapper {
-  border-top: 1px solid #e0e0e0;
+
+.price-first-span {
+  font-size: 29px;
+  line-height: 1.1;
+  min-height: 27px;
+  color: #e6251f;
+  font-weight: 700;
+}
+
+.price-second-span {
+  text-transform: lowercase;
+  font-size: 14px;
+  font-weight: 700;
+  color: #e6251f;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
   .more-details-wrapper {
+    border-top: 1px solid #e0e0e0;
     padding-top: 5px;
     min-width: 100%;
     margin: 5px 0px 15px 0px;
   }
 }
 
-@media (min-width: 768px) {
-  .more-details:hover,
-  .more-details:focus {
-    opacity: .7;
-  }
+.more-details-wrapper {
+  margin-bottom: 15px;
+}
+
+.more-details:hover,
+.more-details:focus {
+  opacity: .7;
+}
+
+.more-details {
+  color: #444 !important;
+  text-decoration: underline;
+  margin: 5px 0;
 }
 
 @media (min-width: 768px) {
-  .more-details {
-    color: #444 !important;
-    text-decoration: underline;
-    margin: 5px 0;
-  }
   .line-clamp ul {
     padding-top: 10px;
     padding-bottom: 0px;
   }
 }
 
- .line-clamp ul li {
+.line-clamp ul li {
   list-style-type: disc !important;
- }
+}
 
- 
 @media (min-width: 768px) {
   .line-clamp ul li:nth-of-type(1n+12) {
     display: none;
@@ -176,11 +175,15 @@ p {
   letter-spacing: 0px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 480px) and (max-width: 768px) {
   .line-clamp-wrapper {
     height: 60px;
     overflow: hidden;
+    margin-bottom: 10px;
   }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
   .line-clamp {
     width: 100%;
     line-height: 20px;
