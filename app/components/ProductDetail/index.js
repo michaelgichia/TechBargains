@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router";
 import YesNoBtn from "components/YesNoBtn";
 import Row from "react-bootstrap/lib/Row";
-import Clearfix from "react-bootstrap/lib/Clearfix";
 import Grid from "react-bootstrap/lib/Grid";
 import Col from "react-bootstrap/lib/Col";
 import { Image, Transformation } from "cloudinary-react";
 import Panel from "react-bootstrap/lib/Panel";
-import shortid from "shortid";
 import "!!style-loader!css-loader!./style.css";
 
 class ProductDetail extends React.Component {
