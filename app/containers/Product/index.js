@@ -7,6 +7,7 @@
 import React, { PropTypes } from "react";
 import { InstantSearch, Hits, SortBy } from "react-instantsearch/dom";
 import "react-instantsearch-theme-algolia/style.css";
+import shortid from 'shortid';
 import ProductDetail from "components/ProductDetail";
 import { CloudinaryContext } from "cloudinary-react";
 import { connect } from "react-redux";
@@ -39,48 +40,20 @@ export class Product extends React.Component {
   render() {
     return (
       <div>
-        <InstantSearch
-          appId="YNZ7XXV49B"
-          apiKey="90550ee45080bb58130f0ac76a4e28f5"
-          indexName="item"
-        >
-          <div className="gold">
-            <ul>
-              <li
-                id="platinumbtn"
-                className="platinum"
-                style={{ float: "right" }}
-              >
-                <SortBy
-                  items={[
-                    { value: "expire", label: "Expire soon" },
-                    { value: "item", label: "Most Recent" }
-                  ]}
-                  defaultRefinement="item"
+        <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+          <CloudinaryContext cloudName="dw3arrxnf">
+            {
+            this.state.products.map((product) => (
+              <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+                <ProductDetail
+                  product={product}
+                  onTouchTap={() => this.props.handleOpenModal(product)}
                 />
               </li>
-              <li
-                id="platinum-id"
-                className="platinum-label"
-                style={{ float: "right" }}
-              >
-                <label htmlFor="platinum-id">Refine by:</label>
-              </li>
-            </ul>
-          </div>
-          <CloudinaryContext cloudName="dw3arrxnf">
-            <Hits
-              hitComponent={({ hit }) => {
-                return (
-                  <ProductDetail
-                    product={hit}
-                    onTouchTap={() => this.props.handleOpenModal(hit)}
-                  />
-                );
-              }}
-            />
+            ))
+            }
           </CloudinaryContext>
-        </InstantSearch>
+        </ul>
       </div>
     );
   }
@@ -100,7 +73,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
 
-// <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+// //<ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
 //   <CloudinaryContext cloudName="dw3arrxnf">
 //     {
 //     this.state.products.map((product) => (
@@ -114,3 +87,47 @@ export default connect(mapStateToProps, mapDispatchToProps)(Product);
 //     }
 //   </CloudinaryContext>
 // </ul>
+
+
+        // <InstantSearch
+        //   appId="YNZ7XXV49B"
+        //   apiKey="90550ee45080bb58130f0ac76a4e28f5"
+        //   indexName="item"
+        // >
+        //   <div className="gold">
+        //     <ul>
+        //       <li
+        //         id="platinumbtn"
+        //         className="platinum"
+        //         style={{ float: "right" }}
+        //       >
+        //         <SortBy
+        //           items={[
+        //             { value: "expire", label: "Expire soon" },
+        //             { value: "item", label: "Most Recent" }
+        //           ]}
+        //           defaultRefinement="item"
+        //         />
+        //       </li>
+        //       <li
+        //         id="platinum-id"
+        //         className="platinum-label"
+        //         style={{ float: "right" }}
+        //       >
+        //         <label htmlFor="platinum-id">Refine by:</label>
+        //       </li>
+        //     </ul>
+        //   </div>
+        //   <CloudinaryContext cloudName="dw3arrxnf">
+        //     <Hits
+        //       hitComponent={({ hit }) => {
+        //         return (
+        //           <ProductDetail
+        //             product={hit}
+        //             onTouchTap={() => this.props.handleOpenModal(hit)}
+        //           />
+        //         );
+        //       }}
+        //     />
+        //   </CloudinaryContext>
+        // </InstantSearch>

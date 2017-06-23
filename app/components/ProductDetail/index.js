@@ -71,20 +71,22 @@ class ProductDetail extends React.Component {
               md={8}
               lg={8}
             >
-              <div className="line-clamp-wrapper">
-                <div
-                  className="line-clamp"
-                  dangerouslySetInnerHTML={{
-                    __html: this.props.product.features
-                  }}
-                />
-                <div className="more-details-wrapper">
-                  <Link to={`/product/${this.props.product.id}`} className="more-details">More Details</Link>
+              <div>
+                <div className="line-clamp-wrapper">
+                  <div
+                    className="line-clamp"
+                    dangerouslySetInnerHTML={{
+                      __html: this.props.product.features
+                    }}
+                  />
                 </div>
                 <div className="price">
+                  <div className="more-details-wrapper">
+                    <Link to={`/product/${this.props.product.id}`} className="more-details">More Details</Link>
+                  </div>
                   <div className="price-wrapper">
                     <p>
-                      <span className="price-first-span">{`${this.props.product.percentage}% Off `}</span>
+                      <span className="price-first-span">{this.props.product.percentage}</span>
                       <span className="price-second-span">{this.props.product.isShipped}</span>
                     </p>
                   </div>
@@ -93,14 +95,15 @@ class ProductDetail extends React.Component {
                     onTouchTap={this.props.onTouchTap}
                     backlink={this.props.product.backlink}
                   />
-                </div>
-                <div className="bottom-wrapper">
-                  <p>
-                    {`From ${this.props.product.merchant.title} in ${this.props
-                      .product.category.name} Category`}
-                  </p>
+                  <div className="bottom-wrapper">
+                    <p>
+                      {`From ${this.props.product.merchant.title} in ${this.props
+                        .product.category.name} Category`}
+                    </p>
+                  </div>
                 </div>
               </div>
+
             </Col>
 
           </Row>
