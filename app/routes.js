@@ -402,6 +402,22 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/about-us',
+      name: 'about',
+      getComponent(location, cb) {
+        import('components/About')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/privacy-policy',
+      name: 'privacy',
+      getComponent(location, cb) {
+        import('components/Privacy')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

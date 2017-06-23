@@ -1,0 +1,44 @@
+#ppBody {
+  font-size: 14px;
+  font-family: Roboto, sans-serif, Helvetica, Arial;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#ppHeader {
+  font-family: Helvetica, Roboto, sans-serif, Arial;
+  font-size: 21px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 0 0 0;
+  text-decoration: underline;
+}
+
+.ppConsistencies {
+  display: none;
+}
+
+.grayText {
+  font-size: 16px;
+  padding: 10px;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.innerText {
+  font-size: 14px;
+  padding: 10px
+}
+
+.blueText {
+  font-size: 15px;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.main-policy {
+  margin: 0 10px;
+  color: #4a5258;
+}

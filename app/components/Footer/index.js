@@ -5,6 +5,7 @@
 */
 
 import React from "react";
+import { Link } from "react-router";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 
@@ -21,7 +22,13 @@ function Footer() {
           </p>
         </Row>
         <Row>
-          <p>About Us   |   Privacy Policy Terms of Use</p>
+          <p>
+            <Link className="about-us" to="/about-us">About Us</Link>
+            {" "}|{" "}
+            <Link className="privacy" to="/privacy-policy">
+              Privacy Policy Terms of Use
+            </Link>
+          </p>
         </Row>
         <Row>
           <p>© Copyright 2017 DealsExpert.</p>
