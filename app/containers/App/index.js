@@ -12,8 +12,11 @@
  */
 
 import React from "react";
+import Helmet from 'react-helmet';
+
 // Material-ui
 import Navigation from "containers/NavBar";
+import Footer from "components/Footer";
 import DashboardSidebar from "containers/DashboardSidebar";
 import withProgressBar from "components/ProgressBar";
 import ReactModal from "containers/ReactModal";
@@ -37,6 +40,13 @@ class App extends React.PureComponent {
     const { pathname } = this.props.location;
     return (
       <div style={style.divi}>
+        <Helmet
+          titleTemplate="%s - DealsExpert  -  Get the latest deals"
+          defaultTitle="DealsExpert  -  Get the latest deals"
+          meta={[
+            { name: 'description', content: 'Get the latest deals.' },
+          ]}
+        />
         {pathname.substring(1, 10) === "dashboard"
           ? <DashboardSidebar />
           : <Navigation />}
@@ -49,6 +59,7 @@ class App extends React.PureComponent {
           {React.Children.toArray(this.props.children)}
         </div>
         <FlashMessage />
+        <Footer />
       </div>
     );
   }
