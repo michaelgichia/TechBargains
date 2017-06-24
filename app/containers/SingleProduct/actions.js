@@ -4,25 +4,24 @@
  *
  */
 
-import axios from 'axios';
+import axios from "axios";
 import {
-  productFetchAPI,
-  SINGLE_PRODUCT,
-} from './constants';
+  treandingDealsAPI,
+  RELATED_PRODUCT
+} from "./constants";
 
-export const fetchProduct = productId => dispatch => {
-  axios.get(`${productFetchAPI}/${productId}`).then((response) => {
-    if (response.data.confirmation === 'success') {
+export const fetchRelatedProduct = subCategoryId => dispatch => {
+  axios.get(`${treandingDealsAPI}/${subCategoryId}`).then(response => {
+    if (response.data.confirmation === "success") {
       dispatch({
-        type: SINGLE_PRODUCT.SUCCESS,
-        product: response.data.result,
+        type: RELATED_PRODUCT.SUCCESS,
+        payload: response.data.results
       });
     } else {
-      console.log({response: response.data})
       dispatch({
         type: "FLASH_MESSAGE_OPEN",
         errors: response.data.errors.message
       });
     }
-  })
-}
+  });
+};

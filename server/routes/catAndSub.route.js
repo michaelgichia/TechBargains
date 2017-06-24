@@ -185,4 +185,23 @@ router.get("/category-coupons/:couponsId", (req, res) => {
     });
 });
 
+router.get("/related-products/:subCategoryId", (req, res) => {
+  const { subCategoryId } = req.params;
+
+  itemController
+    .findRelatedProduct(subCategoryId, false)
+    .then(entities => {
+      res.json({
+        confirmation: "success",
+        results: entities
+      });
+    })
+    .catch(errors => {
+      res.json({
+        confirmation: "fail",
+        errors: errorsHandler(errors)
+      });
+    });
+});
+
 module.exports = router;

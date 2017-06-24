@@ -30,7 +30,6 @@ const ItemSchema = new Schema({
   subCategory: [{
     type: Schema.Types.ObjectId,
     ref: "SubCategory",
-    autopopulate: true,
   }],
   category: {
     type: Schema.Types.ObjectId,

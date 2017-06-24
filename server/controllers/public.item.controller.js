@@ -157,6 +157,28 @@ const findCategoryCoupons = id =>
       });
   });
 
+const findRelatedProduct = id =>
+  new Promise((resolve, reject) => {
+    Item.find({ _id: id }).limit(8).sort("-date").exec((err, deals) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      const subCategoryId = deals[0].subCategory;
+      Item.find({ subCategory: { $in: subCategoryId } })
+        .limit(20)
+        .sort("-date")
+        .exec((err, related) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          deals.push({ relatedProducts: related });
+          resolve(deals);
+        });
+    });
+  });
+
 module.exports = {
   find,
   findById,
@@ -166,5 +188,6 @@ module.exports = {
   findSpecificCoupons,
   findTrendingDeals,
   findSpecificCategory,
-  findCategoryCoupons
+  findCategoryCoupons,
+  findRelatedProduct
 };

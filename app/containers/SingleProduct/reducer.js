@@ -4,21 +4,31 @@
  *
  */
 
-import {
-  SINGLE_PRODUCT,
-} from './constants';
+import { SINGLE_PRODUCT, RELATED_PRODUCT } from "./constants";
 
 const initialState = {
   product: {},
+  relatedProducts: []
 };
 
 function singleProductReducer(state = initialState, action) {
+  let relatedProducts;
+  let product;
+
   switch (action.type) {
-    
-    case SINGLE_PRODUCT.SUCCESS:
+
+    case RELATED_PRODUCT.SUCCESS:
+      action.payload.map(obj => {
+        if (obj.hasOwnProperty("relatedProducts")) {
+          relatedProducts = obj.relatedProducts;
+        } else {
+          product = obj;
+        }
+      });
       return {
         ...state,
-        product: action.product
+        relatedProducts,
+        product
       };
 
     default:

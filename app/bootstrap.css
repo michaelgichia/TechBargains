@@ -202,6 +202,10 @@ html {
   background-color: #fff;
 }
 
+.show-product-grid {
+  background-color: #f7f7f7 !important;
+}
+
 .amazon-coupon-btn {
   margin: 3.5% 10px;
 }

@@ -19,25 +19,27 @@ import { CloudinaryContext } from "cloudinary-react";
 import CategoryInfo from "components/CategoryInfo";
 
 import { handleOpenModal } from "containers/ReactModal/actions";
-import { fetchProduct } from "./actions";
+import { fetchRelatedProduct } from "./actions";
 
 export class SingleProduct extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
 
   state = {
     product: {},
-    productId: ""
+    relatedProducts: []
   };
 
   componentDidMount() {
     const { productId } = this.props.params;
-    this.props.fetchProduct(productId);
-    //this.setState(() => ({ productId }));
+    this.props.fetchRelatedProduct(productId);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.product !== this.state.product) {
       this.setState(() => ({ product: nextProps.product }));
+    }
+    if (nextProps.relatedProducts !== this.state.relatedProducts) {
+      this.setState(() => ({ relatedProducts: nextProps.relatedProducts }));
     }
   }
 
@@ -69,7 +71,10 @@ export class SingleProduct extends React.Component {
         />
         <Grid fluid className="show-grid">
           <Row className="show-info-grid">
-            <CategoryInfo title="MacBook" />
+
+            {Object.keys(this.state.product).length > 0
+              ? <CategoryInfo title={this.props.product.name} />
+              : <div />}
           </Row>
           <Row className="show-info-grid">
             <Col xs={12} sm={12} md={12} lg={8}>
@@ -97,11 +102,12 @@ export class SingleProduct extends React.Component {
 SingleProduct.propTypes = {};
 
 const mapStateToProps = ({ singleProduct }) => ({
-  product: singleProduct.product
+  product: singleProduct.product,
+  relatedProducts: singleProduct.relatedProducts
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProduct: productId => dispatch(fetchProduct(productId)),
+  fetchRelatedProduct: productId => dispatch(fetchRelatedProduct(productId)),
   handleOpenModal: product => dispatch(handleOpenModal(product))
 });
 
