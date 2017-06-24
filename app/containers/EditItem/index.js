@@ -14,6 +14,7 @@ import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import sha1 from "sha1";
 import superagent from "superagent";
+
 // Actions
 import {
   getCategories,
@@ -21,30 +22,6 @@ import {
   getMerchants
 } from "containers/Dashboard/actions";
 import { fetchItem, updateItem } from "./actions";
-
-const hintStyle = {
-  fonstSize: 10,
-  marginTop: 0
-};
-
-const style = {
-  paper: {
-    padding: 30,
-    marginTop: 30
-  }
-};
-
-const themesColor = [
-  "#9BF0E9",
-  "#ff8400",
-  "#C3D6E4",
-  "#9f0",
-  "#185f9d",
-  "#bf46ba",
-  "#62bcff",
-  "#e87448",
-  "#fbaca8"
-];
 
 export class EditItem extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -74,9 +51,8 @@ export class EditItem extends React.Component {
   };
 
   componentDidMount() {
-    const id = this.props.params.itemId;
-    // Api call to get items.
-    this.props.fetchItem(id);
+    const { itemId } = this.props.params;
+    this.props.fetchItem(itemId);
     this.props.getCategories();
     this.props.getSubCategories();
     this.props.getMerchants();
@@ -109,6 +85,9 @@ export class EditItem extends React.Component {
     }
     if (nextProps.itemData.tags !== this.state.tags) {
       this.setState({ tags: nextProps.itemData.tags });
+    }
+    if (nextProps.itemData.isShipped !== this.state.isShipped) {
+      this.setState({ isShipped: nextProps.itemData.isShipped });
     }
   }
 
@@ -154,7 +133,7 @@ export class EditItem extends React.Component {
    * Update date.
   */
   handleDate = (e, expire) =>
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       expire,
       disabled: false
     }));
@@ -205,8 +184,6 @@ export class EditItem extends React.Component {
     const errorObject = {};
     const errorName = `${e.target.id}Error`;
     const errorValue = "";
-    // Create a current error object.
-    // Reset clear from the current field.
     errorObject[errorName] = errorValue;
     this.setState(errorObject);
 
@@ -232,9 +209,6 @@ export class EditItem extends React.Component {
    * Merge several state object and save to the db.
   */
   handleSubmit = () => {
-    // if (validator.isEmpty(this.state.subCategory)) {
-    //   this.setState({ subCategoryError: "Sub-category is required!" });
-    // }
     if (validator.isEmpty(this.state.category)) {
       this.setState({ categoryError: "Category is required!" });
     }
@@ -263,96 +237,43 @@ export class EditItem extends React.Component {
         { public_id: this.state.public_id },
         { tags: [...this.state.tags] }
       );
-      console.log({data})
       // Item id.
-      const itemId = this.props.params.itemId;
+      const { itemId } = this.props.params;
       // Create.
       this.props.updateItem(data, itemId);
     }
   };
 
-  displayCategories = categories => {
-    const categoryArray = [];
-    if (categories !== undefined && categories.length > 0) {
-      categories.map(category =>
-        categoryArray.push(
-          <MenuItem
-            value={category.id}
-            key={category.id}
-            primaryText={category.name}
-          />
-        )
-      );
-    } else {
-      categoryArray.push(
-        <MenuItem
-          value={"59087201dc2e353c2d440030"}
-          key={"categoryid"}
-          primaryText={"No categories found. please add them."}
-        />
-      );
-    }
-    return categoryArray;
-  };
+  displayCategories = categories => 
+    categories.map(category => 
+      <MenuItem
+        key={category.id}
+        value={category.id}
+        checked={categories && categories.indexOf(category.id) > -1}
+        primaryText={category.name}
+      />
+    );
 
-  displaySubCategories = subcategories => subcategories.map((subcategory) => (
-    <MenuItem
-      key={subcategory.id}
-      insetChildren={true}
-      checked={subcategories && subcategories.indexOf(subcategory.id) > -1}
-      value={subcategory.id}
-      primaryText={subcategory.title}
-    />
-  ))
+  displaySubCategories = subcategories =>
+    subcategories.map(subcategory =>
+      <MenuItem
+        key={subcategory.id}
+        insetChildren={true}
+        checked={subcategories && subcategories.indexOf(subcategory.id) > -1}
+        value={subcategory.id}
+        primaryText={subcategory.title}
+      />
+    );
 
-  // displaySubCategories = subcategories => {
-  //   const subCategoryArray = [];
-  //   if (subcategories !== undefined && subcategories.length > 0) {
-  //     subcategories.map(subcategory =>
-  //       subCategoryArray.push(
-  //         <MenuItem
-  //           insetChildren={true}
-  //           value={subcategory.id}
-  //           key={subcategory.id}
-  //           primaryText={subcategory.title}
-  //         />
-  //       )
-  //     );
-  //   } else {
-  //     subCategoryArray.push(
-  //       <MenuItem
-  //         value={"59087201dc2e353c2d440030"}
-  //         key={"subcategorid"}
-  //         primaryText={"No sub-categories found. please add them."}
-  //       />
-  //     );
-  //   }
-  //   return subCategoryArray;
-  // };
-
-  displayMerchants = merchants => {
-    const merchantArray = [];
-    if (merchants !== undefined && merchants.length > 0) {
-      merchants.map(merchant =>
-        merchantArray.push(
-          <MenuItem
-            value={merchant.id}
-            key={merchant.id}
-            primaryText={merchant.title}
-          />
-        )
-      );
-    } else {
-      merchantArray.push(
-        <MenuItem
-          value={"59087201dc2e353c2d440030"}
-          key={"merchantid"}
-          primaryText={"No merchants found. please add them."}
-        />
-      );
-    }
-    return merchantArray;
-  };
+  displayMerchants = merchants => 
+    merchants.map(merchant => 
+      <MenuItem
+        key={merchant.id}
+        value={merchant.id}
+        checked={merchants && merchants.indexOf(merchant.id) > -1}
+        primaryText={merchant.title}
+      />
+    );
 
   render() {
     const {
@@ -393,6 +314,7 @@ export class EditItem extends React.Component {
           <Col xs={12} md={10} mdPush={1}>
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
+                header="Edit an Item or a Coupon"
                 onDropChange={this.handleUpload}
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
@@ -426,7 +348,6 @@ export class EditItem extends React.Component {
                 merchantArray={merchantArray}
                 errors={errors}
                 message={message}
-                header="Edit an Item or a Coupon"
                 image={image}
                 isFeatured={isFeatured}
                 isCoupon={isCoupon}
@@ -479,3 +400,29 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditItem);
+
+// Styles
+
+const hintStyle = {
+  fonstSize: 10,
+  marginTop: 0
+};
+
+const style = {
+  paper: {
+    padding: 30,
+    marginTop: 30
+  }
+};
+
+const themesColor = [
+  "#9BF0E9",
+  "#ff8400",
+  "#C3D6E4",
+  "#9f0",
+  "#185f9d",
+  "#bf46ba",
+  "#62bcff",
+  "#e87448",
+  "#fbaca8"
+];

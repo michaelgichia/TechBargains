@@ -15,29 +15,6 @@ import Col from "react-bootstrap/lib/Col";
 // Actions
 import { postDeal } from "./actions";
 
-const hintStyle = {
-  marginTop: 0
-};
-
-const style = {
-  paper: {
-    padding: 30,
-    marginTop: 30
-  }
-};
-
-const themesColor = [
-  "#9BF0E9",
-  "#ff8400",
-  "#C3D6E4",
-  "#9f0",
-  "#185f9d",
-  "#bf46ba",
-  "#62bcff",
-  "#e87448",
-  "#fbaca8"
-];
-
 export class AddDeal extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -57,7 +34,7 @@ export class AddDeal extends React.Component {
     isCoupon: false,
     merchant: "",
     category: "",
-    subCategory: "",
+    subCategory: [],
     expire: {},
     errors: [],
     features: "",
@@ -201,9 +178,9 @@ export class AddDeal extends React.Component {
     if (validator.isEmpty(this.state.category)) {
       this.setState({ categoryError: "Category is required!" });
     }
-    if (validator.isEmpty(this.state.subCategory)) {
-      this.setState({ subCategoryError: "Sub-category is required!" });
-    }
+    // if (validator.isEmpty(this.state.subCategory)) {
+    //   this.setState({ subCategoryError: "Sub-category is required!" });
+    // }
     if (validator.isEmpty(this.state.merchant)) {
       this.setState({ merchantError: "Store is required!" });
     } else {
@@ -235,77 +212,36 @@ export class AddDeal extends React.Component {
     }
   };
 
-  displayCategories = categories => {
-    const categoryArray = [];
-    if (categories !== undefined && categories.length > 0) {
-      categories.map(category =>
-        categoryArray.push(
-          <MenuItem
-            value={category.id}
-            key={category.id}
-            primaryText={category.name}
-          />
-        )
-      );
-    } else {
-      categoryArray.push(
-        <MenuItem
-          value={"59087201dc2e353c2d440030"}
-          key={"categoryid"}
-          primaryText={"No categories found. please add them."}
-        />
-      );
-    }
-    return categoryArray;
-  };
+  displayCategories = categories => 
+    categories.map(category => 
+      <MenuItem
+        key={category.id}
+        value={category.id}
+        checked={categories && categories.indexOf(category.id) > -1}
+        primaryText={category.name}
+      />
+    );
 
-  displaySubCategories = subcategories => {
-    const subCategoryArray = [];
-    if (subcategories !== undefined && subcategories.length > 0) {
-      subcategories.map(subcategory =>
-        subCategoryArray.push(
-          <MenuItem
-            value={subcategory.id}
-            key={subcategory.id}
-            primaryText={subcategory.title}
-          />
-        )
-      );
-    } else {
-      subCategoryArray.push(
-        <MenuItem
-          value={"59087201dc2e353c2d440030"}
-          key={"subcategorid"}
-          primaryText={"No sub-categories found. please add them."}
-        />
-      );
-    }
-    return subCategoryArray;
-  };
+  displaySubCategories = subcategories =>
+    subcategories.map(subcategory =>
+      <MenuItem
+        key={subcategory.id}
+        insetChildren={true}
+        checked={subcategories && subcategories.indexOf(subcategory.id) > -1}
+        value={subcategory.id}
+        primaryText={subcategory.title}
+      />
+    );
 
-  displayMerchants = merchants => {
-    const merchantArray = [];
-    if (merchants !== undefined && merchants.length > 0) {
-      merchants.map(merchant =>
-        merchantArray.push(
-          <MenuItem
-            value={merchant.id}
-            key={merchant.id}
-            primaryText={merchant.title}
-          />
-        )
-      );
-    } else {
-      merchantArray.push(
-        <MenuItem
-          value={"59087201dc2e353c2d440030"}
-          key={"merchantid"}
-          primaryText={"No merchants found. please add them."}
-        />
-      );
-    }
-    return merchantArray;
-  };
+  displayMerchants = merchants => 
+    merchants.map(merchant => 
+      <MenuItem
+        key={merchant.id}
+        value={merchant.id}
+        checked={merchants && merchants.indexOf(merchant.id) > -1}
+        primaryText={merchant.title}
+      />
+    );
 
   render() {
     const {
@@ -348,7 +284,6 @@ export class AddDeal extends React.Component {
                 onSubCategoryChange={this.handleSubcategory}
                 onDateChange={this.handleDate}
                 onMerchantChange={this.handleMerchantChange}
-                onNameChange={this.onNameChange}
                 onFeaturesChange={this.onFeaturesChange}
                 onCouponChange={this.handleIsCoupon}
                 onFeaturedChange={this.handleIsFeatured}
@@ -409,3 +344,27 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddDeal);
+
+// Styles
+const hintStyle = {
+  marginTop: 0
+};
+
+const style = {
+  paper: {
+    padding: 30,
+    marginTop: 30
+  }
+};
+
+const themesColor = [
+  "#9BF0E9",
+  "#ff8400",
+  "#C3D6E4",
+  "#9f0",
+  "#185f9d",
+  "#bf46ba",
+  "#62bcff",
+  "#e87448",
+  "#fbaca8"
+];
