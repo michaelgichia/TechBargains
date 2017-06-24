@@ -27,12 +27,11 @@ const ItemSchema = new Schema({
     max: 10,
     default: ""
   },
-  subCategory: {
+  subCategory: [{
     type: Schema.Types.ObjectId,
     ref: "SubCategory",
     autopopulate: true,
-    required: true
-  },
+  }],
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",

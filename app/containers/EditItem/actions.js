@@ -32,6 +32,7 @@ export const fetchItem = itemId => dispatch => {
 
 export const updateItem = (item, itemId) => dispatch => {
   axios.put(`/api/item/update/${itemId}`, item).then(response => {
+    console.log({response: response.data})
     if (response.data.confirmation === "success") {
       const itemid = response.data.result.id;
       dispatch({

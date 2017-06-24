@@ -20,7 +20,6 @@ import {
   CardTitle,
   CardText
 } from "material-ui/Card";
-import Chip from "material-ui/Chip";
 // Actions
 import { deleteItem } from "./actions";
 
@@ -43,7 +42,7 @@ export class ItemDetail extends React.Component {
       percentage: {},
       merchant: {},
       category: {},
-      subCategory: "",
+      subCategory: [],
       expire: 0,
       isShipped: "",
       created: 0,
@@ -121,8 +120,8 @@ export class ItemDetail extends React.Component {
                 mediaStyle={{ maxHeight: 300, height: 300 }}
                 overlay={
                   <CardTitle
-                    title={<div dangerouslySetInnerHTML={{ __html: name }} />}
-                    subtitle={`Merchant: ${merchant ? merchant.title : "none"}`}
+                    title={name}
+                    subtitle={`Store: ${merchant ? merchant.title : "none"}`}
                   />
                 }
                 style={{ marginTop: 10 }}
@@ -144,11 +143,14 @@ export class ItemDetail extends React.Component {
                     : "Not defined"}`}
                 />
                 <Divider />
-                <CardTitle
-                  subtitle={`Subcategory: ${subCategory
-                    ? subCategory.title
-                    : "Not defined"}`}
-                />
+                <CardText>
+                  <CardTitle subtitle="Subcategory" />
+                  {subCategory.map(sub =>
+                    <div style={{ paddingLeft: 16 }} key={shortid.generate()}>
+                      {sub.title}
+                    </div>
+                  )}
+                </CardText>
                 <Divider />
                 <CardTitle
                   subtitle={`Featured: ${isFeatured ? "Yes" : "No"}`}
@@ -179,10 +181,9 @@ export class ItemDetail extends React.Component {
                 <CardText>
                   <CardTitle subtitle="Tags" />
                   {tags.map(tag =>
-                    <div
-                      key={shortid.generate()}
-                      dangerouslySetInnerHTML={{ __html: tag }}
-                    />
+                    <div key={shortid.generate()}>
+                      {tag}
+                    </div>
                   )}
                 </CardText>
                 <Divider />

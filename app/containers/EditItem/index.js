@@ -59,7 +59,7 @@ export class EditItem extends React.Component {
     image: "Click or Drop files to upload",
     merchant: "",
     category: "",
-    subCategory: "",
+    subCategory: [],
     expire: {},
     isFeatured: true,
     isCoupon: false,
@@ -232,9 +232,9 @@ export class EditItem extends React.Component {
    * Merge several state object and save to the db.
   */
   handleSubmit = () => {
-    if (validator.isEmpty(this.state.subCategory)) {
-      this.setState({ subCategoryError: "Sub-category is required!" });
-    }
+    // if (validator.isEmpty(this.state.subCategory)) {
+    //   this.setState({ subCategoryError: "Sub-category is required!" });
+    // }
     if (validator.isEmpty(this.state.category)) {
       this.setState({ categoryError: "Category is required!" });
     }
@@ -263,6 +263,7 @@ export class EditItem extends React.Component {
         { public_id: this.state.public_id },
         { tags: [...this.state.tags] }
       );
+      console.log({data})
       // Item id.
       const itemId = this.props.params.itemId;
       // Create.
@@ -294,29 +295,40 @@ export class EditItem extends React.Component {
     return categoryArray;
   };
 
-  displaySubCategories = subcategories => {
-    const subCategoryArray = [];
-    if (subcategories !== undefined && subcategories.length > 0) {
-      subcategories.map(subcategory =>
-        subCategoryArray.push(
-          <MenuItem
-            value={subcategory.id}
-            key={subcategory.id}
-            primaryText={subcategory.title}
-          />
-        )
-      );
-    } else {
-      subCategoryArray.push(
-        <MenuItem
-          value={"59087201dc2e353c2d440030"}
-          key={"subcategorid"}
-          primaryText={"No sub-categories found. please add them."}
-        />
-      );
-    }
-    return subCategoryArray;
-  };
+  displaySubCategories = subcategories => subcategories.map((subcategory) => (
+    <MenuItem
+      key={subcategory.id}
+      insetChildren={true}
+      checked={subcategories && subcategories.indexOf(subcategory.id) > -1}
+      value={subcategory.id}
+      primaryText={subcategory.title}
+    />
+  ))
+
+  // displaySubCategories = subcategories => {
+  //   const subCategoryArray = [];
+  //   if (subcategories !== undefined && subcategories.length > 0) {
+  //     subcategories.map(subcategory =>
+  //       subCategoryArray.push(
+  //         <MenuItem
+  //           insetChildren={true}
+  //           value={subcategory.id}
+  //           key={subcategory.id}
+  //           primaryText={subcategory.title}
+  //         />
+  //       )
+  //     );
+  //   } else {
+  //     subCategoryArray.push(
+  //       <MenuItem
+  //         value={"59087201dc2e353c2d440030"}
+  //         key={"subcategorid"}
+  //         primaryText={"No sub-categories found. please add them."}
+  //       />
+  //     );
+  //   }
+  //   return subCategoryArray;
+  // };
 
   displayMerchants = merchants => {
     const merchantArray = [];
@@ -384,14 +396,20 @@ export class EditItem extends React.Component {
                 onDropChange={this.handleUpload}
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
+                onCategoryChange={this.handleCategory}
+                onSubCategoryChange={this.handleSubcategory}
+                onDateChange={this.handleDate}
+                onMerchantChange={this.handleMerchantChange}
+                onFeaturesChange={this.onFeaturesChange}
+                onCouponChange={this.handleIsCoupon}
+                onFeaturedChange={this.handleIsFeatured}
+                onRequestAdd={tagsArray => this.handleRequestAdd(tagsArray)}
+                onRequestDelete={this.handleRequestDelete}
                 hintStyle={hintStyle}
                 subCategoryArray={subCategoryArray}
                 categoryArray={categoryArray}
                 category={category}
                 subCategory={subCategory}
-                onCategoryChange={this.handleCategory}
-                onSubCategoryChange={this.handleSubcategory}
-                onDateChange={this.handleDate}
                 categoryError={categoryError}
                 subCategoryError={subCategoryError}
                 nameError={nameError}
@@ -405,23 +423,17 @@ export class EditItem extends React.Component {
                 merchant={merchant}
                 coupon={coupon}
                 features={features}
-                onMerchantChange={this.handleMerchantChange}
                 merchantArray={merchantArray}
                 errors={errors}
                 message={message}
                 header="Edit an Item or a Coupon"
                 image={image}
-                onFeaturesChange={this.onFeaturesChange}
                 isFeatured={isFeatured}
                 isCoupon={isCoupon}
-                onCouponChange={this.handleIsCoupon}
-                onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
                 name={name}
                 disabled={disabled}
                 tags={tags}
-                onRequestAdd={tagsArray => this.handleRequestAdd(tagsArray)}
-                onRequestDelete={this.handleRequestDelete}
               />
             </Paper>
           </Col>

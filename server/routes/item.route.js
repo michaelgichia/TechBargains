@@ -9,7 +9,7 @@ router.post("/create", (req, res, next) => {
   // Check other data
   req.assert("name", "Name cannot not be empty.").notEmpty();
   req.assert("backlink", "Back-link cannot not be empty").notEmpty();
-  req.assert("subCategory", "Sub-Category cannot not be empty").notEmpty();
+  req.assert("subCategory", "Sub-Category cannot not be empty").isArray();
   req.assert("category", "Category cannot not be empty").notEmpty();
   req.assert("merchant", "Merchant cannot not be empty").notEmpty();
   req
@@ -70,7 +70,7 @@ router.put("/update/:itemId", (req, res, next) => {
   // Check other data
   req.assert("name", "Name cannot not be empty.").notEmpty();
   req.assert("backlink", "Back-link cannot not be empty").notEmpty();
-  req.assert("subCategory", "Sub-Category cannot not be empty").notEmpty();
+  req.assert("subCategory", "Sub-Category cannot not be empty").isArray();
   req.assert("category", "Category cannot not be empty").notEmpty();
   req.assert("merchant", "Merchant cannot not be empty").notEmpty();
   req
@@ -82,7 +82,6 @@ router.put("/update/:itemId", (req, res, next) => {
   req.sanitize("features").trim();
   req.sanitize("backlink").trim();
   req.sanitize("percentage").trim();
-  req.sanitize("subCategory").trim();
   req.sanitize("category").trim();
   req.sanitize("merchant").trim();
   req.sanitize("coupon").trim();
@@ -93,6 +92,9 @@ router.put("/update/:itemId", (req, res, next) => {
   req.sanitize("isCoupon").trim();
   req.sanitize("isShipped").trim();
   req.sanitize("public_id").trim();
+  for (const i in req.body.subCategory) {
+    req.sanitize(i).trim();
+  }
   for (const i in req.body.tags) {
     req.sanitize(i).trim();
   }
@@ -108,6 +110,7 @@ router.put("/update/:itemId", (req, res, next) => {
       })
       .end();
   }
+  console.log({req: req.body})
   const id = req.params.itemId;
   controllers
     .update(id, req.body)
