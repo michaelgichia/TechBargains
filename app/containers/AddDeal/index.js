@@ -45,7 +45,8 @@ export class AddDeal extends React.Component {
       coupon: "",
       backlink: "",
       percentage: "",
-      isShipped: ""
+      isShipped: "",
+      name: ""
     },
     image: "Click or Drop files to upload",
     categoryError: "",
@@ -59,7 +60,6 @@ export class AddDeal extends React.Component {
     subCategory: "",
     expire: {},
     errors: [],
-    name: "",
     features: "",
     public_id: "",
     disabled: true,
@@ -77,23 +77,18 @@ export class AddDeal extends React.Component {
     const cloudName = "dw3arrxnf";
     const timestamp = Date.now() / 1000;
     const uploadPreset = "d9s7ezzn";
-    const paramsStr =
-      "timestamp=" +
-      timestamp +
-      "&upload_preset=" +
-      uploadPreset +
-      "wEvwDjpdDR5I_mMSdD55EaLNXOI";
+    const paramsStr = `timestamp=${timestamp}&upload_preset=${uploadPreset}wEvwDjpdDR5I_mMSdD55EaLNXOI`;
     const signature = sha1(paramsStr);
-    const url =
-      "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
     const params = {
       api_key: "217319541859423",
       timestamp: timestamp,
       upload_preset: uploadPreset,
       signature: signature
     };
-    this.setState((prevState, props) => ({ image: "uploading image..." }));
-    let uploadRequest = superagent.post(url);
+
+    this.setState(() => ({ image: "uploading image..." }));
+    const uploadRequest = superagent.post(url);
     uploadRequest.attach("file", image);
     Object.keys(params).forEach(key => {
       uploadRequest.field(key, params[key]);
@@ -105,6 +100,7 @@ export class AddDeal extends React.Component {
         alert(err, null);
         return;
       }
+
       console.info("uploading completed...");
       this.setState((prevState, props) => ({
         image: resp.body.secure_url,
@@ -188,8 +184,6 @@ export class AddDeal extends React.Component {
   generateThemeColors = colors =>
     colors[Math.floor(Math.random() * colors.length)];
 
-  onNameChange = name => this.setState({ name });
-
   onFeaturesChange = features => this.setState({ features });
 
   handleRequestAdd = (...tags) =>
@@ -223,7 +217,6 @@ export class AddDeal extends React.Component {
 
       const item = Object.assign(
         updatedState,
-        { name: this.state.name },
         { image: this.state.image },
         { features: this.state.features },
         { ...this.state.item },
@@ -331,11 +324,10 @@ export class AddDeal extends React.Component {
       isCoupon,
       features,
       image,
-      name,
       disabled,
       tags
     } = this.state;
-    const { percentage, backlink, coupon, isShipped } = this.state.item;
+    const { percentage, backlink, coupon, isShipped, name } = this.state.item;
 
     const { categories, subcategories, merchants } = this.props;
     const categoryArray = this.displayCategories(categories);
@@ -348,17 +340,25 @@ export class AddDeal extends React.Component {
           <Col xs={12} md={10} mdPush={1}>
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
+                header="Create an Item or a Coupon"
                 onDropChange={this.handleUpload}
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
+                onCategoryChange={this.handleCategory}
+                onSubCategoryChange={this.handleSubcategory}
+                onDateChange={this.handleDate}
+                onMerchantChange={this.handleMerchantChange}
+                onNameChange={this.onNameChange}
+                onFeaturesChange={this.onFeaturesChange}
+                onCouponChange={this.handleIsCoupon}
+                onFeaturedChange={this.handleIsFeatured}
+                onRequestAdd={tagsArray => this.handleRequestAdd(tagsArray)}
+                onRequestDelete={this.handleRequestDelete}
                 hintStyle={hintStyle}
                 subCategoryArray={subCategoryArray}
                 categoryArray={categoryArray}
                 category={category}
                 subCategory={subCategory}
-                onCategoryChange={this.handleCategory}
-                onSubCategoryChange={this.handleSubcategory}
-                onDateChange={this.handleDate}
                 categoryError={categoryError}
                 subCategoryError={subCategoryError}
                 percentageError={percentageError}
@@ -371,25 +371,15 @@ export class AddDeal extends React.Component {
                 merchant={merchant}
                 coupon={coupon}
                 features={features}
-                onMerchantChange={this.handleMerchantChange}
                 merchantArray={merchantArray}
                 errors={errors}
-                header="Add a Deal or Coupon"
                 image={image}
-                onNameChange={this.onNameChange}
-                onFeaturesChange={this.onFeaturesChange}
-                name="Name"
                 isFeatured={isFeatured}
                 isCoupon={isCoupon}
-                onCouponChange={this.handleIsCoupon}
-                onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
                 name={name}
-                features={features}
                 disabled={disabled}
                 tags={tags}
-                onRequestAdd={tags => this.handleRequestAdd(tags)}
-                onRequestDelete={this.handleRequestDelete}
               />
             </Paper>
           </Col>

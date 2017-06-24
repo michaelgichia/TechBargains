@@ -50,13 +50,13 @@ export class EditItem extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
 
   state = {
-    name: "Click or Drop files to upload",
+    name: "",
     public_id: "",
     features: "",
     coupon: "",
     backlink: "",
     percentage: "",
-    image: "",
+    image: "Click or Drop files to upload",
     merchant: "",
     category: "",
     subCategory: "",
@@ -70,7 +70,7 @@ export class EditItem extends React.Component {
     percentageError: "",
     merchantError: "",
     errors: [],
-    disabled: true,
+    disabled: true
   };
 
   componentDidMount() {
@@ -118,22 +118,17 @@ export class EditItem extends React.Component {
     const cloudName = "dw3arrxnf";
     const timestamp = Date.now() / 1000;
     const uploadPreset = "d9s7ezzn";
-    const paramsStr =
-      "timestamp=" +
-      timestamp +
-      "&upload_preset=" +
-      uploadPreset +
-      "wEvwDjpdDR5I_mMSdD55EaLNXOI";
+    const paramsStr = `timestamp=${timestamp}&upload_preset=${uploadPreset}wEvwDjpdDR5I_mMSdD55EaLNXOI`;
     const signature = sha1(paramsStr);
-    const url =
-      "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
     const params = {
       api_key: "217319541859423",
       timestamp: timestamp,
       upload_preset: uploadPreset,
       signature: signature
     };
-    this.setState((prevState, props) => ({ image: "uploading image..." }));
+
+    this.setState(() => ({ image: "Uploading image......" }));
     let uploadRequest = superagent.post(url);
     uploadRequest.attach("file", image);
     Object.keys(params).forEach(key => {
@@ -146,8 +141,9 @@ export class EditItem extends React.Component {
         alert(err, null);
         return;
       }
+
       console.info("uploading completed...");
-      this.setState((prevState, props) => ({
+      this.setState(() => ({
         image: resp.body.secure_url,
         public_id: resp.body.public_id
       }));
@@ -158,8 +154,8 @@ export class EditItem extends React.Component {
    * Update date.
   */
   handleDate = (e, expire) =>
-    this.setState((prevState, props) => ({
-      expire: expire,
+    this.setState(prevState => ({
+      expire,
       disabled: false
     }));
 
@@ -223,8 +219,6 @@ export class EditItem extends React.Component {
   generateThemeColors = colors =>
     colors[Math.floor(Math.random() * colors.length)];
 
-  onNameChange = name => this.setState({ name });
-
   onFeaturesChange = features => this.setState({ features });
 
   handleRequestAdd = (...tags) =>
@@ -248,7 +242,7 @@ export class EditItem extends React.Component {
       this.setState({ merchantError: "Store is required!" });
     } else {
       // Merge.
-      this.setState((prevState, props) => ({ disabled: false }));
+      this.setState(prevState => ({ disabled: false }));
       const selectedColor = this.generateThemeColors(themesColor);
 
       const data = Object.assign(
@@ -388,7 +382,6 @@ export class EditItem extends React.Component {
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
                 onDropChange={this.handleUpload}
-                onNameChange={this.onNameChange}
                 onClick={this.handleSubmit}
                 onChange={this.handleChange}
                 hintStyle={hintStyle}
@@ -406,7 +399,6 @@ export class EditItem extends React.Component {
                 merchantError={merchantError}
                 couponError={couponError}
                 featuresError={featuresError}
-                name={name}
                 backlink={backlink}
                 percentage={percentage}
                 expire={expire}
@@ -426,10 +418,9 @@ export class EditItem extends React.Component {
                 onFeaturedChange={this.handleIsFeatured}
                 isShipped={isShipped}
                 name={name}
-                features={features}
                 disabled={disabled}
                 tags={tags}
-                onRequestAdd={tags => this.handleRequestAdd(tags)}
+                onRequestAdd={tagsArray => this.handleRequestAdd(tagsArray)}
                 onRequestDelete={this.handleRequestDelete}
               />
             </Paper>

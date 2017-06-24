@@ -27,11 +27,15 @@ class AddDealForm extends React.Component {
               <li key={shortid.generate()}> <p>{error}</p> </li>
             )}
         </ul>
-        <ReactEditor
+        <TextField
+          hintText="Name or Title"
+          floatingLabelText="Name or Title"
           id="name"
-          placeholder="Name or Title"
-          onChange={this.props.onNameChange}
+          onChange={this.props.onChange}
+          hintStyle={this.props.hintStyle}
           value={this.props.name}
+          fullWidth
+          errorText={this.props.nameError}
         />
         <ReactEditor
           id="features"
@@ -201,7 +205,6 @@ AddDealForm.propTypes = {
   merchantArray: PropTypes.array.isRequired,
   errors: PropTypes.array.isRequired,
   header: PropTypes.string.isRequired,
-  onNameChange: PropTypes.func.isRequired,
   onFeaturesChange: PropTypes.func.isRequired,
   isFeatured: PropTypes.bool.isRequired,
   isCoupon: PropTypes.bool.isRequired,
