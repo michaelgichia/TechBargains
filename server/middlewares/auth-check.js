@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     const errors = { message: "You are not logged in!" };
     return res.json({
       confirmation: "fail",
-      errros: errors
+      errors: errors
     });
   }
 

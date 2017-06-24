@@ -418,6 +418,24 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/product/:productId',
+      name: 'singleProduct',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SingleProduct/reducer'),
+          import('containers/SingleProduct'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('singleProduct', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

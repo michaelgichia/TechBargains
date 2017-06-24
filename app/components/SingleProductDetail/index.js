@@ -9,7 +9,7 @@ import { Image, Transformation } from "cloudinary-react";
 import Panel from "react-bootstrap/lib/Panel";
 import "!!style-loader!css-loader!./style.css";
 
-class ProductDetail extends React.Component {
+class SingleProductDetail extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
 
   timeConversion = expire => {
@@ -41,9 +41,6 @@ class ProductDetail extends React.Component {
         }
       >
         <div>
-          <Link to={`/product/${this.props.product.id}`}>
-            <span className="store-link" />
-          </Link>
           <div
             className="merchant-panel-header"
             dangerouslySetInnerHTML={{ __html: this.props.product.name }}
@@ -74,24 +71,13 @@ class ProductDetail extends React.Component {
               md={8}
               lg={8}
             >
-              <div>
-                <div className="line-clamp-wrapper">
-                  <div
-                    className="line-clamp"
-                    dangerouslySetInnerHTML={{
-                      __html: this.props.product.features
-                    }}
-                  />
-                </div>
+              <div className="price-body">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: this.props.product.features
+                  }}
+                />
                 <div className="price">
-                  <div className="more-details-wrapper">
-                    <Link
-                      to={`/product/${this.props.product.id}`}
-                      className="more-details"
-                    >
-                      More Details
-                    </Link>
-                  </div>
                   <div className="price-wrapper">
                     <p>
                       <span className="price-first-span">
@@ -143,11 +129,11 @@ class ProductDetail extends React.Component {
   }
 }
 
-ProductDetail.propTypes = {
+SingleProductDetail.propTypes = {
   product: PropTypes.object.isRequired,
   onTouchTap: PropTypes.func.isRequired
 };
 
-ProductDetail.defaultProps = {};
+SingleProductDetail.defaultProps = {};
 
-export default ProductDetail;
+export default SingleProductDetail;

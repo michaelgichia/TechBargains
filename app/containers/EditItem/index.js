@@ -61,16 +61,16 @@ export class EditItem extends React.Component {
     category: "",
     subCategory: "",
     expire: {},
+    isFeatured: true,
+    isCoupon: false,
+    isShipped: "",
+    tags: [],
     categoryError: "",
     subCategoryError: "",
     percentageError: "",
     merchantError: "",
-    isFeatured: true,
-    isCoupon: false,
-    isShipped: "",
     errors: [],
     disabled: true,
-    tags: []
   };
 
   componentDidMount() {

@@ -31,6 +31,7 @@ import subCategoryBackendEditReducer from "containers/SubCategoryBackendEdit/red
 import flashMessageReducer from "containers/FlashMessage/reducer";
 import merchantEditReducer from "containers/MerchantEdit/reducer";
 import bannerDetailReducer from "containers/BannerDetail/reducer";
+import singleProductReducer from "containers/SingleProduct/reducer";
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -63,6 +64,7 @@ export default function createReducer(asyncReducers) {
     subcategoryEdit: subCategoryBackendEditReducer,
     merchantEdit: merchantEditReducer,
     bannerDetail: bannerDetailReducer,
+    singleProduct: singleProductReducer,
     ...asyncReducers
   });
 }
