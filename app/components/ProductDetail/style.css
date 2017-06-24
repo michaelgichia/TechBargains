@@ -22,6 +22,9 @@
   }
 }
 
+/*.price-body {
+  color: #4d555b;
+}*/
 .price-wrapper {
   width: 60%;
   float: left;
@@ -78,7 +81,6 @@
 
 @media (min-width: 768px) {
   .more-details-wrapper {
-    border-top: 1px solid #e0e0e0;
     padding-top: 5px;
     min-width: 100%;
     margin: 5px 0px 15px 0px;
@@ -91,11 +93,11 @@
 
 .more-details:hover,
 .more-details:focus {
-  opacity: .7;
+  opacity: .9;
 }
 
 .more-details {
-  color: #444 !important;
+  color: rgb(82, 92, 101) !important;
   text-decoration: underline;
   margin: 5px 0;
 }

@@ -33,17 +33,15 @@ class SingleProductDetail extends React.Component {
   render() {
     return (
       <Panel
+        style={{marginTop: 20}}
         header={
           <div className="topper">
             {`EXPIRE: ${this.timeConversion(this.props.product.expire)}`}
           </div>
         }
       >
-        <div>
-          <div
-            className="merchants-panel-header"
-            dangerouslySetInnerHTML={{ __html: this.props.product.name }}
-          />
+        <div className="merchants-panel-header">
+          { this.props.product.name }
         </div>
         <Grid fluid>
 

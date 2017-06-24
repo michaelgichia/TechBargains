@@ -4,7 +4,7 @@
  *
  */
 
-import React, { PropTypes } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 import Grid from "react-bootstrap/lib/Grid";
@@ -45,9 +45,26 @@ export class SingleProduct extends React.Component {
     return (
       <div>
         <Helmet
-          title="MacBook"
+          title={this.props.product.name}
           meta={[
-            { name: "description", content: "Description of SingleProduct" }
+            {
+              name: "og:url",
+              content: `https://deals-expert.com/product/${this.props.product
+                .id}`
+            },
+            { name: "og:type", content: "product.item" },
+            { name: "og:title", content: this.props.product.name },
+            {
+              name: "og:description",
+              content: `${(
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: this.props.product.features
+                  }}
+                />
+              )}`
+            },
+            { name: "og:image", content: this.props.product.image }
           ]}
         />
         <Grid fluid className="show-grid">

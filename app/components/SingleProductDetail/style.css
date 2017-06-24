@@ -6,7 +6,7 @@
 
 .bottom-wrapper {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   color: #b0b0b0;
   font-family: Helvetica, Arial, Roboto, serif;
 }
@@ -268,31 +268,18 @@ p {
   padding: 7px 20px 10px 20px;
 }
 
-.merchants-panel-header > p:hover {
-  text-decoration: underline;
-}
-
-.merchants-panel-header > p strong {
-  font-weight: 500 !important;
-}
-
 .merchants-panel-header {
-  margin: 15px 0px;
-  padding: 15px 15px;
-}
-
-.merchants-panel-header > p {
+  font-weight: 500 !important;
+  padding: 15px;
   min-height: 1px;
   min-width: 100%;
   border-radius: 0px;
   text-align: left;
-  font-weight: 500;
   font-family: Helvetica, Arial, Roboto, serif;
   background: transparent;
   color: #1f7dd4 !important;
   text-decoration: none;
   margin-bottom: 0px !important;
-  word-spacing: 0.5px;
   line-height: 97%;
 }
 
