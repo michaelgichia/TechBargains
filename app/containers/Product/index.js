@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from "react";
+import Dropdown from 'components/Dropdown';
 import { InstantSearch, Hits, SortBy } from "react-instantsearch/dom";
 import "react-instantsearch-theme-algolia/style.css";
 import shortid from 'shortid';
@@ -37,9 +38,15 @@ export class Product extends React.Component {
     }
   }
 
+  handleDropdown = (e) => this.setState({ dropdownValue: e.target.id });
+
   render() {
     return (
       <div>
+        <Dropdown
+          handleDropdown={this.handleDropdown}
+          dropdownValue={this.state.dropdownValue}
+        />
         <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
           <CloudinaryContext cloudName="dw3arrxnf">
             {
