@@ -33,7 +33,6 @@ class SingleProductDetail extends React.Component {
   render() {
     return (
       <Panel
-        className="merchant-panel"
         header={
           <div className="topper">
             {`EXPIRE: ${this.timeConversion(this.props.product.expire)}`}
@@ -42,7 +41,7 @@ class SingleProductDetail extends React.Component {
       >
         <div>
           <div
-            className="merchant-panel-header"
+            className="merchants-panel-header"
             dangerouslySetInnerHTML={{ __html: this.props.product.name }}
           />
         </div>

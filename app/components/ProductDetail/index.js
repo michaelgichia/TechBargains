@@ -40,14 +40,10 @@ class ProductDetail extends React.Component {
           </div>
         }
       >
-        <div>
+        <div className="merchant-panel-header">
           <Link to={`/product/${this.props.product.id}`}>
-            <span className="store-link" />
+            {this.props.product.name}
           </Link>
-          <div
-            className="merchant-panel-header"
-            dangerouslySetInnerHTML={{ __html: this.props.product.name }}
-          />
         </div>
         <Grid fluid>
 

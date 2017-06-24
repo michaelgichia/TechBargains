@@ -262,52 +262,42 @@ p {
   padding: 7px 20px 10px 20px;
 }
 
-.merchant-panel-header > p:hover {
+.merchant-panel-header > a:hover {
   text-decoration: underline;
 }
 
-.merchant-panel-header > p strong {
-  font-weight: 500 !important;
-}
-
 .merchant-panel-header {
-  margin: 15px 0px;
-  padding: 0px 15px;
+  padding: 15px;
 }
 
-.merchant-panel-header > p {
+.merchant-panel-header > a {
+  font-weight: 500 !important;
   min-height: 1px;
   min-width: 100%;
   border-radius: 0px;
   text-align: left;
-  font-weight: 500;
   font-family: Helvetica, Arial, Roboto, serif;
   background: transparent;
   color: #1f7dd4 !important;
   text-decoration: none;
-  margin-bottom: 0px !important;
-  word-spacing: 0.5px;
   line-height: 97%;
 }
 
 @media (max-width: 480px) {
-  .merchant-panel-header {
+  .merchant-panel-header > a {
     font-size: 18px !important;
-    word-spacing: 4px;
   }
 }
 
 @media (min-width: 992px) {
-  .merchant-panel-header {
+  .merchant-panel-header > a {
     font-size: 24px !important;
-    word-spacing: 4px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 992px) {
-  .merchant-panel-header {
+  .merchant-panel-header > a {
     font-size: 20px !important;
-    word-spacing: 3px;
   }
 }
 
