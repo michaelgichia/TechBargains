@@ -33,6 +33,8 @@ import '!file-loader?name=[name].[ext]!./manifest.json';
 // Bootstraps imports
 import '!!style-loader!css-loader!./bootstrap.css';
 import '!!style-loader!css-loader!./bootstrap-theme.css';
+import "!!style-loader!css-loader!slick-carousel/slick/slick.css";
+import "!!style-loader!css-loader!slick-carousel/slick/slick-theme.css";
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './store';

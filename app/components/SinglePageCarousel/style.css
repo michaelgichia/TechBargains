@@ -1,18 +1,53 @@
 .carousel-card {
-  width: 250px;
+  max-width: 200px;
+  margin: 1px;
 }
 
 .carousel-media {
-  width: 250px;
-  max-width: 250px;
-  max-height: 250px;
-  height: 250px;
+  max-width: 180px;
+  max-height: 180px;
 }
 
 .carousel-title {
-  padding: 10px 5px 5px 5px
+  padding: 10px 8px 0px 8px !important;
+  width: 100%;
+  text-transform: lowercase !important;
+  font-weight: 700 !important;
 }
 
 .carousel-body {
-  padding: 5px 5px 5px 5px  
+  padding: 5px 8px !important;
+}
+
+.carousel-single {
+  width: 100%;
+  max-width: 100%;
+  margin: 10px;
+}
+
+.line-clamp-wrapper {
+  height: 40px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.line-clamp {
+  width: 100%;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.carousel-body-price {
+  padding: 2px 16px !important;
+  color: #e6251f !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  min-height: 34px !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #1da1f2;
 }

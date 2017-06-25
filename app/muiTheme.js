@@ -12,4 +12,7 @@ export const muiTheme = getMuiTheme({
     width: '100%',
     backgroundColor: '#fff',
   },
+  raisedButton: {
+    primaryColor: "#1da1f2",
+  },
 });
