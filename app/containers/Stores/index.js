@@ -46,10 +46,15 @@ export class Stores extends React.Component {
 
   render() {
     return (
-      <CloudinaryContext cloudName="dw3arrxnf">
-        <CouponHeader title="Popular Stores" />
-        {this.renderStores(this.state.stores)}
-      </CloudinaryContext>
+      <div>
+        {this.state.stores.length > 0
+          ? <CloudinaryContext cloudName="dw3arrxnf">
+              <CouponHeader title="Popular Stores" />
+              {this.renderStores(this.state.stores)}
+            </CloudinaryContext>
+          : <div />
+        }
+      </div>
     );
   }
 }

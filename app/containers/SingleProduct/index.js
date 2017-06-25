@@ -15,7 +15,6 @@ import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
 import SingleProductDetail from "components/SingleProductDetail";
 import SinglePageCarousel from "components/SinglePageCarousel";
-import CouponHeader from "components/CouponHeader";
 import CategoryInfo from "components/CategoryInfo";
 import ShareButtons from "components/ShareButtons";
 
@@ -65,7 +64,7 @@ export class SingleProduct extends React.Component {
 
           <Row className="show-info-grid">
             <Col xs={12} sm={12} md={8} lg={8}>
-              <Row>
+              <Row className="show-info-wrapper">
                 {Object.keys(this.state.product).length > 0
                   ? <CloudinaryContext cloudName="dw3arrxnf">
                       <SingleProductDetail
@@ -82,7 +81,6 @@ export class SingleProduct extends React.Component {
 
               <Row className="bottom-related-product">
                 <Col xsHidden smHidden md={12} lg={12}>
-                  <CouponHeader title="Related Products" />
                   <SinglePageCarousel
                     banners={this.filterCurrentProduct(
                       this.state.relatedProducts

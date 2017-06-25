@@ -5,8 +5,10 @@
 */
 
 import React from "react";
+import CouponHeader from "components/CouponHeader";
 import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
 import YesNoBtn from "components/YesNoBtn";
+import { Link } from "react-router";
 import shortid from "shortid";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
@@ -35,6 +37,7 @@ function SinglePageCarousel({ banners }) {
 
   return (
     <div>
+      <CouponHeader title="Related Products" />
       <CloudinaryContext cloudName="dw3arrxnf">
         <Slider {...settings} className="carousel-single">
           {banners.length !== null && banners.length > 0
@@ -72,7 +75,13 @@ const Slide = ({ banner }) =>
         subtitle={banner.isShipped ? banner.isShipped : "+ trending"}
       />
       <CardText color="#1f7dd4" className="carousel-body line-clamp-wrapper">
-        <div className="line-clamp">{banner.name}</div>
+        <label
+          className="line-clamp"
+          onClick={() =>
+            (window.location.href = `/product/${banner._id.toString()}`)}
+        >
+          {banner.name}
+        </label>
       </CardText>
       <CardText className="carousel-body-price">
         {banner.percentage}
@@ -82,7 +91,8 @@ const Slide = ({ banner }) =>
           label={banner.isCoupon ? "Reveal Code" : "See Deal"}
           primary={true}
           fullWidth
-          onTouchTap={() => window.location.href=`/product/${banner._id.toString()}`}
+          onTouchTap={() =>
+            (window.location.href = `/product/${banner._id.toString()}`)}
         />
       </CardActions>
     </Card>

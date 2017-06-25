@@ -17,7 +17,7 @@ export class Coupon extends React.Component {
     coupons: [],
     errors: ""
   };
-  
+
   componentDidMount() {
     this.props.fetchCoupon();
   }
@@ -39,8 +39,12 @@ export class Coupon extends React.Component {
   render() {
     return (
       <div>
-        <CouponHeader title="Top Coupons" />
-        {this.renderCoupons(this.state.coupons)}
+        {this.state.coupons.length > 0
+          ? <div>
+              <CouponHeader title="Top Coupons" />
+              {this.renderCoupons(this.state.coupons)}
+            </div>
+          : <div />}
       </div>
     );
   }

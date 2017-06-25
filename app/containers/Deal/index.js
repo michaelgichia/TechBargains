@@ -12,7 +12,6 @@ import CouponDetail from "components/CouponDetail";
 import { fetchDeals } from "./actions";
 
 export class Deal extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
   state = {
     deals: [],
     errors: ""
@@ -37,8 +36,12 @@ export class Deal extends React.Component {
   render() {
     return (
       <div>
-        <CouponHeader title="Trending Deals" />
-        {this.renderDeals(this.state.deals)}
+        {this.state.deals.length > 0
+          ? <div>
+              <CouponHeader title="Trending Deals" />
+              {this.renderDeals(this.state.deals)}
+            </div>
+          : <div />}
       </div>
     );
   }

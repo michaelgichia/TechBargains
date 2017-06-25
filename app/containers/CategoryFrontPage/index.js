@@ -44,7 +44,6 @@ export class CategoryFrontPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log({nextProps})
     if (nextProps.deals !== this.state.deals) {
       this.setState((prevState, props) => ({ deals: nextProps.deals }));
     }

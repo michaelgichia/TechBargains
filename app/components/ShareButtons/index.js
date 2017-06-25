@@ -10,7 +10,6 @@ import SvgIcon from "material-ui/SvgIcon";
 import "!!style-loader!css-loader!./style.css";
 
 function ShareButtons({ banner }) {
-  console.log({ banner });
   return (
     <di className="share-button">
       <p>
