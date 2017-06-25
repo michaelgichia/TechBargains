@@ -10,6 +10,22 @@ import RaisedButton from "material-ui/RaisedButton";
 import "!!style-loader!css-loader!./style.css";
 
 class YesNoBtn extends React.Component {
+
+  handlePush = (url) => {
+    const ua = navigator.userAgent.toLowerCase();
+    const isIE = ua.indexOf('msie') !== -1;
+    const version = parseInt(ua.substr(4, 2), 10);
+
+    if (isIE && version < 9) {
+      const link = document.createElement('a');
+      link.href = url;
+      document.body.appendChild(link);
+      link.click();
+    } else { 
+      window.location.href = url; 
+    }
+  }
+
   render() {
     return (
       <div className="yes-no-btn-wrapper">
@@ -22,8 +38,7 @@ class YesNoBtn extends React.Component {
             />
           : <RaisedButton
               label="See Deal"
-              href={this.props.backlink}
-              target="_blank"
+              onTouchTap={() => this.handlePush(this.props.backlink)}
               primary
               labelStyle={{
                 textTransform: "none",
