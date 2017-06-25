@@ -101,7 +101,7 @@ class AddDealForm extends React.Component {
         </SelectField>
         <TextField
           hintText="Back Link"
-          floatingLabelText="Back Link"
+          floatingLabelText="Backlink, format: https://deals-expert.com(MUST)"
           id="backlink"
           onChange={this.props.onChange}
           hintStyle={this.props.hintStyle}
