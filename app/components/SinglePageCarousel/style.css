@@ -1,0 +1,18 @@
+.carousel-card {
+  width: 250px;
+}
+
+.carousel-media {
+  width: 250px;
+  max-width: 250px;
+  max-height: 250px;
+  height: 250px;
+}
+
+.carousel-title {
+  padding: 10px 5px 5px 5px
+}
+
+.carousel-body {
+  padding: 5px 5px 5px 5px  
+}
