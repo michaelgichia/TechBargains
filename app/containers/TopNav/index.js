@@ -3,9 +3,7 @@ import AutoComplete from "components/AutoComplete";
 import PropTypes from "prop-types";
 // Material-ui
 import AppBar from "material-ui/AppBar";
-import IconButton from "material-ui/IconButton";
 import SvgIcon from "material-ui/SvgIcon";
-import { blue500, red500, greenA200 } from "material-ui/styles/colors";
 // Algolia
 import { InstantSearch, Configure } from "react-instantsearch/dom";
 // style
