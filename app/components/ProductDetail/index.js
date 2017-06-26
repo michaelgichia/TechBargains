@@ -52,14 +52,16 @@ class ProductDetail extends React.Component {
             <div className="product-detail-image">
               <Col xs={4} sm={4} md={4} lg={4}>
                 <div className="product-detail-image-image">
-                  <Image publicId={this.props.product.public_id}>
-                    <Transformation
-                      width="200"
-                      crop="scale"
-                      height="200"
-                      dpr="auto"
-                    />
-                  </Image>
+                  <a href={this.props.product.backlink} target="_blank">
+                    <Image publicId={this.props.product.public_id}>
+                        <Transformation
+                          width="200"
+                          crop="scale"
+                          height="200"
+                          dpr="auto"
+                        />
+                      </Image>
+                   </a>
                 </div>
               </Col>
             </div>

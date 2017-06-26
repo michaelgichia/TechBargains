@@ -41,14 +41,16 @@ class CouponDetail extends React.Component {
         </label>
         <div className="coupon-div">
           <div className="coupon-image">
-            <Image publicId={this.props.coupon.public_id}>
-              <Transformation
-                width="180"
-                crop="scale"
-                height="180"
-                dpr="auto"
-              />
-            </Image>
+            <a href={this.props.coupon.backlink} target="_blank">
+              <Image publicId={this.props.coupon.public_id}>
+                <Transformation
+                  width="180"
+                  crop="scale"
+                  height="180"
+                  dpr="auto"
+                />
+              </Image>
+            </a>
           </div>
           <div className="coupon-prices">
             <p className="shipping">

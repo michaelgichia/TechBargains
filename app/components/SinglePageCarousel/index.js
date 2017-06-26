@@ -59,15 +59,17 @@ const Slide = ({ banner }) =>
   <div className="carousel-image">
     <Card className="carousel-card">
       <CardMedia style={{ minHeight: 130 }}>
-        <Image publicId={banner.public_id}>
-          <Transformation
-            width="160"
-            crop="scale"
-            height="160"
-            dpr="auto"
-            responsive={true}
-          />
-        </Image>
+        <a href={banner.backlink} target="_blank">
+          <Image publicId={banner.public_id}>
+            <Transformation
+              width="160"
+              crop="scale"
+              height="160"
+              dpr="auto"
+              responsive={true}
+            />
+          </Image>
+        </a>
       </CardMedia>
       <CardTitle
         className="carousel-title"
