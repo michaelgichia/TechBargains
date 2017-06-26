@@ -1,6 +1,32 @@
 .home-icon > svg:not(:root) {
   overflow: visible;
-  vertical-align: sub;
+  vertical-align: top;
+}
+
+.home-icon > svg {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+@media (max-width: 768px) {
+  .home-icon {
+    text-align: center;
+  }
+  .home-icon > svg {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-icon > svg {
+    margin-right: 50px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-icon > svg {
+    margin-right: 16px !important;
+  }
 }
 
 .home-icon .first {
