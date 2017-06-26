@@ -22,7 +22,6 @@ class YesNoBtn extends React.Component {
       document.body.appendChild(link);
       link.click();
     } else { 
-      // window.location.href = url;
       window.open(url, '_blank');
     }
   }

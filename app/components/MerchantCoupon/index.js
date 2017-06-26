@@ -5,12 +5,10 @@
 */
 
 import React from "react";
-import YesNoBtn from "components/YesNoBtn";
-import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
+import { Card, CardActions, CardHeader } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 
-class MerchantCoupon extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
+class MerchantCoupon extends React.Component {
   render() {
     return (
       <Card className="merchant-coupon">
@@ -38,10 +36,11 @@ class MerchantCoupon extends React.PureComponent {
           subtitle={`From ${this.props.coupon.merchant.title} Coupons.`}
         />
         <CardActions>
-          <YesNoBtn
-            isCoupon={this.props.coupon.isCoupon}
+          <RaisedButton
+            label="Reveal Code"
+            primary
             onTouchTap={this.props.onTouchTap}
-            backlink={this.props.coupon.backlink}
+            labelStyle={{ textTransform: "none", fontSize: 16 }}
           />
         </CardActions>
       </Card>
