@@ -16,6 +16,17 @@ const renderSuggestion = hit =>
     {hit.subCategory.title}
   </div>;
 
+const renderInputComponent = inputProps =>
+  <form onSubmit={e => e.preventDefault()}>
+    <input
+      {...inputProps}
+      name="search"
+      type="text"
+      placeholder="Type a product"
+    />
+    <button name="submit" type="submit">Go</button>
+  </form>;
+
 const AutoComplete = connectAutoComplete(
   ({ hits, currentRefinement, refine }) =>
     <Autosuggest
@@ -25,11 +36,11 @@ const AutoComplete = connectAutoComplete(
       getSuggestionValue={hit => hit.subCategory._id}
       renderSuggestion={hit => renderSuggestion(hit)}
       inputProps={{
-        placeholder: "Type a product",
         value: currentRefinement,
         onChange: () => {}
       }}
       renderSectionTitle={section => section.index}
+      renderInputComponent={inputProps => renderInputComponent(inputProps)}
       getSectionSuggestions={section => section.hits}
     />
 );

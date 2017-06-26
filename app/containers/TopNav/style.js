@@ -4,7 +4,7 @@ export const style = {
     paddingLeft: 12,
     color: '#676d79 !important',
     fontDamily: 'SourceSans, Roboto Slab, Helvetica',
-    fontSize: 24
+    fontSize: 24,
   },
   smallScreenStyle: {
     margin: '-10px 8px 0px -10px',

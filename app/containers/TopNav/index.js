@@ -6,21 +6,19 @@ import PropTypes from "prop-types";
 import AppBar from "material-ui/AppBar";
 import SvgIcon from "material-ui/SvgIcon";
 // Algolia
-import { InstantSearch, Configure } from "react-instantsearch/dom";
+import {
+  InstantSearch,
+  SearchBox,
+  Index,
+  Configure,
+  Hits
+} from "react-instantsearch/dom";
 // style
-import "react-instantsearch-theme-algolia/style.css";
+import "react-instantsearch-theme-algolia/style.min.css";
 import "!!style-loader!css-loader!./style.css";
 import { style } from "./style";
 
-const iconStyles = {
-  marginRight: 24,
-  height: 45,
-  width: 70,
-  overflow: "visible !important"
-};
-
 class TopNav extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
   state = {
     windowWidth: window.innerWidth
   };
@@ -104,3 +102,9 @@ const HomeIcon = props =>
     </g>
   </SvgIcon>;
 
+const iconStyles = {
+  marginRight: 24,
+  height: 45,
+  width: 70,
+  overflow: "visible !important"
+};
