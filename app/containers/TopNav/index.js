@@ -38,6 +38,9 @@ class TopNav extends React.Component { // eslint-disable-line react/prefer-state
   render() {
     return (
       <AppBar
+        className="top-nav"
+        style={style.appBar}
+        titleStyle={this.state.windowWidth < 768 ? style.smallScreenStyle : style.largeScreenStyle}
         title={
           <div className='home-icon'>
             <HomeIcon style={iconStyles} />
@@ -45,20 +48,20 @@ class TopNav extends React.Component { // eslint-disable-line react/prefer-state
             <span className='second'>Expert</span>
           </div>
         }
+        iconStyleLeft={style.iconStyleLeft}
         showMenuIconButton={this.state.windowWidth < 768}
         onLeftIconButtonTouchTap={this.props.onLeftIconButtonTouchTap}
-        titleStyle={style.titleStyle}
-        style={style.appBar}
-        iconStyleLeft={style.iconStyleLeft}
       >
-        <InstantSearch
-          appId="YNZ7XXV49B"
-          apiKey="90550ee45080bb58130f0ac76a4e28f5"
-          indexName="Products"
-        >
-          <AutoComplete />
-          <Configure hitsPerPage={1} />
-        </InstantSearch>
+        <div className="large-screen-wrapper">
+          <InstantSearch
+            appId="YNZ7XXV49B"
+            apiKey="90550ee45080bb58130f0ac76a4e28f5"
+            indexName="Products"
+          >
+            <AutoComplete />
+            <Configure hitsPerPage={1} />
+          </InstantSearch>
+        </div>
       </AppBar>
     );
   }

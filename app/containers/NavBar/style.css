@@ -1,0 +1,5 @@
+@media (min-width: 768px) {
+  .small-screen-wrapper {
+    display: none !important;
+  }
+}

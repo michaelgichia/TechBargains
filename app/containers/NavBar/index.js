@@ -1,4 +1,7 @@
 import React from "react";
+import { InstantSearch, Configure } from "react-instantsearch/dom";
+import AutoComplete from "components/AutoComplete";
+
 import shortid from "shortid";
 import Nav from "react-bootstrap/lib/Nav";
 import Navbar from "react-bootstrap/lib/Navbar";
@@ -9,6 +12,8 @@ import TopNav from "containers/TopNav";
 import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import { fetchNavItems } from "./actions";
+
+import "!!style-loader!css-loader!./style.css";
 
 class Navigation extends React.Component {
   state = {
@@ -73,6 +78,16 @@ class Navigation extends React.Component {
           onToggle={this.handleToggle}
         >
           <NavbarCollapse>
+            <div className="small-screen-wrapper">
+              <InstantSearch
+                appId="YNZ7XXV49B"
+                apiKey="90550ee45080bb58130f0ac76a4e28f5"
+                indexName="Products"
+              >
+                <AutoComplete />
+                <Configure hitsPerPage={1} />
+              </InstantSearch>
+            </div>
             <Nav>
               {this.state.navItems.slice(0, 7).map((navItem, index) =>
                 <NavDropdown
