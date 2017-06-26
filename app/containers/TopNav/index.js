@@ -1,4 +1,5 @@
 import React from "react";
+import { browserHistory } from "react-router";
 import AutoComplete from "components/AutoComplete";
 import PropTypes from "prop-types";
 // Material-ui
@@ -38,6 +39,7 @@ class TopNav extends React.Component {
     return (
       <AppBar
         className="top-nav"
+        onTitleTouchTap={() => browserHistory.push("/")}
         style={style.appBar}
         titleStyle={
           this.state.windowWidth < 768
