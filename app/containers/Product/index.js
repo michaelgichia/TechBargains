@@ -4,11 +4,10 @@
  *
  */
 
-import React, { PropTypes } from "react";
-import Dropdown from 'components/Dropdown';
-import { InstantSearch, Hits, SortBy } from "react-instantsearch/dom";
+import React from "react";
+import Dropdown from "components/Dropdown";
 import "react-instantsearch-theme-algolia/style.css";
-import shortid from 'shortid';
+import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
 import { CloudinaryContext } from "cloudinary-react";
 import { connect } from "react-redux";
@@ -38,7 +37,7 @@ export class Product extends React.Component {
     }
   }
 
-  handleDropdown = (e) => this.setState({ dropdownValue: e.target.id });
+  handleDropdown = e => this.setState({ dropdownValue: e.target.id });
 
   render() {
     return (
@@ -47,18 +46,19 @@ export class Product extends React.Component {
           handleDropdown={this.handleDropdown}
           dropdownValue={this.state.dropdownValue}
         />
-        <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+        <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
           <CloudinaryContext cloudName="dw3arrxnf">
-            {
-            this.state.products.map((product) => (
-              <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
+            {this.state.products.map(product =>
+              <li
+                key={shortid.generate()}
+                style={{ marginTop: 10, marginBottom: 10 }}
+              >
                 <ProductDetail
                   product={product}
                   onTouchTap={() => this.props.handleOpenModal(product)}
                 />
               </li>
-            ))
-            }
+            )}
           </CloudinaryContext>
         </ul>
       </div>
@@ -79,62 +79,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);
-
-// //<ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
-//   <CloudinaryContext cloudName="dw3arrxnf">
-//     {
-//     this.state.products.map((product) => (
-//       <li key={shortid.generate()} style={{ marginTop: 10, marginBottom: 10 }}>
-//         <ProductDetail
-//           product={product}
-//           onTouchTap={() => this.props.handleOpenModal(product)}
-//         />
-//       </li>
-//     ))
-//     }
-//   </CloudinaryContext>
-// </ul>
-
-
-        // <InstantSearch
-        //   appId="YNZ7XXV49B"
-        //   apiKey="90550ee45080bb58130f0ac76a4e28f5"
-        //   indexName="item"
-        // >
-        //   <div className="gold">
-        //     <ul>
-        //       <li
-        //         id="platinumbtn"
-        //         className="platinum"
-        //         style={{ float: "right" }}
-        //       >
-        //         <SortBy
-        //           items={[
-        //             { value: "expire", label: "Expire soon" },
-        //             { value: "item", label: "Most Recent" }
-        //           ]}
-        //           defaultRefinement="item"
-        //         />
-        //       </li>
-        //       <li
-        //         id="platinum-id"
-        //         className="platinum-label"
-        //         style={{ float: "right" }}
-        //       >
-        //         <label htmlFor="platinum-id">Refine by:</label>
-        //       </li>
-        //     </ul>
-        //   </div>
-        //   <CloudinaryContext cloudName="dw3arrxnf">
-        //     <Hits
-        //       hitComponent={({ hit }) => {
-        //         return (
-        //           <ProductDetail
-        //             product={hit}
-        //             onTouchTap={() => this.props.handleOpenModal(hit)}
-        //           />
-        //         );
-        //       }}
-        //     />
-        //   </CloudinaryContext>
-        // </InstantSearch>

@@ -9,6 +9,8 @@ import CouponHeader from "components/CouponHeader";
 import { connect } from "react-redux";
 import shortid from "shortid";
 import CouponDetail from "components/CouponDetail";
+import { CloudinaryContext } from "cloudinary-react";
+
 import { fetchDeals } from "./actions";
 
 export class Deal extends React.Component {
@@ -37,10 +39,10 @@ export class Deal extends React.Component {
     return (
       <div>
         {this.state.deals.length > 0
-          ? <div>
+          ? <CloudinaryContext cloudName="dw3arrxnf">
               <CouponHeader title="Trending Deals" />
               {this.renderDeals(this.state.deals)}
-            </div>
+            </CloudinaryContext>
           : <div />}
       </div>
     );

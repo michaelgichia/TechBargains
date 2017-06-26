@@ -54,7 +54,7 @@ const findFeaturedDeals = params =>
     Item.find({ isFeatured: true, isCoupon: false })
       .limit(8)
       .sort("-date")
-      .select("name percentage image isShipped backlink coupon")
+      .select("_id name percentage image isShipped backlink coupon public_id")
       .exec((err, deals) => {
         if (err) {
           reject(err);

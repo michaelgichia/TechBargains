@@ -292,7 +292,7 @@ p {
 
 @media (min-width: 992px) {
   .merchants-panel-header {
-    font-size: 24px !important;
+    font-size: 20px !important;
     word-spacing: 4px;
   }
 }

@@ -20,9 +20,10 @@ import React from "react";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
+import "!!style-loader!css-loader!./style.css";
+
 
 class HomePage extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
   state = {
     dropdownValue: "Most Recent"
   };
@@ -34,7 +35,6 @@ class HomePage extends React.PureComponent {
       <Grid fluid>
         <Row style={{ marginRight: 0, marginLeft: 0 }}>
           <Col
-            style={{ paddingLeft: 1, paddingRight: 1 }}
             xs={12}
             sm={12}
             md={12}
@@ -43,7 +43,12 @@ class HomePage extends React.PureComponent {
             <CarouselContainer />
             <Product />
           </Col>
-          <Col xsHidden sm={4} smHidden md={4} mdHidden lg={4}>
+          <Col
+            xsHidden 
+            smHidden 
+            mdHidden 
+            lg={4}
+          >
             <Deal />
             <Coupon />
             <Stores />

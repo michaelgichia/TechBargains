@@ -1,0 +1,9 @@
+.coupon-title {
+  color: #1f7dd4;
+  font-size: 15px;
+  margin: 5px;
+  overflow: hidden;
+  height: 38px;
+  line-height: 19px;
+  font-weight: 500 !important;
+}
