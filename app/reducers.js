@@ -32,6 +32,8 @@ import flashMessageReducer from "containers/FlashMessage/reducer";
 import merchantEditReducer from "containers/MerchantEdit/reducer";
 import bannerDetailReducer from "containers/BannerDetail/reducer";
 import singleProductReducer from "containers/SingleProduct/reducer";
+import topNavReducer from "containers/TopNav/reducer";
+
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -65,6 +67,7 @@ export default function createReducer(asyncReducers) {
     merchantEdit: merchantEditReducer,
     bannerDetail: bannerDetailReducer,
     singleProduct: singleProductReducer,
+    topNav: topNavReducer,
     ...asyncReducers
   });
 }

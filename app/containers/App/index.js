@@ -29,12 +29,21 @@ const style = {
   }
 };
 
-class App extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-
+class App extends React.Component {
+  state = {
+    searchState: {},
+    lastPush: 0
+  };
+  
   static propTypes = {
     children: React.PropTypes.node
   };
+
+  componentDidMount() {
+  }
+
+  componentWillReceiveProps() {
+  }
 
   render() {
     const { pathname } = this.props.location;

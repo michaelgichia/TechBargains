@@ -436,6 +436,24 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/topnav',
+      name: 'topNav',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/TopNav/reducer'),
+          import('containers/TopNav'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('topNav', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

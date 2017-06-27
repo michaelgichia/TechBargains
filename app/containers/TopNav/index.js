@@ -2,17 +2,10 @@ import React from "react";
 import { browserHistory } from "react-router";
 import AutoComplete from "components/AutoComplete";
 import PropTypes from "prop-types";
-// Material-ui
 import AppBar from "material-ui/AppBar";
 import SvgIcon from "material-ui/SvgIcon";
-// Algolia
-import {
-  InstantSearch,
-  SearchBox,
-  Index,
-  Configure,
-  Hits
-} from "react-instantsearch/dom";
+import { InstantSearch, Configure } from "react-instantsearch/dom";
+
 // style
 import "react-instantsearch-theme-algolia/style.min.css";
 import "!!style-loader!css-loader!./style.css";
@@ -20,7 +13,9 @@ import { style } from "./style";
 
 class TopNav extends React.Component {
   state = {
-    windowWidth: window.innerWidth
+    windowWidth: window.innerWidth,
+    searchState: {},
+    lastPush: 0
   };
 
   componentDidMount() {
@@ -30,6 +25,18 @@ class TopNav extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
   }
+
+  onSearchStateChange = nextSearchState => {
+    console.log({params: this.props})  
+    this.setState({ searchState: nextSearchState });
+  }
+
+  handleSearchRouting = subCategoryId => {
+    //this.props.routerParams.router.replace(`category/${subCategoryId}`);
+    console.log(this.props.routerParams)
+    console.error(this.props.routerParams)
+    window.location.replace(`category/${subCategoryId}`);
+  };
 
   handleResize = () => this.setState({ windowWidth: window.innerWidth });
 
@@ -59,10 +66,12 @@ class TopNav extends React.Component {
           <InstantSearch
             appId="YNZ7XXV49B"
             apiKey="90550ee45080bb58130f0ac76a4e28f5"
-            indexName="Products"
+            indexName="item"
+            searchState={this.state.searchState}
+            onSearchStateChange={this.onSearchStateChange}
           >
-            <AutoComplete />
-            <Configure hitsPerPage={1} />
+            <AutoComplete handleSearchRouting={this.handleSearchRouting} />
+            <Configure hitsPerPage={3} />
           </InstantSearch>
         </div>
       </AppBar>
@@ -76,6 +85,7 @@ TopNav.propTypes = {
 
 export default TopNav;
 
+// Styles
 const HomeIcon = props =>
   <SvgIcon {...props} viewBox="0 0 250 175">
     <g fillRule="evenodd">
