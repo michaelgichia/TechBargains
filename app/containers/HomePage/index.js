@@ -40,7 +40,13 @@ class HomePage extends React.PureComponent {
             md={12}
             lg={8}
           >
+          <Col
+            xsHidden 
+            smHidden 
+            mdHidden 
+          >
             <CarouselContainer />
+          </Col>
             <Product />
           </Col>
           <Col

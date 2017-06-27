@@ -5,7 +5,9 @@
  */
 
 import React from "react";
+import CouponHeader from "components/CouponHeader";
 import Dropdown from "components/Dropdown";
+import Col from "react-bootstrap/lib/Col";
 import "react-instantsearch-theme-algolia/style.css";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
@@ -20,7 +22,6 @@ export class Product extends React.Component {
   state = {
     products: [],
     errors: "",
-    searchState: {},
     dropdownValue: "Most Recent"
   };
 
@@ -39,13 +40,20 @@ export class Product extends React.Component {
 
   handleDropdown = e => this.setState({ dropdownValue: e.target.id });
 
+  handleResize = () => this.setState({ windowWidth: window.innerWidth });
+
   render() {
     return (
       <div>
-        <Dropdown
-          handleDropdown={this.handleDropdown}
-          dropdownValue={this.state.dropdownValue}
-        />
+        <Col xsHidden smHidden mdHidden>
+          <Dropdown
+            handleDropdown={this.handleDropdown}
+            dropdownValue={this.state.dropdownValue}
+          />
+        </Col>
+        <Col lgHidden>
+          <CouponHeader title="Latest Deals" />
+        </Col>
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
           <CloudinaryContext cloudName="dw3arrxnf">
             {this.state.products.map(product =>

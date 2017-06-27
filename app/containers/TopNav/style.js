@@ -11,7 +11,8 @@ export const style = {
     paddingLeft: 12,
     color: '#676d79 !important',
     fontDamily: 'SourceSans, Roboto Slab, Helvetica',
-    fontSize: 18
+    fontSize: 18,
+    top: "-1 !important",
   },
   appBar: {
     maxHeight: 45,

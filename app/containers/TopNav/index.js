@@ -15,7 +15,6 @@ class TopNav extends React.Component {
   state = {
     windowWidth: window.innerWidth,
     searchState: {},
-    lastPush: 0
   };
 
   componentDidMount() {
