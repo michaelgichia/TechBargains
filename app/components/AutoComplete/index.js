@@ -14,7 +14,9 @@ export class AutoComplete extends React.Component {
   renderSuggestion = hit => {
     return (
       <div key={shortid.generate()} className="query-paragraph">
-        {hit.name}
+          <a href={`/category/${hit.subCategory[0]._id.toString()}`} target="_self">
+            {hit.name}
+          </a>
       </div>
     );
   };
@@ -32,11 +34,6 @@ export class AutoComplete extends React.Component {
 
   getSuggestionValue = hit => hit.subCategory[0]._id.toString();
 
-  onSuggestionSelected = (event, { suggestion }) => {
-    event.persist();
-    this.props.handleSearchRouting(suggestion.subCategory[0]._id.toString());
-  };
-
   render() {
     const inputProps = {
       value: this.props.currentRefinement,
@@ -51,7 +48,6 @@ export class AutoComplete extends React.Component {
         getSuggestionValue={this.getSuggestionValue}
         renderSuggestion={hit => this.renderSuggestion(hit)}
         inputProps={inputProps}
-        onSuggestionSelected={this.onSuggestionSelected}
         renderSectionTitle={section => section.index}
         renderInputComponent={inputProps =>
           this.renderInputComponent(inputProps)}
