@@ -30,6 +30,8 @@ form button:hover {
   cursor: pointer;
   text-decoration: none;
   background: #24912b;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .react-autosuggest__input .query-paragraph {
