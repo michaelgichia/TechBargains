@@ -56,3 +56,10 @@
 .top-nav > button > div > svg {
   fill: #525c65 !important;
 }
+
+@media (max-width: 768px) {
+  div.top-nav {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}

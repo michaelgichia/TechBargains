@@ -7,12 +7,10 @@ export const style = {
     fontSize: 24,
   },
   smallScreenStyle: {
-    margin: '-10px 8px 0px -10px',
-    paddingLeft: 12,
+    margin: '-8px 8px 0px -50px',
     color: '#676d79 !important',
     fontDamily: 'SourceSans, Roboto Slab, Helvetica',
     fontSize: 18,
-    top: "-1 !important",
   },
   appBar: {
     maxHeight: 45,
