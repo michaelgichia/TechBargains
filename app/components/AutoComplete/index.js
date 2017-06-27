@@ -13,7 +13,7 @@ import "!!style-loader!css-loader!./style.css";
 export class AutoComplete extends React.Component {
   renderSuggestion = hit => {
     return (
-      <div key={shortid.generate()} className="query-paragraph">
+      <div key={shortid.generate()} className="query-paragraph text-ellipsis">
           <a href={`/category/${hit.subCategory[0]._id.toString()}`} target="_self">
             {hit.name}
           </a>
@@ -42,6 +42,7 @@ export class AutoComplete extends React.Component {
 
     return (
       <Autosuggest
+      alwaysRenderSuggestions
         suggestions={this.props.hits}
         onSuggestionsFetchRequested={({ value }) => this.props.refine(value)}
         onSuggestionsClearRequested={() => this.props.refine("")}

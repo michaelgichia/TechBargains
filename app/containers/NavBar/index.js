@@ -85,7 +85,7 @@ class Navigation extends React.Component {
                 indexName="Products"
               >
                 <AutoComplete />
-                <Configure hitsPerPage={1} />
+                <Configure hitsPerPage={5} />
               </InstantSearch>
             </div>
             <Nav>

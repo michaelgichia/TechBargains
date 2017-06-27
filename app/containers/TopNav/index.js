@@ -62,7 +62,7 @@ class TopNav extends React.Component {
             onSearchStateChange={this.onSearchStateChange}
           >
             <AutoComplete />
-            <Configure hitsPerPage={3} />
+            <Configure hitsPerPage={5} />
           </InstantSearch>
         </div>
       </AppBar>
