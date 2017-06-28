@@ -236,7 +236,7 @@ export class StorePage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs={12} md={10} mdPush={1}>
             <Table
               wrapperStyle={gemsgood.wrapperStyle}
               bodyStyle={gemsgood.bodyStyle}
@@ -251,8 +251,9 @@ export class StorePage extends React.Component {
                     tooltip="Super Header"
                     style={{
                       textAlign: "center",
-                      fontSize: 24,
-                      color: "black"
+                      fontSize: 28,
+                      color: "black",
+                      padding: 20,
                     }}
                   >
                     A List Of Merchants

@@ -47,8 +47,28 @@ const findFeaturedStores = params =>
       });
   });
 
+const findLatestStores = params =>
+  new Promise((resolve, reject) => {
+    Merchant.find()
+      .limit(10)
+      .sort("-createdAt")
+      .select("title _id")
+      .exec((err, stores) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        const summaries = [];
+        stores.forEach(store => {
+          summaries.push(store.summary());
+        });
+        resolve(summaries);
+      });
+  });
+
 module.exports = {
   find,
   findById,
-  findFeaturedStores
+  findFeaturedStores,
+  findLatestStores
 };

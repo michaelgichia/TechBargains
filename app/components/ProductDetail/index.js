@@ -32,6 +32,7 @@ class ProductDetail extends React.Component {
   };
 
   render() {
+    console.log({state: this})
     return (
       <Panel
         className="merchant-panel"
@@ -115,7 +116,9 @@ class ProductDetail extends React.Component {
                           textDecoration: "underline"
                         }}
                       >
-                        {this.props.product.merchant.title}
+                        {this.props.product.merchant !== null 
+                          ? this.props.product.merchant.title
+                          :""}
                       </Link>{" "}
                       in{" "}
                       <Link

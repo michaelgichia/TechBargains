@@ -18,7 +18,7 @@ const BannerSchema = new Schema({
     type: String,
     trim: true,
     max: 1000,
-    required: true
+    default: "",
   },
   public_id: {
     type: String,

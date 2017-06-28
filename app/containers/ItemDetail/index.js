@@ -44,7 +44,7 @@ export class ItemDetail extends React.Component {
       subCategory: [],
       expire: 0,
       isShipped: "",
-      created: 0,
+      createdAt: "",
       isFeatured: false,
       tags: []
     },
@@ -96,8 +96,8 @@ export class ItemDetail extends React.Component {
       expire,
       isShipped,
       image,
-      created,
       isFeatured,
+      createdAt,
       tags
     } = this.state.itemData;
 
@@ -106,12 +106,9 @@ export class ItemDetail extends React.Component {
         <Row>
           <Col xs={12} md={10} mdPush={1}>
             <Card containerStyle={{ marginTop: 30 }}>
-
-              <ListItem
-                disabled
-                leftAvatar={<Avatar>{`${percentage || ""}%`}</Avatar>}
+              <CardHeader
+                subtitle={`Percentage Off / Discounted Price: ${percentage || ""}`}
               />
-
               <CardMedia
                 mediaStyle={{ maxHeight: 300, height: 300 }}
                 overlay={
@@ -125,7 +122,7 @@ export class ItemDetail extends React.Component {
                 <img
                   src={image}
                   style={{ maxHeight: 300, maxWidth: 300 }}
-                  alt={name}
+                  alt="product image is empty"
                 />
               </CardMedia>
 
@@ -155,14 +152,11 @@ export class ItemDetail extends React.Component {
                 <Divider />
                 <Divider />
                 <CardTitle
-                  subtitle={`Expire: ${this.timeConversion(
-                    expire,
-                    new Date().getTime()
-                  )}`}
+                  subtitle={`Expire: ${expire}`}
                 />
                 <Divider />
                 <CardTitle
-                  subtitle={`Created: ${this.convertToDate(created)}`}
+                  subtitle={`Created at: ${this.convertToDate(createdAt)}`}
                 />
                 <Divider />
                 <CardTitle

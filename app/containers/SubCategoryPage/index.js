@@ -3,7 +3,6 @@ import React from "react";
 import MenuItem from "material-ui/MenuItem";
 import shortid from "shortid";
 import PropTypes from "prop-types";
-import { Link } from "react-router";
 // Material
 import Paper from "material-ui/Paper";
 import {
@@ -18,7 +17,6 @@ import { connect } from "react-redux";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
-import Auth from "../Utils";
 import { postSubCategory, getCategories, getSubCategories } from "./actions";
 
 class SubCategoryPage extends React.Component {
@@ -207,9 +205,9 @@ class SubCategoryPage extends React.Component {
                   {this.state.subCategories.map(row =>
                     <TableRow key={shortid.generate()}>
                       <TableRowColumn colSpan="12">
-                        <Link to={`/dashboard/sub-category/${row.id}/update`}>
+                        <a href={`/dashboard/sub-category/${row.id}/update`}>
                           {row.title}
-                        </Link>
+                        </a>
                       </TableRowColumn>
                     </TableRow>
                   )}

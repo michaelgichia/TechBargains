@@ -92,6 +92,23 @@ router.get("/featured-stores", (req, res) => {
     });
 });
 
+router.get("/latest-stores", (req, res) => {
+  merchantController
+    .findLatestStores(req.query, false)
+    .then(entities => {
+      res.json({
+        confirmation: "success",
+        results: entities
+      });
+    })
+    .catch(errors => {
+      res.json({
+        confirmation: "fail",
+        errors: errorsHandler(errors)
+      });
+    });
+});
+
 router.get("/specific-coupons/:couponsId", (req, res) => {
   const id = req.params.couponsId;
 

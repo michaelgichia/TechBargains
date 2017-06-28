@@ -30,20 +30,19 @@ const ItemSchema = new Schema({
   subCategory: [
     {
       type: Schema.Types.ObjectId,
-      ref: "SubCategory"
+      ref: "SubCategory",
+      autopopulate: true
     }
   ],
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    autopopulate: true,
-    required: true
+    autopopulate: true
   },
   merchant: {
     type: Schema.Types.ObjectId,
     ref: "Merchant",
-    autopopulate: true,
-    required: true
+    autopopulate: true
   },
   coupon: {
     type: String,
@@ -119,7 +118,8 @@ ItemSchema.methods.summary = function() {
     isCoupon: this.isCoupon,
     isShipped: this.isShipped,
     public_id: this.public_id,
-    tags: this.tags
+    tags: this.tags,
+    createdAt: this.createdAt
   };
 
   return summary;

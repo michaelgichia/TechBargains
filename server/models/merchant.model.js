@@ -24,7 +24,7 @@ const MerchantSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
+    default: "",
     trim: true,
     max: 1000
   },
@@ -47,9 +47,12 @@ const MerchantSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Category",
-      autopopulate: true,
+      autopopulate: true
     }
   ],
+},
+{
+  timestamps: true
 });
 
 MerchantSchema.plugin(autopopulate);

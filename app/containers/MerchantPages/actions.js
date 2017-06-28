@@ -9,6 +9,8 @@ import {
   SINGLE_STORE_DEALS,
   SINGLE_STORE_COUPONS,
   SINGLE_STORE_INFO,
+  LATEST_STORE,
+  fetchLatestStoreAPI,
   dealsBaseAPI,
   couponBaseAPI,
   infoBaseAPI
@@ -61,3 +63,19 @@ export const fetchStoreInfo = merchantId => dispatch => {
     }
   });
 };
+
+const fetchLatestStore = () => dispatch => {
+  axios.get(fetchLatestStoreAPI).then(response => {
+    if (response.data.confirmation === "success") {
+      dispatch({
+        type: LATEST_STORE.SUCCESS,
+        latestStore: response.data.results
+      });
+    } else {
+      dispatch({
+        type: "FLASH_MESSAGE_OPEN",
+        errors: response.data.errors.message
+      });
+    }
+  });
+}
