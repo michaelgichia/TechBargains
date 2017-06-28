@@ -18,10 +18,7 @@ class MerchantCoupon extends React.Component {
           textStyle={{ paddingRight: 10 }}
           titleColor="#337ab7"
           titleStyle={{
-            fontSize: 18,
-            fontFamily: "Roboto",
-            marginBottom: 5,
-            lineHeight: "1.1"
+            marginBottom: 10
           }}
           subtitleStyle={{
             fontSize: 15,
@@ -30,9 +27,17 @@ class MerchantCoupon extends React.Component {
             marginBottom: 0,
             paddingBottom: 0
           }}
-          title={
-            <div dangerouslySetInnerHTML={{ __html: this.props.coupon.name }} />
-          }
+          title={<a 
+            href={this.props.coupon.backlink}
+            style={{
+              fontSize: 20,
+              color: "#1f7dd4",
+              fontFamily: "Helvetica",
+              lineHeight: "1.1"
+          }}
+            target="_blank">
+              {this.props.coupon.name}
+              </a>}
           subtitle={`From ${this.props.coupon.merchant.title} Coupons.`}
         />
         <CardActions>

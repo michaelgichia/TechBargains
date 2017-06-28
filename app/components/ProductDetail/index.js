@@ -37,7 +37,7 @@ class ProductDetail extends React.Component {
       <Panel
         className="merchant-panel"
         header={
-          <div className="topper">
+          <div className="toppers">
             {`EXPIRE: ${this.timeConversion(this.props.product.expire)}`}
           </div>
         }
