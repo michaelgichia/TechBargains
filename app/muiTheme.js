@@ -15,4 +15,7 @@ export const muiTheme = getMuiTheme({
   raisedButton: {
     primaryColor: "#1da1f2",
   },
+    textField: {
+      focusColor:  "#1f7dd4",
+  },
 });
