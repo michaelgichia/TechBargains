@@ -31,7 +31,6 @@ const gems4 = {
 };
 
 export class ItemDetail extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
   state = {
     itemData: {
       name: "",
@@ -49,16 +48,12 @@ export class ItemDetail extends React.Component {
       isFeatured: false,
       tags: []
     },
-    errors: "",
-    itemId: null
+    errors: ""
   };
 
   componentDidMount() {
-    // Save the itemId param in the state.
-    const itemId = this.props.params.itemId;
-    this.setState({ itemId });
-    // API Call.
-    axios.get(`/public-api/item/${itemId}`).then(response => {
+    const { itemId } = this.props.params;
+    axios.get(`/public-api/item/${this.props.params.itemId}`).then(response => {
       if (response.data.confirmation === "success") {
         this.setState({ itemData: response.data.result });
       } else {
@@ -67,7 +62,8 @@ export class ItemDetail extends React.Component {
     });
   }
 
-  timeConversion = (expire, currentTime) => {
+  timeConversion = (expireAt, currentTime) => {
+    const expire = new Date(expireAt).getTime();
     const millisec = expire - currentTime;
     const seconds = (millisec / 1000).toFixed(1);
     const minutes = (millisec / (1000 * 60)).toFixed(1);
@@ -126,7 +122,6 @@ export class ItemDetail extends React.Component {
                 }
                 style={{ marginTop: 10 }}
               >
-                {/* The deal image.*/}
                 <img
                   src={image}
                   style={{ maxHeight: 300, maxWidth: 300 }}
@@ -215,12 +210,14 @@ export class ItemDetail extends React.Component {
                     label="Delete"
                     style={gems4.button}
                     labelColor="#7c7c7c"
-                    onTouchTap={() => this.props.deleteItem(this.state.itemId)}
+                    onTouchTap={() =>
+                      this.props.deleteItem(this.props.params.itemId)}
                   />
                 </Link>
 
                 <Link
-                  to={`/dashboard/items-list/${this.state.itemId}/update`}
+                  to={`/dashboard/items-list/${this.props.params
+                    .itemId}/update`}
                   key={3}
                 >
                   <RaisedButton

@@ -12,7 +12,8 @@ import "!!style-loader!css-loader!./style.css";
 class SingleProductDetail extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
 
-  timeConversion = expire => {
+  timeConversion = expireAt => {
+    const expire = new Date(expireAt).getTime();
     const millisec = expire - new Date().getTime();
     const seconds = (millisec / 1000).toFixed(1);
     const minutes = (millisec / (1000 * 60)).toFixed(1);

@@ -200,7 +200,7 @@ export class AddDeal extends React.Component {
         { category: this.state.category },
         { merchant: this.state.merchant },
         { subCategory: this.state.subCategory },
-        { expire: +new Date(this.state.expire) },
+        { expire: this.state.expire },
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },

@@ -163,5 +163,5 @@ const wrapperStyle = {
 
 const bodyStyle = {
   backgroundColor: "rgb(255, 255, 255)",
-  color: "rgba(0, 0, 0, 0.87)"
+  color: "rgba(0, 0, 0, 0.87)",
 };

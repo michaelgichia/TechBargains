@@ -27,10 +27,12 @@ const ItemSchema = new Schema({
     max: 10,
     default: ""
   },
-  subCategory: [{
-    type: Schema.Types.ObjectId,
-    ref: "SubCategory",
-  }],
+  subCategory: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "SubCategory"
+    }
+  ],
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
@@ -48,8 +50,10 @@ const ItemSchema = new Schema({
     default: ""
   },
   expire: {
-    type: Number
+    type: Date,
+    default: undefined
   },
+
   image: {
     type: String,
     trim: true,
@@ -86,18 +90,19 @@ const ItemSchema = new Schema({
       required: true
     }
   ],
-  created: {
-    type: Number,
-    default: new Date().getTime()
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
+
+ItemSchema.index({ expire: 1 }, { expireAfterSeconds: 0 });
 
 ItemSchema.plugin(autopopulate);
 
 ItemSchema.methods.summary = function() {
-  // eslint-disable-line
   const summary = {
-    id: this._id.toString(), // eslint-disable-line
+    id: this._id.toString(),
     name: this.name,
     backlink: this.backlink,
     percentage: this.percentage,

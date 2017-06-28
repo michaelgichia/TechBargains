@@ -42,7 +42,6 @@ export class AutoComplete extends React.Component {
 
     return (
       <Autosuggest
-      alwaysRenderSuggestions
         suggestions={this.props.hits}
         onSuggestionsFetchRequested={({ value }) => this.props.refine(value)}
         onSuggestionsClearRequested={() => this.props.refine("")}
