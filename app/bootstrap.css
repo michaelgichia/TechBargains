@@ -6284,7 +6284,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a {
   color: #3d4449;
   letter-spacing: 0.075em;
-  font-family: "Roboto Slab", serif;
+  font-family: Roboto, "Roboto Slab", serif;
+  font-weight: 400;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
