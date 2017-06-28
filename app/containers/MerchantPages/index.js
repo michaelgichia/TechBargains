@@ -4,7 +4,7 @@
  *
  */
 
-import React, { PropTypes } from "react";
+import React from "react";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
@@ -22,8 +22,12 @@ import { handleOpenModal } from "containers/ReactModal/actions";
 import {
   fetchMerchandize,
   fetchSpecificCoupons,
-  fetchStoreInfo
+  fetchStoreInfo,
+  fetchLatestStore
 } from "./actions";
+
+import "!!style-loader!css-loader!./style.css";
+
 
 export class MerchantPages extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -31,6 +35,7 @@ export class MerchantPages extends React.Component {
     merchandize: [],
     coupons: [],
     info: [],
+    latestStores: [],
     open: false,
     errors: []
   };
@@ -40,22 +45,26 @@ export class MerchantPages extends React.Component {
     this.props.fetchMerchandize(storeId);
     this.props.fetchSpecificCoupons(storeId);
     this.props.fetchStoreInfo(storeId);
+    this.props.fetchLatestStore();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.merchandize !== this.state.merchandize) {
-      this.setState((prevState, props) => ({
+      this.setState(() => ({
         merchandize: nextProps.merchandize
       }));
     }
     if (nextProps.coupons !== this.state.coupons) {
-      this.setState((prevState, props) => ({ coupons: nextProps.coupons }));
+      this.setState(() => ({ coupons: nextProps.coupons }));
+    }
+    if (nextProps.latestStores !== this.state.latestStores) {
+      this.setState(() => ({ latestStores: nextProps.latestStores }));
     }
     if (nextProps.info !== this.state.info) {
-      this.setState((prevState, props) => ({ info: nextProps.info }));
+      this.setState(() => ({ info: nextProps.info }));
     }
     if (nextProps.errors !== this.state.errors) {
-      this.setState((prevState, props) => ({ errors: nextProps.errors }));
+      this.setState(() => ({ errors: nextProps.errors }));
     }
   }
 
@@ -112,8 +121,16 @@ export class MerchantPages extends React.Component {
               </CloudinaryContext>
             </Col>
             <MerchantProfile info={this.state.info} />
-            <Col xs={12} sm={12} md={12} lgPush={8} lg={4}>
+            <Col xs={12} sm={12} md={12} lgOffset={8} lg={4}>
               <Disclaimer />
+            </Col>
+            <Col xs={12} sm={12} md={12} lgOffset={8} lg={4}>
+              <CouponHeader title="DISCOVER NEW STORES" />
+              <ul className="latest-stores">
+                {this.state.latestStores.map(store =>
+                  <li key={shortid.generate()}><a href={`/merchant/${store._id.toString()}`} target="_self">{store.title}</a></li>
+                )}
+              </ul>
             </Col>
           </Row>
         </div>
@@ -127,6 +144,7 @@ MerchantPages.propTypes = {};
 const mapStateToProps = ({ merchantPages }) => ({
   merchandize: merchantPages.merchandize,
   coupons: merchantPages.coupons,
+  latestStores: merchantPages.latestStores,
   errors: merchantPages.errors,
   info: merchantPages.info
 });
@@ -135,7 +153,8 @@ const mapDispatchToProps = dispatch => ({
   fetchMerchandize: storeId => dispatch(fetchMerchandize(storeId)),
   fetchSpecificCoupons: couponId => dispatch(fetchSpecificCoupons(couponId)),
   fetchStoreInfo: merchantId => dispatch(fetchStoreInfo(merchantId)),
-  handleOpenModal: product => dispatch(handleOpenModal(product))
+  handleOpenModal: product => dispatch(handleOpenModal(product)),
+  fetchLatestStore: () => dispatch(fetchLatestStore())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MerchantPages);

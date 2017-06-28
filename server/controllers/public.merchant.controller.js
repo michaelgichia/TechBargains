@@ -4,7 +4,10 @@ const Promise = require("bluebird");
 
 const find = params =>
   new Promise((resolve, reject) => {
-    Merchant.find(params, (err, stores) => {
+    Merchant.find()
+    .sort("-createdAt")
+    .limit(50)
+    .exec(params, (err, stores) => {
       if (err) {
         reject(err);
         return;
@@ -31,8 +34,8 @@ const findById = id =>
 const findFeaturedStores = params =>
   new Promise((resolve, reject) => {
     Merchant.find({ isFeatured: true })
+      .sort("-createdAt")
       .limit(8)
-      .sort("-date")
       .select("title imageUrl")
       .exec((err, stores) => {
         if (err) {
@@ -50,19 +53,15 @@ const findFeaturedStores = params =>
 const findLatestStores = params =>
   new Promise((resolve, reject) => {
     Merchant.find()
-      .limit(10)
       .sort("-createdAt")
+      .limit(10)
       .select("title _id")
       .exec((err, stores) => {
         if (err) {
           reject(err);
           return;
         }
-        const summaries = [];
-        stores.forEach(store => {
-          summaries.push(store.summary());
-        });
-        resolve(summaries);
+        resolve(stores);
       });
   });
 

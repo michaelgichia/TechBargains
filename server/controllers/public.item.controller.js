@@ -70,7 +70,7 @@ const findFeaturedDeals = params =>
 
 const findSpecificDeals = id =>
   new Promise((resolve, reject) => {
-    Item.find({ merchant: id }).limit(8).sort("-date").exec((err, deals) => {
+    Item.find({ merchant: id, isCoupon: false }).limit(8).sort("-date").exec((err, deals) => {
       if (err) {
         reject(err);
         return;

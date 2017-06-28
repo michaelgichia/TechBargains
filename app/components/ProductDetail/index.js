@@ -32,7 +32,6 @@ class ProductDetail extends React.Component {
   };
 
   render() {
-    console.log({state: this})
     return (
       <Panel
         className="merchant-panel"

@@ -9,7 +9,7 @@ import {
   SINGLE_STORE_DEALS,
   SINGLE_STORE_COUPONS,
   SINGLE_STORE_INFO,
-  LATEST_STORE,
+  LATEST_STORES,
   fetchLatestStoreAPI,
   dealsBaseAPI,
   couponBaseAPI,
@@ -64,12 +64,12 @@ export const fetchStoreInfo = merchantId => dispatch => {
   });
 };
 
-const fetchLatestStore = () => dispatch => {
+export const fetchLatestStore = () => dispatch => {
   axios.get(fetchLatestStoreAPI).then(response => {
     if (response.data.confirmation === "success") {
       dispatch({
-        type: LATEST_STORE.SUCCESS,
-        latestStore: response.data.results
+        type: LATEST_STORES.SUCCESS,
+        latestStores: response.data.results
       });
     } else {
       dispatch({
