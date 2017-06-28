@@ -28,6 +28,7 @@ export class SideDrawer extends React.Component { // eslint-disable-line react/p
       >
         <AppBar
           title="Navigation"
+          style={{ backgroundColor: "#2672c9" }}
           showMenuIconButton={false}
           iconElementRight={<IconButton><NavigationClose /></IconButton>}
           onRightIconButtonTouchTap={this.props.handleToggle}

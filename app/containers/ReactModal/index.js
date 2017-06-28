@@ -7,7 +7,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { handleOpenModal, handleCloseModal } from './actions';
 
@@ -68,7 +67,6 @@ export class ReactModal extends React.Component { // eslint-disable-line react/p
 
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={this.props.handleOpenModal} />
         <Dialog
           title={
             <div className="modal-header">

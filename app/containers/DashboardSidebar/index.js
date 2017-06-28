@@ -10,6 +10,7 @@ const gems3 = {
     width: '100%',
     top: 0,
     zIndex: 5,
+    backgroundColor: "#2672c9"
   },
 };
 

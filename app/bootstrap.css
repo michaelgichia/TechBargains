@@ -791,13 +791,13 @@ buyerdiv*/
 
 @media (max-width: 768px) {
   .tech {
-    margin-top: 15px !important;
+    margin-top: 40px !important;
   }
 }
 
 @media (min-width: 768px) {
   .tech {
-    margin-top: 41px !important;
+    margin-top: 80px !important;
   }
 }
 
@@ -810,14 +810,14 @@ buyerdiv*/
 
 @media (max-width: 768px) {
   .dashtech {
-    margin-top: 28px !important;
+    margin-top: 64px !important;
     background: #edecec !important;
   }
 }
 
 @media (min-width: 768px) {
   .dashtech {
-    margin-top: 28px !important;
+    margin-top: 64px !important;
   }
 }
 
@@ -5146,12 +5146,11 @@ tbody.collapse.in {
   display: block;
   padding: 3px 20px;
   clear: both;
-  font-weight: normal;
   line-height: 1.42857143;
   color: #333;
   white-space: nowrap;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 13px;
   font-family: Roboto, serif, Helvetica, Arial, sans-serif;
 }
 
