@@ -14,6 +14,7 @@ import MerchantProfile from "components/MerchantProfile";
 import MerchantCoupon from "components/MerchantCoupon";
 import CouponHeader from "components/CouponHeader";
 import ProductDetail from "components/ProductDetail";
+import Disclaimer from "components/Disclaimer";
 import shortid from "shortid";
 import { connect } from "react-redux";
 import { handleOpenModal } from "containers/ReactModal/actions";
@@ -111,6 +112,9 @@ export class MerchantPages extends React.Component {
               </CloudinaryContext>
             </Col>
             <MerchantProfile info={this.state.info} />
+            <Col xs={12} sm={12} md={12} lgPush={8} lg={4}>
+              <Disclaimer />
+            </Col>
           </Row>
         </div>
       </Grid>

@@ -228,7 +228,8 @@ div > .show-info-grid > .row {
 }
 
 .amazon-text > p {
-  font-family: "SourceSans", "Roboto Slab", Roboto, Helvetica, Arial;
+  font-family: Roboto, Helvetica, Arial;
+  font-size: 16px;
 }
 
 .amazon-h1 > h1 {
