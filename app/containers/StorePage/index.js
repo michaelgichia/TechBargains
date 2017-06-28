@@ -14,6 +14,7 @@ import Col from "react-bootstrap/lib/Col";
 
 import { browserHistory } from "react-router";
 // Material
+import MenuItem from "material-ui/MenuItem";
 import {
   Table,
   TableBody,
@@ -22,33 +23,13 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
-import { doSaveMerchant } from "./actions";
+import { doSaveMerchant, fetchCategories } from "./actions";
 
-const gemsgood = {
-  paper: {
-    padding: 30,
-    marginTop: 30,
-    marginBottom: 30
-  },
-  bodyStyle: {
-    backgroundColor: "rgb(255, 255, 255)",
-    color: "rgba(0, 0, 0, 0.87)",
-    marginBottom: 50
-  },
-  wrapperStyle: {
-    borderWidth: 1,
-    WebkitBorderRadius: 12,
-    borderRadius: 0,
-    boxShadow:
-      "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
-    zIndex: 1
-  }
-};
 
 export class StorePage extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
   state = {
     merchants: [],
+    categories: [],
     merchant: {
       title: "",
       description: "",
@@ -56,6 +37,7 @@ export class StorePage extends React.Component {
       public_id: "",
       backlink: ""
     },
+    category: "",
     isFeatured: false,
     titleError: "",
     descriptionError: "",
@@ -65,7 +47,7 @@ export class StorePage extends React.Component {
   };
 
   componentDidMount() {
-    // Api call to get merchants.
+    this.props.fetchCategories();
     axios.get("/public-api/merchant").then(response => {
       if (response.data.confirmation === "success") {
         this.setState({ merchants: [...response.data.results] });
@@ -139,6 +121,14 @@ export class StorePage extends React.Component {
   handleAbout = about => this.setState({ about });
 
   /**
+   * Update category in the state and clear error.
+  */
+  handleCategory = (e, i, value) => {
+    this.setState({ categoryError: "" });
+    this.setState({ category: value });
+  };
+
+  /**
    * Update the state from user input.
   */
   handleChange = e => {
@@ -184,13 +174,25 @@ export class StorePage extends React.Component {
     if (nextProps.errors !== this.state.errors) {
       this.setState({ errors: nextProps.errors });
     }
+    if (nextProps.categories !== this.state.categories) {
+      this.setState({ categories: nextProps.categories });
+    }
   }
 
   handleRowSelection = selectedRows => {
     const merchantId = this.state.merchants[selectedRows].id;
-    // browserHistory.push(`/dashboard/merchants/${merchantId}`);
     window.location.href = `/dashboard/merchants/${merchantId}`;
   };
+
+  displayCategories = categories => 
+    categories.map(category => 
+      <MenuItem
+        key={category.id}
+        value={category.id}
+        checked={categories && categories.indexOf(category.id) > -1}
+        primaryText={category.name}
+      />
+    );
 
   render() {
     const {
@@ -198,9 +200,12 @@ export class StorePage extends React.Component {
       descriptionError,
       errors,
       isFeatured,
+      categories,
+      category,
       about
     } = this.state;
     const { title, description, imageUrl, backlink } = this.state.merchant;
+    const categoryArray = this.displayCategories(categories);
     return (
       <Grid>
         <Row>
@@ -223,6 +228,9 @@ export class StorePage extends React.Component {
                 onDropChange={this.handleUpload}
                 header="Create Store"
                 backlink={backlink}
+                category={category}
+                onCategoryChange={this.handleCategory}
+                categoryArray={categoryArray}
               />
             </Paper>
           </Col>
@@ -281,14 +289,36 @@ StorePage.propTypes = {
   errors: PropTypes.array.isRequired
 };
 
-const mapStateToProps = ({ panel, merchant }) => ({
-  categories: panel.categories,
-  merchants: panel.merchants,
+const mapStateToProps = ({ merchant }) => ({
+  categories: merchant.categories,
   errors: merchant.errors
 });
 
 const mapDispatchToProps = dispatch => ({
-  doSaveMerchant: merchant => dispatch(doSaveMerchant(merchant))
+  doSaveMerchant: merchant => dispatch(doSaveMerchant(merchant)),
+  fetchCategories: () => dispatch(fetchCategories())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StorePage);
+
+// Styles
+const gemsgood = {
+  paper: {
+    padding: 30,
+    marginTop: 30,
+    marginBottom: 30
+  },
+  bodyStyle: {
+    backgroundColor: "rgb(255, 255, 255)",
+    color: "rgba(0, 0, 0, 0.87)",
+    marginBottom: 50
+  },
+  wrapperStyle: {
+    borderWidth: 1,
+    WebkitBorderRadius: 12,
+    borderRadius: 0,
+    boxShadow:
+      "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
+    zIndex: 1
+  }
+};

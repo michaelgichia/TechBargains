@@ -1,18 +1,20 @@
 import {
-  MERCHANT_RECEIVED_ERROR } from './constants';
+  STORES_CATEGORIES
+  } from './constants';
 
 const initialState = {
   message: '',
   errors: [],
+  categories: []
 };
 
 function storePageReducer(state = initialState, action) {
   switch (action.type) {
 
-    case MERCHANT_RECEIVED_ERROR:
+    case STORES_CATEGORIES.SUCCESS:
       return {
         ...state,
-        errors: action.errors,
+        categories: action.categories,
       };
 
     default:

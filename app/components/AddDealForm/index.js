@@ -76,7 +76,7 @@ class AddDealForm extends React.Component {
         </SelectField>
         <SelectField
           hintText="Sub Category"
-          floatingLabelText="Sub Category"
+          floatingLabelText="Sub Category. Select multiple choices"
           multiple={true}
           id="subCategory"
           value={this.props.subCategory}

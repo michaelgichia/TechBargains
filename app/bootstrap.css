@@ -38,7 +38,7 @@ html {
 .tech {
   background-color: #fff !important;
   min-height: 100vh;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
 }
 
 .description-div {
@@ -213,6 +213,10 @@ html {
 
 .show-info-grid {
   background-color: #fff;
+}
+
+div > .show-info-grid > .row {
+  border-bottom: #e7e7e7 !important;
 }
 
 .show-product-grid {

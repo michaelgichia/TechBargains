@@ -81,6 +81,19 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           <MenuItem value={true} primaryText="Yes" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
+        <SelectField
+          hintText="Category"
+          floatingLabelText="Category. Select multiple choices."
+          multiple={true}
+          id="category"
+          value={this.props.category}
+          onChange={this.props.onCategoryChange}
+          maxHeight={200}
+          fullWidth
+          errorText={this.props.categoryError}
+        >
+          {this.props.categoryArray}
+        </SelectField>
         <br />
         <br />
         <RaisedButton
@@ -109,6 +122,8 @@ StoreForm.propTypes = {
   about: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
   backlink: PropTypes.string.isRequired,
+  categoryArray: PropTypes.array.isRequired,  
+  onCategoryChange: PropTypes.func.isRequired,
 };
 
 export default StoreForm;

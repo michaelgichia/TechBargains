@@ -65,7 +65,7 @@ export class CategoryFrontPage extends React.Component {
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
-          <CategoryInfo title={this.state.info.title} />
+          <CategoryInfo title={`${this.state.info.title} ${"  "} Deals`} />
         </Row>
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
