@@ -12,9 +12,6 @@ router.post("/create", (req, res, next) => {
   req.assert("subCategory", "Sub-Category cannot not be empty").isArray();
   req.assert("category", "Category cannot not be empty").notEmpty();
   req.assert("merchant", "Merchant cannot not be empty").notEmpty();
-  req
-    .assert("public_id", "Upload the image again. Public id is missing")
-    .notEmpty();
   req.assert("tags", "Tags cannot be empty.").isArray();
 
   req.sanitize("name").trim();
@@ -75,9 +72,7 @@ router.put("/update/:itemId", (req, res, next) => {
   req.assert("subCategory", "Sub-Category cannot not be empty").isArray();
   req.assert("category", "Category cannot not be empty").notEmpty();
   req.assert("merchant", "Merchant cannot not be empty").notEmpty();
-  req
-    .assert("public_id", "Upload the image again. Public id is missing")
-    .notEmpty();
+
   req.assert("tags", "Tags cannot be empty.").isArray();
 
   req.sanitize("name").trim();

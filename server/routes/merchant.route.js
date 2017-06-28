@@ -8,9 +8,6 @@ const router = express.Router();
 router.post("/create", (req, res, next) => {
   req.assert("title", "Title must not be empty.").notEmpty();
   req.assert("description", "Description must not be empty").notEmpty();
-  req
-    .assert("public_id", "Upload the image again. Public id is missing")
-    .notEmpty();
 
   req.sanitize("title").trim();
   req.sanitize("description").trim();
@@ -58,9 +55,6 @@ router.put("/update/:merchantId", (req, res, next) => {
   // Check other data
   req.assert("title", "Title must not be empty.").notEmpty();
   req.assert("description", "Description must not be empty").notEmpty();
-  req
-    .assert("public_id", "Upload the image again. Public id is missing")
-    .notEmpty();
 
   req.sanitize("title").trim();
   req.sanitize("description").trim();

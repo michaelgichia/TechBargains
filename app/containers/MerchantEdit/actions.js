@@ -9,6 +9,8 @@ import {
   fetchAPI,
   createAPI,
   MerchantEdit,
+  fetctCategoriesAPI,
+  MERCHANT_EDIT_CATEGORIES,
 } from './constants';
 
 export const postMerchant = (merchantId, merchant) => (dispatch) => {
@@ -39,3 +41,19 @@ export const fetchMerchant = (merchantId) => (dispatch) => {
     }
   });
 }
+
+export const fetchCategories = () => dispatch => {
+  axios.get(fetctCategoriesAPI).then(response => {
+    if (response.data.confirmation === "success") {
+      dispatch({
+        type: MERCHANT_EDIT_CATEGORIES.SUCCESS,
+        categories: response.data.results
+      });
+    } else {
+      dispatch({
+        type: "FLASH_MESSAGE_OPEN",
+        errors: response.data.errors.message
+      });
+    }
+  });
+};

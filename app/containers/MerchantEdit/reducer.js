@@ -6,11 +6,13 @@
 
 import {
   MerchantEdit,
+  MERCHANT_EDIT_CATEGORIES
 } from './constants';
 
 const initialState = {
   isFeatured: null,
   about: '',
+  categories: [],
   merchant: {},
 };
 
@@ -23,6 +25,12 @@ function merchantEditReducer(state = initialState, action) {
         isFeatured: action.merchant.isFeatured,
         about: action.merchant.about,
         merchant: action.merchant
+      };
+
+    case MERCHANT_EDIT_CATEGORIES.SUCCESS:
+      return {
+        ...state,
+        categories: action.categories,
       };
 
     default:

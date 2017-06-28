@@ -58,6 +58,7 @@ class StoreForm extends React.PureComponent {
         >
           <p>{this.props.imageUrl}</p>
         </Dropzone>
+        <br/>
         <TextField
           hintText="Description"
           id="description"
@@ -89,9 +90,10 @@ class StoreForm extends React.PureComponent {
           <MenuItem value={true} primaryText="Yes" />
           <MenuItem value={false} primaryText="No" />
         </SelectField>
+        <br/>
         <SelectField
-          hintText="Category"
-          floatingLabelText="Category. Select multiple choices."
+          hintText="Categories: select multiple choices"
+          floatingLabelText="Categories: select multiple choices"
           multiple={true}
           id="category"
           value={this.props.category}

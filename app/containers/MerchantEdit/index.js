@@ -8,8 +8,6 @@ import React from "react";
 import StoreForm from "components/StoreForm";
 import validator from "validator";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { browserHistory } from "react-router";
 import sha1 from "sha1";
 import superagent from "superagent";
 import Grid from "react-bootstrap/lib/Grid";
@@ -19,8 +17,10 @@ import Col from "react-bootstrap/lib/Col";
 import axios from "axios";
 // Material-ui
 import Paper from "material-ui/Paper";
+import MenuItem from "material-ui/MenuItem";
+
 import Auth from "../Utils";
-import { postMerchant, fetchMerchant } from "./actions";
+import { postMerchant, fetchMerchant, fetchCategories } from "./actions";
 
 // Token
 const token = `bearer ${Auth.getToken()}`;
@@ -36,6 +36,8 @@ export class MerchantEdit extends React.Component {
       public_id: "",
       backlink: ""
     },
+    categories: [],
+    category: [],
     isFeatured: false,
     about: "",
     titleError: "",
@@ -47,12 +49,15 @@ export class MerchantEdit extends React.Component {
   componentDidMount() {
     const { merchantId } = this.props.params;
     this.props.fetchMerchant(merchantId);
-    this.setState({ merchantId });
+    this.props.fetchCategories();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.merchant !== this.state.merchant) {
       this.setState(() => ({ merchant: nextProps.merchant }));
+    }
+    if (nextProps.categories !== this.state.categories) {
+      this.setState(() => ({ categories: nextProps.categories }));
     }
     if (nextProps.isFeatured !== this.state.isFeatured) {
       this.setState(() => ({ isFeatured: nextProps.isFeatured }));
@@ -147,8 +152,16 @@ export class MerchantEdit extends React.Component {
   handleAbout = about => this.setState({ about });
 
   updateMerchant = merchant => {
-    const { merchantId } = this.state;
+    const { merchantId } = this.props.params;
     this.props.postMerchant(merchantId, merchant);
+  };
+
+  /**
+   * Update category in the state and clear error.
+  */
+  handleCategory = (e, i, value) => {
+    this.setState({ categoryError: "" });
+    this.setState({ category: value });
   };
 
   /**
@@ -166,6 +179,7 @@ export class MerchantEdit extends React.Component {
       const merchant = {
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
+        category: this.state.category,
         about: this.state.about
       };
       this.updateMerchant(merchant);
@@ -173,20 +187,33 @@ export class MerchantEdit extends React.Component {
     }
   };
 
+  displayCategories = categories =>
+    categories.map(category =>
+      <MenuItem
+        key={category.id}
+        value={category.id}
+        checked={categories && categories.indexOf(category.id) > -1}
+        primaryText={category.name}
+      />
+    );
+
   render() {
     const {
       titleError,
       descriptionError,
       errors,
       isFeatured,
+      category,
+      categories,
       about
     } = this.state;
     const { title, description, imageUrl, backlink } = this.state.merchant;
+    const categoryArray = this.displayCategories(categories);
     return (
       <Grid>
         <Row>
           <Col xs={12} md={10} mdPush={1}>
-            <Paper zDepth={5} rounded={false} style={gems6.paper}>
+            <Paper zDepth={2} rounded={false} style={gems6.paper}>
               <StoreForm
                 onChange={this.handleChange}
                 onClick={this.handleSubmit}
@@ -203,6 +230,9 @@ export class MerchantEdit extends React.Component {
                 onFeaturedChange={this.handleIsFeatured}
                 onDropChange={this.handleUpload}
                 backlink={backlink}
+                category={category}
+                onCategoryChange={this.handleCategory}
+                categoryArray={categoryArray}
               />
             </Paper>
           </Col>
@@ -217,13 +247,15 @@ MerchantEdit.propTypes = {};
 const mapStateToProps = ({ merchantEdit }) => ({
   merchant: merchantEdit.merchant,
   isFeatured: merchantEdit.isFeatured,
-  about: merchantEdit.about
+  about: merchantEdit.about,
+  categories: merchantEdit.categories
 });
 
 const mapDispatchToProps = dispatch => ({
   postMerchant: (merchantId, merchant) =>
     dispatch(postMerchant(merchantId, merchant)),
-  fetchMerchant: merchantId => dispatch(fetchMerchant(merchantId))
+  fetchMerchant: merchantId => dispatch(fetchMerchant(merchantId)),
+  fetchCategories: () => dispatch(fetchCategories())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MerchantEdit);
