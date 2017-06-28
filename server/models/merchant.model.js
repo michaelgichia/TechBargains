@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const autopopulate = require("mongoose-autopopulate");
+
 
 const MerchantSchema = new Schema({
   title: {
@@ -40,8 +42,17 @@ const MerchantSchema = new Schema({
   isFeatured: {
     type: Boolean,
     default: false
-  }
+  },
+  category: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      autopopulate: true,
+    }
+  ],
 });
+
+MerchantSchema.plugin(autopopulate);
 
 MerchantSchema.methods.summary = function() {
   // eslint-disable-line
@@ -54,6 +65,7 @@ MerchantSchema.methods.summary = function() {
     isFeatured: this.isFeatured,
     description: this.description,
     about: this.about,
+    category: this.category,
     public_id: this.public_id
   };
 

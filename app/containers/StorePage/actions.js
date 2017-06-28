@@ -27,7 +27,6 @@ export const doSaveMerchant = merchant => dispatch => {
 
 export const fetchCategories = () => dispatch => {
   axios.get(fetctCategoriesAPI).then(response => {
-    console.log({response: response.data})
     if (response.data.confirmation === "success") {
       dispatch({
         type: STORES_CATEGORIES.SUCCESS,

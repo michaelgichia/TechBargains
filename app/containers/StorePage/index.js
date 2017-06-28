@@ -25,7 +25,6 @@ import {
 } from "material-ui/Table";
 import { doSaveMerchant, fetchCategories } from "./actions";
 
-
 export class StorePage extends React.Component {
   state = {
     merchants: [],
@@ -37,7 +36,7 @@ export class StorePage extends React.Component {
       public_id: "",
       backlink: ""
     },
-    category: "",
+    category: [],
     isFeatured: false,
     titleError: "",
     descriptionError: "",
@@ -163,6 +162,7 @@ export class StorePage extends React.Component {
       const merchant = {
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
+        category: this.state.category,
         about: this.state.about
       };
       this.props.doSaveMerchant(merchant);
@@ -184,8 +184,8 @@ export class StorePage extends React.Component {
     window.location.href = `/dashboard/merchants/${merchantId}`;
   };
 
-  displayCategories = categories => 
-    categories.map(category => 
+  displayCategories = categories =>
+    categories.map(category =>
       <MenuItem
         key={category.id}
         value={category.id}

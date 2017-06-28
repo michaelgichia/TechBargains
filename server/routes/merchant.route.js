@@ -19,6 +19,9 @@ router.post("/create", (req, res, next) => {
   req.sanitize("isFeatured").trim();
   req.sanitize("about").trim();
   req.sanitize("public_id").trim();
+  for (const i in req.body.category) {
+    req.sanitize(i).trim();
+  }
 
   // Errors
   const errors = req.validationErrors();
@@ -66,6 +69,9 @@ router.put("/update/:merchantId", (req, res, next) => {
   req.sanitize("isFeatured").trim();
   req.sanitize("about").trim();
   req.sanitize("public_id").trim();
+  for (const i in req.body.category) {
+    req.sanitize(i).trim();
+  }
 
   // Errors
   const errors = req.validationErrors();

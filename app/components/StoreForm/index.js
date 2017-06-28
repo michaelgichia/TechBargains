@@ -1,28 +1,36 @@
-import React from 'react';
+import React from "react";
 import ReactEditor from "components/ReactEditor";
-import PropTypes from 'prop-types';
-import Dropzone from 'react-dropzone'
-import shortid from 'shortid';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import Subheader from 'material-ui/Subheader';
+import PropTypes from "prop-types";
+import Dropzone from "react-dropzone";
+import shortid from "shortid";
+import TextField from "material-ui/TextField";
+import RaisedButton from "material-ui/RaisedButton";
+import Subheader from "material-ui/Subheader";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
 const styles = {
   toggle: {
-    marginBottom: 16,
-  },
+    marginBottom: 16
+  }
 };
 
-class StoreForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class StoreForm extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <ul style={{ listStyle: 'none' }}>
-          {this.props.errors && this.props.errors.map((error) => <li key={shortid.generate()}> <p>{ error }</p> </li>)}
+        <ul style={{ listStyle: "none" }}>
+          {this.props.errors &&
+            this.props.errors.map(error =>
+              <li key={shortid.generate()}> <p>{error}</p> </li>
+            )}
         </ul>
-        <Subheader style={{ fontSize: 24, textAlign: 'center', color: 'black' }}>{this.props.header}</Subheader>
+        <Subheader
+          style={{ fontSize: 24, textAlign: "center", color: "black" }}
+        >
+          {this.props.header}
+        </Subheader>
         <TextField
           hintText="Title"
           id="title"
@@ -41,13 +49,13 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
           fullWidth
           value={this.props.backlink}
         />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <Dropzone
           onDrop={this.props.onDropChange}
           className="redux-dropzone"
           multiple={false}
-          >
+        >
           <p>{this.props.imageUrl}</p>
         </Dropzone>
         <TextField
@@ -96,11 +104,7 @@ class StoreForm extends React.PureComponent { // eslint-disable-line react/prefe
         </SelectField>
         <br />
         <br />
-        <RaisedButton
-          label="Submit"
-          primary
-          onClick={this.props.onClick}
-        />
+        <RaisedButton label="Submit" primary onClick={this.props.onClick} />
       </div>
     );
   }
@@ -122,8 +126,8 @@ StoreForm.propTypes = {
   about: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
   backlink: PropTypes.string.isRequired,
-  categoryArray: PropTypes.array.isRequired,  
-  onCategoryChange: PropTypes.func.isRequired,
+  categoryArray: PropTypes.array.isRequired,
+  onCategoryChange: PropTypes.func.isRequired
 };
 
 export default StoreForm;

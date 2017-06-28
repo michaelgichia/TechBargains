@@ -12,6 +12,7 @@ import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 import axios from "axios";
+import shortid from "shortid";
 // Material-ui
 import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
@@ -34,7 +35,8 @@ export class MerchantDetail extends React.Component {
       id: "",
       imageUrl: "",
       about: "",
-      public_id: ""
+      public_id: "",
+      category: []
     },
     isFeatured: false,
     errors: ""
@@ -93,7 +95,8 @@ export class MerchantDetail extends React.Component {
       description,
       imageUrl,
       about,
-      public_id
+      public_id,
+      category
     } = this.state.merchantData;
     const { isFeatured } = this.state;
     return (
@@ -119,6 +122,14 @@ export class MerchantDetail extends React.Component {
               </CardText>
               <CardText>
                 {`Featured: ${isFeatured}`}
+              </CardText>
+              <CardText>
+                <CouponHeader title="Categories" />
+                <ul>
+                  {category.map(cat =>
+                    <li key={shortid.generate()}>{cat.name}</li>
+                  )}
+                </ul>
               </CardText>
               <CardText>
                 <CouponHeader title={`About ${title}`} />
@@ -161,10 +172,6 @@ export class MerchantDetail extends React.Component {
 
 MerchantDetail.propTypes = {
   params: PropTypes.object.isRequired
-};
-
-MerchantDetail.defaultProps = {
-  merchantId: "#"
 };
 
 export default MerchantDetail;
