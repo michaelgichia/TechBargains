@@ -17,9 +17,7 @@ import {
 import axios from "axios";
 
 export const fetchFeaturedCategoryStores = categoryId => dispatch => {
-  console.log({categoryId, fetchFeaturedStoresAPI})
   axios.get(`${fetchFeaturedStoresAPI}/${categoryId}`).then(response => {
-    console.log({response: response.data})
     if (response.data.confirmation === "success") {
       dispatch({
         type: CATEGORY_FEATURED_STORES.SUCCESS,
