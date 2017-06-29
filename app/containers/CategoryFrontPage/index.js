@@ -26,7 +26,6 @@ import {
 } from "./actions";
 
 export class CategoryFrontPage extends React.Component {
-
   state = {
     deals: [],
     coupons: [],
@@ -102,7 +101,12 @@ export class CategoryFrontPage extends React.Component {
                 </ul>
               </CloudinaryContext>
               <div>
-                <CouponHeader title={`${this.state.info.title} ${"  "} Coupons`} />
+                {this.state.coupons.length > 0
+                  ? <CouponHeader
+                      title={`${this.state.info.title} ${"  "} Coupons`}
+                    />
+                  : <div />}
+
                 <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
                   {this.state.coupons.map(coupon =>
                     <li key={shortid.generate()}>
@@ -117,7 +121,10 @@ export class CategoryFrontPage extends React.Component {
             </Col>
             <CategoryProfile info={this.state.info} />
             <CloudinaryContext cloudName="dw3arrxnf">
-              <CategoryFeaturedStore stores={this.state.featuredCategoryStores} />
+              <CategoryFeaturedStore
+                title={this.state.info.title}
+                stores={this.state.featuredCategoryStores}
+              />
             </CloudinaryContext>
           </Row>
         </div>
@@ -141,7 +148,8 @@ const mapDispatchToProps = dispatch => ({
   fetchCategoryCoupons: categoryId =>
     dispatch(fetchCategoryCoupons(categoryId)),
   fetchCategoryInfo: categoryId => dispatch(fetchCategoryInfo(categoryId)),
-  fetchFeaturedCategoryStores: categoryId => dispatch(fetchFeaturedCategoryStores(categoryId)),
+  fetchFeaturedCategoryStores: categoryId =>
+    dispatch(fetchFeaturedCategoryStores(categoryId)),
   handleOpenModal: product => dispatch(handleOpenModal(product))
 });
 
