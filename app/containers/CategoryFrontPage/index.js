@@ -10,7 +10,6 @@ import CouponHeader from "components/CouponHeader";
 import Disclaimer from "components/Disclaimer";
 import MerchantCoupon from "components/MerchantCoupon";
 import CategoryProfile from "components/CategoryProfile";
-import CategoryInfo from "components/CategoryInfo";
 import CategoryFeaturedStore from "components/CategoryFeaturedStore";
 import shortid from "shortid";
 import Grid from "react-bootstrap/lib/Grid";
@@ -85,7 +84,9 @@ export class CategoryFrontPage extends React.Component {
     return (
       <Grid fluid className="categories-grid">
         <Row className="categories-info-grid">
-          <CategoryInfo title={`${this.state.info.title} ${"  "} Deals`} />
+          <div className="categories-info">
+            <h1>{`${this.state.info.title} ${"  "} Deals`}</h1>
+          </div>
         </Row>
         <div className="categories-product-grid">
           <Row>
