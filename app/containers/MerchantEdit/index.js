@@ -37,6 +37,7 @@ export class MerchantEdit extends React.Component {
       backlink: ""
     },
     categories: [],
+    dropzoneHint: "Click or Drop files to upload",
     category: [],
     isFeatured: false,
     about: "",
@@ -84,23 +85,19 @@ export class MerchantEdit extends React.Component {
     const cloudName = "dw3arrxnf";
     const timestamp = Date.now() / 1000;
     const uploadPreset = "d9s7ezzn";
-    const paramsStr =
-      "timestamp=" +
-      timestamp +
-      "&upload_preset=" +
-      uploadPreset +
-      "wEvwDjpdDR5I_mMSdD55EaLNXOI";
+    const paramsStr = `timestamp=${timestamp}&upload_preset=${uploadPreset}wEvwDjpdDR5I_mMSdD55EaLNXOI`;
     const signature = sha1(paramsStr);
-    const url =
-      "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
     const params = {
       api_key: "217319541859423",
       timestamp: timestamp,
       upload_preset: uploadPreset,
       signature: signature
     };
-    updateMerchant.imageUrl = "uploading image...";
-    this.setState((prevState, props) => ({ merchant: updateMerchant }));
+
+
+    this.setState({ dropzoneHint: "uploading image...." });
+
     let uploadRequest = superagent.post(url);
     uploadRequest.attach("file", image);
     Object.keys(params).forEach(key => {
@@ -114,10 +111,11 @@ export class MerchantEdit extends React.Component {
         return;
       }
       console.info("uploading completed...");
+
       const newImage = { ...this.state.merchant };
       newImage.imageUrl = resp.body.secure_url;
       newImage.public_id = resp.body.public_id;
-      this.setState((prevState, props) => ({ merchant: newImage }));
+      this.setState({ merchant: newImage, dropzoneHint: "Uploading completed"});
     });
   };
 
@@ -201,7 +199,8 @@ export class MerchantEdit extends React.Component {
       isFeatured,
       category,
       categories,
-      about
+      about,
+      dropzoneHint
     } = this.state;
     const { title, description, imageUrl, backlink } = this.state.merchant;
     const categoryArray = this.displayCategories(categories);
@@ -229,6 +228,7 @@ export class MerchantEdit extends React.Component {
                 category={category}
                 onCategoryChange={this.handleCategory}
                 categoryArray={categoryArray}
+                dropzoneHint={dropzoneHint}
               />
             </Paper>
           </Col>

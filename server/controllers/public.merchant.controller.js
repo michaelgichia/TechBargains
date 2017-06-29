@@ -70,7 +70,6 @@ const findCategoryFeaturedStores = subCategoryId =>
     Merchant.find({ subCategory:  subCategoryId })
       .sort("-createdAt")
       .limit(12)
-      .select("title public_id _id")
       .exec((err, stores) => {
         if (err) {
           reject(err);

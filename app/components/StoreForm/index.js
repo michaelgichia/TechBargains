@@ -50,15 +50,15 @@ class StoreForm extends React.PureComponent {
           value={this.props.backlink}
         />
         <br />
-        <br />
         <Dropzone
           onDrop={this.props.onDropChange}
           className="redux-dropzone"
           multiple={false}
-        >
+          name="Click or Drop files to upload"
+        > 
+          <label className="dropzone-hint-text">{this.props.dropzoneHint}</label>
           <p>{this.props.imageUrl}</p>
         </Dropzone>
-        <br/>
         <TextField
           hintText="Description"
           id="description"
@@ -122,14 +122,15 @@ StoreForm.propTypes = {
   errors: PropTypes.array.isRequired,
   header: PropTypes.string.isRequired,
   onFeaturedChange: PropTypes.func.isRequired,
-  imageUrl: PropTypes.string.isRequired,
   toggled: PropTypes.bool.isRequired,
   onAboutChange: PropTypes.func.isRequired,
   about: PropTypes.string.isRequired,
   onDropChange: PropTypes.func.isRequired,
   backlink: PropTypes.string.isRequired,
   categoryArray: PropTypes.array.isRequired,
-  onCategoryChange: PropTypes.func.isRequired
+  onCategoryChange: PropTypes.func.isRequired,
+  dropzoneHint: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired
 };
 
 export default StoreForm;
