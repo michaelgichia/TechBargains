@@ -5093,7 +5093,7 @@ tbody.collapse.in {
 .caret:hover,
 .caret:focus,
 .caret:active {
-  color:  #00FF00;
+  color: #00FF00;
 }
 
 .caret {
@@ -6146,7 +6146,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding: 5px 10px;
   }
 }
+
+
 /*rgba(47, 255, 0, 0.15)*/
+
 .navbar-form {
   padding: 10px 15px;
   margin-top: 8px;
@@ -6315,7 +6318,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color:  #00FF00;
+  color: #00FF00;
   background-color: transparent;
 }
 
@@ -6367,7 +6370,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color:  #00FF00;
+    color: #00FF00;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,

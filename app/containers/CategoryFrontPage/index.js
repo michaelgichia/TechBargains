@@ -4,9 +4,10 @@
  *
  */
 
-import React, { PropTypes } from "react";
+import React from "react";
 import ProductDetail from "components/ProductDetail";
 import CouponHeader from "components/CouponHeader";
+import Disclaimer from "components/Disclaimer";
 import MerchantCoupon from "components/MerchantCoupon";
 import CategoryProfile from "components/CategoryProfile";
 import CategoryInfo from "components/CategoryInfo";
@@ -25,6 +26,8 @@ import {
   fetchLatestCategories,
   fetchFeaturedCategoryStores
 } from "./actions";
+
+import "!!style-loader!css-loader!./style.css";
 
 export class CategoryFrontPage extends React.Component {
   state = {
@@ -79,15 +82,14 @@ export class CategoryFrontPage extends React.Component {
   }
 
   render() {
-    console.log({state: this.state})
     return (
-      <Grid fluid className="show-grid">
-        <Row className="show-info-grid">
+      <Grid fluid className="categories-grid">
+        <Row className="categories-info-grid">
           <CategoryInfo title={`${this.state.info.title} ${"  "} Deals`} />
         </Row>
-        <div className="show-product-grid">
-          <Row className="show-dealss-grid">
-            <Col id="merchant-id" xs={12} sm={12} md={12} lg={8}>
+        <div className="categories-product-grid">
+          <Row>
+            <Col id="categories-first-wrapper" xs={12} sm={12} md={12} lg={8}>
               <CloudinaryContext cloudName="dw3arrxnf">
                 <ul
                   style={{
@@ -128,13 +130,31 @@ export class CategoryFrontPage extends React.Component {
                 </ul>
               </div>
             </Col>
-            <CategoryProfile info={this.state.info} />
-            <CloudinaryContext cloudName="dw3arrxnf">
-              <CategoryFeaturedStore
-                title={this.state.info.title}
-                stores={this.state.featuredCategoryStores}
-              />
-            </CloudinaryContext>
+            <Col id="categories-second-wrapper" xs={12} sm={12} md={12} lg={4}>
+              <CategoryProfile info={this.state.info} />
+              <CloudinaryContext cloudName="dw3arrxnf">
+                <CategoryFeaturedStore
+                  title={this.state.info.title}
+                  stores={this.state.featuredCategoryStores}
+                />
+              </CloudinaryContext>
+              <Disclaimer />
+              <ul className="categories-store-header">
+                <li>
+                  <h2>DISCOVER NEW CATEGORIES</h2>
+                </li>
+              </ul>
+              <div className="categories-store-link">
+                {this.state.latestCategories.map(store =>
+                  <a
+                    key={shortid.generate()}
+                    href={`/merchant/${store._id.toString()}`}
+                  >
+                    {store.name}
+                  </a>
+                )}
+              </div>
+            </Col>
           </Row>
         </div>
       </Grid>

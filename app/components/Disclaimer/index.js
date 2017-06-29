@@ -5,15 +5,17 @@
 */
 
 import React from 'react';
-import CouponHeader from "components/CouponHeader";
-// import styled from 'styled-components';
-
+import "!!style-loader!css-loader!./style.css";
 
 class Disclaimer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div style={{ marginBottom: 20 }}>
-        <CouponHeader title="DISCLAIMER" />
+        <ul className="disclaim-store-header">
+            <li>
+              <h2>DISCLAIMER</h2>
+            </li>
+        </ul>
         <p>If you click a merchant link and buy a product or service on their website, we may be paid a fee by the merchant.</p>
       </div>
     );

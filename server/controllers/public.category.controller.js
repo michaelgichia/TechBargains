@@ -58,7 +58,7 @@ const findLatestCategories = params =>
     Category.find()
       .sort("-createdAt")
       .limit(10)
-      .select("title _id")
+      .select("name _id")
       .exec((err, stores) => {
         if (err) {
           reject(err);

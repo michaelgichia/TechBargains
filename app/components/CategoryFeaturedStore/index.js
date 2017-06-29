@@ -5,7 +5,6 @@
 */
 
 import React from "react";
-import Col from "react-bootstrap/lib/Col";
 import shortid from "shortid";
 import { Image, Transformation } from "cloudinary-react";
 import "!!style-loader!css-loader!./style.css";
@@ -42,7 +41,7 @@ class CategoryFeaturedStore extends React.PureComponent {
       }
     });
     return (
-      <Col xs={12} sm={12} md={12} lg={4}>
+      <div>
         <section className="featured-store-wrapper">
           {this.props.stores.length > 0
             ? <ul className="category-store-header">
@@ -60,7 +59,7 @@ class CategoryFeaturedStore extends React.PureComponent {
             {this.handleStoreWithoutImage(wthoutImage)}
           </div>
         </section>
-      </Col>
+      </div>
     );
   }
 }
