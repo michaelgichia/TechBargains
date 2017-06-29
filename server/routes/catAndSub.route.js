@@ -109,6 +109,23 @@ router.get("/latest-stores", (req, res) => {
     });
 });
 
+router.get("/latest-categories", (req, res) => {
+  categoryController
+    .findLatestCategories(req.query, false)
+    .then(entities => {
+      res.json({
+        confirmation: "success",
+        results: entities
+      });
+    })
+    .catch(errors => {
+      res.json({
+        confirmation: "fail",
+        errors: errorsHandler(errors)
+      });
+    });
+});
+
 router.get("/category-featured-stores/:categoryId", (req, res) => {
   const { categoryId } = req.params;
 

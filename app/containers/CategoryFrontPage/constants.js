@@ -14,6 +14,7 @@ export const dealsBaseAPI = '/public-api/all/specific-category';
 export const couponsBaseAPI = '/public-api/all/category-coupons';
 export const fetchFeaturedStoresAPI = '/public-api/all/category-featured-stores';
 export const infoBaseAPI = '/public-api/subcategory';
+export const fetchLatestCategoryAPI = '/public-api/all/latest-categories';
 
 
 // Action types
@@ -21,4 +22,6 @@ export const CATEGORY_ITEMS = asyncActionType('CATEGORY_ITEMS');
 export const CATEGORY_COUPONS = asyncActionType('CATEGORY_COUPONS');
 export const CATEGORY_INFO = asyncActionType('CATEGORY_INFO');
 export const CATEGORY_FEATURED_STORES = asyncActionType('CATEGORY_FEATURED_STORES');
+export const LATEST_CATEGORIES = asyncActionType('LATEST_CATEGORIES');
+
 

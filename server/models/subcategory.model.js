@@ -18,6 +18,9 @@ const SubCategorySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Category"
   }
+},
+{
+  timestamps: true
 });
 
 SubCategorySchema.methods.summary = function() {

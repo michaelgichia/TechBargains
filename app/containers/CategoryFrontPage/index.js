@@ -22,6 +22,7 @@ import {
   fetchCategoryInfo,
   fetchCategoryDeals,
   fetchCategoryCoupons,
+  fetchLatestCategories,
   fetchFeaturedCategoryStores
 } from "./actions";
 
@@ -30,6 +31,7 @@ export class CategoryFrontPage extends React.Component {
     deals: [],
     coupons: [],
     featuredCategoryStores: [],
+    latestCategories: [],
     info: {
       title: "",
       about: ""
@@ -43,6 +45,7 @@ export class CategoryFrontPage extends React.Component {
     this.props.fetchCategoryCoupons(categoryId);
     this.props.fetchCategoryInfo(categoryId);
     this.props.fetchFeaturedCategoryStores(categoryId);
+    this.props.fetchLatestCategories();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,6 +62,11 @@ export class CategoryFrontPage extends React.Component {
         featuredCategoryStores: nextProps.featuredCategoryStores
       }));
     }
+    if (nextProps.latestCategories !== this.state.latestCategories) {
+      this.setState((prevState, props) => ({
+        latestCategories: nextProps.latestCategories
+      }));
+    }
     if (nextProps.info !== this.state.info) {
       const updatedInfo = { ...this.state.info };
       updatedInfo.title = nextProps.info.title;
@@ -71,6 +79,7 @@ export class CategoryFrontPage extends React.Component {
   }
 
   render() {
+    console.log({state: this.state})
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -139,6 +148,7 @@ const mapStateToProps = ({ categoryFront }) => ({
   deals: categoryFront.deals,
   coupons: categoryFront.coupons,
   featuredCategoryStores: categoryFront.featuredCategoryStores,
+  latestCategories: categoryFront.latestCategories,
   info: categoryFront.info,
   errors: categoryFront.errors
 });
@@ -150,6 +160,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCategoryInfo: categoryId => dispatch(fetchCategoryInfo(categoryId)),
   fetchFeaturedCategoryStores: categoryId =>
     dispatch(fetchFeaturedCategoryStores(categoryId)),
+  fetchLatestCategories: () => dispatch(fetchLatestCategories()),
   handleOpenModal: product => dispatch(handleOpenModal(product))
 });
 

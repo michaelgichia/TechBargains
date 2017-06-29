@@ -44,11 +44,15 @@ class CategoryFeaturedStore extends React.PureComponent {
     return (
       <Col xs={12} sm={12} md={12} lg={4}>
         <section className="featured-store-wrapper">
-          <ul className="category-store-header">
-            <li>
-              <h2>{`FEATURED ${this.props.title} STORES`}</h2>
-            </li>
-          </ul>
+          {this.props.stores.length > 0
+            ? <ul className="category-store-header">
+                  <li>
+                    <h2>{`FEATURED ${this.props.title} STORES`}</h2>
+                  </li>
+              </ul>
+            : <div />
+
+          }
           <div className="featured-store-images-wrapper">
             {this.handleStoreWithImages(withImage)}
           </div>

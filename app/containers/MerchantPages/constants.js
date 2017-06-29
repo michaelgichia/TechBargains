@@ -14,7 +14,7 @@ const asyncActionType = (type) => ({
 export const dealsBaseAPI = '/public-api/all/specific-stores';
 export const couponBaseAPI = '/public-api/all/specific-coupons';
 export const infoBaseAPI = '/public-api/merchant';
-export const fetchLatestStoreAPI = '/public-api/all//latest-stores';
+export const fetchLatestStoreAPI = '/public-api/all/latest-stores';
 
 
 // Action types

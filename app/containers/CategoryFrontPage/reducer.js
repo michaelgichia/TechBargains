@@ -4,12 +4,13 @@
  *
  */
 
-import { CATEGORY_ITEMS, CATEGORY_COUPONS, CATEGORY_INFO, CATEGORY_FEATURED_STORES } from "./constants";
+import { CATEGORY_ITEMS, CATEGORY_COUPONS, CATEGORY_INFO, CATEGORY_FEATURED_STORES, LATEST_CATEGORIES } from "./constants";
 
 const initialState = {
   deals: [],
   coupons: [],
   featuredCategoryStores: [],
+  latestCategories: [],
   info: {
     title: ""
   },
@@ -41,6 +42,12 @@ function categoryFrontPageReducer(state = initialState, action) {
       return {
         ...state,
         featuredCategoryStores: action.featuredCategoryStores
+      };
+
+    case LATEST_CATEGORIES.SUCCESS:
+      return {
+        ...state,
+        latestCategories: action.latestCategories
       };
 
     default:

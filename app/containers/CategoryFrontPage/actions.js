@@ -9,10 +9,12 @@ import {
   couponsBaseAPI,
   infoBaseAPI,
   fetchFeaturedStoresAPI,
+  fetchLatestCategoryAPI,
   CATEGORY_INFO,
   CATEGORY_ITEMS,
-  CATEGORY_FEATURED_STORES,
-  CATEGORY_COUPONS
+  CATEGORY_COUPONS,
+  LATEST_CATEGORIES,
+  CATEGORY_FEATURED_STORES
 } from "./constants";
 import axios from "axios";
 
@@ -79,3 +81,19 @@ export const fetchCategoryInfo = categoryId => dispatch => {
     }
   });
 };
+
+export const fetchLatestCategories = () => dispatch => {
+  axios.get(fetchLatestCategoryAPI).then(response => {
+    if (response.data.confirmation === "success") {
+      dispatch({
+        type: LATEST_CATEGORIES.SUCCESS,
+        latestCategories: response.data.results
+      });
+    } else {
+      dispatch({
+        type: "FLASH_MESSAGE_OPEN",
+        errors: response.data.errors.message
+      });
+    }
+  });
+}

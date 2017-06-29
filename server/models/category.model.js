@@ -18,6 +18,9 @@ const CategorySchema = new Schema({
     type: Boolean,
     default: false
   }
+},
+{
+  timestamps: true
 });
 
 CategorySchema.methods.summary = function() {
