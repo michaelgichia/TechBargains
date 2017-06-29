@@ -1,12 +1,18 @@
-@media (min-width: 768px) {
+.bottom-wrapper > p {
+  margin: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .bottom-wrapper  {
+    margin: 10px !important;
+  }
   .bottom-wrapper > p {
-    margin: 0px !important;
+    font-size: 12px;
   }
 }
 
 .bottom-wrapper {
   margin-top: 20px;
-  margin-bottom: 0px;
   color: #b0b0b0;
   font-family: Helvetica, Arial, Roboto, serif;
 }

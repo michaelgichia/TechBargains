@@ -28,7 +28,6 @@ import {
 
 import "!!style-loader!css-loader!./style.css";
 
-
 export class MerchantPages extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   state = {
@@ -95,7 +94,7 @@ export class MerchantPages extends React.Component {
                 )}
               </ul>
               {this.state.merchandize !== null &&
-                this.state.merchandize.length > 0
+              this.state.merchandize.length > 0
                 ? <CouponHeader title={`${this.state.info.title} Deals`} />
                 : ""}
               <CloudinaryContext cloudName="dw3arrxnf">
@@ -120,15 +119,20 @@ export class MerchantPages extends React.Component {
                 </ul>
               </CloudinaryContext>
             </Col>
-            <MerchantProfile info={this.state.info} />
-            <Col xs={12} sm={12} md={12} lgOffset={8} lg={4}>
+            <Col xs={12} sm={12} md={12} lg={4}>
+              <MerchantProfile info={this.state.info} />
               <Disclaimer />
-            </Col>
-            <Col xs={12} sm={12} md={12} lgOffset={8} lg={4}>
               <CouponHeader title="DISCOVER NEW STORES" />
               <ul className="latest-stores">
                 {this.state.latestStores.map(store =>
-                  <li key={shortid.generate()}><a href={`/merchant/${store._id.toString()}`} target="_self">{store.title}</a></li>
+                  <li key={shortid.generate()}>
+                    <a
+                      href={`/merchant/${store._id.toString()}`}
+                      target="_self"
+                    >
+                      {store.title}
+                    </a>
+                  </li>
                 )}
               </ul>
             </Col>
