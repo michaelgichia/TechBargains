@@ -10,6 +10,7 @@ import CouponHeader from "components/CouponHeader";
 import MerchantCoupon from "components/MerchantCoupon";
 import CategoryProfile from "components/CategoryProfile";
 import CategoryInfo from "components/CategoryInfo";
+import CategoryFeaturedStore from "components/CategoryFeaturedStore";
 import shortid from "shortid";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
@@ -71,7 +72,6 @@ export class CategoryFrontPage extends React.Component {
   }
 
   render() {
-    console.log({Stores: this.state.featuredCategoryStores})
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -116,6 +116,9 @@ export class CategoryFrontPage extends React.Component {
               </div>
             </Col>
             <CategoryProfile info={this.state.info} />
+            <CloudinaryContext cloudName="dw3arrxnf">
+              <CategoryFeaturedStore stores={this.state.featuredCategoryStores} />
+            </CloudinaryContext>
           </Row>
         </div>
       </Grid>
