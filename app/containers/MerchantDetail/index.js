@@ -25,7 +25,6 @@ const token = `bearer ${Auth.getToken()}`;
 axios.defaults.headers.common.Authorization = token;
 
 export class MerchantDetail extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
 
   state = {
     merchantId: "",
@@ -36,7 +35,7 @@ export class MerchantDetail extends React.Component {
       imageUrl: "",
       about: "",
       public_id: "",
-      category: []
+      subCategory: []
     },
     isFeatured: false,
     errors: ""
@@ -60,14 +59,12 @@ export class MerchantDetail extends React.Component {
 
   handleAdd = () => {
     const url = "/dashboard/merchants";
-    // browserHistory.push(url);
     window.location.href = url;
   };
 
   handleEdit = () => {
     const { merchantId } = this.state;
     const url = `/dashboard/merchants/${merchantId}/update`;
-    // browserHistory.push(url);
     window.location.href = url;
   };
 
@@ -75,7 +72,6 @@ export class MerchantDetail extends React.Component {
     const url = "/dashboard/merchants";
     axios.delete(`/api/merchant/${this.state.merchantId}`).then(response => {
       if (response.data.confirmation === "success") {
-        // browserHistory.push(url);
         window.location.href = url;
       } else {
         this.setState({ errors: response.data.errors });
@@ -85,7 +81,6 @@ export class MerchantDetail extends React.Component {
 
   handleMerchants = () => {
     const url = "/dashboard/merchants";
-    // browserHistory.push(url);
     window.location.href = url;
   };
 
@@ -96,7 +91,7 @@ export class MerchantDetail extends React.Component {
       imageUrl,
       about,
       public_id,
-      category
+      subCategory
     } = this.state.merchantData;
     const { isFeatured } = this.state;
     return (
@@ -126,8 +121,8 @@ export class MerchantDetail extends React.Component {
               <CardText>
                 <CouponHeader title="Categories" />
                 <ul>
-                  {category.map(cat =>
-                    <li key={shortid.generate()}>{cat.name}</li>
+                  {subCategory.map(cat =>
+                    <li key={shortid.generate()}>{cat.title}</li>
                   )}
                 </ul>
               </CardText>

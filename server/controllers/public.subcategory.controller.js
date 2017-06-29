@@ -19,12 +19,12 @@ const find = params =>
 
 const findById = id =>
   new Promise((resolve, reject) => {
-    SubCategory.findById(id, (err, payload) => {
+    SubCategory.findById(id)
+    .exec((err, payload) => {
       if (err) {
         reject(err);
-        return;
       }
-      resolve(payload.summary());
+      resolve(payload);
     });
   });
 

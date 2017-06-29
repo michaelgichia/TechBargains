@@ -109,11 +109,30 @@ router.get("/latest-stores", (req, res) => {
     });
 });
 
+router.get("/category-featured-stores/:categoryId", (req, res) => {
+  const { categoryId } = req.params;
+
+  merchantController
+    .findCategoryFeaturedStores(categoryId)
+    .then(entities => {
+      res.json({
+        confirmation: "success",
+        results: entities
+      });
+    })
+    .catch(errors => {
+      res.json({
+        confirmation: "fail",
+        errors: errorsHandler(errors)
+      });
+    });
+});
+
 router.get("/specific-coupons/:couponsId", (req, res) => {
-  const id = req.params.couponsId;
+  const { couponsId } = req.params;
 
   itemController
-    .findSpecificCoupons(id)
+    .findSpecificCoupons(couponsId)
     .then(entities => {
       res.json({
         confirmation: "success",

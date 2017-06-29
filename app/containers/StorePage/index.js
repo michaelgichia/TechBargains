@@ -162,7 +162,7 @@ export class StorePage extends React.Component {
       const merchant = {
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
-        category: this.state.category,
+        subCategory: this.state.category,
         about: this.state.about
       };
       this.props.doSaveMerchant(merchant);
@@ -190,7 +190,7 @@ export class StorePage extends React.Component {
         key={category.id}
         value={category.id}
         checked={categories && categories.indexOf(category.id) > -1}
-        primaryText={category.name}
+        primaryText={category.title}
       />
     );
 

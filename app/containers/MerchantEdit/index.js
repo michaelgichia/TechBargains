@@ -151,11 +151,6 @@ export class MerchantEdit extends React.Component {
 
   handleAbout = about => this.setState({ about });
 
-  updateMerchant = merchant => {
-    const { merchantId } = this.props.params;
-    this.props.postMerchant(merchantId, merchant);
-  };
-
   /**
    * Update category in the state and clear error.
   */
@@ -179,10 +174,11 @@ export class MerchantEdit extends React.Component {
       const merchant = {
         ...this.state.merchant,
         isFeatured: this.state.isFeatured,
-        category: this.state.category,
+        subCategory: this.state.category,
         about: this.state.about
       };
-      this.updateMerchant(merchant);
+      const { merchantId } = this.props.params;
+      this.props.postMerchant(merchantId, merchant);
       this.resetState();
     }
   };
@@ -193,7 +189,7 @@ export class MerchantEdit extends React.Component {
         key={category.id}
         value={category.id}
         checked={categories && categories.indexOf(category.id) > -1}
-        primaryText={category.name}
+        primaryText={category.title}
       />
     );
 

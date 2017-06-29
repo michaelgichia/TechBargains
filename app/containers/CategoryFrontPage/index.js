@@ -8,27 +8,28 @@ import React, { PropTypes } from "react";
 import ProductDetail from "components/ProductDetail";
 import CouponHeader from "components/CouponHeader";
 import MerchantCoupon from "components/MerchantCoupon";
-import MerchantProfile from "components/MerchantProfile";
+import CategoryProfile from "components/CategoryProfile";
 import CategoryInfo from "components/CategoryInfo";
+import shortid from "shortid";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
-import { CloudinaryContext } from "cloudinary-react";
-import shortid from "shortid";
 import { connect } from "react-redux";
+import { CloudinaryContext } from "cloudinary-react";
 import { handleOpenModal } from "containers/ReactModal/actions";
 import {
+  fetchCategoryInfo,
   fetchCategoryDeals,
   fetchCategoryCoupons,
-  fetchCategoryInfo
+  fetchFeaturedCategoryStores
 } from "./actions";
 
 export class CategoryFrontPage extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
 
   state = {
     deals: [],
     coupons: [],
+    featuredCategoryStores: [],
     info: {
       title: "",
       about: ""
@@ -41,6 +42,7 @@ export class CategoryFrontPage extends React.Component {
     this.props.fetchCategoryDeals(categoryId);
     this.props.fetchCategoryCoupons(categoryId);
     this.props.fetchCategoryInfo(categoryId);
+    this.props.fetchFeaturedCategoryStores(categoryId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,6 +51,13 @@ export class CategoryFrontPage extends React.Component {
     }
     if (nextProps.coupons !== this.state.coupons) {
       this.setState((prevState, props) => ({ coupons: nextProps.coupons }));
+    }
+    if (
+      nextProps.featuredCategoryStores !== this.state.featuredCategoryStores
+    ) {
+      this.setState((prevState, props) => ({
+        featuredCategoryStores: nextProps.featuredCategoryStores
+      }));
     }
     if (nextProps.info !== this.state.info) {
       const updatedInfo = { ...this.state.info };
@@ -62,6 +71,7 @@ export class CategoryFrontPage extends React.Component {
   }
 
   render() {
+    console.log({Stores: this.state.featuredCategoryStores})
     return (
       <Grid fluid className="show-grid">
         <Row className="show-info-grid">
@@ -91,18 +101,21 @@ export class CategoryFrontPage extends React.Component {
                   )}
                 </ul>
               </CloudinaryContext>
-              <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
-                {this.state.coupons.map(coupon =>
-                  <li key={shortid.generate()}>
-                    <MerchantCoupon
-                      coupon={coupon}
-                      onTouchTap={() => this.props.handleOpenModal(coupon)}
-                    />
-                  </li>
-                )}
-              </ul>
+              <div>
+                <CouponHeader title={`${this.state.info.title} ${"  "} Coupons`} />
+                <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+                  {this.state.coupons.map(coupon =>
+                    <li key={shortid.generate()}>
+                      <MerchantCoupon
+                        coupon={coupon}
+                        onTouchTap={() => this.props.handleOpenModal(coupon)}
+                      />
+                    </li>
+                  )}
+                </ul>
+              </div>
             </Col>
-            <MerchantProfile info={this.state.info} />
+            <CategoryProfile info={this.state.info} />
           </Row>
         </div>
       </Grid>
@@ -115,6 +128,7 @@ CategoryFrontPage.propTypes = {};
 const mapStateToProps = ({ categoryFront }) => ({
   deals: categoryFront.deals,
   coupons: categoryFront.coupons,
+  featuredCategoryStores: categoryFront.featuredCategoryStores,
   info: categoryFront.info,
   errors: categoryFront.errors
 });
@@ -124,6 +138,7 @@ const mapDispatchToProps = dispatch => ({
   fetchCategoryCoupons: categoryId =>
     dispatch(fetchCategoryCoupons(categoryId)),
   fetchCategoryInfo: categoryId => dispatch(fetchCategoryInfo(categoryId)),
+  fetchFeaturedCategoryStores: categoryId => dispatch(fetchFeaturedCategoryStores(categoryId)),
   handleOpenModal: product => dispatch(handleOpenModal(product))
 });
 

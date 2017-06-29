@@ -1,0 +1,25 @@
+.category-header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 !important;
+}
+
+.category-header > li {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: transparent;
+  border-bottom: solid 3px #676d79;
+  color: #525c65;
+  padding: 5px 16px 5px 5px;
+  margin: 0;
+}
+
+.category-header > li > h2 {
+  font-size: 20px;
+  font-family: Helvetica, Roboto, Arial;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}

@@ -15,7 +15,7 @@ const asyncActionType = (type) => ({
 // API
 export const fetchAPI = '/public-api/merchant';
 export const createAPI = '/api/merchant/update';
-export const fetctCategoriesAPI = '/public-api/category';
+export const fetctCategoriesAPI = '/public-api/subcategory';
 
 // Action types
 export const MerchantEdit = asyncActionType('MerchantEdit');

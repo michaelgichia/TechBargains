@@ -4,16 +4,18 @@
  *
  */
 
-import { CATEGORY_ITEMS, CATEGORY_COUPONS, CATEGORY_INFO } from "./constants";
+import { CATEGORY_ITEMS, CATEGORY_COUPONS, CATEGORY_INFO, CATEGORY_FEATURED_STORES } from "./constants";
 
 const initialState = {
   deals: [],
   coupons: [],
+  featuredCategoryStores: [],
   info: {
     title: ""
   },
-  errors: ""
 };
+
+
 
 function categoryFrontPageReducer(state = initialState, action) {
   switch (action.type) {
@@ -23,22 +25,10 @@ function categoryFrontPageReducer(state = initialState, action) {
         deals: action.deals
       };
 
-    case CATEGORY_ITEMS.ERROR:
-      return {
-        ...state,
-        errors: action.errors
-      };
-
     case CATEGORY_COUPONS.SUCCESS:
       return {
         ...state,
         coupons: action.coupons
-      };
-
-    case CATEGORY_COUPONS.ERROR:
-      return {
-        ...state,
-        errors: action.errors
       };
 
     case CATEGORY_INFO.SUCCESS:
@@ -47,10 +37,10 @@ function categoryFrontPageReducer(state = initialState, action) {
         info: action.info
       };
 
-    case CATEGORY_INFO.ERROR:
+    case CATEGORY_FEATURED_STORES.SUCCESS:
       return {
         ...state,
-        errors: action.errors
+        featuredCategoryStores: action.featuredCategoryStores
       };
 
     default:

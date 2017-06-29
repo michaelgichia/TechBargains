@@ -10,7 +10,7 @@ const asyncActionType = (type) => ({
 });
 
 // API
-export const fetctCategoriesAPI = '/public-api/category';
+export const fetctCategoriesAPI = '/public-api/subcategory';
 export const postMerchantAPI = "/api/merchant/create";
 
 // Action types

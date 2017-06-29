@@ -43,10 +43,10 @@ const MerchantSchema = new Schema({
     type: Boolean,
     default: false
   },
-  category: [
+  subCategory: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Category",
+      ref: "SubCategory",
       autopopulate: true
     }
   ],
@@ -68,7 +68,7 @@ MerchantSchema.methods.summary = function() {
     isFeatured: this.isFeatured,
     description: this.description,
     about: this.about,
-    category: this.category,
+    subCategory: this.subCategory,
     public_id: this.public_id
   };
 
