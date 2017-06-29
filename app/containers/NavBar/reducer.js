@@ -6,10 +6,12 @@
 
 import {
   NAVITEMS,
+  STORE_ITEMS
 } from './constants';
 
 const initialState = {
   navItems: [],
+  stores: [],
   errors: '',
 };
 
@@ -21,10 +23,10 @@ function navBarReducer(state = initialState, action) {
         navItems: action.navItems,
       };
 
-    case NAVITEMS.ERROR:
+    case STORE_ITEMS.SUCCESS:
       return {
         ...state,
-        errors: action.errors,
+        stores: action.stores,
       };
 
     default:

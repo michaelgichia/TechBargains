@@ -11,7 +11,7 @@ import NavbarCollapse from "react-bootstrap/lib/NavbarCollapse";
 import TopNav from "containers/TopNav";
 import { browserHistory } from "react-router";
 import { connect } from "react-redux";
-import { fetchNavItems } from "./actions";
+import { fetchNavItems, fetchStoreItems } from "./actions";
 
 import "!!style-loader!css-loader!./style.css";
 
@@ -28,11 +28,31 @@ class Navigation extends React.Component {
       { name: "Health & Wellness", categoryArray: ["Shoes", "Dress", "glass"] },
       { name: "Seasonal Specials", categoryArray: ["Shoes", "Dress", "glass"] },
       { name: "Business", categoryArray: ["Shoes", "Dress", "glass"] }
+    ],
+    stores: [
+      { title: "Amazon", _id: "5953959ff7508b41b9c1ab06" },
+      { title: "AT&T Wireless", _id: "59539620f7508b41b9c1ab07" },
+      { title: "B&H Photo Video", _id: shortid.generate() },
+      { title: "Dell", _id: shortid.generate() },
+      { title: "Dell Small Business", _id: shortid.generate() },
+      { title: "eBay", _id: shortid.generate() },
+      { title: "Groupon", _id: shortid.generate() },
+      { title: "HP", _id: shortid.generate() },
+      { title: "Lenovo", _id: shortid.generate() },
+      { title: "Microsoft Store", _id: shortid.generate() },
+      { title: "Office Depot® & OfficeMax®", _id: shortid.generate() },
+      { title: "Sprint", _id: shortid.generate() },
+      { title: "T-Mobile", _id: shortid.generate() },
+      { title: "Verizon Wireless", _id: shortid.generate() },
+      { title: "cdkeys", _id: shortid.generate() },
+      { title: "DailySteals", _id: shortid.generate() },
+      { title: "TorGuard", _id: shortid.generate() }
     ]
   };
 
   componentDidMount() {
     this.props.fetchNavItems();
+    this.props.fetchStoreItems();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +61,9 @@ class Navigation extends React.Component {
       nextProps.navItems !== this.state.navItems
     ) {
       this.setState((prevState, props) => ({ navItems: props.navItems }));
+    }
+    if (nextProps.stores !== this.state.stores) {
+      this.setState(() => ({ stores: nextProps.stores }));
     }
     if (nextProps.errors !== this.state.errors) {
       this.setState((prevState, props) => ({ errors: props.errors }));
@@ -52,6 +75,20 @@ class Navigation extends React.Component {
   handleTouchTap = () => {
     this.setState({ expanded: !this.state.expanded });
   };
+
+  handleStoreItemOnselect = (eventKey, event) =>
+    (window.location.href = `/merchant/${eventKey}`);
+
+  displayStores = storeItems =>
+    storeItems.map(store =>
+      <MenuItem
+        onSelect={this.handleStoreItemOnselect}
+        key={shortid.generate()}
+        eventKey={store._id.toString()}
+      >
+        {store.title}
+      </MenuItem>
+    );
 
   handleMenuItemOnselect = (eventKey, event) =>
     (window.location.href = `/category/${eventKey}`);
@@ -89,7 +126,15 @@ class Navigation extends React.Component {
               </InstantSearch>
             </div>
             <Nav>
-              {this.state.navItems.slice(0, 7).map((navItem, index) =>
+              <NavDropdown
+                key={shortid.generate()}
+                eventKey={shortid.generate()}
+                title="Store"
+                id="basic-nav-dropdown"
+              >
+                {this.displayStores(this.state.stores)}
+              </NavDropdown>
+              {this.state.navItems.slice(0, 7).map(navItem =>
                 <NavDropdown
                   key={shortid.generate()}
                   eventKey={navItem.id}
@@ -109,11 +154,13 @@ class Navigation extends React.Component {
 
 const mapStateToProps = ({ navItems }) => ({
   navItems: navItems.navItems,
+  stores: navItems.stores,
   errors: navItems.errors
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNavItems: () => dispatch(fetchNavItems())
+  fetchNavItems: () => dispatch(fetchNavItems()),
+  fetchStoreItems: () => dispatch(fetchStoreItems())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

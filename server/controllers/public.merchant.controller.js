@@ -79,9 +79,25 @@ const findCategoryFeaturedStores = subCategoryId =>
       });
   });
 
+const findStores = params =>
+  new Promise((resolve, reject) => {
+    Merchant.find({isFeatured: true})
+      .sort("-createdAt")
+      .limit(20)
+      .select("title _id")
+      .exec((err, stores) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(stores);
+      });
+  });
+
 module.exports = {
   find,
   findById,
+  findStores,
   findLatestStores,
   findFeaturedStores,
   findCategoryFeaturedStores
