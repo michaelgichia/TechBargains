@@ -1,4 +1,4 @@
-.disclaim-store-header {
+.disclain-store-header {
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
@@ -6,7 +6,7 @@
   padding: 0 !important;
 }
 
-.disclaim-store-header > li {
+.disclain-store-header > li {
   list-style-type: none;
   overflow: hidden;
   background-color: transparent;
@@ -16,7 +16,7 @@
   margin: 0;
 }
 
-.disclaim-store-header > li > h2 {
+.disclain-store-header > li > h2 {
   font-size: 20px;
   font-family: Helvetica, Roboto, Arial;
   margin-bottom: 5px;

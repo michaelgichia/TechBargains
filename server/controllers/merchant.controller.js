@@ -15,9 +15,8 @@ const create = body =>
 
 const update = (id, params) =>
   new Promise((resolve, reject) => {
-    const merchantId = { _id: params.id };
     Merchant.findByIdAndUpdate(
-      merchantId,
+      id,
       params,
       { upsert: true, new: true },
       (err, store) => {

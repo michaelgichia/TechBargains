@@ -11,7 +11,7 @@ class Disclaimer extends React.PureComponent { // eslint-disable-line react/pref
   render() {
     return (
       <div style={{ marginBottom: 20 }}>
-        <ul className="disclaim-store-header">
+        <ul className="disclain-store-header">
             <li>
               <h2>DISCLAIMER</h2>
             </li>

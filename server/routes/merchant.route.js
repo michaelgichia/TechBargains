@@ -78,7 +78,7 @@ router.put("/update/:merchantId", (req, res, next) => {
       .end();
   }
 
-  const id = req.params.id;
+  const id = { _id: req.params.merchantId };
 
   controllers
     .update(id, req.body)

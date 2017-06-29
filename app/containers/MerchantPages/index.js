@@ -79,10 +79,14 @@ export class MerchantPages extends React.Component {
         </Row>
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
-            <Col id="merchant-id" xs={12} sm={12} md={12} lg={8}>
+            <Col id="merchant-first-wrapper" xs={12} sm={12} md={12} lg={8}>
               {this.state.coupons !== null && this.state.coupons.length > 0
-                ? <CouponHeader title={`${this.state.info.title} Coupons`} />
-                : ""}
+                ? <ul className="merchant-page-header">
+                    <li>
+                      <h2>{`${this.state.info.title} Coupons`}</h2>
+                    </li>
+                  </ul>
+                : <div />}
               <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
                 {this.state.coupons.map(coupon =>
                   <li key={shortid.generate()}>
@@ -95,8 +99,12 @@ export class MerchantPages extends React.Component {
               </ul>
               {this.state.merchandize !== null &&
               this.state.merchandize.length > 0
-                ? <CouponHeader title={`${this.state.info.title} Deals`} />
-                : ""}
+                ? <ul className="merchant-page-header">
+                    <li>
+                      <h2>{`${this.state.info.title} Deals`}</h2>
+                    </li>
+                  </ul>
+                : <div />}
               <CloudinaryContext cloudName="dw3arrxnf">
                 <ul
                   style={{
@@ -120,9 +128,26 @@ export class MerchantPages extends React.Component {
               </CloudinaryContext>
             </Col>
             <Col xs={12} sm={12} md={12} lg={4}>
-              <MerchantProfile info={this.state.info} />
+              {Object.keys(this.state.info).length > 0
+                ? <section className="merchant-profile">
+                    <ul className="merchant-page-header">
+                      <li>
+                        <h2>{`About ${this.state.info.title}`}</h2>
+                      </li>
+                    </ul>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: this.state.info.about
+                      }}
+                    />
+                  </section>
+                : <div />}
               <Disclaimer />
-              <CouponHeader title="DISCOVER NEW STORES" />
+              <ul className="merchant-page-header">
+                <li>
+                  <h2>DISCOVER NEW STORES</h2>
+                </li>
+              </ul>
               <ul className="latest-stores">
                 {this.state.latestStores.map(store =>
                   <li key={shortid.generate()}>

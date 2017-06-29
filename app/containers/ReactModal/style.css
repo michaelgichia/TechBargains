@@ -1,0 +1,65 @@
+.modal-header > h2 {
+  font-size: 22px !important;
+  line-height: 1.3 !important;
+  margin-top: 10px !important;
+}
+
+.modal-header > div {
+  background-color: #fff;
+  color: #333;
+  padding: 5px !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  font-size: 24px !important;
+  letter-spacing: 3px !important;
+  line-height: 1.3 !important;
+}
+
+.modal-header {
+  background-color: #2672c9 !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  padding: 12px 12px 20px 12px!important;
+  text-align: center !important;
+}
+
+.modal-body a {
+  color: #333;
+}
+
+.modal-body {
+  text-align: center;
+  padding: 15px 20px;
+  pointer-events: none;
+  cursor: default;
+  margin: 0px;
+  background-color: #fff;
+  color: #333;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.modal-footer > p {
+  text-align: center;
+  color: #333;
+  font-size: 12px;
+}
+
+.react-modal-body {
+  padding: 0px 5px !important;
+  margin: 0px !important;
+}
+
+.btn-modal-wrapper {
+  margin-bottom: 20px;
+}
+
+.description-modal {
+  height: 60px;
+  line-height: 20px;
+  overflow: hidden;
+}

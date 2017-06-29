@@ -4,18 +4,20 @@
 *
 */
 
-import React from 'react';
-import Col from 'react-bootstrap/lib/Col';
-import RaisedButton from 'material-ui/RaisedButton';
-import CouponIcon from 'material-ui/svg-icons/action/shopping-cart';
-import DealsIcon from 'material-ui/svg-icons/maps/local-offer';
-import { Image } from 'cloudinary-react'
+import React from "react";
+import Col from "react-bootstrap/lib/Col";
+import RaisedButton from "material-ui/RaisedButton";
+import CouponIcon from "material-ui/svg-icons/action/shopping-cart";
+import DealsIcon from "material-ui/svg-icons/maps/local-offer";
+import { Image } from "cloudinary-react";
 
+import "!!style-loader!css-loader!./style.css";
 
-class MerchantInfo extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class MerchantInfo extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="merchant-info" >
+      <div className="merchant-info">
         <Col xs={12} sm={4} md={3} lg={3}>
           <div className="amazon-first">
             <Image
@@ -28,10 +30,17 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
         </Col>
         <Col xs={12} sm={8} md={6} lg={6}>
           <div className="amazon-second">
-            <div className="amazon-h1"><h1>{`${this.props.info.title} Deals & Coupons`}</h1></div>
+            <div className="amazon-h1">
+              <h1>{`${this.props.info.title !== undefined &&
+              this.props.info.title.length > 0
+                ? this.props.info.title
+                : ""} Deals & Coupons`}</h1>
+            </div>
             <div className="amazon-description">
               <div className="amazon-text">
-                <p>{ this.props.info.description }</p>
+                <p>
+                  {this.props.info.description}
+                </p>
               </div>
               <div className="amazon-button">
                 <RaisedButton
@@ -45,6 +54,10 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
                   primary
                   icon={<DealsIcon />}
                   className="amazon-coupon-btn"
+                  labelStyle={{
+                    paddingLeft: 15,
+                    paddingRight: 35
+                  }}
                 />
               </div>
             </div>
@@ -55,14 +68,12 @@ class MerchantInfo extends React.PureComponent { // eslint-disable-line react/pr
   }
 }
 
-MerchantInfo.propTypes = {
-
-};
+MerchantInfo.propTypes = {};
 
 MerchantInfo.defaultProps = {
   info: {
-    title: '',
-    description: '',
+    title: "",
+    description: ""
   }
 };
 

@@ -12,10 +12,8 @@
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
-// import Dropdown from 'components/Dropdown';
 import CarouselContainer from "containers/CarouselContainer";
 import Product from "containers/Product";
-// import MobileProductDetail from 'containers/MobileProductDetail';
 import React from "react";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
@@ -35,18 +33,19 @@ class HomePage extends React.PureComponent {
       <Grid fluid>
         <Row style={{ marginRight: 0, marginLeft: 0 }}>
           <Col
+            id="home-first-wrapper"
             xs={12}
             sm={12}
             md={12}
             lg={8}
           >
-          <Col
-            xsHidden 
-            smHidden 
-            mdHidden 
-          >
-            <CarouselContainer />
-          </Col>
+            <Col
+              xsHidden 
+              smHidden 
+              mdHidden 
+            >
+              <CarouselContainer />
+            </Col>
             <Product />
           </Col>
           <Col
