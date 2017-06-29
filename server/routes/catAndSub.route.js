@@ -3,6 +3,7 @@ const categoryController = require("../controllers/public.category.controller");
 const banController = require("../controllers/public.banner.controller");
 const itemController = require("../controllers/public.item.controller");
 const merchantController = require("../controllers/public.merchant.controller");
+const subCategoryController = require("../controllers/public.subcategory.controller");
 const errorsHandler = require("../middlewares/errorsHandler");
 
 const router = express.Router();
@@ -110,7 +111,7 @@ router.get("/latest-stores", (req, res) => {
 });
 
 router.get("/latest-categories", (req, res) => {
-  categoryController
+  subCategoryController
     .findLatestCategories(req.query, false)
     .then(entities => {
       res.json({

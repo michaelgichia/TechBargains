@@ -28,6 +28,12 @@
 }
 
 @media (max-width: 480px) {
+  .price-wrapper {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
   .price {
     margin-top: 0px;
     margin-bottom: 0px;

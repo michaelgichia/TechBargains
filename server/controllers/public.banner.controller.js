@@ -23,7 +23,7 @@ const findById = id =>
         reject(err);
         return;
       }
-      resolve(banner.summary());
+      resolve(banner);
     });
   });
 

@@ -53,24 +53,10 @@ const findCategoriesAndSubscategories = params => {
   });
 };
 
-const findLatestCategories = params =>
-  new Promise((resolve, reject) => {
-    Category.find()
-      .sort("-createdAt")
-      .limit(10)
-      .select("name _id")
-      .exec((err, stores) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(stores);
-      });
-  });
+
 
 module.exports = {
   find,
   findById,
-  findLatestCategories,
   findCategoriesAndSubscategories
 };

@@ -149,9 +149,9 @@ export class CategoryFrontPage extends React.Component {
                 {this.state.latestCategories.map(store =>
                   <a
                     key={shortid.generate()}
-                    href={`/merchant/${store._id.toString()}`}
+                    href={`/category/${store._id.toString()}`}
                   >
-                    {store.name}
+                    {store.title}
                   </a>
                 )}
               </div>

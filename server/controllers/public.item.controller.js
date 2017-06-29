@@ -25,7 +25,7 @@ const findById = id =>
         return;
       }
       if (item !== null) {
-        resolve(item.summary());
+        resolve(item);
       }
     });
   });

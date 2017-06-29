@@ -27,7 +27,7 @@ const findById = id =>
         reject(err);
         return;
       }
-      resolve(store.summary());
+      resolve(store);
     });
   });
 
