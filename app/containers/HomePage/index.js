@@ -9,12 +9,12 @@
  * the linting exception.
  */
 
+import React from "react";
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
 import CarouselContainer from "containers/CarouselContainer";
 import Product from "containers/Product";
-import React from "react";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
