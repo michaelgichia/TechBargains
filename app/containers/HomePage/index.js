@@ -15,11 +15,8 @@ import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
 import CarouselContainer from "containers/CarouselContainer";
 import Product from "containers/Product";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from "reactstrap";
 import "!!style-loader!css-loader!./style.css";
-
 
 class HomePage extends React.PureComponent {
   state = {
@@ -30,36 +27,17 @@ class HomePage extends React.PureComponent {
 
   render() {
     return (
-      <Grid fluid>
-        <Row style={{ marginRight: 0, marginLeft: 0 }}>
-          <Col
-            id="home-first-wrapper"
-            xs={12}
-            sm={12}
-            md={12}
-            lg={8}
-          >
-            <Col
-              xsHidden 
-              smHidden 
-              mdHidden 
-            >
-              <CarouselContainer />
-            </Col>
-            <Product />
-          </Col>
-          <Col
-            xsHidden 
-            smHidden 
-            mdHidden 
-            lg={4}
-          >
-            <Deal />
-            <Coupon />
-            <Stores />
-          </Col>
-        </Row>
-      </Grid>
+      <Container fluid>
+        <div className="row-wrapper">
+          <Row>
+            <div className="home-column-wrapper">
+              <Col xs="12" sm="12" md="12" lg="12" xl="8">
+                <Product />
+              </Col>
+            </div>
+          </Row>
+        </div>
+      </Container>
     );
   }
 }

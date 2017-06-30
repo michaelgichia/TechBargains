@@ -3,3 +3,21 @@
     padding-right: 20px;
   }
 }
+
+@media (min-width: 992px) {
+  .row-wrapper {
+    padding-left: 70px;
+    padding-right: 70px
+  }
+}
+
+@media (max-width: 992px) {
+  .home-column-wrapper .col-12 {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+}
+
+
+
+
