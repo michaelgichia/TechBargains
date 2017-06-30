@@ -1,0 +1,27 @@
+.react-panel {
+  border-radius: 1px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .06);
+  transition: box-shadow .3s ease;
+}
+
+.react-panel:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .24)
+}
+
+.react-panel-header {
+  background-color: #e0e0e0;
+  padding: 0px 8px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  max-height: 27px;
+  min-height: 16px;
+}
+
+.react-panel-body {
+  padding: 8px;
+  margin: 8px;
+}
