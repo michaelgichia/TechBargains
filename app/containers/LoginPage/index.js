@@ -34,7 +34,7 @@ class LoginPage extends Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="8" mdPush="2">
+          <Col xs="12" md="8">
             <Paper
               zDepth={1}
               rounded={false}

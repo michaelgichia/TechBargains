@@ -95,7 +95,7 @@ export class MerchantDetail extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Card style={{ marginTop: 30 }}>
               {this.state.errors.length > 0 ? <p>{this.state.errors}</p> : ""}
               <CardHeader

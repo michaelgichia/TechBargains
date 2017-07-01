@@ -48,7 +48,7 @@ export class BannerDetail extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Card containerStyle={{ marginTop: 30 }}>
               <CardMedia
                 style={{ marginTop: 10, marginBottom: 20 }}

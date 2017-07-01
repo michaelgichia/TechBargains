@@ -72,7 +72,7 @@ export class RegisterPage extends React.Component { // eslint-disable-line react
     return (
       <Container>
         <Row>
-          <Col xs="12" md="8" mdPush="2">
+          <Col xs="12" md="8" >
             <SignUpForm
               onClick={this.handleSubmit}
               onChange={this.handleChange}

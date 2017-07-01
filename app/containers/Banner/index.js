@@ -46,7 +46,7 @@ export class Banner extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Paper rounded={false} style={style.paper}>
               <BannerTable
                 handleRowSelection={this.handleRowSelection}

@@ -92,7 +92,7 @@ export class CategoryBackendEdit extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Card style={{ marginTop: 20 }}>
               <CardHeader
                 titleStyle={{ fontSize: 26, fontFamily: "Roboto slab" }}
@@ -116,7 +116,7 @@ export class CategoryBackendEdit extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Card style={{ marginTop: 30 }} initiallyExpanded>
               <CardHeader
                 title={name}
@@ -136,7 +136,7 @@ export class CategoryBackendEdit extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Paper zDepth={1} rounded={false} style={gems.paper}>
               <CategoryForm
                 header="Update Category Instantly"

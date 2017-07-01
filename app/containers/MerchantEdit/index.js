@@ -204,7 +204,7 @@ export class MerchantEdit extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" mdPush="1">
+          <Col xs="12" md="10" >
             <Paper zDepth={2} rounded={false} style={gems6.paper}>
               <StoreForm
                 onChange={this.handleChange}
