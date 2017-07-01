@@ -48,10 +48,13 @@ class App extends React.Component {
   render() {
     const { pathname } = this.props.location;
     return (
-      <div style={style.divi}>
+      <div>
         <Helmet
           titleTemplate="%s - DealsExpert  -  Get the latest deals"
           defaultTitle="DealsExpert  -  Get the latest deals"
+          link={[
+            { href: 'https://fonts.googleapis.com/css?family=Roboto', rel: 'stylesheet'}
+          ]}
           meta={[
             { name: 'description', content: 'Get the latest deals.' },
           ]}

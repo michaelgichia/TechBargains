@@ -5,6 +5,7 @@
  */
 
 import React, { PropTypes } from "react";
+import viewSize from "screen-size";
 import { Link } from "react-router";
 import CouponHeader from "components/CouponHeader";
 import { connect } from "react-redux";
@@ -20,7 +21,9 @@ export class Stores extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchStores();
+    if (viewSize().x > 992) {
+      this.props.fetchStores();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

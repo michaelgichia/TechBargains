@@ -7,7 +7,6 @@
 import React from "react";
 import CouponHeader from "components/CouponHeader";
 import Dropdown from "components/Dropdown";
-import Col from "react-bootstrap/lib/Col";
 import "react-instantsearch-theme-algolia/style.css";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
@@ -45,17 +44,10 @@ export class Product extends React.Component {
   render() {
     return (
       <div>
-        <Col xsHidden smHidden mdHidden>
-          <Dropdown
-            handleDropdown={this.handleDropdown}
-            dropdownValue={this.state.dropdownValue}
-          />
-        </Col>
-        <Col lgHidden>
+        <div>
           <CouponHeader title="Latest Deals" />
-        </Col>
+        </div>
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
-          <CloudinaryContext cloudName="dw3arrxnf">
             {this.state.products.map(product =>
               <li
                 key={shortid.generate()}
@@ -67,7 +59,6 @@ export class Product extends React.Component {
                 />
               </li>
             )}
-          </CloudinaryContext>
         </ul>
       </div>
     );

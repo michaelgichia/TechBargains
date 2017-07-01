@@ -4,8 +4,9 @@
  *
  */
 
-import CouponHeader from "components/CouponHeader";
 import React, { PropTypes } from "react";
+import CouponHeader from "components/CouponHeader";
+import viewSize from "screen-size";
 import { connect } from "react-redux";
 import shortid from "shortid";
 import { CloudinaryContext } from "cloudinary-react";
@@ -20,7 +21,9 @@ export class Coupon extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchCoupon();
+    if (viewSize().x > 992) {
+      this.props.fetchCoupon();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

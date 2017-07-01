@@ -7,17 +7,17 @@
 @media (min-width: 992px) {
   .row-wrapper {
     padding-left: 70px;
-    padding-right: 70px
+    padding-right: 0px
   }
 }
 
 @media (max-width: 992px) {
-  .home-column-wrapper .col-sm-12,
-  .home-column-wrapper .col-12 {
-    padding-left: 0px;
-    padding-right: 0px
+  .hide-columns {
+    display: none !important;
+    transition: all 0.3s;
   }
 }
+
 
 
 

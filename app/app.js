@@ -31,6 +31,8 @@ import '!file-loader?name=[name].[ext]!./favicon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 // import 'file-loader?name=[name].[ext]!./.htaccess';
 // Bootstraps imports
+import '!!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
+
 import '!!style-loader!css-loader!./bootstrap.css';
 import '!!style-loader!css-loader!./bootstrap-theme.css';
 import "!!style-loader!css-loader!slick-carousel/slick/slick.css";

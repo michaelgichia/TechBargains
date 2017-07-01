@@ -10,6 +10,7 @@
  */
 
 import React from "react";
+import Media from 'react-media'
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
@@ -30,11 +31,22 @@ class HomePage extends React.PureComponent {
       <Container fluid>
         <div className="row-wrapper">
           <Row>
-            <div className="home-column-wrapper">
-              <Col xs="12" sm="12" md="12" lg="12" xl="9">
-                <Product />
-              </Col>
-            </div>
+            <Col xs="12" sm="12" md="12" lg="12" xl="9">
+              <Product />
+            </Col>
+            <Col xl="3">
+              <Media query="(max-width: 1224px)">
+                {matches => matches ? (
+                  <div />
+                ) : (
+                <div className="hide-columns">
+                  <Deal />
+                  <Coupon />
+                  <Stores />
+                </div>
+                )}
+              </Media>
+            </Col>
           </Row>
         </div>
       </Container>
