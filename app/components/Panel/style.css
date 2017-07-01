@@ -13,15 +13,14 @@
 
 .react-panel-header {
   background-color: #e0e0e0;
-  padding: 0px 8px;
-  border-bottom: 1px solid transparent;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  max-height: 27px;
-  min-height: 16px;
+  font-size: 12px;
+  padding: 0 15px 0 0;
+  line-height: 27px;
+  height: 27px;
+  overflow: hidden;
 }
 
 .react-panel-body {
-  padding: 8px;
+  padding: 0px;
   margin: 8px;
 }
