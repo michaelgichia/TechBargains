@@ -29,7 +29,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./favicon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
-// import 'file-loader?name=[name].[ext]!./.htaccess';
+import 'file-loader?name=[name].[ext]!./.htaccess';
 // Bootstraps imports
 import '!!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 
@@ -43,9 +43,6 @@ import configureStore from './store';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
-
-// Import CSS reset and Global Styles
-// import './global-styles';
 
 // Import theme to override Material-ui.
 import { muiTheme } from './muiTheme';
