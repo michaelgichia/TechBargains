@@ -8,10 +8,7 @@ import axios from "axios";
 import sha1 from "sha1";
 import superagent from "superagent";
 import { connect } from "react-redux";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-
+import { Container, Row, Col } from 'reactstrap';
 import { browserHistory } from "react-router";
 // Material
 import MenuItem from "material-ui/MenuItem";
@@ -206,9 +203,9 @@ export class StorePage extends React.Component {
     const { title, description, imageUrl, backlink } = this.state.merchant;
     const categoryArray = this.displayCategories(categories);
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper zDepth={2} rounded={false} style={gemsgood.paper}>
               <StoreForm
                 onChange={this.handleChange}
@@ -236,7 +233,7 @@ export class StorePage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Table
               wrapperStyle={gemsgood.wrapperStyle}
               bodyStyle={gemsgood.bodyStyle}
@@ -280,7 +277,7 @@ export class StorePage extends React.Component {
             </Table>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

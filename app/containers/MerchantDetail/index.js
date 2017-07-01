@@ -8,9 +8,7 @@ import React, { PropTypes } from "react";
 import CouponHeader from "components/CouponHeader";
 import { browserHistory } from "react-router";
 import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
 import shortid from "shortid";
 // Material-ui
@@ -95,9 +93,9 @@ export class MerchantDetail extends React.Component {
     } = this.state.merchantData;
     const { isFeatured } = this.state;
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Card style={{ marginTop: 30 }}>
               {this.state.errors.length > 0 ? <p>{this.state.errors}</p> : ""}
               <CardHeader
@@ -160,7 +158,7 @@ export class MerchantDetail extends React.Component {
             </Card>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

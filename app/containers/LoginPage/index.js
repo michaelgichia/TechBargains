@@ -1,9 +1,7 @@
 import LoginForm from "components/LoginForm";
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import Paper from "material-ui/Paper";
 import { loginUser } from "./actions";
 
@@ -34,9 +32,9 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs="12" md="8" mdPush="2">
             <Paper
               zDepth={1}
               rounded={false}
@@ -50,7 +48,7 @@ class LoginPage extends Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

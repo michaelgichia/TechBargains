@@ -9,9 +9,7 @@ import BannerTable from "components/BannerTable";
 import axios from "axios";
 import { connect } from "react-redux";
 import { browserHistory } from "react-router";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import Paper from "material-ui/Paper";
 
 const style = {
@@ -46,9 +44,9 @@ export class Banner extends React.Component {
 
   render() {
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper rounded={false} style={style.paper}>
               <BannerTable
                 handleRowSelection={this.handleRowSelection}
@@ -57,7 +55,7 @@ export class Banner extends React.Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

@@ -6,10 +6,8 @@
 
 import Headers from "components/Headers";
 import React from "react";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
 
+import { Container, Row, Col } from 'reactstrap';
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
@@ -54,7 +52,7 @@ export class SingleProduct extends React.Component {
     return (
       <div>
         <Headers product={this.state.product} />
-        <Grid fluid className="show-grid">
+        <Container fluid className="show-grid">
 
           <Row className="show-info-grid">
             {Object.keys(this.state.product).length > 0
@@ -63,7 +61,7 @@ export class SingleProduct extends React.Component {
           </Row>
 
           <Row className="show-info-grid">
-            <Col xs={12} sm={12} md={8} lg={8}>
+            <Col xs="12" sm="12" md="8" lg="8">
               <Row className="show-info-wrapper">
                 {Object.keys(this.state.product).length > 0
                   ? <CloudinaryContext cloudName="dw3arrxnf">
@@ -80,7 +78,7 @@ export class SingleProduct extends React.Component {
               </Row>
 
               <Row className="bottom-related-product">
-                <Col xsHidden smHidden md={12} lg={12}>
+                <Col xsHidden smHidden md="12" lg="12">
                   <SinglePageCarousel
                     banners={this.filterCurrentProduct(
                       this.state.relatedProducts
@@ -90,13 +88,13 @@ export class SingleProduct extends React.Component {
               </Row>
             </Col>
 
-            <Col xsHidden smHidden md={4} lg={4}>
+            <Col md="4" lg="4">
               <Coupon />
               <Deal />
               <Stores />
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

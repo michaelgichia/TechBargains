@@ -5,7 +5,8 @@
 */
 
 import React from "react";
-import Col from "react-bootstrap/lib/Col";
+import { Col } from 'reactstrap';
+
 import RaisedButton from "material-ui/RaisedButton";
 import CouponIcon from "material-ui/svg-icons/action/shopping-cart";
 import DealsIcon from "material-ui/svg-icons/maps/local-offer";
@@ -18,7 +19,7 @@ class MerchantInfo extends React.PureComponent {
   render() {
     return (
       <div className="merchant-info">
-        <Col xs={12} sm={4} md={3} lg={3}>
+        <Col xs="12" sm="4" md="3" lg="3">
           <div className="amazon-first">
             <Image
               cloudName="dw3arrxnf"
@@ -28,7 +29,7 @@ class MerchantInfo extends React.PureComponent {
             />
           </div>
         </Col>
-        <Col xs={12} sm={8} md={6} lg={6}>
+        <Col xs="12" sm="8" md="6" lg="6">
           <div className="amazon-second">
             <div className="amazon-h1">
               <h1>{`${this.props.info.title !== undefined &&

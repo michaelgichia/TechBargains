@@ -7,7 +7,7 @@
 import React from "react";
 import CouponHeader from "components/CouponHeader";
 import Dropdown from "components/Dropdown";
-import Col from "react-bootstrap/lib/Col";
+import { Col } from 'reactstrap';
 import "react-instantsearch-theme-algolia/style.css";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
@@ -45,13 +45,13 @@ export class Product extends React.Component {
   render() {
     return (
       <div>
-        <Col xsHidden smHidden mdHidden>
+        <Col>
           <Dropdown
             handleDropdown={this.handleDropdown}
             dropdownValue={this.state.dropdownValue}
           />
         </Col>
-        <Col lgHidden>
+        <Col>
           <CouponHeader title="Latest Deals" />
         </Col>
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>

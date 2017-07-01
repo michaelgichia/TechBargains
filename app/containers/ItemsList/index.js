@@ -17,10 +17,8 @@ import RefreshIcon from "material-ui/svg-icons/navigation/refresh";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Link } from "react-router";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
 
+import { Container, Row, Col } from 'reactstrap';
 import { getItems } from "./actions";
 
 export class ItemsList extends React.Component {
@@ -93,9 +91,9 @@ export class ItemsList extends React.Component {
       );
     }
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Card style={{ marginTop: 20 }}>
               <CardHeader
                 titleStyle={{ fontSize: 26, fontFamily: "Roboto slab" }}
@@ -123,7 +121,7 @@ export class ItemsList extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <span>
               <ul style={{ listStyle: "none" }}>
                 {this.state.errors &&
@@ -136,7 +134,7 @@ export class ItemsList extends React.Component {
             {this.displayItems(this.state.items)}
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

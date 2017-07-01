@@ -9,9 +9,7 @@ import validator from "validator";
 import { connect } from "react-redux";
 import MenuItem from "material-ui/MenuItem";
 import Paper from "material-ui/Paper";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import sha1 from "sha1";
 import superagent from "superagent";
 
@@ -309,9 +307,9 @@ export class EditItem extends React.Component {
     const merchantArray = this.displayMerchants(merchants);
 
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
                 header="Edit an Item or a Coupon"
@@ -359,7 +357,7 @@ export class EditItem extends React.Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

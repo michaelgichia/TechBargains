@@ -14,9 +14,7 @@ import {
   TableRowColumn
 } from "material-ui/Table";
 import { connect } from "react-redux";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import { postSubCategory, getCategories, getSubCategories } from "./actions";
 
 class SubCategoryPage extends React.Component {
@@ -145,9 +143,9 @@ class SubCategoryPage extends React.Component {
     const categoryArray = this.displayCategories(categories);
 
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10">
             <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}
@@ -168,7 +166,7 @@ class SubCategoryPage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10">
             <div style={gemsawesome.table}>
               <Table
                 fixedHeader
@@ -216,7 +214,7 @@ class SubCategoryPage extends React.Component {
             </div>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

@@ -1,9 +1,8 @@
 import React, { PropTypes } from "react";
 import axios from "axios";
 import shortid from "shortid";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+
+import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
 // Material-ui
 import RaisedButton from "material-ui/RaisedButton";
@@ -102,9 +101,9 @@ export class ItemDetail extends React.Component {
     } = this.state.itemData;
 
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Card containerStyle={{ marginTop: 30 }}>
               <CardHeader
                 subtitle={`Percentage Off / Discounted Price: ${percentage || ""}`}
@@ -225,7 +224,7 @@ export class ItemDetail extends React.Component {
             </Card>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

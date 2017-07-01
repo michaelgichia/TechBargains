@@ -8,10 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import validator from 'validator';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-
+import { Container, Row, Col } from 'reactstrap';
 import { registerUser } from './actions';
 
 export class RegisterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -73,9 +70,9 @@ export class RegisterPage extends React.Component { // eslint-disable-line react
     );
 
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={8} mdPush={2}>
+          <Col xs="12" md="8" mdPush="2">
             <SignUpForm
               onClick={this.handleSubmit}
               onChange={this.handleChange}
@@ -87,7 +84,7 @@ export class RegisterPage extends React.Component { // eslint-disable-line react
             />
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

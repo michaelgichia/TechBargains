@@ -9,10 +9,7 @@ import { browserHistory } from "react-router";
 import SubCategoryForm from "components/SubCategoryForm";
 import MenuItem from "material-ui/MenuItem";
 import shortid from "shortid";
-import Paper from "material-ui/Paper";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
 import RaisedButton from "material-ui/RaisedButton";
 import {
@@ -151,9 +148,9 @@ export class SubCategoryBackendEdit extends React.Component {
     const categoryArray = this.displayCategories(categories);
 
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}
@@ -190,7 +187,7 @@ export class SubCategoryBackendEdit extends React.Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

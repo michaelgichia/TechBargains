@@ -3,3 +3,22 @@
     padding-right: 20px;
   }
 }
+
+@media (min-width: 992px) {
+  .row-wrapper {
+    padding-left: 70px;
+    padding-right: 0px
+  }
+}
+
+@media (max-width: 992px) {
+  .hide-columns {
+    display: none !important;
+    transition: all 0.3s;
+  }
+}
+
+
+
+
+

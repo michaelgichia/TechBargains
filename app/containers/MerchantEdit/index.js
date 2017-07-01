@@ -10,10 +10,7 @@ import validator from "validator";
 import { connect } from "react-redux";
 import sha1 from "sha1";
 import superagent from "superagent";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-
+import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
 // Material-ui
 import Paper from "material-ui/Paper";
@@ -205,9 +202,9 @@ export class MerchantEdit extends React.Component {
     const { title, description, imageUrl, backlink } = this.state.merchant;
     const categoryArray = this.displayCategories(categories);
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper zDepth={2} rounded={false} style={gems6.paper}>
               <StoreForm
                 onChange={this.handleChange}
@@ -233,7 +230,7 @@ export class MerchantEdit extends React.Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

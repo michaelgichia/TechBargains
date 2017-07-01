@@ -3,9 +3,8 @@ import { Image, Transformation } from "cloudinary-react";
 import PropTypes from "prop-types";
 import { Link } from "react-router";
 import YesNoBtn from "components/YesNoBtn";
-import Row from "react-bootstrap/lib/Row";
-import Grid from "react-bootstrap/lib/Grid";
-import Col from "react-bootstrap/lib/Col";
+
+import { Container, Row, Col } from 'reactstrap';
 import Panel from "react-bootstrap/lib/Panel";
 import "!!style-loader!css-loader!./style.css";
 
@@ -44,10 +43,10 @@ class SingleProductDetail extends React.Component {
         <div className="merchants-panel-header">
           {this.props.product.name}
         </div>
-        <Grid fluid>
+        <Container fluid>
           <Row>
             <div className="product-detail-image">
-              <Col xs={4} sm={4} md={4} lg={4}>
+              <Col xs="4" sm="4" md="4" lg="4">
                 <div className="product-detail-image-image">
                   <a href={this.props.product.backlink} target="_blank">
                     <Image publicId={this.props.product.public_id}>
@@ -64,10 +63,10 @@ class SingleProductDetail extends React.Component {
             </div>
             <Col
               className="product-detail-features"
-              xs={8}
-              sm={8}
-              md={8}
-              lg={8}
+              xs="8"
+              sm="8"
+              md="8"
+              lg="8"
             >
               <div className="price-body">
                 <div
@@ -117,7 +116,7 @@ class SingleProductDetail extends React.Component {
               </div>
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </Panel>
     );
   }

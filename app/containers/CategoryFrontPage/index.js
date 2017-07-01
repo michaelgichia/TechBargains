@@ -12,9 +12,7 @@ import MerchantCoupon from "components/MerchantCoupon";
 import CategoryProfile from "components/CategoryProfile";
 import CategoryFeaturedStore from "components/CategoryFeaturedStore";
 import shortid from "shortid";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react";
 import { handleOpenModal } from "containers/ReactModal/actions";
@@ -82,7 +80,7 @@ export class CategoryFrontPage extends React.Component {
 
   render() {
     return (
-      <Grid fluid className="categories-grid">
+      <Container fluid className="categories-grid">
         <Row className="categories-info-grid">
           <div className="categories-info">
             <h1>{`${this.state.info.title} ${"  "} Deals`}</h1>
@@ -90,7 +88,7 @@ export class CategoryFrontPage extends React.Component {
         </Row>
         <div className="categories-product-grid">
           <Row>
-            <Col id="categories-first-wrapper" xs={12} sm={12} md={12} lg={8}>
+            <Col id="categories-first-wrapper" xs="12" sm="12" md="12" lg="8">
               <CloudinaryContext cloudName="dw3arrxnf">
                 <ul
                   style={{
@@ -131,7 +129,7 @@ export class CategoryFrontPage extends React.Component {
                 </ul>
               </div>
             </Col>
-            <Col id="categories-second-wrapper" xs={12} sm={12} md={12} lg={4}>
+            <Col id="categories-second-wrapper" xs="12" sm="12" md="12" lg="4">
               <CategoryProfile info={this.state.info} />
               <CloudinaryContext cloudName="dw3arrxnf">
                 <CategoryFeaturedStore
@@ -158,7 +156,7 @@ export class CategoryFrontPage extends React.Component {
             </Col>
           </Row>
         </div>
-      </Grid>
+      </Container>
     );
   }
 }

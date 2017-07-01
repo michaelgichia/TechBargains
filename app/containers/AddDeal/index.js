@@ -8,10 +8,7 @@ import superagent from "superagent";
 import MenuItem from "material-ui/MenuItem";
 import Paper from "material-ui/Paper";
 import { connect } from "react-redux";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-
+import { Container, Row, Col } from 'reactstrap';
 // Actions
 import { postDeal } from "./actions";
 
@@ -271,9 +268,9 @@ export class AddDeal extends React.Component {
     const merchantArray = this.displayMerchants(merchants);
 
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper rounded={false} style={style.paper}>
               <AddDealForm
                 header="Create an Item or a Coupon"
@@ -319,7 +316,7 @@ export class AddDeal extends React.Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

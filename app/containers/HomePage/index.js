@@ -10,16 +10,14 @@
  */
 
 import React from "react";
+import Media from 'react-media'
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
 import CarouselContainer from "containers/CarouselContainer";
 import Product from "containers/Product";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from "reactstrap";
 import "!!style-loader!css-loader!./style.css";
-
 
 class HomePage extends React.PureComponent {
   state = {
@@ -30,36 +28,28 @@ class HomePage extends React.PureComponent {
 
   render() {
     return (
-      <Grid fluid>
-        <Row style={{ marginRight: 0, marginLeft: 0 }}>
-          <Col
-            id="home-first-wrapper"
-            xs={12}
-            sm={12}
-            md={12}
-            lg={8}
-          >
-            <Col
-              xsHidden 
-              smHidden 
-              mdHidden 
-            >
-              <CarouselContainer />
+      <Container fluid>
+        <div className="row-wrapper">
+          <Row>
+            <Col xs="12" sm="12" md="12" lg="12" xl="9">
+              <Product />
             </Col>
-            <Product />
-          </Col>
-          <Col
-            xsHidden 
-            smHidden 
-            mdHidden 
-            lg={4}
-          >
-            <Deal />
-            <Coupon />
-            <Stores />
-          </Col>
-        </Row>
-      </Grid>
+            <Col xl="3">
+              <Media query="(max-width: 1224px)">
+                {matches => matches ? (
+                  <div />
+                ) : (
+                <div className="hide-columns">
+                  <Deal />
+                  <Coupon />
+                  <Stores />
+                </div>
+                )}
+              </Media>
+            </Col>
+          </Row>
+        </div>
+      </Container>
     );
   }
 }

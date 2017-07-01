@@ -13,9 +13,7 @@ import FlatButton from "material-ui/FlatButton";
 import DeleteIcon from "material-ui/svg-icons/action/delete";
 import ExitIcon from "material-ui/svg-icons/action/exit-to-app";
 import Divider from "material-ui/Divider";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
 import { gems } from "./gem";
 import { updateCategory, fetchCategory, deleteCategory } from "./actions";
@@ -92,9 +90,9 @@ export class CategoryBackendEdit extends React.Component {
       isFeatured
     } = this.state;
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Card style={{ marginTop: 20 }}>
               <CardHeader
                 titleStyle={{ fontSize: 26, fontFamily: "Roboto slab" }}
@@ -118,7 +116,7 @@ export class CategoryBackendEdit extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Card style={{ marginTop: 30 }} initiallyExpanded>
               <CardHeader
                 title={name}
@@ -138,7 +136,7 @@ export class CategoryBackendEdit extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper zDepth={1} rounded={false} style={gems.paper}>
               <CategoryForm
                 header="Update Category Instantly"
@@ -156,7 +154,7 @@ export class CategoryBackendEdit extends React.Component {
             </Paper>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

@@ -1,9 +1,7 @@
 import CategoryForm from "components/CategoryForm";
 import React from "react";
 import shortid from "shortid";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import Paper from "material-ui/Paper";
 import axios from "axios";
 import { Link } from "react-router";
@@ -84,9 +82,9 @@ export class CategoryPage extends React.Component {
       isFeatured
     } = this.state;
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Paper zDepth={1} rounded={false} style={gems.paper}>
               <CategoryForm
                 header="Create Category"
@@ -105,7 +103,7 @@ export class CategoryPage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <div style={gems.table}>
               <Table
                 fixedHeader
@@ -160,7 +158,7 @@ export class CategoryPage extends React.Component {
             </div>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }

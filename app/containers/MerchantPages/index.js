@@ -5,9 +5,7 @@
  */
 
 import React from "react";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import { CloudinaryContext } from "cloudinary-react";
 import MerchantInfo from "components/MerchantInfo";
 import MerchantProfile from "components/MerchantProfile";
@@ -73,13 +71,13 @@ export class MerchantPages extends React.Component {
 
   render() {
     return (
-      <Grid fluid className="show-grid">
+      <Container fluid className="show-grid">
         <Row className="show-info-grid">
           <MerchantInfo info={this.state.info} />
         </Row>
         <div className="show-product-grid">
           <Row className="show-dealss-grid">
-            <Col id="merchant-first-wrapper" xs={12} sm={12} md={12} lg={8}>
+            <Col id="merchant-first-wrapper" xs="12" sm="12" md="12" lg="8">
               {this.state.coupons !== null && this.state.coupons.length > 0
                 ? <ul className="merchant-page-header">
                     <li>
@@ -127,7 +125,7 @@ export class MerchantPages extends React.Component {
                 </ul>
               </CloudinaryContext>
             </Col>
-            <Col xs={12} sm={12} md={12} lg={4}>
+            <Col xs="12" sm="12" md="12" lg="4">
               {Object.keys(this.state.info).length > 0
                 ? <section className="merchant-profile">
                     <ul className="merchant-page-header">
@@ -163,7 +161,7 @@ export class MerchantPages extends React.Component {
             </Col>
           </Row>
         </div>
-      </Grid>
+      </Container>
     );
   }
 }

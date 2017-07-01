@@ -6,9 +6,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
+import { Container, Row, Col } from 'reactstrap';
 import axios from "axios";
 import { Image } from "cloudinary-react";
 import { browserHistory, Link } from "react-router";
@@ -48,9 +46,9 @@ export class BannerDetail extends React.Component {
   render() {
     const { backlink, imageUrl, title, public_id } = this.state.itemData;
     return (
-      <Grid>
+      <Container>
         <Row>
-          <Col xs={12} md={10} mdPush={1}>
+          <Col xs="12" md="10" mdPush="1">
             <Card containerStyle={{ marginTop: 30 }}>
               <CardMedia
                 style={{ marginTop: 10, marginBottom: 20 }}
@@ -109,7 +107,7 @@ export class BannerDetail extends React.Component {
             </Card>
           </Col>
         </Row>
-      </Grid>
+      </Container>
     );
   }
 }
