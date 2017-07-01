@@ -13,6 +13,8 @@ import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import { fetchNavItems, fetchStoreItems } from "./actions";
 
+import "!!style-loader!css-loader!./bootstrap.css";
+import "!!style-loader!css-loader!./bootstrap.theme.css";
 import "!!style-loader!css-loader!./style.css";
 
 class Navigation extends React.Component {
@@ -79,74 +81,35 @@ class Navigation extends React.Component {
   handleStoreItemOnselect = (eventKey, event) =>
     (window.location.href = `/merchant/${eventKey}`);
 
-  displayStores = storeItems =>
-    storeItems.map(store =>
-      <MenuItem
-        onSelect={this.handleStoreItemOnselect}
-        key={shortid.generate()}
-        eventKey={store._id.toString()}
-      >
-        {store.title}
-      </MenuItem>
-    );
+  // displayStores = storeItems =>
+  //   storeItems.map(store =>
+  //     <MenuItem
+  //       onSelect={this.handleStoreItemOnselect}
+  //       key={shortid.generate()}
+  //       eventKey={store._id.toString()}
+  //     >
+  //       {store.title}
+  //     </MenuItem>
+  //   );
 
   handleMenuItemOnselect = (eventKey, event) =>
     (window.location.href = `/category/${eventKey}`);
 
-  displayItems = navItems =>
-    navItems.map(navItem =>
-      <MenuItem
-        onSelect={this.handleMenuItemOnselect}
-        key={shortid.generate()}
-        eventKey={navItem.id}
-      >
-        {navItem.title}
-      </MenuItem>
-    );
+  // displayItems = navItems =>
+  //   navItems.map(navItem =>
+  //     <MenuItem
+  //       onSelect={this.handleMenuItemOnselect}
+  //       key={shortid.generate()}
+  //       eventKey={navItem.id}
+  //     >
+  //       {navItem.title}
+  //     </MenuItem>
+  //   );
 
   render() {
     return (
       <div style={gems65.navbar}>
         <TopNav onLeftIconButtonTouchTap={this.handleTouchTap} />
-        <Navbar
-          className="navbar-bottom"
-          collapseOnSelect
-          expanded={this.state.expanded}
-          onToggle={this.handleToggle}
-        >
-          <NavbarCollapse>
-            <div className="small-screen-wrapper">
-              <InstantSearch
-                appId="YNZ7XXV49B"
-                apiKey="90550ee45080bb58130f0ac76a4e28f5"
-                indexName="Products"
-              >
-                <AutoComplete />
-                <Configure hitsPerPage={5} />
-              </InstantSearch>
-            </div>
-            <Nav>
-              <NavDropdown
-                key={shortid.generate()}
-                eventKey={shortid.generate()}
-                title="Store"
-                id="basic-nav-dropdown"
-              >
-                {this.displayStores(this.state.stores)}
-              </NavDropdown>
-              {this.state.navItems.slice(0, 7).map(navItem =>
-                <NavDropdown
-                  key={shortid.generate()}
-                  eventKey={navItem.id}
-                  title={navItem.name}
-                  id="basic-nav-dropdown"
-                >
-                  {this.displayItems(navItem.categoryArray)}
-                </NavDropdown>
-              )}
-            </Nav>
-          </NavbarCollapse>
-        </Navbar>
       </div>
     );
   }

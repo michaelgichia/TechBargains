@@ -78,7 +78,7 @@ export class SingleProduct extends React.Component {
               </Row>
 
               <Row className="bottom-related-product">
-                <Col xsHidden smHidden md="12" lg="12">
+                <Col md="12" lg="12">
                   <SinglePageCarousel
                     banners={this.filterCurrentProduct(
                       this.state.relatedProducts

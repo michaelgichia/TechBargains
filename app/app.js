@@ -30,12 +30,8 @@ import LanguageProvider from 'containers/LanguageProvider';
 import '!file-loader?name=[name].[ext]!./favicon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 import 'file-loader?name=[name].[ext]!./.htaccess';
-// Bootstraps imports
 import 'bootstrap/dist/css/bootstrap.css';
-
-
-import '!!style-loader!css-loader!./bootstrap.css';
-import '!!style-loader!css-loader!./bootstrap-theme.css';
+import '!!style-loader!css-loader!./global.css';
 import "!!style-loader!css-loader!slick-carousel/slick/slick.css";
 import "!!style-loader!css-loader!slick-carousel/slick/slick-theme.css";
 /* eslint-enable import/no-unresolved, import/extensions */

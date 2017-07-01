@@ -8566,3 +8566,29 @@ button.close {
     display: none !important;
   }
 }
+
+@font-face {
+  font-family: 'SourceSans';
+  src: url('./fonts/SourceSans.ttf');
+}
+
+@font-face {
+  font-family: 'BowlbyOne';
+  src: url('./fonts/BowlbyOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Mogra';
+  src: url('./fonts/Mogra-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('./fonts/SourceSansPro.ttf');
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('./fonts/glyphicons-halflings-regular.eot');
+  src: url('./fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('./fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('./fonts/glyphicons-halflings-regular.woff') format('woff'), url('./fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('./fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
