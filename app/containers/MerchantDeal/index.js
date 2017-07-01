@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from "react";
 import ProductDetail from "components/ProductDetail";
-import Row from "react-bootstrap/lib/Row";
+import { Row } from 'reactstrap';
 import Panel from "react-bootstrap/lib/Panel";
 // Custom
 import SecondDiv from "components/SecondDiv";

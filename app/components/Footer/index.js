@@ -6,15 +6,13 @@
 
 import React from "react";
 import { Link } from "react-router";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-
+import { Container, Row } from 'reactstrap';
 import "!!style-loader!css-loader!./style.css";
 
 function Footer() {
   return (
     <footer>
-      <Grid fluid className="footer">
+      <Container fluid className="footer">
         <Row>
           <p>
             If you click a merchant link and buy a product or service on their
@@ -33,7 +31,7 @@ function Footer() {
         <Row>
           <p>© Copyright 2017 DealsExpert.</p>
         </Row>
-      </Grid>
+      </Container>
     </footer>
   );
 }
