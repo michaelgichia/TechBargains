@@ -31,7 +31,7 @@ class HomePage extends React.PureComponent {
         <div className="row-wrapper">
           <Row>
             <div className="home-column-wrapper">
-              <Col xs="12" sm="12" md="12" lg="12" xl="8">
+              <Col xs="12" sm="12" md="12" lg="12" xl="9">
                 <Product />
               </Col>
             </div>
