@@ -8,7 +8,7 @@ import { Image } from "cloudinary-react";
 import Panel from "components/Panel";
 
 import { timeConversion } from "utils/milliSecondsConverter";
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./product-detail.css";
 
 //Try
 import { Row, Col } from "reactstrap";
@@ -56,9 +56,9 @@ ProductDetail.defaultProps = {};
 export default ProductDetail;
 
 const PanelHeader = ({ product }) =>
-  <div>
+  <span className="flag-info">
     {`EXPIRE: ${timeConversion(product.expire)}`}
-  </div>;
+  </span>;
 
 const PanelHeaderTitle = ({ product }) =>
   <h2 className="merchant-panel-header">

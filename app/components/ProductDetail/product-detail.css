@@ -1,7 +1,8 @@
-/*#b0b0b0*/
-
-
-/* font-family: "Roboto", Roboto, sans-serif, Helvetica, Arial;*/
+.flag-info {
+  background-color: #e6251f;
+  color: #FFF;
+  padding: 6px 7px;
+}
 
 .custom-row > .row {
   margin-left: 0px;
@@ -15,8 +16,24 @@
   }
 }
 
-
 /* Product features */
+@media (min-width: 768px) {
+  .panel-product-features ul li {
+    word-spacing: 1px;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.42857;
+  }
+}
+
+.panel-product-features ul li {
+  list-style-type: disc;
+}
+
+.panel-product-features a,
+.panel-product-features ul li a {
+  color: #1f7dd4;
+}
 
 .panel-product-features {
   font-family: "Roboto", Roboto, Helvetica, Arial, serif;
@@ -39,28 +56,47 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1920px) {
+  .panel-product-features {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
 
 /*Image and Image wrapper*/
+@media (max-width: 768px) {
+  .product-detail-image {
+    text-align: center;
+    margin-bottom: 10px
+  }
+}
 
-.product-detail-image {
-  text-align: center !important;
+@media (min-width: 768px) {
+  .product-detail-image {
+    text-align: left;
+    padding-right: 7px;
+    padding-left: 7px;
+  }
 }
 
 .product-detail-image > a > img {
   margin: auto;
 }
 
-@media (min-width: 480px) and (max-width: 780px) {
-  .product-detail-image > a > img {
-    max-width: 160px;
+@media (max-width: 480px) {
+  .product-detail-image {
+    min-width: 200px;
+    min-height: 200px;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 480px) and (max-width: 780px) {
   .product-detail-image {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-bottom: 10px
+    min-width: 160px;
+    min-height: 160px;
+  }
+  .product-detail-image > a > img {
+    max-width: 160px;
   }
 }
 
@@ -97,11 +133,11 @@ h2.merchant-panel-header a {
   }
 }
 
-@media (min-width: 480px) and (max-width: 992px) {
+@media (min-width: 480px) and (max-width: 1920px) {
   h2.merchant-panel-header {
     font-size: 24px;
     margin-top: 7px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 }
 
@@ -115,9 +151,7 @@ h2.merchant-panel-header a {
   text-decoration: underline;
 }
 
-
 /* Panel bottom merchant and category styles*/
-
 ul.bottom-wrapper {
   list-style: none;
   padding: 15px 0 0;
@@ -138,9 +172,7 @@ ul.bottom-wrapper {
   text-decoration: underline;
 }
 
-
 /* Prices and see deal or reavel code */
-
 .price-wrapper {
   min-width: 100%;
 }
@@ -189,9 +221,6 @@ ul.bottom-wrapper {
   margin-right: auto;
   margin-left: auto;
 }
-
-
-/*Above tested styles*/
 
 @media (min-width: 768px) {
   .more-details-wrapper {
