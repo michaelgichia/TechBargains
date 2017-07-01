@@ -103,7 +103,7 @@ const PanelPriceWrapper = ({ product }) =>
   <div className="price">
     <p>
       <span className="price-first-span">
-        {product.percentage}
+        {product.percentage}{" "}
       </span>
       <span className="price-second-span">
         {product.isShipped}
