@@ -79,6 +79,7 @@ const PanelImage = ({ product }) =>
         publicId={product.public_id}
         crop="scale"
         width="200"
+        height="200"
         responsive
       />
     </a>

@@ -10,14 +10,14 @@
  */
 
 import React from "react";
-import Media from 'react-media'
+import Media from "react-media";
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
 import CarouselContainer from "containers/CarouselContainer";
 import Product from "containers/Product";
 import { Container, Row, Col } from "reactstrap";
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./home.css";
 
 class HomePage extends React.PureComponent {
   state = {
@@ -31,22 +31,18 @@ class HomePage extends React.PureComponent {
       <Container fluid>
         <div className="row-wrapper">
           <Row>
-            <Col xs="12" sm="12" md="12" lg="12" xl="9">
+            <Col xs="12" sm="12" md="12" lg="8" xl="8">
               <Product />
             </Col>
-            <Col xl="3">
-              <Media query="(max-width: 1224px)">
-                {matches => matches ? (
-                  <div />
-                ) : (
-                <div className="hide-columns">
+            <Media
+              query="(min-width: 1024px)"
+              render={() =>
+                <Col lg="4" xl="4">
                   <Deal />
                   <Coupon />
                   <Stores />
-                </div>
-                )}
-              </Media>
-            </Col>
+                </Col>}
+            />
           </Row>
         </div>
       </Container>
