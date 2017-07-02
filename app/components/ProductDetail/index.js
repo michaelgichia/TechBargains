@@ -3,17 +3,13 @@ import PropTypes from "prop-types";
 import { Link } from "react-router";
 import YesNoBtn from "components/YesNoBtn";
 import { Image } from "cloudinary-react";
-// import Panel from "react-bootstrap/lib/Panel";
-// Our Components
 import Panel from "components/Panel";
-
 import { timeConversion } from "utils/milliSecondsConverter";
 import "!!style-loader!css-loader!./product-detail.css";
-
-//Try
 import { Row, Col } from "reactstrap";
 
-class ProductDetail extends React.PureComponent {
+
+class ProductDetail extends React.Component {
   render() {
     const { product, onTouchTap } = this.props;
     return (
@@ -55,6 +51,8 @@ ProductDetail.defaultProps = {};
 
 export default ProductDetail;
 
+
+// Components
 const PanelHeader = ({ product }) =>
   <span className="flag-info">
     {`EXPIRE: ${timeConversion(product.expire)}`}
@@ -76,7 +74,6 @@ const PanelImage = ({ product }) =>
         crop="scale"
         width="200"
         responsive
-        alt={product.name}
       />
     </a>
   </div>;

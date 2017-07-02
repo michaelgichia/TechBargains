@@ -14,13 +14,13 @@ class ProductDetail extends React.Component {
     const { product, onTouchTap } = this.props;
     return (
       <Panel headerElement={<PanelHeader product={product} />}>
-        <div className="custom-row">
+        <div className="single-custom-row ">
           <Row>
             <PanelHeaderTitle product={product} />
           </Row>
         </div>
         <div>
-          <Row className="custom-body-row">
+          <Row className="single-custom-body-row">
             <CustomCol xxs="12" xs="12" sm="4" md="4" lg="4" xl="4" xxl="2">
               <PanelImage product={product} />
             </CustomCol>
@@ -53,7 +53,7 @@ export default ProductDetail;
 
 // Components
 const PanelHeader = ({ product }) =>
-  <span className="flag-info">
+  <span className="single-flag-info">
     {`EXPIRE: ${timeConversion(product.expire)}`}
   </span>;
 
@@ -61,7 +61,7 @@ const PanelHeaderTitle = ({ product }) =>
   <h2 className="single-product-header">{product.name}</h2>;
 
 const PanelImage = ({ product }) =>
-  <div className="product-detail-image">
+  <div className="single-product-image">
     <a href={product.backlink} target="_blank">
       <Image
         cloudName="dw3arrxnf"
@@ -69,21 +69,20 @@ const PanelImage = ({ product }) =>
         crop="scale"
         width="200"
         responsive
-        alt={product.name}
       />
     </a>
   </div>;
 
 const PanelBottomInfo = ({ product }) =>
-  <ul className="bottom-wrapper">
+  <ul className="single-bottom-wrapper">
     <li>
-      <span className="no-break">
+      <span className="single-no-break">
         From  {" "}
         <a href={`/merchant/${product.merchant._id.toString()}`}>
           {product.merchant !== null ? product.merchant.title : ""}
         </a>
       </span>
-      <span className="no-break">
+      <span className="single-no-break">
         {" "} in  {" "}
         <a href={`/category/${product.category._id.toString()}`}>
           {product.category.name}
@@ -93,12 +92,12 @@ const PanelBottomInfo = ({ product }) =>
   </ul>;
 
 const PanelPriceWrapper = ({ product }) =>
-  <div className="price">
+  <div className="single-price">
     <p>
-      <span className="price-first-span">
+      <span className="single-first-span">
         {product.percentage}{" "}
       </span>
-      <span className="price-second-span">
+      <span className="single-second-span">
         {product.isShipped}
       </span>
     </p>
@@ -114,7 +113,7 @@ const PanelFeatures = ({ product }) =>
 
 const CustomCol = props =>
   <Col
-    className="custom-column"
+    className="single-custom-column"
     widths={["xxs", "xs", "sm", "md", "lg", "xl", "xxl"]}
     {...props}
   />;
