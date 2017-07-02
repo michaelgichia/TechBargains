@@ -3,12 +3,13 @@
   background-color: #fff;
   margin-bottom: 15px;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .06);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .08);
   transition: box-shadow .3s ease;
 }
 
 .react-panel:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .24)
+  transition: box-shadow .3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .24);
 }
 
 .react-panel-header {

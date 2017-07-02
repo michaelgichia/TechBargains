@@ -6,7 +6,7 @@
 
 import Headers from "components/Headers";
 import React from "react";
-import Media from 'react-media'
+import Media from "react-media";
 
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
@@ -18,7 +18,7 @@ import ShareButtons from "components/ShareButtons";
 
 import { connect } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from "reactstrap";
 
 import { handleOpenModal } from "containers/ReactModal/actions";
 import "!!style-loader!css-loader!./style.css";
@@ -54,7 +54,6 @@ export class SingleProduct extends React.Component {
       <div>
         <Headers product={this.state.product} />
         <Container fluid>
-
           <Row className="single-product-grid">
             {Object.keys(this.state.product).length > 0
               ? <CategoryInfo title={this.props.product.name} />
@@ -80,29 +79,34 @@ export class SingleProduct extends React.Component {
 
               <Row className="bottom-related-product">
                 <Col md="12" lg="12">
-                  <SinglePageCarousel
-                    banners={this.filterCurrentProduct(
-                      this.state.relatedProducts
-                    )}
-                  />
+                  <Media query="(max-width: 1224px)">
+                    {matches =>
+                      matches
+                        ? <div />
+                        : <div className="single-product-hide-columns">
+                            <SinglePageCarousel
+                              banners={this.filterCurrentProduct(
+                                this.state.relatedProducts
+                              )}
+                            />
+                          </div>}
+                  </Media>
                 </Col>
               </Row>
             </Col>
 
             <Col xl="3">
               <Media query="(max-width: 1224px)">
-                {matches => matches ? (
-                  <div />
-                ) : (
-                <div className="single-product-hide-columns">
-                  <Coupon />
-                  <Deal />
-                  <Stores />
-                </div>
-                )}
+                {matches =>
+                  matches
+                    ? <div />
+                    : <div className="single-product-hide-columns">
+                        <Coupon />
+                        <Deal />
+                        <Stores />
+                      </div>}
               </Media>
             </Col>
-
           </Row>
         </Container>
       </div>
