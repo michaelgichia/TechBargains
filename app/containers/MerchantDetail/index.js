@@ -16,7 +16,7 @@ import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 import Divider from "material-ui/Divider";
 
-import "!!styel-loader!css-loader./merchant-detail.css";
+import "!!style-loader!css-loader!./merchant-detail.css";
 import Auth from "../Utils";
 
 // Token

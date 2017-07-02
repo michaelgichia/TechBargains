@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import "!!style-loader!cssloader!./paper-lite.css";
+import "!!style-loader!css-loader!./paper-lite.css";
 
 class PaperLite extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

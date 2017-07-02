@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import "!!style-loader!css-loader!.paper-zindex.css";
+import "!!style-loader!css-loader!./paper-zindex.css";
 
 
 class PaperZindex extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

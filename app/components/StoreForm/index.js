@@ -9,7 +9,7 @@ import Subheader from "material-ui/Subheader";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 
-import "!!style-loader!css-loader./store-form.css";
+import "!!style-loader!css-loader!./store-form.css";
 
 const styles = {
   toggle: {
