@@ -85,21 +85,21 @@ p {
   margin: auto;
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 992px) and (max-width: 1280px) {
   .product-detail-image > a > img {
-    text-align: left;
+    text-align: center;
     max-width: 169px;
     max-height: 169px;
   }
   .product-detail-image {
     max-width: 169px;
     max-height: 169px;
-    padding-right: 7px;
-    padding-left: 7px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 992px) {
   .product-detail-image > a > img {
     text-align: center;
     max-width: 200px;

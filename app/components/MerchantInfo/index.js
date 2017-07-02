@@ -12,7 +12,7 @@ import CouponIcon from "material-ui/svg-icons/action/shopping-cart";
 import DealsIcon from "material-ui/svg-icons/maps/local-offer";
 import { Image } from "cloudinary-react";
 
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./merchant-info.css";
 
 class MerchantInfo extends React.PureComponent {
   render() {
@@ -45,26 +45,31 @@ export default MerchantInfo;
 
 // Components
 const InfoImage = ({ info }) =>
-  <a href={info.backlink} target="_blank">
-    <Image
-      cloudName="dw3arrxnf"
-      publicId={info.public_id}
-      width="200"
-      height="120"
-      crop="scale"
-    />
-  </a>;
+  <div className="merchant-info-image">
+    <a href={info.backlink} target="_blank">
+      <Image
+        cloudName="dw3arrxnf"
+        publicId={info.public_id}
+        width="200"
+        height="120"
+        crop="scale"
+      />
+    </a>
+  </div>
 
 const InfoTitle = ({ info }) =>
-  <h1 className="amazon-h1">{`${info.title !== undefined &&
-  info.title.length > 0
-    ? info.title
-    : ""} Deals & Coupons`}</h1>;
+  <div className="amazon-h1">
+    {info.title !== undefined && info.title.length > 0
+      ? <h1>{`${info.title} Deals & Coupons`}</h1>
+      : <div />}    
+  </div>
 
 const InfoDescription = ({ info }) =>
-  <p className="amazon-text">
-    {info.description}
-  </p>;
+  <div className="amazon-text">
+    <p>
+      {info.description}
+    </p>
+  </div>;
 
 const InfoBtn = ({ info }) =>
   <div className="amazon-button">

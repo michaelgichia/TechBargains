@@ -29,17 +29,15 @@ class MerchantCoupon extends React.Component {
             marginBottom: 0,
             paddingBottom: 0
           }}
-          title={<a 
+          title={<h2><a 
             href={this.props.coupon.backlink}
             style={{
-              fontSize: 20,
               color: "#1f7dd4",
               fontFamily: "Roboto",
-              lineHeight: "1.1"
           }}
             target="_blank">
               {this.props.coupon.name}
-              </a>}
+              </a></h2>}
           subtitle={`From ${this.props.coupon.merchant.title} Coupons.`}
         />
         <CardActions>
