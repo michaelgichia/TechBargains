@@ -115,6 +115,7 @@
 
 h2.merchant-panel-header {
   margin-top: 0px;
+  cursor: pointer;
   margin-bottom: 0px;
   font-family: "Roboto", Roboto, Helvetica, Arial, serif;
 }
