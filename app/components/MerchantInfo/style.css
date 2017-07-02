@@ -1,45 +1,19 @@
+.merchant-info img {
+  max-width: 100%;
+  padding: 30px 2px;
+}
+
 .merchant-info {
-  padding-top: 20px;
   padding-bottom: 15px;
-  transition: all 0.5s;
+  margin: 0px;
+  padding: 10px;
 }
 
 @media (min-width: 992px) {
   .merchant-info {
-    min-height: 30vh;
+    min-height: 20vh;
     transition: all 0.5s;
   }
-}
-@media (max-width: 768px) {
-  .amazon-first {
-    text-align: center;
-    margin-bottom: 0 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .amazon-first > img {
-    max-width: 150px;
-    max-height: 150px;
-    padding: 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .amazon-first > img {
-    max-width: 150px;
-    max-height: 150px;
-    padding: 10px 0;
-  }
-}
-
-.amazon-first {
-  text-align: center;
-  margin-bottom: 10px;
-  border: 1px solid #e0e0e0;
-  padding: 30px 0;
-  min-width: 150px;
-  min-height: 150px;
 }
 
 @media (max-width: 768px) {
@@ -48,27 +22,30 @@
   }
 }
 
-.amazon-second {
-  margin: 0px;
-}
-
 .amazon-h1 > h1 {
   font-size: 28px;
   font-weight: 600;
   font-family: Roboto, Source-Sans-Pro, Roboto, sans-serif;
-  color: #595a5d;
+  color: #333;
   letter-spacing: -0.75px;
   margin-top: 0px;
   margin-bottom: 10px;
 }
 
 .amazon-coupon-btn {
-  margin: 3.5% 10px;
+  margin: 1.5% 10px 1% 0px;
 }
 
 .amazon-text > p {
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+@media (min-width: 992px) {
+  .amazon-text  {
+    max-width: 80%;
+  }
 }
 
 .amazon-desc {
@@ -78,12 +55,9 @@
 .amazon-text {
   position: relative;
   margin-bottom: 10px;
+  min-height: 20px
 }
 
-.amazon-text > p {
-  font-family: Source-Sans-Pro, Roboto, sans-serif;
-  color: #595a5d;
-}
 
 .amazon {
   background-color: red;

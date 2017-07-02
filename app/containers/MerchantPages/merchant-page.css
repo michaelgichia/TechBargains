@@ -5,7 +5,7 @@
   color: #1f7dd4;
 }
 
-.latest-stores li > a{
+.latest-stores li > a {
   color: #1f7dd4;
   font-family: Roboto, sans-serif;
 }
@@ -47,37 +47,43 @@
   }
 }
 
-.show-info-grid {
+.merchant-page-info-grid {
   background-color: #fff;
 }
 
-div > .show-info-grid > .row {
+div > .merchant-page-info-grid > .row {
   border-bottom: #e7e7e7 !important;
 }
 
-.show-product-grid {
+.merchant-page-product-grid {
   background-color: transparent;
 }
 
-.show-product-grid {
+.merchant-page-product-grid {
   background-color: #f7f7f7 !important;
 }
 
-.show-grid {
+.merchant-page-grid {
   margin: 0;
   padding: 0 20px;
-  background-color: #f7f7f7 !important;
+  background-color: transparent;
 }
 
 @media (max-width: 768px) {
-  .show-product-grid > .row {
+  .merchant-page-grid {
+    margin-top: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  .merchant-page-product-grid > .row {
     margin-left: 1px !important;
     margin-right: 1px !important;
   }
 }
 
 @media (min-width: 768px) {
-  .show-product-grid > .row {
+  .merchant-page-product-grid > .row {
     margin-left: 30px !important;
     margin-right: 30px !important;
   }

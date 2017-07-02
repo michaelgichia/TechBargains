@@ -24,7 +24,7 @@ import {
   fetchLatestStore
 } from "./actions";
 
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./merchant-page.css";
 
 export class MerchantPages extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -71,12 +71,12 @@ export class MerchantPages extends React.Component {
 
   render() {
     return (
-      <Container fluid className="show-grid">
-        <Row className="show-info-grid">
+      <Container fluid className="merchant-page-grid">
+        <Row className="merchant-page-info-grid">
           <MerchantInfo info={this.state.info} />
         </Row>
-        <div className="show-product-grid">
-          <Row className="show-dealss-grid">
+        <div className="merchant-page-product-grid">
+          <Row>
             <Col id="merchant-first-wrapper" xs="12" sm="12" md="12" lg="8">
               {this.state.coupons !== null && this.state.coupons.length > 0
                 ? <ul className="merchant-page-header">

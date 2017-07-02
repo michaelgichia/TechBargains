@@ -17,3 +17,9 @@
     margin-top: 64px !important;
   }
 }
+
+@media (min-width: 768px) {
+  .tech {
+    margin-top: 50px !important;
+  }
+}
