@@ -9,10 +9,17 @@
   padding: 10px;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 768px) {
+  .merchant-info {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 768px) {
   .merchant-info {
     min-height: 20vh;
     transition: all 0.5s;
+    padding: 10px 10px 10px 50px;
   }
 }
 
@@ -43,7 +50,7 @@
 }
 
 @media (min-width: 992px) {
-  .amazon-text  {
+  .amazon-text {
     max-width: 80%;
   }
 }
@@ -57,7 +64,6 @@
   margin-bottom: 10px;
   min-height: 20px
 }
-
 
 .amazon {
   background-color: red;

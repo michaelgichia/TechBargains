@@ -71,10 +71,8 @@ export class MerchantPages extends React.Component {
 
   render() {
     return (
-      <Container fluid className="merchant-page-grid">
-        <Row className="merchant-page-info-grid">
-          <MerchantInfo info={this.state.info} />
-        </Row>
+      <div style={{marginTop: 70}}>
+        <MerchantInfo info={this.state.info} />
         <div className="merchant-page-product-grid">
           <Row>
             <Col id="merchant-first-wrapper" xs="12" sm="12" md="12" lg="8">
@@ -161,7 +159,7 @@ export class MerchantPages extends React.Component {
             </Col>
           </Row>
         </div>
-      </Container>
+      </div>
     );
   }
 }

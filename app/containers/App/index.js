@@ -12,7 +12,8 @@
  */
 
 import React from "react";
-import Helmet from 'react-helmet';
+import Helmet from "react-helmet";
+import { Container } from "reactstrap";
 
 // Material-ui
 import Navigation from "containers/NavBar";
@@ -36,7 +37,7 @@ class App extends React.Component {
     searchState: {},
     lastPush: 0
   };
-  
+
   static propTypes = {
     children: React.PropTypes.node
   };
@@ -44,13 +45,11 @@ class App extends React.Component {
   render() {
     const { pathname } = this.props.location;
     return (
-      <div>
+      <Container fluid style={{ padding: 0, overflow: "hidden" }}>
         <Helmet
           titleTemplate="%s - DealsExpert  -  Get the latest deals"
           defaultTitle="DealsExpert  -  Get the latest deals"
-          meta={[
-            { name: 'description', content: 'Get the latest deals.' },
-          ]}
+          meta={[{ name: "description", content: "Get the latest deals." }]}
         />
         {pathname.substring(1, 10) === "dashboard"
           ? <DashboardSidebar />
@@ -65,7 +64,7 @@ class App extends React.Component {
         </div>
         <FlashMessage />
         <Footer />
-      </div>
+      </Container>
     );
   }
 }

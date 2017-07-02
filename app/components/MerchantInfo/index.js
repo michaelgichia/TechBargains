@@ -15,67 +15,19 @@ import { Image } from "cloudinary-react";
 import "!!style-loader!css-loader!./style.css";
 
 class MerchantInfo extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { info } = this.props;
     return (
-      <div className="merchant-info">
-        <Row>
-          <Col
-            style={{textAlign: "center"}}
-            xs="12"
-            sm="12"
-            md="3"
-            lg="3" 
-            xl="3">
-              <a href={this.props.info.backlink} target="_blank">
-                <Image
-                  cloudName="dw3arrxnf"
-                  publicId={this.props.info.public_id}
-                  width="200"
-                  height="120"
-                  crop="scale"
-                />
-              </a>
-          </Col>
-          <Col xs="12" sm="12" md="9" lg="9" xl="9">
-            <div className="amazon-second">
-              <div className="amazon-h1">
-                <h1>{`${this.props.info.title !== undefined &&
-                this.props.info.title.length > 0
-                  ? this.props.info.title
-                  : ""} Deals & Coupons`}</h1>
-              </div>
-              <div className="amazon-description">
-                <div className="amazon-text">
-                  <p>
-                    {this.props.info.description}
-                  </p>
-                </div>
-                {Object.keys(this.props.info).length > 0
-                  ? <div className="amazon-button">
-                      <RaisedButton
-                        label="Coupons"
-                        primary
-                        icon={<CouponIcon />}
-                        className="amazon-coupon-btn"
-                      />
-                      <RaisedButton
-                        label="Deals"
-                        primary
-                        icon={<DealsIcon />}
-                        className="amazon-coupon-btn"
-                        labelStyle={{
-                          paddingLeft: 15,
-                          paddingRight: 35
-                        }}
-                      />
-                    </div>
-                  : <div />}
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </div>
+      <Row>
+        <Col xs="12" sm="12" md="4" lg="3" xl="3">
+          <InfoImage info={info} />
+        </Col>
+        <Col xs="12" sm="12" md="8" lg="9" xl="9">
+          <InfoTitle info={info} />
+          <InfoDescription info={info} />
+          {Object.keys(info).length > 0 ? <InfoBtn info={info} /> : <div />}
+        </Col>
+      </Row>
     );
   }
 }
@@ -90,3 +42,46 @@ MerchantInfo.defaultProps = {
 };
 
 export default MerchantInfo;
+
+// Components
+const InfoImage = ({ info }) =>
+  <a href={info.backlink} target="_blank">
+    <Image
+      cloudName="dw3arrxnf"
+      publicId={info.public_id}
+      width="200"
+      height="120"
+      crop="scale"
+    />
+  </a>;
+
+const InfoTitle = ({ info }) =>
+  <h1 className="amazon-h1">{`${info.title !== undefined &&
+  info.title.length > 0
+    ? info.title
+    : ""} Deals & Coupons`}</h1>;
+
+const InfoDescription = ({ info }) =>
+  <p className="amazon-text">
+    {info.description}
+  </p>;
+
+const InfoBtn = ({ info }) =>
+  <div className="amazon-button">
+    <RaisedButton
+      label="Coupons"
+      primary
+      icon={<CouponIcon />}
+      className="amazon-coupon-btn"
+    />
+    <RaisedButton
+      label="Deals"
+      primary
+      icon={<DealsIcon />}
+      className="amazon-coupon-btn"
+      labelStyle={{
+        paddingLeft: 15,
+        paddingRight: 35
+      }}
+    />
+  </div>;
