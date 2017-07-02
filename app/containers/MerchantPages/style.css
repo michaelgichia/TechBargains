@@ -7,7 +7,7 @@
 
 .latest-stores li > a{
   color: #1f7dd4;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .latest-stores {
@@ -35,7 +35,7 @@
 
 .merchant-page-header > li > h2 {
   font-size: 20px;
-  font-family: 'Roboto Condensed';
+  font-family: Roboto;
   margin-bottom: 5px;
   margin-top: 10px;
   text-transform: uppercase;

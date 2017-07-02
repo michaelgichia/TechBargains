@@ -20,13 +20,13 @@ class ProductDetail extends React.Component {
     const { product, onTouchTap } = this.props;
     return (
       <Panel headerElement={<PanelHeader product={product} />}>
-        <div className="custom-row">
+        <div className="product-detail-row">
           <Row>
             <PanelHeaderTitle product={product} />
           </Row>
         </div>
         <div>
-          <Row className="custom-body-row">
+          <Row className="product-detail-body-row">
             <CustomCol xxs="12" xs="12" sm="4" md="4" lg="4" xl="4" xxl="2">
               <PanelImage product={product} />
             </CustomCol>
@@ -60,12 +60,12 @@ export default ProductDetail;
 
 // Components
 const PanelHeader = ({ product }) =>
-  <span className="flag-info">
+  <span className="product-detail-flag-info">
     {`EXPIRE: ${timeConversion(product.expire)}`}
   </span>;
 
 const PanelHeaderTitle = ({ product }) =>
-  <h2 className="merchant-panel-header">
+  <h2 className="product-detail-panel-header">
     <Link to={`/product/${product.id}`}>
       {product.name}
     </Link>
@@ -85,15 +85,15 @@ const PanelImage = ({ product }) =>
   </div>;
 
 const PanelBottomInfo = ({ product }) =>
-  <ul className="bottom-wrapper">
+  <ul className="product-detail-bottom-wrapper">
     <li>
-      <span className="no-break">
+      <span className="product-detail-no-break">
         From  {" "}
         <a href={`/merchant/${product.merchant._id.toString()}`}>
           {product.merchant !== null ? product.merchant.title : ""}
         </a>
       </span>
-      <span className="no-break">
+      <span className="product-detail-no-break">
         {" "} in  {" "}
         <a href={`/category/${product.category._id.toString()}`}>
           {product.category.name}
@@ -103,25 +103,25 @@ const PanelBottomInfo = ({ product }) =>
   </ul>;
 
 const PanelPriceWrapper = ({ product }) =>
-  <div className="price">
+  <div className="product-detail-price">
     <p>
-      <span className="price-first-span">
+      <span className="product-detail-first">
         {product.percentage}{" "}
       </span>
-      <span className="price-second-span">
+      <span className="product-detail-second">
         {product.isShipped}
       </span>
     </p>
   </div>;
 
 const PanelReadMore = ({ product }) =>
-  <div className="more-details-wrapper">
+  <div className="product-detail-more-wrapper">
     <Link to={`/product/${product.id}`}>More Details</Link>
   </div>;
 
 const PanelFeatures = ({ product }) =>
   <div
-    className="panel-product-features"
+    className="product-detail-features"
     dangerouslySetInnerHTML={{
       __html: product.features
     }}
@@ -129,7 +129,7 @@ const PanelFeatures = ({ product }) =>
 
 const CustomCol = props =>
   <Col
-    className="custom-column"
+    className="product-detail-row"
     widths={["xxs", "xs", "sm", "md", "lg", "xl", "xxl"]}
     {...props}
   />;

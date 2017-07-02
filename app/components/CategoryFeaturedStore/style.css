@@ -19,7 +19,7 @@ a.image-link {
   outline: 0;
   cursor: pointer;
   background-color: transparent;
-  font-family: 'Roboto Condensed', serif;
+  font-family: Roboto, serif;
 }
 
 .category-store-header {
@@ -42,7 +42,7 @@ a.image-link {
 
 .category-store-header > li > h2 {
   font-size: 20px;
-  font-family: 'Roboto Condensed';
+  font-family: Roboto;
   margin-bottom: 5px;
   margin-top: 10px;
   text-transform: uppercase;

@@ -95,7 +95,7 @@ export class CategoryBackendEdit extends React.Component {
           <Col xs="12" md="10" >
             <Card style={{ marginTop: 20 }}>
               <CardHeader
-                titleStyle={{ fontSize: 26, fontFamily: "'Roboto Condensed'" }}
+                titleStyle={{ fontSize: 26, fontFamily: "Roboto" }}
                 titleColor="black"
                 title="Category Infomation"
               />

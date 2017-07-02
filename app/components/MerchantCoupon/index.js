@@ -25,7 +25,7 @@ class MerchantCoupon extends React.Component {
           subtitleStyle={{
             fontSize: 15,
             color: "#b0b0b0",
-            fontFamily: "'Roboto Condensed'",
+            fontFamily: "Roboto",
             marginBottom: 0,
             paddingBottom: 0
           }}
@@ -34,7 +34,7 @@ class MerchantCoupon extends React.Component {
             style={{
               fontSize: 20,
               color: "#1f7dd4",
-              fontFamily: "'Roboto Condensed'",
+              fontFamily: "Roboto",
               lineHeight: "1.1"
           }}
             target="_blank">

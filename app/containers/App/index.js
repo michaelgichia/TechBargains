@@ -48,10 +48,6 @@ class App extends React.Component {
         <Helmet
           titleTemplate="%s - DealsExpert  -  Get the latest deals"
           defaultTitle="DealsExpert  -  Get the latest deals"
-          
-          link={[
-            { href: "https://fonts.googleapis.com/css?family=Bowlby+One|'Mogra'|'Roboto Condensed'+Condensed|Source+Sans+Pro", rel: 'stylesheet'}
-          ]}
           meta={[
             { name: 'description', content: 'Get the latest deals.' },
           ]}

@@ -37,15 +37,15 @@ svg {
 .share-button > p {
   margin-bottom: 0px;
   text-align: center;
-  font-family: 'Roboto Condensed', serif;
+  font-family: Roboto, serif;
   font-size: 16px;
 }
 
 .share-button .first {
   color: #e6251f;
-  font-family: 'Bowlby One', "Roboto Condensed", sans-serif;
+  font-family: Mogra, Roboto, sans-serif;
 }
 
 .share-button .second {
-  font-family: 'Mogra', "Roboto Condensed", sans-serif;
+  font-family: Mogra, Roboto, sans-serif;
 }

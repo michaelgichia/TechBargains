@@ -36,11 +36,11 @@
 
 .home-icon .first {
   color: #e6251f;
-  font-family: 'Mogra', "Roboto Condensed", sans-serif;
+  font-family: Mogra, Roboto, sans-serif;
 }
 
 .home-icon .second {
-  font-family: 'Mogra', "Roboto Condensed", sans-serif;
+  font-family: Mogra, Roboto, sans-serif;
 }
 
 @media (max-width: 768px) {
