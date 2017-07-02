@@ -8,7 +8,8 @@ import React from "react";
 import shortid from "shortid";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
-// import '!!file-loader!slick-carousel/slick/ajax-loader.gif'
+import "!!style-loader!css-loader!./carousel.css";
+
 
 class Carousel extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function

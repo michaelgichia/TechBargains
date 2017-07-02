@@ -8,6 +8,8 @@ import React from "react";
 import { Card, CardActions, CardHeader } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 
+import "!!style-loader!css-loader!./merchant-coupon.css";
+
 class MerchantCoupon extends React.Component {
   render() {
     return (
@@ -23,7 +25,7 @@ class MerchantCoupon extends React.Component {
           subtitleStyle={{
             fontSize: 15,
             color: "#b0b0b0",
-            fontFamily: "Roboto",
+            fontFamily: "'Roboto Condensed'",
             marginBottom: 0,
             paddingBottom: 0
           }}
@@ -32,7 +34,7 @@ class MerchantCoupon extends React.Component {
             style={{
               fontSize: 20,
               color: "#1f7dd4",
-              fontFamily: "Helvetica",
+              fontFamily: "'Roboto Condensed'",
               lineHeight: "1.1"
           }}
             target="_blank">

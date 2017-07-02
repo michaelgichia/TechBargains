@@ -11,6 +11,8 @@ import MenuItem from "material-ui/MenuItem";
 import ChipInput from "material-ui-chip-input";
 import Subheader from "material-ui/Subheader";
 
+import "!!style-loader!css-loader!./add-form.css";
+
 class AddDealForm extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   render() {

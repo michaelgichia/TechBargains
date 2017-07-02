@@ -33,7 +33,7 @@
 }
 
 .cont_error > h1 {
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 400;
   color: #e6251f;
   position: relative;
@@ -54,7 +54,7 @@
 }
 
 .cont_error > p {
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 300;
   letter-spacing: 5px;
   color: #525c65;

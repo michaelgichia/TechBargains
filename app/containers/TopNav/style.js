@@ -3,13 +3,13 @@ export const style = {
     margin: '-10px 8px 0px -10px',
     paddingLeft: 12,
     color: '#676d79 !important',
-    fontDamily: 'SourceSans, Roboto Slab, Helvetica',
+    fontDamily: 'SourceSans, 'Roboto Condensed' Slab, Helvetica',
     fontSize: 24,
   },
   smallScreenStyle: {
     margin: '-8px 8px 0px -50px',
     color: '#676d79 !important',
-    fontDamily: 'SourceSans, Roboto Slab, Helvetica',
+    fontDamily: 'SourceSans, 'Roboto Condensed' Slab, Helvetica',
     fontSize: 18,
   },
   appBar: {

@@ -12,6 +12,8 @@ import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 import shortid from "shortid";
 import { fetchStores } from "./actions";
 
+import "!!style-loader!css-loader!./stores.css";
+
 export class Stores extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
   state = {

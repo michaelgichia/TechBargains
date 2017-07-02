@@ -22,7 +22,7 @@ import {
 } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./single-product-carousel.css";
 
 function SinglePageCarousel({ banners }) {
   const settings = {

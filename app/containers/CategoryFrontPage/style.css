@@ -14,7 +14,7 @@
 }
 
 .categories-info > h1 {
-  font-family: 'SourceSans', "Roboto Slab", Roboto, sans-serif, Helvetica, Arial;
+  font-family: 'Source Sans Pro', "Roboto Condensed", sans-serif;
   color: #595a5d;
   letter-spacing: -0.75px;
   margin-top: 0px;
@@ -30,7 +30,7 @@
   outline: 0;
   cursor: pointer;
   background-color: transparent;
-  font-family: Helvetica, Arial, Roboto, serif;
+  font-family: 'Roboto Condensed', serif;
 }
 
 .categories-store-link {
@@ -57,7 +57,7 @@
 
 .categories-store-header > li > h2 {
   font-size: 20px;
-  font-family: Helvetica, Roboto, Arial;
+  font-family: 'Roboto Condensed';
   margin-bottom: 5px;
   margin-top: 10px;
   text-transform: uppercase;

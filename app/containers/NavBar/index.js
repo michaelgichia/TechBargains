@@ -1,25 +1,19 @@
 import React from "react";
 import { InstantSearch, Configure } from "react-instantsearch/dom";
 import AutoComplete from "components/AutoComplete";
-
 import shortid from "shortid";
-import Nav from "react-bootstrap/lib/Nav";
-import Navbar from "react-bootstrap/lib/Navbar";
-import NavDropdown from "react-bootstrap/lib/NavDropdown";
-import MenuItem from "react-bootstrap/lib/MenuItem";
-import NavbarCollapse from "react-bootstrap/lib/NavbarCollapse";
 import TopNav from "containers/TopNav";
 import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import { fetchNavItems, fetchStoreItems } from "./actions";
 
-import "!!style-loader!css-loader!./bootstrap.css";
-import "!!style-loader!css-loader!./bootstrap.theme.css";
 import "!!style-loader!css-loader!./style.css";
 
 class Navigation extends React.Component {
   state = {
     expanded: false,
+    isOpen: false,
+    dropdownOpen: false,
     navItems: [
       { name: "Lifestyle & Home", categoryArray: ["Shoes", "Dress", "glass"] },
       {
@@ -72,7 +66,11 @@ class Navigation extends React.Component {
     }
   }
 
+  toggle = () => this.setState({ isOpen: !this.state.isOpen });
+
   handleToggle = () => this.setState({ expanded: !this.state.expanded });
+
+  handleDropDown = () => this.setState({ dropdownOpen: !this.state.dropdownOpen })
 
   handleTouchTap = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -81,30 +79,30 @@ class Navigation extends React.Component {
   handleStoreItemOnselect = (eventKey, event) =>
     (window.location.href = `/merchant/${eventKey}`);
 
-  // displayStores = storeItems =>
-  //   storeItems.map(store =>
-  //     <MenuItem
-  //       onSelect={this.handleStoreItemOnselect}
-  //       key={shortid.generate()}
-  //       eventKey={store._id.toString()}
-  //     >
-  //       {store.title}
-  //     </MenuItem>
-  //   );
+  displayStores = storeItems =>
+    storeItems.map(store =>
+      <MenuItem
+        onSelect={this.handleStoreItemOnselect}
+        key={shortid.generate()}
+        eventKey={store._id.toString()}
+      >
+        {store.title}
+      </MenuItem>
+    );
 
   handleMenuItemOnselect = (eventKey, event) =>
     (window.location.href = `/category/${eventKey}`);
 
-  // displayItems = navItems =>
-  //   navItems.map(navItem =>
-  //     <MenuItem
-  //       onSelect={this.handleMenuItemOnselect}
-  //       key={shortid.generate()}
-  //       eventKey={navItem.id}
-  //     >
-  //       {navItem.title}
-  //     </MenuItem>
-  //   );
+  displayItems = navItems =>
+    navItems.map(navItem =>
+      <MenuItem
+        onSelect={this.handleMenuItemOnselect}
+        key={shortid.generate()}
+        eventKey={navItem.id}
+      >
+        {navItem.title}
+      </MenuItem>
+    );
 
   render() {
     return (

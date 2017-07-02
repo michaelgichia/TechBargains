@@ -116,7 +116,7 @@ form button:hover {
   width: 250px !important;
   height: 35px;
   padding: 5px 20px;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 300;
   font-size: 14px;
   background-color: #fff;
@@ -147,7 +147,7 @@ form button:hover {
   position: absolute;
   top: 51px;
   background-color: #fff;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 300;
   font-size: 14px;
   border-bottom-left-radius: 1px;

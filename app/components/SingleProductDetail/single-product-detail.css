@@ -36,7 +36,7 @@
 }
 
 .single-product-features {
-  font-family: "Roboto", Roboto, Helvetica, Arial, serif;
+  font-family: "Roboto Condensed", serif;
   color: #333;
 }
 
@@ -101,11 +101,11 @@ h2.single-product-header {
   margin-top: 0px;
   cursor: pointer;
   margin-bottom: 0px;
-  font-family: "Roboto", Roboto, Helvetica, Arial, serif;
+  font-family: "Roboto Condensed", serif;
 }
 
 h2.single-product-header {
-  font-family: "Roboto", Roboto, Helvetica, Arial, serif;
+  font-family: "Roboto Condensed", serif;
   line-height: 1.1;
   text-align: left;
   color: #1f7dd4;
@@ -146,7 +146,7 @@ ul.single-bottom-wrapper {
   line-height: 1.3;
   clear: both;
   margin-bottom: 0px;
-  font-family: "Roboto", Roboto, sans-serif, Helvetica, Arial;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .single-no-break > a,
@@ -303,7 +303,7 @@ p {
 }
 
 .toppers {
-  font-family: Helvetica, Arial, "Roboto";
+  font-family: 'Roboto Condensed';
   background-color: #e6251f;
   border-radius: 0;
   height: 27px;
@@ -342,7 +342,7 @@ p {
 p > .percentage {
   line-height: 1.1;
   font-size: 30px;
-  font-family: "Roboto", Roboto, sans-serif, Helvetica, Arial;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .merchant-footer {

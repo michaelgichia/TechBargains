@@ -22,6 +22,8 @@ import withProgressBar from "components/ProgressBar";
 import ReactModal from "containers/ReactModal";
 import FlashMessage from "containers/FlashMessage";
 
+import "!!style-loader!css-loader!./app.css";
+
 const style = {
   divi: {
     margin: 0,
@@ -46,8 +48,9 @@ class App extends React.Component {
         <Helmet
           titleTemplate="%s - DealsExpert  -  Get the latest deals"
           defaultTitle="DealsExpert  -  Get the latest deals"
+          
           link={[
-            { href: 'https://fonts.googleapis.com/css?family=Roboto', rel: 'stylesheet'}
+            { href: "https://fonts.googleapis.com/css?family=Bowlby+One|'Mogra'|'Roboto Condensed'+Condensed|Source+Sans+Pro", rel: 'stylesheet'}
           ]}
           meta={[
             { name: 'description', content: 'Get the latest deals.' },

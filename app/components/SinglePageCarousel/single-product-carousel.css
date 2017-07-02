@@ -51,3 +51,18 @@
 .slick-dots li.slick-active button:before {
   color: #1da1f2;
 }
+
+.carousel-image {
+  margin: 0;
+  padding: 0;
+  background-color: #fff !important;
+}
+
+.carousel-image > img {
+  max-height: 250px !important;
+  height: 250px !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}

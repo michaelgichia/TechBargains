@@ -7,7 +7,7 @@
 
 .latest-stores li > a{
   color: #1f7dd4;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .latest-stores {
@@ -35,7 +35,7 @@
 
 .merchant-page-header > li > h2 {
   font-size: 20px;
-  font-family: Helvetica, Roboto, Arial;
+  font-family: 'Roboto Condensed';
   margin-bottom: 5px;
   margin-top: 10px;
   text-transform: uppercase;
@@ -44,5 +44,41 @@
 @media (min-width: 992px) {
   #merchant-first-wrapper {
     padding-right: 30px;
+  }
+}
+
+.show-info-grid {
+  background-color: #fff;
+}
+
+div > .show-info-grid > .row {
+  border-bottom: #e7e7e7 !important;
+}
+
+.show-product-grid {
+  background-color: transparent;
+}
+
+.show-product-grid {
+  background-color: #f7f7f7 !important;
+}
+
+.show-grid {
+  margin: 0;
+  padding: 0 20px;
+  background-color: #f7f7f7 !important;
+}
+
+@media (max-width: 768px) {
+  .show-product-grid > .row {
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .show-product-grid > .row {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
   }
 }

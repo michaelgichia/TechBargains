@@ -1,13 +1,13 @@
 #ppBody {
   font-size: 14px;
-  font-family: Roboto, sans-serif, Helvetica, Arial;
+  font-family: 'Roboto Condensed', sans-serif, 'Roboto Condensed';
   width: 100%;
   margin: 0 auto;
   text-align: left;
 }
 
 #ppHeader {
-  font-family: Helvetica, Roboto, sans-serif, Arial;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 21px;
   width: 100%;
   margin: 0 auto;

@@ -7,18 +7,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "!!style-loader!css-loader./dropdown.css";
+
 class Dropdown extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div className="gold">
+      <div className="styled-dropdown">
         <ul>
           <li><h2>{this.props.dropdownValue}</h2></li>
-          <li id="platinumbtn" className="platinum" style={{ float: "right" }}>
-            <label htmlFor="platinumbtn" className="platinumbtn">
+          <li id="dropdown-btn" className="drp-dropdown" style={{ float: "right" }}>
+            <label htmlFor="dropdown-btn" className="dropdown-btn">
               <strong>{this.props.dropdownValue}</strong>
             </label>
-            <div className="platinum-content">
+            <div className="dropdown-content">
               <button onClick={this.props.handleDropdown} id="Expiring Soon">
                 Expiring Soon
               </button>
@@ -32,7 +34,7 @@ class Dropdown extends React.PureComponent {
           </li>
           <li
             id="platinum-id"
-            className="platinum-label"
+            className="dropdown-label"
             style={{ float: "right" }}
           >
             <label htmlFor="platinum-id">Refine by:</label>

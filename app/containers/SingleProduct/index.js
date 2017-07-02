@@ -6,8 +6,8 @@
 
 import Headers from "components/Headers";
 import React from "react";
+import Media from 'react-media'
 
-import { Container, Row, Col } from 'reactstrap';
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
@@ -18,6 +18,7 @@ import ShareButtons from "components/ShareButtons";
 
 import { connect } from "react-redux";
 import { CloudinaryContext } from "cloudinary-react";
+import { Container, Row, Col } from 'reactstrap';
 
 import { handleOpenModal } from "containers/ReactModal/actions";
 import "!!style-loader!css-loader!./style.css";
@@ -52,16 +53,16 @@ export class SingleProduct extends React.Component {
     return (
       <div>
         <Headers product={this.state.product} />
-        <Container fluid className="show-grid">
+        <Container fluid>
 
-          <Row className="show-info-grid">
+          <Row className="single-product-grid">
             {Object.keys(this.state.product).length > 0
               ? <CategoryInfo title={this.props.product.name} />
               : <div />}
           </Row>
 
-          <Row className="show-info-grid">
-            <Col xs="12" sm="12" md="8" lg="8">
+          <Row className="single-product-grid">
+            <Col xs="12" sm="12" md="12" lg="12" xl="8">
               <Row className="show-info-wrapper">
                 {Object.keys(this.state.product).length > 0
                   ? <CloudinaryContext cloudName="dw3arrxnf">
@@ -88,11 +89,20 @@ export class SingleProduct extends React.Component {
               </Row>
             </Col>
 
-            <Col md="4" lg="4">
-              <Coupon />
-              <Deal />
-              <Stores />
+            <Col xl="3">
+              <Media query="(max-width: 1224px)">
+                {matches => matches ? (
+                  <div />
+                ) : (
+                <div className="single-product-hide-columns">
+                  <Coupon />
+                  <Deal />
+                  <Stores />
+                </div>
+                )}
+              </Media>
             </Col>
+
           </Row>
         </Container>
       </div>

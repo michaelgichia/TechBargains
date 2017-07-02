@@ -1,0 +1,19 @@
+.dashtech {
+  background: #edecec;
+  min-height: 100vh;
+  padding-bottom: 30px;
+  background: #edecec !important;
+}
+
+@media (max-width: 768px) {
+  .dashtech {
+    margin-top: 64px !important;
+    background: #edecec !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .dashtech {
+    margin-top: 64px !important;
+  }
+}
