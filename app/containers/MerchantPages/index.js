@@ -124,7 +124,7 @@ export class MerchantPages extends React.Component {
               </CloudinaryContext>
             </Col>
             <Col id="merchant-second-wrapper" style={{backgroundColor: "#f1f1f1"}} xs="12" sm="12" md="12" lg="4">
-              {Object.keys(this.state.info).length > 0
+              {Object.keys(this.state.info).length > 0 && this.state.info.about.length > 0
                 ? <section className="merchant-profile">
                     <ul className="merchant-page-header">
                       <li>

@@ -17,7 +17,6 @@ import "!!style-loader!css-loader!./merchant-info.css";
 class MerchantInfo extends React.PureComponent {
   render() {
     const { info } = this.props;
-    console.log({ info });
     return (
       <Row>
         {Object.keys(info).length > 0 && info.public_id.length > 0
