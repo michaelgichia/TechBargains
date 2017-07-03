@@ -1,3 +1,9 @@
+@media (min-width: 768px) and (max-width: 992px) {
+  .merchant-info-description-wrapper {
+    padding-left: 90px;
+  }
+}
+
 .merchant-info-image {
   text-align: center;
 }
@@ -26,10 +32,10 @@
 @media (max-width: 768px) {
   .amazon-h1 {
     padding-top: 20px;
+    text-align: center;
   }
   .amazon-h1 > h1 {
     font-size: 20px;
-    text-align: center;
     padding-left: 8px;
     padding-right: 8px;
   }
@@ -38,6 +44,7 @@
 @media (min-width: 768px) {
   .amazon-text {
     max-width: 80%;
+     text-align: left;
   }
 }
 
@@ -51,7 +58,7 @@
 
 @media (max-width: 768px) {
   .amazon-button {
-    text-align: center;
+    text-align: center !important;
     margin-bottom: 10px;
   }
 }
