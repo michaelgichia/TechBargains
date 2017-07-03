@@ -9,7 +9,7 @@ import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import { connect } from "react-redux";
 import { handleOpenModal, handleCloseModal } from "./actions";
-import "!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./react-modal.css";
 
 export class ReactModal extends React.Component {
   state = {
@@ -56,61 +56,34 @@ export class ReactModal extends React.Component {
   };
 
   render() {
+    const { product, open } = this.state;
+    const { handleCloseModal } = this.props;
     const actions = [
       <FlatButton
         label="Back"
         labelStyle={{ color: "rgb(103, 109, 121)", fontWeight: 600 }}
         primary
-        onTouchTap={this.props.handleCloseModal}
+        onTouchTap={handleCloseModal}
       />
     ];
 
     return (
       <div>
         <Dialog
-          title={
-            <div className="modal-header">
-              <h2>Copy the code below and paste at checkout</h2>
-              <div>
-                {this.state.product.coupon}
-              </div>
-            </div>
-          }
+          contentStyle={{ width: "100%" }}
+          title={<ModalTitle product={product} />}
           actions={actions}
           modal={false}
-          open={this.state.open}
-          onRequestClose={e => this.props.handleCloseModal(e)}
-          bodyClassName="react-modal-body"
+          open={open}
+          onRequestClose={e => handleCloseModal(e)}
+          contentClassName="modal-body"
         >
-          <div className="modal-body">
-            <div className="btn-modal-wrapper">
-              <FlatButton
-                label={`go to ${this.state.product.merchant.title}`}
-                backgroundColor="#2eba37"
-                labelStyle={{
-                  color: "#fff",
-                  paddingLeft: 50,
-                  paddingRight: 50,
-                  fontSize: 20,
-                  textTransform: "none"
-                }}
-                hoverColor="#7fdbb6"
-                keyboardFocused={true}
-                onTouchTap={() => this.handlePush(this.state.product.backlink)}
-              />
-            </div>
-            <div
-              className="description-modal"
-              dangerouslySetInnerHTML={{ __html: this.state.product.features }}
-            />
-          </div>
-          <footer className="modal-footer">
-            <p>
-              If you click a merchant link and buy a product or service on their
-              website, we may be paid a fee by the merchant.
-            </p>
-            <p>© Copyright 2017 DealsExpert.</p>
-          </footer>
+          <ModalButton product={product} handlePush={this.handlePush} />
+          <div
+            className="description-modal"
+            dangerouslySetInnerHTML={{ __html: product.features }}
+          />
+          <ModalFooter />
         </Dialog>
       </div>
     );
@@ -130,3 +103,41 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReactModal);
+
+// Components
+
+const ModalTitle = ({ product }) =>
+  <div className="modal-header">
+    <div className="modal-header-string">
+      <h2>Copy the code below and paste at checkout</h2>
+      <div className="modal-coupon">
+        {product.coupon}
+      </div>
+    </div>
+  </div>;
+
+const ModalButton = ({ product, handlePush }) =>
+  <div className="modal-body-btn">
+    <FlatButton
+      label={`go to ${product.merchant.title}`}
+      backgroundColor="#2eba37"
+      labelStyle={{
+        color: "#fff",
+        paddingLeft: 20,
+        paddingRight: 20,
+        fontSize: 20,
+        textTransform: "none"
+      }}
+      hoverColor="#7fdbb6"
+      keyboardFocused={true}
+      onTouchTap={() => handlePush(product.backlink)}
+    />
+  </div>
+
+const ModalFooter = () =>
+  <div className="modal-footer">
+    <p>
+      If you click a merchant link and buy a product or service on their
+      website, we may be paid a fee by the merchant.
+    </p>
+  </div>;
