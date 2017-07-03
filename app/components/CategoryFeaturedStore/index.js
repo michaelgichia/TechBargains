@@ -6,7 +6,7 @@
 
 import React from "react";
 import shortid from "shortid";
-import { Image, Transformation } from "cloudinary-react";
+import { Image } from "cloudinary-react";
 import "!!style-loader!css-loader!./style.css";
 
 class CategoryFeaturedStore extends React.PureComponent {
@@ -24,9 +24,14 @@ class CategoryFeaturedStore extends React.PureComponent {
         key={shortid.generate()}
         href={`/merchant/${store._id.toString()}`}
       >
-        <Image publicId={store.public_id}>
-          <Transformation width="164" crop="scale" height="67" dpr="auto" />
-        </Image>
+        <Image
+          cloudName="dw3arrxnf"
+          publicId={store.public_id}
+          crop="scale"
+          width="164"
+          height="67"
+          responsive
+        />
       </a>
     );
 

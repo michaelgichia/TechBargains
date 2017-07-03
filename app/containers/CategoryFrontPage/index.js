@@ -14,7 +14,6 @@ import CategoryFeaturedStore from "components/CategoryFeaturedStore";
 import shortid from "shortid";
 import { Container, Row, Col } from 'reactstrap';
 import { connect } from "react-redux";
-import { CloudinaryContext } from "cloudinary-react";
 import { handleOpenModal } from "containers/ReactModal/actions";
 import {
   fetchCategoryInfo,
@@ -32,10 +31,7 @@ export class CategoryFrontPage extends React.Component {
     coupons: [],
     featuredCategoryStores: [],
     latestCategories: [],
-    info: {
-      title: "",
-      about: ""
-    },
+    info: {},
     errors: ""
   };
 
@@ -67,7 +63,7 @@ export class CategoryFrontPage extends React.Component {
         latestCategories: nextProps.latestCategories
       }));
     }
-    if (nextProps.info !== this.state.info) {
+    if (nextProps.info !== null && nextProps.info !== this.state.info) {
       const updatedInfo = { ...this.state.info };
       updatedInfo.title = nextProps.info.title;
       updatedInfo.about = nextProps.info.description;
@@ -89,29 +85,27 @@ export class CategoryFrontPage extends React.Component {
         <div className="categories-product-grid">
           <Row>
             <Col id="categories-first-wrapper" xs="12" sm="12" md="12" lg="8">
-              <CloudinaryContext cloudName="dw3arrxnf">
-                <ul
-                  style={{
-                    listStyleType: "none",
-                    paddingLeft: 0,
-                    marginTop: 20
-                  }}
-                >
-                  {this.state.deals.map(product =>
-                    <li
-                      key={shortid.generate()}
-                      style={{ marginTop: 10, marginBottom: 10 }}
-                    >
-                      <ProductDetail
-                        product={product}
-                        onTouchTap={() => this.props.handleOpenModal(product)}
-                      />
-                    </li>
-                  )}
-                </ul>
-              </CloudinaryContext>
+              <ul
+                style={{
+                  listStyleType: "none",
+                  paddingLeft: 0,
+                  marginTop: 20
+                }}
+              >
+                {this.state.deals.map(product =>
+                  <li
+                    key={shortid.generate()}
+                    style={{ marginTop: 10, marginBottom: 10 }}
+                  >
+                    <ProductDetail
+                      product={product}
+                      onTouchTap={() => this.props.handleOpenModal(product)}
+                    />
+                  </li>
+                )}
+              </ul>
               <div>
-                {this.state.coupons.length > 0
+                {Object.keys(this.state.info).length > 0 && this.state.info.title.length > 0
                   ? <CouponHeader
                       title={`${this.state.info.title} ${"  "} Coupons`}
                     />
@@ -131,12 +125,10 @@ export class CategoryFrontPage extends React.Component {
             </Col>
             <Col id="categories-second-wrapper" xs="12" sm="12" md="12" lg="4">
               <CategoryProfile info={this.state.info} />
-              <CloudinaryContext cloudName="dw3arrxnf">
                 <CategoryFeaturedStore
                   title={this.state.info.title}
                   stores={this.state.featuredCategoryStores}
                 />
-              </CloudinaryContext>
               <Disclaimer />
               <ul className="categories-store-header">
                 <li>

@@ -108,3 +108,10 @@ div > .categories-info-grid > .row {
     padding-right: 30px;
   }
 }
+
+@media (max-width: 768px) {
+  #categories-first-wrapper {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
