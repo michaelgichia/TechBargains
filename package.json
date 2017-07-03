@@ -287,6 +287,7 @@
     "redux-thunk": "2",
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
+    "screen-size": "^1.0.0",
     "sha1": "^1.1.1",
     "shortid": "^2.2.8",
     "styled-components": "^2.0.0",

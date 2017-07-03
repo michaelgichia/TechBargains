@@ -48,12 +48,12 @@ class ProductDetail extends React.Component {
   }
 }
 
-ProductDetail.propTypes = {
-  product: PropTypes.object.isRequired,
-  onTouchTap: PropTypes.func.isRequired
-};
+// ProductDetail.propTypes = {
+//   product: PropTypes.object.isRequired,
+//   onTouchTap: PropTypes.func.isRequired
+// };
 
-ProductDetail.defaultProps = {};
+// ProductDetail.defaultProps = {};
 
 export default ProductDetail;
 

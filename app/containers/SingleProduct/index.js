@@ -6,7 +6,6 @@
 
 import Headers from "components/Headers";
 import React from "react";
-import Media from "react-media";
 
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
@@ -21,7 +20,7 @@ import { CloudinaryContext } from "cloudinary-react";
 import { Container, Row, Col } from "reactstrap";
 
 import { handleOpenModal } from "containers/ReactModal/actions";
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./single-product.css";
 import { fetchRelatedProduct } from "./actions";
 
 export class SingleProduct extends React.Component {
@@ -44,72 +43,45 @@ export class SingleProduct extends React.Component {
     }
   }
 
-  filterCurrentProduct = relatedProducts =>
-    relatedProducts.filter(
-      prod => this.state.product._id.toString() !== prod._id.toString()
-    );
-
   render() {
     return (
-      <div>
-        <Headers product={this.state.product} />
-        <Container fluid>
-          <Row className="single-product-grid">
-            {Object.keys(this.state.product).length > 0
-              ? <CategoryInfo title={this.props.product.name} />
-              : <div />}
-          </Row>
+      <Container className="single-product-container">
+        {Object.keys(this.state.product).length > 0
+          ? <div>
+              <Headers product={this.state.product} />
+              <CategoryInfo title={this.props.product.name} />
+              <div className="single-product-wrapper">
+                <Row className="single-product-row">
 
-          <Row className="single-product-grid">
-            <Col xs="12" sm="12" md="12" lg="12" xl="8">
-              <Row className="show-info-wrapper">
-                {Object.keys(this.state.product).length > 0
-                  ? <CloudinaryContext cloudName="dw3arrxnf">
-                      <SingleProductDetail
-                        product={this.state.product}
-                        onTouchTap={() =>
-                          this.props.handleOpenModal(this.state.product)}
+                  {/* Coupon and deals column */}
+                  <Col xs="12" sm="12" md="12" lg="8" xl="8">
+                    <SingleProductDetail
+                      product={this.state.product}
+                      onTouchTap={() =>
+                        this.props.handleOpenModal(this.state.product)}
+                    />
+                    <ShareButtons banner={this.state.product} />
+                    <div className="single-product-hide-columns">
+                      <SinglePageCarousel
+                        banners={this.state.relatedProducts}
                       />
-                      <Row>
-                        <ShareButtons banner={this.state.product} />
-                      </Row>
-                    </CloudinaryContext>
-                  : <div>Loading...</div>}
-              </Row>
+                    </div>
+                  </Col>
 
-              <Row className="bottom-related-product">
-                <Col md="12" lg="12">
-                  <Media query="(max-width: 1224px)">
-                    {matches =>
-                      matches
-                        ? <div />
-                        : <div className="single-product-hide-columns">
-                            <SinglePageCarousel
-                              banners={this.filterCurrentProduct(
-                                this.state.relatedProducts
-                              )}
-                            />
-                          </div>}
-                  </Media>
-                </Col>
-              </Row>
-            </Col>
+                   {/* Side column with trending deals. coupon and stores */}
+                  <Col xs="12" sm="12" md="12" lg="4" xl="4">
+                    <div className="single-product-hide-columns">
+                      <Coupon />
+                      <Deal />
+                      <Stores />
+                    </div>
+                  </Col>
 
-            <Col xl="3">
-              <Media query="(max-width: 1224px)">
-                {matches =>
-                  matches
-                    ? <div />
-                    : <div className="single-product-hide-columns">
-                        <Coupon />
-                        <Deal />
-                        <Stores />
-                      </div>}
-              </Media>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                </Row>
+              </div>
+            </div>
+          : <div />}
+      </Container>
     );
   }
 }

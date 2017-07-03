@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from "reactstrap";
 import { CloudinaryContext } from "cloudinary-react";
 import MerchantInfo from "components/MerchantInfo";
 import MerchantProfile from "components/MerchantProfile";
@@ -71,11 +71,11 @@ export class MerchantPages extends React.Component {
 
   render() {
     return (
-      <div style={{marginTop: 70}}>
+      <div style={{ marginTop: 70 }}>
         <MerchantInfo info={this.state.info} />
         <div className="merchant-page-product-grid">
           <Row>
-            <Col id="merchant-first-wrapper" xs="12" sm="12" md="12" lg="8">
+            <Col id="merchant-first-wrapper" xs="12" sm="12" md="12" lg="8" xl="8">
               {this.state.coupons !== null && this.state.coupons.length > 0
                 ? <ul className="merchant-page-header">
                     <li>
@@ -123,8 +123,16 @@ export class MerchantPages extends React.Component {
                 </ul>
               </CloudinaryContext>
             </Col>
-            <Col id="merchant-second-wrapper" style={{backgroundColor: "#f1f1f1"}} xs="12" sm="12" md="12" lg="4">
-              {Object.keys(this.state.info).length > 0 && this.state.info.about.length > 0
+            <Col
+              id="merchant-second-wrapper"
+              style={{ backgroundColor: "#f1f1f1" }}
+              xs="12"
+              sm="12"
+              md="12"
+              lg="4"
+            >
+              {Object.keys(this.state.info).length > 0 &&
+              this.state.info.about.length > 0
                 ? <section className="merchant-profile">
                     <ul className="merchant-page-header">
                       <li>

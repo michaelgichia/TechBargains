@@ -10,6 +10,7 @@ import CouponHeader from "components/CouponHeader";
 import { connect } from "react-redux";
 import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 import shortid from "shortid";
+import viewSize from "screen-size";
 import { fetchStores } from "./actions";
 
 import "!!style-loader!css-loader!./stores.css";
@@ -22,7 +23,9 @@ export class Stores extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchStores();
+    if (viewSize().x > 992) {
+      this.props.fetchStores();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

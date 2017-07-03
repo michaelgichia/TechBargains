@@ -52,9 +52,9 @@ class YesNoBtn extends React.Component {
   }
 }
 
-YesNoBtn.propTypes = {
-  isCoupon: PropTypes.bool.isRequired,
-  onTouchTap: PropTypes.func.isRequired
-};
+// YesNoBtn.propTypes = {
+//   isCoupon: PropTypes.bool.isRequired,
+//   onTouchTap: PropTypes.func.isRequired
+// };
 
 export default YesNoBtn;

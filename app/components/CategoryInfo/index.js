@@ -18,8 +18,4 @@ class CategoryInfo extends React.PureComponent { // eslint-disable-line react/pr
   }
 }
 
-CategoryInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
 export default CategoryInfo;

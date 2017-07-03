@@ -24,7 +24,7 @@ import {
   fetchFeaturedCategoryStores
 } from "./actions";
 
-import "!!style-loader!css-loader!./style.css";
+import "!!style-loader!css-loader!./category-front-page.css";
 
 export class CategoryFrontPage extends React.Component {
   state = {
