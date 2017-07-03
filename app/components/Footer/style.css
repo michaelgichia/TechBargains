@@ -1,9 +1,15 @@
+.footer-paragraph {
+  min-width: 100%;
+}
+
 .footer {
   text-align: center;
   background-color:  #f3f3f3;
   color: #525c65;
   padding-top: 24px;
   padding-bottom: 70px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-top: 1px solid #e0e0e0;
   font-weight: 400;
 }
