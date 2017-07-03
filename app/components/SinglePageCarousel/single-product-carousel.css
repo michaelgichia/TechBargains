@@ -17,27 +17,15 @@
 
 .carousel-body {
   padding: 5px 8px !important;
+  height: 40px;
+  line-height: 20px;
+  overflow: hidden;
 }
 
 .carousel-single {
   width: 100%;
   max-width: 100%;
   margin: 10px;
-}
-
-.line-clamp-wrapper {
-  height: 43px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.line-clamp {
-  width: 100%;
-  line-height: 20px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  font-size: 14px;
-  font-weight: 700;
 }
 
 .carousel-body-price {

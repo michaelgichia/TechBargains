@@ -35,3 +35,9 @@
     margin-top: 40px;
   }
 }
+
+@media (max-width: 1024px) {
+  .home-second-wrapper {
+    display: none;
+  }
+}

@@ -76,9 +76,8 @@ const Slide = ({ banner }) =>
         subtitleColor="#e6251f"
         subtitle={banner.isShipped ? banner.isShipped : "+ trending"}
       />
-      <CardText color="#1f7dd4" className="carousel-body line-clamp-wrapper">
+      <CardText color="#1f7dd4" className="carousel-body">
         <label
-          className="line-clamp"
           onClick={() =>
             (window.location.href = `/product/${banner._id.toString()}`)}
         >

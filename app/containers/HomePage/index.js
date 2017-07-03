@@ -10,7 +10,6 @@
  */
 
 import React from "react";
-import Media from "react-media";
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
@@ -34,15 +33,13 @@ class HomePage extends React.PureComponent {
             <Col xs="12" sm="12" md="12" lg="8" xl="8">
               <Product />
             </Col>
-            <Media
-              query="(min-width: 1024px)"
-              render={() =>
-                <Col lg="4" xl="4">
-                  <Deal />
-                  <Coupon />
-                  <Stores />
-                </Col>}
-            />
+            <Col lg="4" xl="4">
+              <div className="home-second-wrapper">
+                <Deal />
+                <Coupon />
+                <Stores />
+              </div>
+            </Col>
           </Row>
         </div>
       </Container>
