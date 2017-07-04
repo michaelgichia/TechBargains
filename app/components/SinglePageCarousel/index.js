@@ -7,15 +7,11 @@
 import React from "react";
 import CouponHeader from "components/CouponHeader";
 import { CloudinaryContext, Transformation, Image } from "cloudinary-react";
-import YesNoBtn from "components/YesNoBtn";
-import { Link } from "react-router";
 import shortid from "shortid";
-import PropTypes from "prop-types";
 import Slider from "react-slick";
 import {
   Card,
   CardActions,
-  CardHeader,
   CardMedia,
   CardTitle,
   CardText
@@ -57,18 +53,18 @@ export default SinglePageCarousel;
 
 const Slide = ({ banner }) =>
   <div className="carousel-image">
-    <Card className="carousel-card">
-      <CardMedia style={{ minHeight: 130 }}>
+    <Card style={{border: "none", boxShadow: 0, zIndex: "none"}} className="carousel-card">
+      <CardMedia style={{ minHeight: 160, margin: "auto" }}>
         <a href={banner.backlink} target="_blank">
-          <Image publicId={banner.public_id}>
-            <Transformation
-              width="160"
-              crop="scale"
-              height="160"
-              dpr="auto"
-              responsive={true}
-            />
-          </Image>
+          <Image
+            cloudName="dw3arrxnf"
+            publicId={banner.public_id}
+            width="160"
+            height="160"
+            crop="scale"
+            dpr="auto"
+            responsive
+          />
         </a>
       </CardMedia>
       <CardTitle

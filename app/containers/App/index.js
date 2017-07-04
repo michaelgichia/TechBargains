@@ -25,18 +25,8 @@ import FlashMessage from "containers/FlashMessage";
 
 import "!!style-loader!css-loader!./app.css";
 
-const style = {
-  divi: {
-    margin: 0,
-    padding: 0
-  }
-};
 
 class App extends React.Component {
-  state = {
-    searchState: {},
-    lastPush: 0
-  };
 
   static propTypes = {
     children: React.PropTypes.node
@@ -51,18 +41,19 @@ class App extends React.Component {
           defaultTitle="DealsExpert  -  Get the latest deals"
           meta={[{ name: "description", content: "Get the latest deals." }]}
         />
+        {/*Render different navbar for admin and front page*/}
         {pathname.substring(1, 10) === "dashboard"
           ? <DashboardSidebar />
           : <Navigation />}
-        <ReactModal />
         <div
           className={
             pathname.substring(1, 10) === "dashboard" ? "dashtech" : "tech"
           }
         >
+          <ReactModal />
           {React.Children.toArray(this.props.children)}
+          <FlashMessage />
         </div>
-        <FlashMessage />
         <Footer />
       </Container>
     );

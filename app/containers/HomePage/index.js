@@ -31,6 +31,7 @@ class HomePage extends React.PureComponent {
         <div className="row-wrapper">
           <Row style={{ minWidth: "100%", margin: 0 }}>
             <Col
+              className="row-wrapper-column1"
               xs="12"
               sm="12"
               md="12"
@@ -40,7 +41,9 @@ class HomePage extends React.PureComponent {
             <CarouselContainer />
               <Product />
             </Col>
-            <Col xl="4">
+            <Col
+              className="row-wrapper-column2"
+              xl="4">
               <div className="home-second-wrapper">
                 <Deal />
                 <Coupon />
