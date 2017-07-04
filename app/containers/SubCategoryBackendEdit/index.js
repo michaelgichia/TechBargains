@@ -150,7 +150,7 @@ export class SubCategoryBackendEdit extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}

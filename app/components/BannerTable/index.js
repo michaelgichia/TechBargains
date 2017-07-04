@@ -39,9 +39,9 @@ class BannerTable extends React.PureComponent {
             </TableHeaderColumn>
           </TableRow>
           <TableRow>
-            <TableHeaderColumn colSpan="7">Banners</TableHeaderColumn>
-            <TableHeaderColumn colSpan="3">Featured</TableHeaderColumn>
-            <TableHeaderColumn colSpan="2">Edit</TableHeaderColumn>
+            <TableHeaderColumn colSpan="7" style={{fontSize: 16}}>Banners</TableHeaderColumn>
+            <TableHeaderColumn colSpan="3" style={{fontSize: 16}}>Featured</TableHeaderColumn>
+            <TableHeaderColumn colSpan="2" style={{fontSize: 16}}>Edit</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody
@@ -51,8 +51,8 @@ class BannerTable extends React.PureComponent {
         >
           {this.props.banners.map(row =>
             <TableRow key={shortid.generate()}>
-              <TableRowColumn colSpan="7">{row.title}</TableRowColumn>
-              <TableRowColumn colSpan="3">
+              <TableRowColumn colSpan="7" style={{fontSize: 14}}>{row.title}</TableRowColumn>
+              <TableRowColumn colSpan="3" style={{fontSize: 14}}>
                 {row.isFeatured ? "true" : "false"}
               </TableRowColumn>
               <TableRowColumn colSpan="2"><EditIcon /></TableRowColumn>

@@ -16,7 +16,7 @@ export const muiTheme = getMuiTheme({
     focusColor: "#1f7dd4",
     hintColor: "rgba(0, 0, 0, 0.61)",
     textColor: "rgba(0, 0, 0, 0.61)",
-    floatingLabelColor: "rgba(0, 0, 0, 0.61)",
+    floatingLabelColor: "#1f7dd4",
 
   },
   chip: {

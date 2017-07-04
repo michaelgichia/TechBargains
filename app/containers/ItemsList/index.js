@@ -74,7 +74,7 @@ export class ItemsList extends React.Component {
           <TableRow selected={this.isSelected(index)} key={shortid.generate()}>
             <TableRowColumn colSpan="10">
               <Link to={`/dashboard/items-list/${item.id}`}>
-                <div dangerouslySetInnerHTML={{ __html: item.name }} />
+                <div style={{fontSize: 16}} dangerouslySetInnerHTML={{ __html: item.name }} />
               </Link>
             </TableRowColumn>
           </TableRow>
@@ -93,7 +93,7 @@ export class ItemsList extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Card style={{ marginTop: 20 }}>
               <CardHeader
                 titleStyle={{ fontSize: 26, fontFamily: "Roboto" }}
@@ -121,7 +121,7 @@ export class ItemsList extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <span>
               <ul style={{ listStyle: "none" }}>
                 {this.state.errors &&

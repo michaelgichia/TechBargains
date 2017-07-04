@@ -103,7 +103,7 @@ export class ItemDetail extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Card containerStyle={{ marginTop: 30 }}>
               <CardHeader
                 subtitle={`Percentage Off / Discounted Price: ${percentage || ""}`}

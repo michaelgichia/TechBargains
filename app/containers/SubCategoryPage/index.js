@@ -145,7 +145,7 @@ class SubCategoryPage extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10">
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Paper zDepth={2} rounded={false} style={gemsawesome.paper}>
               <SubCategoryForm
                 onChange={this.handleChange}
@@ -166,7 +166,7 @@ class SubCategoryPage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="12" md="10">
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <div style={gemsawesome.table}>
               <Table
                 fixedHeader
@@ -179,19 +179,25 @@ class SubCategoryPage extends React.Component {
                   <TableRow>
                     <TableHeaderColumn
                       colSpan="12"
-                      tooltip="A List Of Categories"
+                      tooltip="A List Of Sub-Categories"
                       style={{
                         textAlign: "center",
                         fontSize: 24,
-                        color: "black"
+                        color: "black",
+                        paddingTop: 30,
+                        paddingBottom: 20
                       }}
                     >
-                      A List Of Categories
+                      A List Of Sub-Categories
                     </TableHeaderColumn>
                   </TableRow>
                   <TableRow>
-                    <TableHeaderColumn colSpan="12">
-                      Categories
+                    <TableHeaderColumn
+                      style={{
+                        fontSize: 16,
+                      }}
+                      colSpan="12">
+                      Sub-Categories
                     </TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
@@ -202,7 +208,7 @@ class SubCategoryPage extends React.Component {
                 >
                   {this.state.subCategories.map(row =>
                     <TableRow key={shortid.generate()}>
-                      <TableRowColumn colSpan="12">
+                      <TableRowColumn colSpan="12" style={{fontSize: 14}}>
                         <a href={`/dashboard/sub-category/${row.id}/update`}>
                           {row.title}
                         </a>

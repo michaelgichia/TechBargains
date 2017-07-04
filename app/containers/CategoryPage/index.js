@@ -84,7 +84,7 @@ export class CategoryPage extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Paper zDepth={1} rounded={false} style={gems.paper}>
               <CategoryForm
                 header="Create Category"
@@ -103,7 +103,7 @@ export class CategoryPage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <div style={gems.table}>
               <Table
                 fixedHeader

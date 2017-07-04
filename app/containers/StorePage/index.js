@@ -205,7 +205,7 @@ export class StorePage extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Paper zDepth={2} rounded={false} style={gemsgood.paper}>
               <StoreForm
                 onChange={this.handleChange}
@@ -233,7 +233,7 @@ export class StorePage extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs="12" md="10" >
+          <Col sm="12" md={{ size: 10, offset: 1 }}>
             <Table
               wrapperStyle={gemsgood.wrapperStyle}
               bodyStyle={gemsgood.bodyStyle}
