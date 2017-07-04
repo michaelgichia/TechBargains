@@ -1,16 +1,18 @@
-import CustomToolbar from "components/CustomToolbar";
 import React from "react";
 import PropTypes from "prop-types";
 import ReactQuill from "react-quill";
-import "!!style-loader!css-loader!react-quill/dist/quill.snow.css";
 
-class ReactEditor extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
+import "!!style-loader!css-loader!react-quill/dist/quill.snow.css";
+import "!!style-loader!css-loader!./react-editor.css";
+
+
+class ReactEditor extends React.PureComponent {
   render() {
     const modules = {
       toolbar: [
-        ["bold", "italic", "underline"],
+        ["bold", "italic", "underline", "strike"],
         ["link"],
+        [{ 'color': [] }], 
         [{ list: "ordered" }, { list: "bullet" }]
       ]
     };
@@ -18,7 +20,9 @@ class ReactEditor extends React.Component {
       "bold",
       "italic",
       "underline",
+      "strike",
       "bullet",
+      "color",
       "indent",
       "link",
       "list"
@@ -50,3 +54,13 @@ ReactEditor.propTypes = {
 };
 
 export default ReactEditor;
+
+
+const CustomToolbar = () =>
+  <div id="toolbar">
+    <button className="ql-bold"></button>
+    <button className="ql-underline"></button>
+    <button className="ql-strike"></button>
+    <button className="ql-link">
+    </button>
+  </div>

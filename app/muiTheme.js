@@ -4,9 +4,6 @@ export const muiTheme = getMuiTheme({
   palette: {
     textColor: '#525c65',
   },
-  TextField: {
-    zIndex: 1,
-  },
   appBar: {
     zIndex: 5,
     width: '100%',
@@ -15,7 +12,14 @@ export const muiTheme = getMuiTheme({
   raisedButton: {
     primaryColor: "#1da1f2",
   },
-    textField: {
-      focusColor:  "#1f7dd4",
+  textField: {
+    focusColor: "#1f7dd4",
+    hintColor: "rgba(0, 0, 0, 0.61)",
+    textColor: "rgba(0, 0, 0, 0.61)",
+    floatingLabelColor: "rgba(0, 0, 0, 0.61)",
+
+  },
+  chip: {
+    fontWeight: 600,
   },
 });

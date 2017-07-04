@@ -344,7 +344,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AddDeal);
 
 // Styles
 const hintStyle = {
-  marginTop: 0
+  marginTop: 0,
 };
 
 const style = {
