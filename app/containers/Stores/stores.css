@@ -24,3 +24,15 @@
   left: 0;
   z-index: 1;
 }
+
+.stores-items > a {
+  background-color: #FFF;
+  border: 1px solid #e0e0e0;
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 1px;
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  text-align: center;
+}

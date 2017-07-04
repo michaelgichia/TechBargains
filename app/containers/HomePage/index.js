@@ -29,11 +29,18 @@ class HomePage extends React.PureComponent {
     return (
       <Container fluid>
         <div className="row-wrapper">
-          <Row>
-            <Col xs="12" sm="12" md="12" lg="8" xl="8">
+          <Row style={{ minWidth: "100%", margin: 0 }}>
+            <Col
+              xs="12"
+              sm="12"
+              md="12"
+              lg="12"
+              xl="8"
+            >
+            <CarouselContainer />
               <Product />
             </Col>
-            <Col lg="4" xl="4">
+            <Col xl="4">
               <div className="home-second-wrapper">
                 <Deal />
                 <Coupon />

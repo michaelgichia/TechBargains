@@ -1,6 +1,6 @@
 .carousel-div {
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .carousel {
@@ -16,11 +16,17 @@
   background-color: #fff !important;
 }
 
-.carousel-image > img {
+.carousel-image img {
   max-height: 250px !important;
   height: 250px !important;
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 992px) {
+  .carousel-div {
+    display: none !important;
+  }
 }

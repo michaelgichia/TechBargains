@@ -5,7 +5,7 @@
  */
 
 import React, { PropTypes } from "react";
-import CouponHeader from "components/CouponHeader";
+import SideColumnHeader from "components/SideColumnHeader";
 import { connect } from "react-redux";
 import shortid from "shortid";
 import viewSize from "screen-size";
@@ -42,10 +42,10 @@ export class Deal extends React.Component {
     return (
       <div>
         {this.state.deals.length > 0
-          ? <CloudinaryContext cloudName="dw3arrxnf">
-              <CouponHeader title="Trending Deals" />
+          ? <div>
+              <SideColumnHeader title="Trending Deals" />
               {this.renderDeals(this.state.deals)}
-            </CloudinaryContext>
+            </div>
           : <div />}
       </div>
     );

@@ -7,14 +7,20 @@
 @media (max-width: 992px) {
   .hide-columns {
     display: none !important;
-    transition: all 0.3s;
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1920px) {
+@media (min-width: 1280px) and (max-width: 1920px) {
   .row-wrapper {
-    padding-left: 50px;
-    padding-right: 50px
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .row-wrapper {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
   }
 }
 

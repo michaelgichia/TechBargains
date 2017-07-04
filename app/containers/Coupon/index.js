@@ -4,12 +4,11 @@
  *
  */
 
-import CouponHeader from "components/CouponHeader";
+import SideColumnHeader from "components/SideColumnHeader";
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import shortid from "shortid";
 import viewSize from "screen-size";
-import { CloudinaryContext } from "cloudinary-react";
 import CouponDetail from "components/CouponDetail";
 import { fetchCoupon } from "./actions";
 
@@ -44,10 +43,10 @@ export class Coupon extends React.Component {
     return (
       <div>
         {this.state.coupons.length > 0
-          ? <CloudinaryContext cloudName="dw3arrxnf">
-              <CouponHeader title="Top Coupons" />
+          ? <div>
+              <SideColumnHeader title="Top Coupons" />
               {this.renderCoupons(this.state.coupons)}
-            </CloudinaryContext>
+            </div>
           : <div />}
       </div>
     );

@@ -8,35 +8,30 @@ import React from "react";
 import shortid from "shortid";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
+
 import "!!style-loader!css-loader!./carousel.css";
 
+const settings = {
+  arrows: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000
+};
 
-class Carousel extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-  render() {
-    const settings = {
-      arrows: true,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000
-    };
-    return (
-      <div className="carousel-div">
-        <Slider {...settings} className="carousel">
-          {this.props.banners.length !== null && this.props.banners.length > 0
-            ? this.props.banners.map(banner =>
-                <div className="carousel-image" key={shortid.generate()}>
-                  <img src={banner.imageUrl} alt={banner.title} />
-                </div>
-              )
-            : <div />}
-        </Slider>
-      </div>
-    );
-  }
-}
+const Carousel = ({ banners }) =>
+  <div className="carousel-div">
+    <Slider {...settings} className="carousel">
+      {banners.map(banner =>
+        <div className="carousel-image" key={shortid.generate()}>
+          <a href={banner.backlink}>
+            <img src={banner.imageUrl} alt="carousel" />
+          </a>
+        </div>
+      )}
+    </Slider>
+  </div>;
 
 Carousel.propTypes = {
   banners: PropTypes.array.isRequired

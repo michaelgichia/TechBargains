@@ -6,9 +6,9 @@
 
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
-import CouponHeader from "components/CouponHeader";
+import SideColumnHeader from "components/SideColumnHeader";
 import { connect } from "react-redux";
-import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
+import { Image } from "cloudinary-react";
 import shortid from "shortid";
 import viewSize from "screen-size";
 import { fetchStores } from "./actions";
@@ -39,24 +39,24 @@ export class Stores extends React.Component {
 
   renderStores = stores =>
     stores.map(store =>
-      <div className="featured-store" key={shortid.generate()}>
-        <Link to={`/merchant/${store.id}`}>
-          <span className="store-link" />
-        </Link>
-        <Image publicId={store.imageUrl}>
-          <Transformation crop="scale" height="90" dpr="auto" />
-        </Image>
-      </div>
+      <Link to={`/merchant/${store.id}`} key={shortid.generate()}>
+        <Image
+          cloudName="dw3arrxnf"
+          publicId={store.imageUrl}
+          width="180"
+          height="90"
+        />
+      </Link>
     );
 
   render() {
     return (
       <div>
         {this.state.stores.length > 0
-          ? <CloudinaryContext cloudName="dw3arrxnf">
-              <CouponHeader title="Popular Stores" />
+          ? <div className="stores-items">
+              <SideColumnHeader title="Popular Stores" />
               {this.renderStores(this.state.stores)}
-            </CloudinaryContext>
+            </div>
           : <div />
         }
       </div>

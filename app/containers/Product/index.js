@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import CouponHeader from "components/CouponHeader";
+import SideColumnHeader from "components/SideColumnHeader";
 import Dropdown from "components/Dropdown";
 import "react-instantsearch-theme-algolia/style.css";
 import shortid from "shortid";
@@ -45,7 +45,7 @@ export class Product extends React.Component {
     return (
       <div>
         <div>
-          <CouponHeader title="Latest Deals" />
+          <SideColumnHeader title="Latest Deals" />
         </div>
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
             {this.state.products.map(product =>

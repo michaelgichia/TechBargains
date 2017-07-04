@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import PaperZindex from '../index';
+// import SideColumnHeader from '../index';
 
-describe('<PaperZindex />', () => {
+describe('<SideColumnHeader />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
