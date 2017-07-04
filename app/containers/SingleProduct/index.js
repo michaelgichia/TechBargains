@@ -61,7 +61,7 @@ export class SingleProduct extends React.Component {
                         this.props.handleOpenModal(this.state.product)}
                     />
                     <ShareButtons banner={this.state.product} />
-                    <div className="single-product-hide-columns">
+                    <div style={{marginTop: 70}} className="single-product-hide-columns">
                       <SinglePageCarousel
                         banners={this.state.relatedProducts}
                       />
