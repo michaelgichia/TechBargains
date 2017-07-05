@@ -237,7 +237,6 @@
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
-    "bootstrap": "4.0.0-alpha.6",
     "chalk": "^1.1.3",
     "cloudinary-react": "^1.0.4",
     "compression": "1.6.2",
@@ -261,8 +260,6 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "15.4.1",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-addons-transition-group": "^15.6.0",
     "react-autosuggest": "^9.1.0",
     "react-dom": "15.4.1",
     "react-dropzone": "^3.13.2",
@@ -287,7 +284,6 @@
     "screen-size": "^1.0.0",
     "sha1": "^1.1.1",
     "shortid": "^2.2.8",
-    "styled-components": "^2.0.0",
     "superagent": "^3.5.2",
     "validator": "^7.0.0",
     "warning": "3.0.0",
@@ -346,6 +342,7 @@
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "2.2.0-rc.3",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-middleware": "1.9.0",
     "webpack-hot-middleware": "2.15.0"
   }

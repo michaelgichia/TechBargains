@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Mogra');
+
 .share-button-wrapper {
   text-align: center;
   -webkit-box-align: center;
@@ -43,9 +45,9 @@ svg {
 
 .share-button .first {
   color: #e6251f;
-  font-family: Mogra, Roboto, sans-serif;
+  font-family: 'Mogra', cursive, Roboto, sans-serif;
 }
 
 .share-button .second {
-  font-family: Mogra, Roboto, sans-serif;
+  font-family: 'Mogra', cursive, Roboto, sans-serif;
 }

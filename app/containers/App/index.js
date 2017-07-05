@@ -19,15 +19,12 @@ import { Container } from "reactstrap";
 import Navigation from "containers/NavBar";
 import Footer from "components/Footer";
 import DashboardSidebar from "containers/DashboardSidebar";
-import withProgressBar from "components/ProgressBar";
 import ReactModal from "containers/ReactModal";
 import FlashMessage from "containers/FlashMessage";
 
 import "!!style-loader!css-loader!./app.css";
 
-
 class App extends React.Component {
-
   static propTypes = {
     children: React.PropTypes.node
   };
@@ -40,7 +37,28 @@ class App extends React.Component {
           titleTemplate="%s - DealsExpert  -  Get the latest deals"
           defaultTitle="DealsExpert  -  Get the latest deals"
           meta={[{ name: "description", content: "Get the latest deals." }]}
+          link={[
+            {
+              rel: "stylesheet",
+              href:
+                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css",
+              integrity:
+                "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ",
+              crossorigin: "anonymous"
+            }
+          ]}
+          script={[
+            {
+              src:
+                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js",
+              integrity:
+                "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn",
+              crossorigin: "anonymous"
+            },
+            {src: "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+          ]}
         />
+
         {/*Render different navbar for admin and front page*/}
         {pathname.substring(1, 10) === "dashboard"
           ? <DashboardSidebar />
@@ -60,4 +78,4 @@ class App extends React.Component {
   }
 }
 
-export default withProgressBar(App);
+export default App;

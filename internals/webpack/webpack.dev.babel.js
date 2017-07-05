@@ -11,8 +11,21 @@ const logger = require('../../server/logger');
 const cheerio = require('cheerio');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 const dllPlugin = pkg.dllPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const plugins = [
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'server',
+    analyzerHost: '127.0.0.1',
+    analyzerPort: 8888,
+    reportFilename: 'report.html',
+    defaultSizes: 'parsed',
+    openAnalyzer: true,
+    generateStatsFile: false,
+    statsFilename: 'stats.json',
+    statsOptions: null,
+    logLevel: 'info'
+  }),
   new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
   new webpack.NoErrorsPlugin(),
   new HtmlWebpackPlugin({

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Mogra');
 .ais-SearchBox__reset svg,
 .ais-SearchBox__button svg {
   fill: red
@@ -36,11 +37,11 @@
 
 .home-icon .first {
   color: #e6251f;
-  font-family: Mogra, Roboto, sans-serif;
+  font-family: 'Mogra', cursive, Roboto, sans-serif;
 }
 
 .home-icon .second {
-  font-family: Mogra, Roboto, sans-serif;
+  font-family: 'Mogra', cursive, Roboto, sans-serif;
 }
 
 @media (max-width: 768px) {

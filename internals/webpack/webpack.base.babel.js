@@ -72,23 +72,9 @@ module.exports = (options) => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        appId: JSON.stringify(process.env.appId),
-        apiKey: JSON.stringify(process.env.apiKey),
       },
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.UglifyJsPlugin(), //minify everything
-    new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks 
-    new webpack.ContextReplacementPlugin(/^\.\/locale$/, context => {
-      if (!/\/moment\//.test(context.context)) { return }
-      // context needs to be modified in place
-      Object.assign(context, {
-        // include only CJK
-        regExp: /^\.\/(ja|ko|zh)/,
-        // point to the locale data folder relative to moment's src/lib/locale
-        request: '../../locale'
-      })
-    }),
   ]),
   resolve: {
     modules: ['app', 'node_modules'],

@@ -7,7 +7,7 @@
 import React from "react";
 import SideColumnHeader from "components/SideColumnHeader";
 import Dropdown from "components/Dropdown";
-import "react-instantsearch-theme-algolia/style.css";
+import "react-instantsearch-theme-algolia/style.min.css";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
 import { CloudinaryContext } from "cloudinary-react";

@@ -10,12 +10,30 @@ import { Link } from "react-router";
 import YesNoBtn from "components/YesNoBtn";
 import { Image } from "cloudinary-react";
 import Panel from "components/Panel";
-import { timeConversion } from "utils/milliSecondsConverter";
 import "!!style-loader!css-loader!./product-detail.css";
 import { Row, Col } from "reactstrap";
 
+function timeConversion(expireat) {
+  const expire = new Date(expireat).getTime();
+  const millisec = expire - new Date().getTime();
+  const seconds = (millisec / 1000).toFixed(1);
+  const minutes = (millisec / (1000 * 60)).toFixed(1);
+  const hours = (millisec / (1000 * 60 * 60)).toFixed(1);
+  const days = (millisec / (1000 * 60 * 60 * 24)).toFixed(1);
+
+  if (seconds < 60) {
+    return seconds + " SEC";
+  } else if (minutes < 60) {
+    return minutes + " MIN";
+  } else if (hours < 24) {
+    return hours + " HRS";
+  } else {
+    return days + " DAYS";
+  }
+};
 
 class ProductDetail extends React.Component {
+
   render() {
     const { product, onTouchTap } = this.props;
     return (
