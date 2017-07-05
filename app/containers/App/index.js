@@ -55,7 +55,8 @@ class App extends React.Component {
                 "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn",
               crossorigin: "anonymous"
             },
-            {src: "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+            {src: "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"},
+            {src: "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"}
           ]}
         />
 

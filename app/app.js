@@ -33,6 +33,8 @@ import 'file-loader?name=[name].[ext]!./.htaccess';
 import '!!style-loader!css-loader!./global.css';
 import "!!style-loader!css-loader!slick-carousel/slick/slick.css";
 import "!!style-loader!css-loader!slick-carousel/slick/slick-theme.css";
+import "!!style-loader!css-loader!react-quill/dist/quill.snow.css";
+
 /* eslint-enable import/no-unresolved, import/extensions */
 
 import configureStore from './store';

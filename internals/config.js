@@ -28,6 +28,15 @@ const ReactBoilerplate = {
         'ip',
         'minimist',
         'sanitize.css',
+        'bcrypt',
+        'express-validator',
+        'jsonwebtoken',
+        'passport',
+        'passport-local',
+        'mongoose-ts',
+        'react-instantsearch-theme-algolia',
+        'mongoose-algolia',
+        'mongoose-autopopulate'
       ],
 
       /**
