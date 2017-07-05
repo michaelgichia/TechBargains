@@ -6,11 +6,8 @@
 
 import React from "react";
 import SideColumnHeader from "components/SideColumnHeader";
-import Dropdown from "components/Dropdown";
-import "react-instantsearch-theme-algolia/style.min.css";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
-import { CloudinaryContext } from "cloudinary-react";
 import { connect } from "react-redux";
 import { handleOpenModal } from "containers/ReactModal/actions";
 import { fetchTrendingDeals } from "./actions";

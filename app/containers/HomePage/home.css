@@ -25,6 +25,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .row-wrapper-column1 {
+    padding: 0px !important;
+  }
+}
+
 @media (max-width: 1280px) {
   .row-wrapper-column1 {
     padding: 0px;
@@ -52,7 +58,7 @@
   .row-wrapper {
     padding-left: 0px;
     padding-right: 0px;
-    margin-top: 40px;
+    margin-top: 50px;
   }
 }
 

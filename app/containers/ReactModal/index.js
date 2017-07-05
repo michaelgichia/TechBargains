@@ -75,6 +75,7 @@ export class ReactModal extends React.Component {
           actions={actions}
           modal={false}
           open={open}
+          autoScrollBodyContent
           onRequestClose={e => handleCloseModal(e)}
           contentClassName="modal-body"
         >

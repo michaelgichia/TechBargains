@@ -5,7 +5,12 @@ p {
 .product-detail-flag-info {
   background-color: #e6251f;
   color: #FFF;
-  padding: 6px 7px;
+  padding-left: 10px;
+  padding-right: 2px;
+  padding-top: auto;
+  padding-bottom: auto;
+  height: 27px;
+  max-width: 130px;
 }
 
 .product-detail-row > .row {
@@ -15,10 +20,17 @@ p {
 }
 
 @media (max-width: 480px) {
-  .product-detail-row > .row {
-    padding: 0px 7px;
+  .product-detail-row {
+    padding: 0px !important;
   }
 }
+
+@media (max-width: 480px) {
+  .product-detail-btn {
+    float: right !important;
+  }
+}
+
 
 
 /* Product features */

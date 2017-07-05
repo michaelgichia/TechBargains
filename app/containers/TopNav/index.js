@@ -7,14 +7,13 @@ import HomeIcon from "components/HomeIcon";
 import { InstantSearch, Configure } from "react-instantsearch/dom";
 
 // style
-import "react-instantsearch-theme-algolia/style.min.css";
 import "!!style-loader!css-loader!./style.css";
 import { style } from "./style";
 
 class TopNav extends React.Component {
   state = {
     windowWidth: window.innerWidth,
-    searchState: {},
+    searchState: {}
   };
 
   componentDidMount() {
@@ -75,4 +74,3 @@ TopNav.propTypes = {
 };
 
 export default TopNav;
-

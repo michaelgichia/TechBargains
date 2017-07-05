@@ -52,11 +52,13 @@ class ProductDetail extends React.Component {
               <PanelFeatures product={product} />
               <PanelReadMore product={product} />
               <PanelPriceWrapper product={product} />
-              <YesNoBtn
-                isCoupon={product.isCoupon}
-                onTouchTap={onTouchTap}
-                backlink={product.backlink}
-              />
+              <div className="product-detail-btn">
+                <YesNoBtn
+                  isCoupon={product.isCoupon}
+                  onTouchTap={onTouchTap}
+                  backlink={product.backlink}
+                />
+              </div>
               <PanelBottomInfo product={product} />
             </CustomCol>
           </Row>
@@ -78,9 +80,9 @@ export default ProductDetail;
 
 // Components
 const PanelHeader = ({ product }) =>
-  <span className="product-detail-flag-info">
+  <div className="product-detail-flag-info">
     {`EXPIRE: ${timeConversion(product.expire)}`}
-  </span>;
+  </div>;
 
 const PanelHeaderTitle = ({ product }) =>
   <h2 className="product-detail-panel-header">

@@ -231,7 +231,6 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
-    "algoliasearch": "^3.23.0",
     "axios": "^0.16.1",
     "babel-polyfill": "6.20.0",
     "bcrypt": "^1.0.2",
@@ -265,7 +264,6 @@
     "react-dropzone": "^3.13.2",
     "react-helmet": "3.2.2",
     "react-instantsearch": "^4.0.3",
-    "react-instantsearch-theme-algolia": "^4.0.3",
     "react-intl": "2.1.5",
     "react-lazyload": "^2.2.7",
     "react-quill": "^1.0.0-rc.2",
