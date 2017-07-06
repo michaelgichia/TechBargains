@@ -14,6 +14,8 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { Container } from "reactstrap";
+import withProgressBar from 'components/ProgressBar';
+
 
 // Material-ui
 import Navigation from "containers/NavBar";
@@ -94,4 +96,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withProgressBar(App);
