@@ -1,6 +1,7 @@
 import React from "react";
 import { InstantSearch, Configure } from "react-instantsearch/dom";
 import AutoComplete from "components/AutoComplete";
+import BottomNavBar from "components/BottomNavBar";
 import shortid from "shortid";
 import TopNav from "containers/TopNav";
 import { browserHistory } from "react-router";
@@ -108,6 +109,7 @@ class Navigation extends React.Component {
     return (
       <div style={gems65.navbar}>
         <TopNav onLeftIconButtonTouchTap={this.handleTouchTap} />
+        <BottomNavBar />
       </div>
     );
   }
