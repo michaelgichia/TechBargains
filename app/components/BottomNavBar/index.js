@@ -9,7 +9,7 @@ import "!!style-loader!css-loader!./bottomnavbar.css";
 
 function BottomNavBar() {
   return (
-    <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+    <nav className="navbar navbar-toggleable-md navbar-light navbar-bg-color">
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
