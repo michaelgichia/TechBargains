@@ -108,7 +108,6 @@ class Navigation extends React.Component {
   render() {
     return (
       <div style={gems65.navbar}>
-        <TopNav onLeftIconButtonTouchTap={this.handleTouchTap} />
         <BottomNavBar />
       </div>
     );

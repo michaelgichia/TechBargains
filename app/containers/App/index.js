@@ -14,8 +14,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import { Container } from "reactstrap";
-import withProgressBar from 'components/ProgressBar';
-
+import withProgressBar from "components/ProgressBar";
 
 // Material-ui
 import Navigation from "containers/NavBar";
@@ -43,36 +42,13 @@ class App extends React.Component {
             {
               rel: "stylesheet",
               href:
-                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css",
-              integrity:
-                "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ",
-              crossorigin: "anonymous"
-            },
-            {
-              rel: "stylesheet",
-              href:
                 "https://unpkg.com/react-instantsearch-theme-algolia@4.0.0/style.min.css"
             }
           ]}
           script={[
             {
               src:
-                "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-            },
-            {
-              src:
-                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js",
-              integrity:
-                "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn",
-              crossorigin: "anonymous"
-            },
-            {
-              src:
                 "https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"
-            },
-            {
-              src:
-                "https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
             }
           ]}
         />

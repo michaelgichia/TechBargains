@@ -454,14 +454,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/bottom',
-      name: 'bottomNav',
-      getComponent(location, cb) {
-        import('components/BottomNav')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
