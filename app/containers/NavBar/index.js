@@ -12,9 +12,7 @@ import "!!style-loader!css-loader!./style.css";
 
 class Navigation extends React.Component {
   state = {
-    expanded: false,
-    isOpen: false,
-    dropdownOpen: false,
+    isDropdownOpen: false,
     navItems: [
       { name: "Lifestyle & Home", categoryArray: ["Shoes", "Dress", "glass"] },
       {
@@ -67,15 +65,8 @@ class Navigation extends React.Component {
     }
   }
 
-  toggle = () => this.setState({ isOpen: !this.state.isOpen });
+  handleDropDown = () => this.setState({ isDropdownOpen: !this.state.isDropdownOpen })
 
-  handleToggle = () => this.setState({ expanded: !this.state.expanded });
-
-  handleDropDown = () => this.setState({ dropdownOpen: !this.state.dropdownOpen })
-
-  handleTouchTap = () => {
-    this.setState({ expanded: !this.state.expanded });
-  };
 
   handleStoreItemOnselect = (eventKey, event) =>
     (window.location.href = `/merchant/${eventKey}`);
@@ -106,9 +97,11 @@ class Navigation extends React.Component {
     );
 
   render() {
+    const { isDropdownOpen } = this.state;
     return (
       <div style={gems65.navbar}>
-        <BottomNavBar />
+        <TopNav onLeftIconButtonTouchTap={this.handleDropDown} />
+        <BottomNavBar isDropdownOpen={isDropdownOpen} />
       </div>
     );
   }

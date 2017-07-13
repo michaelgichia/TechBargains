@@ -7,25 +7,29 @@
 import React from "react";
 import "!!style-loader!css-loader!./bottomnavbar.css";
 
-function BottomNavBar() {
+// navbar-toggler navbar-toggler-right
+
+function BottomNavBar({ subCategory, categoryUrl, isDropdownOpen }) {
+  console.log({ isDropdownOpen });
   return (
     <nav className="navbar navbar-toggleable-md navbar-light navbar-bg-color">
-      <button
-        className="navbar-toggler navbar-toggler-right"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+      <div
+        className={`collapse navbar-collapse ${isDropdownOpen ? "show" : ""}`}
+        id="navbarNavDropdown"
       >
-        <span className="navbar-toggler-icon" />
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-          <CustomDropdown />
-          <CustomDropdown />
-          <CustomDropdown />
+          <DropdownWrapper
+            subCategory={subCategory}
+            categoryUrl={categoryUrl}
+          />
+          <DropdownWrapper
+            subCategory={subCategory}
+            categoryUrl={categoryUrl}
+          />
+          <DropdownWrapper
+            subCategory={subCategory}
+            categoryUrl={categoryUrl}
+          />
         </ul>
       </div>
     </nav>
@@ -36,26 +40,37 @@ BottomNavBar.propTypes = {};
 
 export default BottomNavBar;
 
-const CustomDropdown = () =>
+const DropdownWrapper = ({ categoryUrl, subCategory }) =>
   <li className="nav-item dropdown">
-    <a
-      className="nav-link dropdown-toggle"
-      id="navbarDropdownMenuLink"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      Home & Lifestyle
-    </a>
+    <Menu categoryUrl={categoryUrl} />
     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a className="dropdown-item" href="#">
-        Action
-      </a>
-      <a className="dropdown-item" href="#">
-        Another action
-      </a>
-      <a className="dropdown-item" href="#">
-        Something else here
-      </a>
+      <SubMenu subCategory={subCategory} />
+      <SubMenu subCategory={subCategory} />
+      <SubMenu subCategory={subCategory} />
     </div>
-  </li>
+  </li>;
+
+/**
+ * Menu for navbar
+ * 
+*/
+const Menu = ({ categoryUrl }) =>
+  <a
+    className="nav-link dropdown-toggle"
+    id="navbarDropdownMenuLink"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    href={categoryUrl}
+  >
+    Home & Lifestyle
+  </a>;
+
+/**
+ * Submenu for navbar
+ * 
+*/
+const SubMenu = ({ subCategory }) =>
+  <a className="dropdown-item" href={subCategory}>
+    Home & Lifestyle
+  </a>;
