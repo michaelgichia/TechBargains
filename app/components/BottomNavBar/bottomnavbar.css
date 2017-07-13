@@ -1,15 +1,45 @@
 .navbar-bg-color {
-  background-color: #eceff1
+  background-color: #e7e7e7;
 }
 
-
-/*This is menu color on hover and active*/
-
-.nav-link:active,
-.nav-link:hover {
-  color: #00FF00 !important;
+.navbar-light .navbar-nav .nav-link {
+  color: #3d4449;
+  padding: 8px !important;
 }
 
-.show>a {
-  color: #00FF00 !important;
+@media(max-width: 992px) {
+  .nav-link:hover {
+    color: #00FF00 !important;
+  }
+  .show>a {
+    color: #00FF00 !important;
+  }
+  .nav-item.dropdown {
+    background-color: #ffffff;
+  }
+  .dropdown-menu {
+    background-color: #e7e7e7 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
+    border-top: 1px solid rgba(0, 0, 0, .15);
+    border: none !important;
+    border-radius: 0px !important;
+  }
+  .navbar {
+    padding: 0px !important;
+  }
+  .navbar-nav > li {
+    border: 1px solid #e7e7e7;
+  }
+  .navbar-nav > li:active {
+    background-color: transparent !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+  .nav-item .dropdown:hover {
+    display: block;
+  }
 }

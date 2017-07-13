@@ -21,9 +21,6 @@ function BottomNavBar() {
       >
         <span className="navbar-toggler-icon" />
       </button>
-      <a className="navbar-brand" href="#">
-        Navbar
-      </a>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <CustomDropdown />
