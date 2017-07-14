@@ -43,9 +43,9 @@ const DropdownWrapper = ({ categoryUrl, subCategory }) =>
   <li className="nav-item dropdown">
     <Menu categoryUrl={categoryUrl} />
     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <SubMenu subCategory={subCategory} />
-      <SubMenu subCategory={subCategory} />
-      <SubMenu subCategory={subCategory} />
+      <MenuItem subCategory={subCategory} />
+      <MenuItem subCategory={subCategory} />
+      <MenuItem subCategory={subCategory} />
     </div>
   </li>;
 
@@ -66,10 +66,10 @@ const Menu = ({ categoryUrl }) =>
   </a>;
 
 /**
- * Submenu for navbar
+ * MenuItem for navbar
  * 
 */
-const SubMenu = ({ subCategory }) =>
+const MenuItem = ({ subCategory }) =>
   <a className="dropdown-item" href={subCategory}>
     Home & Lifestyle
   </a>;

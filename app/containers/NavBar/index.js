@@ -42,7 +42,9 @@ class Navigation extends React.Component {
       { title: "cdkeys", _id: shortid.generate() },
       { title: "DailySteals", _id: shortid.generate() },
       { title: "TorGuard", _id: shortid.generate() }
-    ]
+    ],
+    subCategory: "",
+    categoryUrl: "",
   };
 
   componentDidMount() {
@@ -85,23 +87,44 @@ class Navigation extends React.Component {
   handleMenuItemOnselect = (eventKey, event) =>
     (window.location.href = `/category/${eventKey}`);
 
+  // displayItems = navItems =>
+  //   navItems.map(navItem =>
+  //     <MenuItem
+  //       onSelect={this.handleMenuItemOnselect}
+  //       key={shortid.generate()}
+  //       menuKey={shortid.generate()}
+  //     >
+  //       {navItem.title}
+  //     </MenuItem>
+  //   );
+
   displayItems = navItems =>
     navItems.map(navItem =>
       <MenuItem
-        onSelect={this.handleMenuItemOnselect}
         key={shortid.generate()}
-        eventKey={navItem.id}
+        menuKey={shortid.generate()}
       >
         {navItem.title}
       </MenuItem>
     );
 
   render() {
-    const { isDropdownOpen } = this.state;
+    const { isDropdownOpen, subCategory, categoryUrl, stores } = this.state;
     return (
       <div style={gems65.navbar}>
         <TopNav onLeftIconButtonTouchTap={this.handleDropDown} />
-        <BottomNavBar isDropdownOpen={isDropdownOpen} />
+        <nav className="navbar navbar-toggleable-md navbar-light navbar-bg-color">
+          <div
+            className={`collapse navbar-collapse ${isDropdownOpen ? "show" : ""}`}
+            id="navbarNavDropdown"
+          >
+            <ul className="navbar-nav">
+              <DropdownWrapper>
+                {this.displayStores(stores)}
+              </DropdownWrapper>
+            </ul>
+          </div>
+        </nav>
       </div>
     );
   }
@@ -119,6 +142,53 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+
+
+// const DropdownWrapper = ({ categoryUrl, subCategory }) =>
+//   <li className="nav-item dropdown">
+//     <Menu categoryUrl={categoryUrl} menuKey={1} />
+//     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+//       <MenuItem subCategory={subCategory} eventKey={1}/>
+//       <MenuItem subCategory={subCategory} eventKey={2}/>
+//       <MenuItem subCategory={subCategory} eventKey={3}/>
+//     </div>
+//   </li>;
+
+
+const DropdownWrapper = ({ categoryUrl, subCategory, children }) =>
+  <li className="nav-item dropdown">
+    <Menu categoryUrl={categoryUrl} menuKey={1} menuName="Stores" />
+    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      {children}
+    </div>
+  </li>;
+
+/**
+ * Menu for navbar
+ * 
+*/
+const Menu = ({ menuName, categoryUrl, menuKey }) =>
+  <a
+    className="nav-link dropdown-toggle"
+    id="navbarDropdownMenuLink"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    href={categoryUrl}
+    key={menuKey}
+  >
+   { menuName }
+  </a>;
+
+/**
+ * MenuItem for navbar
+ * 
+*/
+const MenuItem = ({ children, subCategory, eventKey }) =>
+  <a className="dropdown-item" href={subCategory} key={eventKey}>
+    {children}
+  </a>;
+
 
 // style
 const gems65 = {

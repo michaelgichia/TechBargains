@@ -11,7 +11,7 @@ export const style = {
     fontSize: 18,
   },
   appBar: {
-    maxHeight: 45,
+    maxHeight: 50,
     paddingLeft: 12,
     backgroundColor: "#fff"
   },
