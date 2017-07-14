@@ -10,7 +10,7 @@ import {
 } from './constants';
 
 const initialState = {
-  navItems: [],
+  navbar: [],
   stores: [],
   errors: '',
 };
@@ -20,7 +20,7 @@ function navBarReducer(state = initialState, action) {
     case NAVITEMS.SUCCESS:
       return {
         ...state,
-        navItems: action.navItems,
+        navbar: action.navbar,
       };
 
     case STORE_ITEMS.SUCCESS:

@@ -1,10 +1,7 @@
 import React from "react";
-import { InstantSearch, Configure } from "react-instantsearch/dom";
 import AutoComplete from "components/AutoComplete";
-import BottomNavBar from "components/BottomNavBar";
 import shortid from "shortid";
 import TopNav from "containers/TopNav";
-import { browserHistory } from "react-router";
 import { connect } from "react-redux";
 import { fetchNavItems, fetchStoreItems } from "./actions";
 
@@ -13,38 +10,20 @@ import "!!style-loader!css-loader!./style.css";
 class Navigation extends React.Component {
   state = {
     isDropdownOpen: false,
-    navItems: [
-      { name: "Lifestyle & Home", categoryArray: ["Shoes", "Dress", "glass"] },
+    navbar: [
+      { name: "Lifestyle & Home", categoryArray: [] },
       {
         name: "Computers & Electronics",
-        categoryArray: ["Shoes", "Dress", "glass"]
+        categoryArray: []
       },
-      { name: "Lifestyle & Home", categoryArray: ["Shoes", "Dress", "glass"] },
-      { name: "Health & Wellness", categoryArray: ["Shoes", "Dress", "glass"] },
-      { name: "Seasonal Specials", categoryArray: ["Shoes", "Dress", "glass"] },
-      { name: "Business", categoryArray: ["Shoes", "Dress", "glass"] }
+      { name: "Lifestyle & Home", categoryArray: [] },
+      { name: "Health & Wellness", categoryArray: [] },
+      { name: "Seasonal Specials", categoryArray: [] },
+      { name: "Business", categoryArray: [] }
     ],
-    stores: [
-      { title: "Amazon", _id: "5953959ff7508b41b9c1ab06" },
-      { title: "AT&T Wireless", _id: "59539620f7508b41b9c1ab07" },
-      { title: "B&H Photo Video", _id: shortid.generate() },
-      { title: "Dell", _id: shortid.generate() },
-      { title: "Dell Small Business", _id: shortid.generate() },
-      { title: "eBay", _id: shortid.generate() },
-      { title: "Groupon", _id: shortid.generate() },
-      { title: "HP", _id: shortid.generate() },
-      { title: "Lenovo", _id: shortid.generate() },
-      { title: "Microsoft Store", _id: shortid.generate() },
-      { title: "Office Depot® & OfficeMax®", _id: shortid.generate() },
-      { title: "Sprint", _id: shortid.generate() },
-      { title: "T-Mobile", _id: shortid.generate() },
-      { title: "Verizon Wireless", _id: shortid.generate() },
-      { title: "cdkeys", _id: shortid.generate() },
-      { title: "DailySteals", _id: shortid.generate() },
-      { title: "TorGuard", _id: shortid.generate() }
-    ],
+    stores: [],
     subCategory: "",
-    categoryUrl: "",
+    categoryUrl: ""
   };
 
   componentDidMount() {
@@ -53,11 +32,8 @@ class Navigation extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.navItems.length > 0 &&
-      nextProps.navItems !== this.state.navItems
-    ) {
-      this.setState((prevState, props) => ({ navItems: props.navItems }));
+    if (nextProps.navbar !== this.state.navbar) {
+      this.setState((prevState, props) => ({ navbar: props.navbar }));
     }
     if (nextProps.stores !== this.state.stores) {
       this.setState(() => ({ stores: nextProps.stores }));
@@ -67,16 +43,17 @@ class Navigation extends React.Component {
     }
   }
 
-  handleDropDown = () => this.setState({ isDropdownOpen: !this.state.isDropdownOpen })
+  handleDropDown = () =>
+    this.setState({ isDropdownOpen: !this.state.isDropdownOpen });
 
+  handleStoreItemOnselect = id => (window.location.href = `/merchant/${id}`);
 
-  handleStoreItemOnselect = (eventKey, event) =>
-    (window.location.href = `/merchant/${eventKey}`);
+  handleMenuItemOnselect = id => (window.location.href = `/category/${id}`);
 
   displayStores = storeItems =>
     storeItems.map(store =>
       <MenuItem
-        onSelect={this.handleStoreItemOnselect}
+        onClick={() => this.handleStoreItemOnselect(store._id.toString())}
         key={shortid.generate()}
         eventKey={store._id.toString()}
       >
@@ -84,44 +61,47 @@ class Navigation extends React.Component {
       </MenuItem>
     );
 
-  handleMenuItemOnselect = (eventKey, event) =>
-    (window.location.href = `/category/${eventKey}`);
-
-  // displayItems = navItems =>
-  //   navItems.map(navItem =>
-  //     <MenuItem
-  //       onSelect={this.handleMenuItemOnselect}
-  //       key={shortid.generate()}
-  //       menuKey={shortid.generate()}
-  //     >
-  //       {navItem.title}
-  //     </MenuItem>
-  //   );
-
   displayItems = navItems =>
     navItems.map(navItem =>
       <MenuItem
+        onClick={() => this.handleMenuItemOnselect(navItem.id)}
         key={shortid.generate()}
-        menuKey={shortid.generate()}
+        eventKey={navItem.id}
       >
         {navItem.title}
       </MenuItem>
     );
 
   render() {
-    const { isDropdownOpen, subCategory, categoryUrl, stores } = this.state;
+    const { isDropdownOpen, stores } = this.state;
     return (
       <div style={gems65.navbar}>
         <TopNav onLeftIconButtonTouchTap={this.handleDropDown} />
         <nav className="navbar navbar-toggleable-md navbar-light navbar-bg-color">
           <div
-            className={`collapse navbar-collapse ${isDropdownOpen ? "show" : ""}`}
+            className={`collapse navbar-collapse ${isDropdownOpen
+              ? "show"
+              : ""}`}
             id="navbarNavDropdown"
           >
             <ul className="navbar-nav">
-              <DropdownWrapper>
-                {this.displayStores(stores)}
-              </DropdownWrapper>
+              <DropdownWrapper
+                onMenuClick={() => window.location.href = "/#"}
+                menuName="Stores"
+                children={this.displayStores(stores)}
+              />
+              {this.state.navbar.slice(0, 7).map(nav => {
+                return (
+                  <DropdownWrapper
+                    onMenuClick={() => this.handleMenuItemOnselect(nav.id)}
+                    key={shortid.generate()}
+                    menuName={nav.name}
+                    children={this.displayItems(nav.categoryArray)}
+                  />
+
+                );
+              }
+              )}
             </ul>
           </div>
         </nav>
@@ -131,7 +111,7 @@ class Navigation extends React.Component {
 }
 
 const mapStateToProps = ({ navItems }) => ({
-  navItems: navItems.navItems,
+  navbar: navItems.navbar,
   stores: navItems.stores,
   errors: navItems.errors
 });
@@ -144,20 +124,13 @@ const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
 
 
-// const DropdownWrapper = ({ categoryUrl, subCategory }) =>
-//   <li className="nav-item dropdown">
-//     <Menu categoryUrl={categoryUrl} menuKey={1} />
-//     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-//       <MenuItem subCategory={subCategory} eventKey={1}/>
-//       <MenuItem subCategory={subCategory} eventKey={2}/>
-//       <MenuItem subCategory={subCategory} eventKey={3}/>
-//     </div>
-//   </li>;
-
-
-const DropdownWrapper = ({ categoryUrl, subCategory, children }) =>
+/**
+ * DropdownWrapper
+ * 
+*/
+const DropdownWrapper = ({ categoryUrl, children, onMenuClick, menuName }) =>
   <li className="nav-item dropdown">
-    <Menu categoryUrl={categoryUrl} menuKey={1} menuName="Stores" />
+    <Menu onMenuClick={onMenuClick} menuKey={1} menuName={menuName} />
     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
       {children}
     </div>
@@ -167,28 +140,27 @@ const DropdownWrapper = ({ categoryUrl, subCategory, children }) =>
  * Menu for navbar
  * 
 */
-const Menu = ({ menuName, categoryUrl, menuKey }) =>
+const Menu = ({ menuName, menuKey, onMenuClick }) =>
   <a
     className="nav-link dropdown-toggle"
     id="navbarDropdownMenuLink"
     data-toggle="dropdown"
     aria-haspopup="true"
     aria-expanded="false"
-    href={categoryUrl}
     key={menuKey}
+    onClick={onMenuClick}
   >
-   { menuName }
+    {menuName}
   </a>;
 
 /**
  * MenuItem for navbar
  * 
 */
-const MenuItem = ({ children, subCategory, eventKey }) =>
-  <a className="dropdown-item" href={subCategory} key={eventKey}>
+const MenuItem = ({ children, eventKey, onClick }) =>
+  <a className="dropdown-item" key={eventKey} onClick={onClick}>
     {children}
   </a>;
-
 
 // style
 const gems65 = {

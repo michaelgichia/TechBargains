@@ -109,7 +109,7 @@ form button:hover {
 
 .react-autosuggest__container {
   position: relative;
-  padding: 5px;
+  padding: 10px;
 }
 
 .react-autosuggest__input {

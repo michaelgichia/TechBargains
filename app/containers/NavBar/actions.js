@@ -16,7 +16,7 @@ export const fetchNavItems = () => dispatch => {
     if (response.data.confirmation === "success") {
       dispatch({
         type: NAVITEMS.SUCCESS,
-        navItems: response.data.results
+        navbar: response.data.results
       });
     } else {
       dispatch({
