@@ -1,11 +1,14 @@
 .text-ellipsis {
-   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   line-height: 16px;     /* fallback */
-   max-height: 32px;      /* fallback */
-   -webkit-line-clamp: 2; /* number of lines to show */
-   -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 16px;
+  /* fallback */
+  max-height: 32px;
+  /* fallback */
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 form {
@@ -41,13 +44,6 @@ form button:hover {
   background: #24912b;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-}
-
-@media (max-width: 768px) {
-  .react-autosuggest__container--open 
-  .react-autosuggest__suggestions-container {
-    width: 100%;
-  }
 }
 
 .react-autosuggest__input .query-paragraph {
@@ -183,6 +179,16 @@ form button:hover {
   border-top: 0;
 }
 
-.react-autosuggest__container--open .react-autosuggest__suggestions-container {
-  margin-top: -15px;
+@media (max-width: 845px) {
+  .react-autosuggest__container--open .react-autosuggest__suggestions-container {
+    margin-top: -12px;
+    width: 96.5%;
+  }
+}
+
+@media (min-width: 845) {
+  .react-autosuggest__container--open .react-autosuggest__suggestions-container {
+    margin-top: -15px;
+    width: 100%;
+  }
 }

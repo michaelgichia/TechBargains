@@ -1,5 +1,6 @@
 import React from "react";
 import AutoComplete from "components/AutoComplete";
+import { InstantSearch, Configure } from "react-instantsearch/dom";
 import shortid from "shortid";
 import TopNav from "containers/TopNav";
 import { connect } from "react-redux";
@@ -85,6 +86,16 @@ class Navigation extends React.Component {
             id="navbarNavDropdown"
           >
             <ul className="navbar-nav">
+              <div className="small-screen-wrapper">
+                <InstantSearch
+                  appId="YNZ7XXV49B"
+                  apiKey="90550ee45080bb58130f0ac76a4e28f5"
+                  indexName="Products"
+                >
+                  <AutoComplete />
+                  <Configure hitsPerPage={5} />
+                </InstantSearch>
+              </div>
               <DropdownWrapper
                 onMenuClick={() => window.location.href = "/#"}
                 menuName="Stores"
