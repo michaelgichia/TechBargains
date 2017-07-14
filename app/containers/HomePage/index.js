@@ -10,6 +10,7 @@
  */
 
 import React from "react";
+import Spinner from "containers/Spinner";
 import Deal from "containers/Deal";
 import Coupon from "containers/Coupon";
 import Stores from "containers/Stores";
@@ -28,6 +29,7 @@ class HomePage extends React.PureComponent {
   render() {
     return (
       <Container fluid>
+        <Spinner />
         <div className="row-wrapper">
           <Row style={{ minWidth: "100%", margin: 0 }}>
             <Col
@@ -38,7 +40,7 @@ class HomePage extends React.PureComponent {
               lg="12"
               xl="8"
             >
-            <CarouselContainer />
+              <CarouselContainer />
               <Product />
             </Col>
             <Col

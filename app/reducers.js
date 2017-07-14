@@ -33,6 +33,7 @@ import merchantEditReducer from "containers/MerchantEdit/reducer";
 import bannerDetailReducer from "containers/BannerDetail/reducer";
 import singleProductReducer from "containers/SingleProduct/reducer";
 import topNavReducer from "containers/TopNav/reducer";
+import spinnerReducer from "containers/Spinner/reducer";
 
 
 /**
@@ -40,6 +41,7 @@ import topNavReducer from "containers/TopNav/reducer";
  */
 export default function createReducer(asyncReducers) {
   return combineReducers({
+    spinner: spinnerReducer,
     flash: flashMessageReducer,
     modal: reactModalReducer,
     routing: routerReducer,

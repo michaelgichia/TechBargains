@@ -10,7 +10,6 @@ import "!!style-loader!css-loader!./bottomnavbar.css";
 // navbar-toggler navbar-toggler-right
 
 function BottomNavBar({ subCategory, categoryUrl, isDropdownOpen }) {
-  console.log({ isDropdownOpen });
   return (
     <nav className="navbar navbar-toggleable-md navbar-light navbar-bg-color">
       <div
