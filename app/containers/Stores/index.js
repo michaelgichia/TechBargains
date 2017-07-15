@@ -43,8 +43,9 @@ export class Stores extends React.Component {
         <Image
           cloudName="dw3arrxnf"
           publicId={store.imageUrl}
-          width="180"
           height="90"
+          crop="scale"
+
         />
       </Link>
     );
