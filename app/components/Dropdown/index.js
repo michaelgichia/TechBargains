@@ -18,9 +18,9 @@ class Dropdown extends React.PureComponent {
         <header className="filters">
           <Row>
             <Col xs="12" sm="7">
-              <h2>Latest Deals</h2>
+              <h2 className="dropper-h2">Latest Deals</h2>
             </Col>
-            <Col sm="5">
+            <Col sm="5" className="dropper-column">
               <div className="dropperdown">
                 <button className="dropperbtn">
                   {this.props.dropdownValue}

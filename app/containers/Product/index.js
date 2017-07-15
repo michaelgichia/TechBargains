@@ -5,7 +5,6 @@
  */
 
 import React from "react";
-import SideColumnHeader from "components/SideColumnHeader";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
 import Dropdown from "components/Dropdown";
@@ -42,25 +41,22 @@ export class Product extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <SideColumnHeader title="Latest Deals" />
-        </div>
-         <Dropdown
-            handleDropdown={this.handleDropdown}
-            dropdownValue={this.state.dropdownValue}
-          />
+        <Dropdown
+          handleDropdown={this.handleDropdown}
+          dropdownValue={this.state.dropdownValue}
+        />
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
-            {this.state.products.map(product =>
-              <li
-                key={shortid.generate()}
-                style={{ marginTop: 10, marginBottom: 10 }}
-              >
-                <ProductDetail
-                  product={product}
-                  onTouchTap={() => this.props.handleOpenModal(product)}
-                />
-              </li>
-            )}
+          {this.state.products.map(product =>
+            <li
+              key={shortid.generate()}
+              style={{ marginTop: 10, marginBottom: 10 }}
+            >
+              <ProductDetail
+                product={product}
+                onTouchTap={() => this.props.handleOpenModal(product)}
+              />
+            </li>
+          )}
         </ul>
       </div>
     );
