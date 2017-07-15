@@ -5,10 +5,8 @@ p {
 .product-detail-flag-info {
   background-color: #e6251f;
   color: #FFF;
-  padding-left: 10px;
-  padding-right: 2px;
-  padding-top: auto;
-  padding-bottom: auto;
+  padding-left: 10px !important;
+  padding-right: 2px !important;
   height: 27px;
   max-width: 130px;
 }
