@@ -8,6 +8,7 @@ import React from "react";
 import SideColumnHeader from "components/SideColumnHeader";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
+import Dropdown from "components/Dropdown";
 import { connect } from "react-redux";
 import { handleOpenModal } from "containers/ReactModal/actions";
 import { fetchTrendingDeals } from "./actions";
@@ -44,6 +45,10 @@ export class Product extends React.Component {
         <div>
           <SideColumnHeader title="Latest Deals" />
         </div>
+         <Dropdown
+            handleDropdown={this.handleDropdown}
+            dropdownValue={this.state.dropdownValue}
+          />
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
             {this.state.products.map(product =>
               <li

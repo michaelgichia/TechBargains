@@ -8,7 +8,7 @@
   .dropdown-toggle::after {
     display: none !important;
   }
-  .dropdown:hover>.dropdown-menu {
+  .dont .dropdown:hover>.dropdown-menu {
     display: block;
   }
   .navbar-light .navbar-nav .nav-link {
