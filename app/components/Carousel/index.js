@@ -8,6 +8,8 @@ import React from "react";
 import shortid from "shortid";
 import PropTypes from "prop-types";
 import Slider from "react-slick";
+import { Image } from "cloudinary-react";
+
 
 import "!!style-loader!css-loader!./carousel.css";
 
@@ -26,7 +28,13 @@ const Carousel = ({ banners }) =>
       {banners.map(banner =>
         <div className="carousel-image" key={shortid.generate()}>
           <a href={banner.backlink}>
-            <img src={banner.imageUrl} alt="carousel" />
+            <Image
+              cloudName="dw3arrxnf"
+              publicId={banner.imageUrl}
+              height="250"
+              width="250"
+              crop="scale"
+            />
           </a>
         </div>
       )}

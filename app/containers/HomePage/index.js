@@ -19,6 +19,7 @@ import Product from "containers/Product";
 import { Container, Row, Col } from "reactstrap";
 import "!!style-loader!css-loader!./home.css";
 
+
 class HomePage extends React.PureComponent {
   state = {
     dropdownValue: "Most Recent"
@@ -48,6 +49,7 @@ class HomePage extends React.PureComponent {
               lg="4"
               xl="4">
               <div className="home-second-wrapper">
+                <Disclaimer />
                 <Deal />
                 <Coupon />
                 <Stores />
@@ -63,3 +65,10 @@ class HomePage extends React.PureComponent {
 HomePage.propTypes = {};
 
 export default HomePage;
+
+const Disclaimer = () =>
+  <div className="disclose-wrapper">
+    <p className="disclose">
+    Disclaimer: If you click a merchant link and buy a product or service on their website, we may be paid a fee by the merchant.
+    </p>
+  </div>

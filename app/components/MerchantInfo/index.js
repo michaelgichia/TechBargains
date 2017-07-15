@@ -23,7 +23,7 @@ class MerchantInfo extends React.PureComponent {
           ? <Col xs="12" sm="12" md="12" lg="3" xl="3">
               <InfoImage info={info} />
             </Col>
-          : <div />}
+          : <div className="merchant-info-image" />}
         <Col className="merchant-info-description-wrapper" xs="12" sm="12" md="12" lg="9" xl="9">
           <InfoTitle info={info} />
           <InfoDescription info={info} />
@@ -52,8 +52,8 @@ const InfoImage = ({ info }) =>
       <Image
         cloudName="dw3arrxnf"
         publicId={info.public_id}
-        width="200"
-        height="120"
+        height="180"
+        width="180"
         crop="scale"
       />
     </a>
