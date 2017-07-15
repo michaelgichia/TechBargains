@@ -23,7 +23,7 @@ export class Stores extends React.Component {
   };
 
   componentDidMount() {
-    if (viewSize().x > 992) {
+    if (viewSize().x > 1024) {
       this.props.fetchStores();
     }
   }

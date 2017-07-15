@@ -37,7 +37,7 @@ class HomePage extends React.PureComponent {
               xs="12"
               sm="12"
               md="12"
-              lg="12"
+              lg="8"
               xl="8"
             >
               <CarouselContainer />
@@ -45,6 +45,7 @@ class HomePage extends React.PureComponent {
             </Col>
             <Col
               className="row-wrapper-column2"
+              lg="4"
               xl="4">
               <div className="home-second-wrapper">
                 <Deal />

@@ -18,7 +18,7 @@ export class CarouselContainer extends React.Component {
   };
 
   componentDidMount() {
-    if (viewSize().x > 992) {
+    if (viewSize().x > 1024) {
       axios
         .get("/public-api/all/carousels")
         .then(response => {
