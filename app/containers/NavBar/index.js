@@ -78,7 +78,7 @@ class Navigation extends React.Component {
     return (
       <div style={gems65.navbar}>
         <TopNav onLeftIconButtonTouchTap={this.handleDropDown} />
-        <nav className="navbar navbar-toggleable-md navbar-light navbar-bg-color">
+        <nav className="navbar navbar-toggleable-sm navbar-light navbar-bg-color">
           <div
             className={`collapse navbar-collapse ${isDropdownOpen
               ? "show"

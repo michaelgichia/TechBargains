@@ -4,7 +4,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 767px) {
   .dropdown-toggle::after {
     display: none !important;
   }
@@ -55,7 +55,7 @@
   padding: 0px !important;
 }
 
-@media(max-width: 992px) {
+@media(max-width: 767px) {
   .nav-link:hover {
     color: #1f7dd4 !important;
   }
