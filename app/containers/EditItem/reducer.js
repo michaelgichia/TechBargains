@@ -15,8 +15,8 @@ const initialState = {
     percentage: "",
     merchant: "",
     category: "",
-    subCategory: "",
-    expire: {}
+    subCategory: [],
+    expire: new Date(),
   },
   errors: [],
   message: ""

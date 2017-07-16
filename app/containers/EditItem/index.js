@@ -45,7 +45,7 @@ export class EditItem extends React.Component {
     percentageError: "",
     merchantError: "",
     errors: [],
-    disabled: true
+    disabled: false
   };
 
   componentDidMount() {
@@ -62,6 +62,12 @@ export class EditItem extends React.Component {
     }
     if (nextProps.itemData.name !== this.state.name) {
       this.setState({ name: nextProps.itemData.name });
+    }
+    if (nextProps.itemData.merchant !== this.state.merchant) {
+      this.setState({ merchant: nextProps.itemData.merchant._id.toString() });
+    }
+    if (nextProps.itemData.category !== this.state.category) {
+      this.setState({ category: nextProps.itemData.category._id.toString() });
     }
     if (nextProps.itemData.public_id !== this.state.public_id) {
       this.setState({ public_id: nextProps.itemData.public_id });
@@ -86,6 +92,14 @@ export class EditItem extends React.Component {
     }
     if (nextProps.itemData.isShipped !== this.state.isShipped) {
       this.setState({ isShipped: nextProps.itemData.isShipped });
+    }
+    if (nextProps.itemData.subCategory !== this.state.subCategory) {
+      const nextsubCategory = [];
+      nextProps.itemData.subCategory.map(sub => nextsubCategory.push(sub._id.toString()))
+      this.setState({ subCategory: nextsubCategory });
+    }
+    if (nextProps.itemData.expire !== this.state.expire) {
+      this.setState({ expire: new Date(nextProps.itemData.expire) });
     }
   }
 
@@ -227,7 +241,7 @@ export class EditItem extends React.Component {
         { category: this.state.category },
         { merchant: this.state.merchant },
         { subCategory: this.state.subCategory },
-        { expire: +new Date(this.state.expire) },
+        { expire: this.state.expire },
         { themeColor: selectedColor },
         { isFeatured: this.state.isFeatured },
         { isCoupon: this.state.isCoupon },
