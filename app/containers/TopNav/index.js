@@ -54,8 +54,8 @@ class TopNav extends React.Component {
       >
         <div className="large-screen-wrapper">
           <InstantSearch
-            appId="YNZ7XXV49B"
-            apiKey="90550ee45080bb58130f0ac76a4e28f5"
+            appId="4IC1EFF5OY"
+            apiKey="308b37d758657b3d40228d59f6855e6a"
             indexName="item"
             searchState={this.state.searchState}
             onSearchStateChange={this.onSearchStateChange}
