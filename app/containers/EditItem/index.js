@@ -93,11 +93,6 @@ export class EditItem extends React.Component {
     if (nextProps.itemData.isShipped !== this.state.isShipped) {
       this.setState({ isShipped: nextProps.itemData.isShipped });
     }
-    if (nextProps.itemData.subCategory !== this.state.subCategory) {
-      const nextsubCategory = [];
-      nextProps.itemData.subCategory.map(sub => nextsubCategory.push(sub._id.toString()))
-      this.setState({ subCategory: nextsubCategory });
-    }
     if (nextProps.itemData.expire !== this.state.expire) {
       this.setState({ expire: new Date(nextProps.itemData.expire) });
     }
