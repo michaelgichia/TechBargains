@@ -41,7 +41,7 @@ export class Stores extends React.Component {
     stores.map(store =>
       <Link to={`/merchant/${store.id}`} key={shortid.generate()}>
         <Image
-          cloudName="dw3arrxnf"
+          cloudName="deals-expert"
           publicId={store.imageUrl}
           height="90"
           crop="scale"

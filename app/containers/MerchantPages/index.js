@@ -101,7 +101,7 @@ export class MerchantPages extends React.Component {
                     </li>
                   </ul>
                 : <div />}
-              <CloudinaryContext cloudName="dw3arrxnf">
+              <CloudinaryContext cloudName="deals-expert">
                 <ul
                   style={{
                     listStyleType: "none",

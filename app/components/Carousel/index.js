@@ -29,7 +29,7 @@ const Carousel = ({ banners }) =>
         <div className="carousel-image" key={shortid.generate()}>
           <a href={banner.backlink}>
             <Image
-              cloudName="dw3arrxnf"
+              cloudName="deals-expert"
               publicId={banner.imageUrl}
               height="250"
               width="250"

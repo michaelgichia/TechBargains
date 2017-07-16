@@ -125,32 +125,32 @@ ItemSchema.methods.summary = function() {
   return summary;
 };
 
-ItemSchema.plugin(mongooseAlgolia,{
-  appId: process.env.appId,
-  apiKey: process.env.apiKey,
-  indexName: 'item',
-  selector: '-_v -themeColor',
-  populate: [{
-    path: 'subCategory',
-    select: '_id title'
-  },{
-    path: 'category',
-    select: '_id name'
-  },{
-    path: 'merchant',
-    select: '_id title'
-  }],
-  debug: true,
-  mappings: {
-    tags: function(value) {
-      return value.join(' ');
-    }
-  }
+// ItemSchema.plugin(mongooseAlgolia,{
+//   appId: process.env.appId,
+//   apiKey: process.env.apiKey,
+//   indexName: 'item',
+//   selector: '-_v -themeColor',
+//   populate: [{
+//     path: 'subCategory',
+//     select: '_id title'
+//   },{
+//     path: 'category',
+//     select: '_id name'
+//   },{
+//     path: 'merchant',
+//     select: '_id title'
+//   }],
+//   debug: true,
+//   mappings: {
+//     tags: function(value) {
+//       return value.join(' ');
+//     }
+//   }
 
-});
+// });
 
 let Model = mongoose.model("Item", ItemSchema);
 
-Model.SyncToAlgolia();
+// Model.SyncToAlgolia();
 
 module.exports = Model;

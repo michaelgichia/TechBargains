@@ -50,7 +50,7 @@ const InfoImage = ({ info }) =>
   <div className="merchant-info-image">
     <a href={info.backlink} target="_blank">
       <Image
-        cloudName="dw3arrxnf"
+        cloudName="deals-expert"
         publicId={info.public_id}
         height="180"
         width="180"

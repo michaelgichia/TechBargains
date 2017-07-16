@@ -41,20 +41,20 @@ export class BannerCreate extends React.Component {
     const updatedItem = { ...this.state.item };
     console.info("uploading file....");
     const image = files[0];
-    const cloudName = "dw3arrxnf";
+    const cloudName = "deals-expert";
     const timestamp = Date.now() / 1000;
-    const uploadPreset = "d9s7ezzn";
+    const uploadPreset = "jznf9zii";
     const paramsStr =
       "timestamp=" +
       timestamp +
       "&upload_preset=" +
       uploadPreset +
-      "wEvwDjpdDR5I_mMSdD55EaLNXOI";
+      "BW5zwfRb1JVXnFQ2i7wxZAKn9-Y";
     const signature = sha1(paramsStr);
     const url =
       "https://api.cloudinary.com/v1_1/" + cloudName + "/image/upload";
     const params = {
-      api_key: "217319541859423",
+      api_key: "125888879194919",
       timestamp: timestamp,
       upload_preset: uploadPreset,
       signature: signature

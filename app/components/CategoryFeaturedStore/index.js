@@ -25,7 +25,7 @@ class CategoryFeaturedStore extends React.PureComponent {
         href={`/merchant/${store._id.toString()}`}
       >
         <Image
-          cloudName="dw3arrxnf"
+          cloudName="deals-expert"
           publicId={store.public_id}
           crop="scale"
           width="164"

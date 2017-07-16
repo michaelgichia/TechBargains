@@ -105,7 +105,7 @@ export class MerchantDetail extends React.Component {
               />
               <div className="merchant-detail-image">
                 <Image
-                  cloudName="dw3arrxnf"
+                  cloudName="deals-expert"
                   publicId={public_id}
                   width="250"
                   crop="scale"

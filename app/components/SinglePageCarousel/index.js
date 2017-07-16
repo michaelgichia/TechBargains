@@ -34,7 +34,7 @@ function SinglePageCarousel({ banners }) {
   return (
     <div>
       <CouponHeader title="Related Products" />
-      <CloudinaryContext cloudName="dw3arrxnf">
+      <CloudinaryContext cloudName="deals-expert">
         <Slider {...settings} className="carousel-single">
           {banners.length !== null && banners.length > 0
             ? banners.map(banner =>
@@ -57,7 +57,7 @@ const Slide = ({ banner }) =>
       <CardMedia style={{ minHeight: 160, margin: "auto" }}>
         <a href={banner.backlink} target="_blank">
           <Image
-            cloudName="dw3arrxnf"
+            cloudName="deals-expert"
             publicId={banner.public_id}
             width="160"
             height="160"

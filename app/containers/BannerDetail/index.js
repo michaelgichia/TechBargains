@@ -55,7 +55,7 @@ export class BannerDetail extends React.Component {
                 mediaStyle={{ maxHeight: 300, height: 300 }}
               >
                 <Image
-                  cloudName="dw3arrxnf"
+                  cloudName="deals-expert"
                   publicId={public_id}
                   width="300"
                   height="300"

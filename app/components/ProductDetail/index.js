@@ -95,7 +95,7 @@ const PanelImage = ({ product }) =>
   <div className="product-detail-image">
     <a href={product.backlink} target="_blank">
       <Image
-        cloudName="dw3arrxnf"
+        cloudName="deals-expert"
         publicId={product.public_id}
         crop="scale"
         width="200"

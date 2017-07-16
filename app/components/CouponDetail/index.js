@@ -44,7 +44,7 @@ const CouponTitle = ({ coupon }) =>
 const CouponImage = ({ coupon }) =>
   <a href={coupon.backlink} target="_blank">
     <Image
-      cloudName="dw3arrxnf"
+      cloudName="deals-expert"
       publicId={coupon.public_id}
       crop="scale"
       width="120"
