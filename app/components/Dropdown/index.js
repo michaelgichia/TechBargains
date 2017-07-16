@@ -7,7 +7,6 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
 import PropTypes from "prop-types";
-
 import "!!style-loader!css-loader!./dropdown.css";
 
 
@@ -18,7 +17,9 @@ class Dropdown extends React.PureComponent {
         <header className="filters">
           <Row>
             <Col xs="12" sm="7">
-              <h2 className="dropper-h2">Latest Deals</h2>
+              <h2 className="dropper-h2">
+                {this.props.dropdownValue}
+              </h2>
             </Col>
             <Col sm="5" className="dropper-column">
               <div className="dropperdown">
@@ -31,9 +32,6 @@ class Dropdown extends React.PureComponent {
                   </a>
                   <a onClick={this.props.handleDropdown} id="Most Recent">
                     Most Recent
-                  </a>
-                  <a onClick={this.props.handleDropdown} id="Editors Choice">
-                    Editors Choice
                   </a>
                 </div>
               </div>

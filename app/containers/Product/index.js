@@ -5,6 +5,7 @@
  */
 
 import React from "react";
+import _ from "lodash";
 import shortid from "shortid";
 import ProductDetail from "components/ProductDetail";
 import Dropdown from "components/Dropdown";
@@ -18,7 +19,8 @@ export class Product extends React.Component {
   state = {
     products: [],
     errors: "",
-    dropdownValue: "Most Recent"
+    dropdownValue: "Most Recent",
+    expireSoon: false
   };
 
   componentDidMount() {
@@ -34,11 +36,41 @@ export class Product extends React.Component {
     }
   }
 
-  handleDropdown = e => this.setState({ dropdownValue: e.target.id });
+  sortByExpire = products =>
+    products.sort(
+      (current, next) => +new Date(current.expire) - +new Date(next.expire)
+    );
 
-  handleResize = () => this.setState({ windowWidth: window.innerWidth });
+  sortByCreatedAt = products =>
+    products.sort(
+      (current, next) =>
+        +new Date(current.createdAt) - +new Date(next.createdAt)
+    );
+
+  handleDropdown = e => {
+    if (e.target.id === "Expiring Soon") {
+      this.setState({ dropdownValue: e.target.id, expireSoon: true });
+    } else {
+      this.setState({ dropdownValue: e.target.id, expireSoon: false });
+    }
+  };
+
+  checkIfProductsShouldBeSort = (products, expireSoon) => {
+    let newProducts;
+    if (expireSoon) {
+      newProducts = this.sortByExpire(products);
+    } else {
+      newProducts = this.sortByCreatedAt(products);
+    }
+    return newProducts;
+  };
 
   render() {
+    const { products, expireSoon } = this.state;
+    const currentProducts = this.checkIfProductsShouldBeSort(
+      products,
+      expireSoon
+    );
     return (
       <div>
         <Dropdown
@@ -46,7 +78,7 @@ export class Product extends React.Component {
           dropdownValue={this.state.dropdownValue}
         />
         <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
-          {this.state.products.map(product =>
+          {currentProducts.map(product =>
             <li
               key={shortid.generate()}
               style={{ marginTop: 10, marginBottom: 10 }}
