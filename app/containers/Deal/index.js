@@ -21,7 +21,7 @@ export class Deal extends React.Component {
   };
 
   componentDidMount() {
-    if (viewSize().x > 1024) {
+    if (viewSize().x > 768) {
       this.props.fetchDeals();
     }
   }
