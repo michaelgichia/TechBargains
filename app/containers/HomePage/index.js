@@ -37,7 +37,7 @@ class HomePage extends React.PureComponent {
               className="row-wrapper-column1"
               xs="12"
               sm="12"
-              md="12"
+              md="8"
               lg="8"
               xl="8"
             >
@@ -46,6 +46,7 @@ class HomePage extends React.PureComponent {
             </Col>
             <Col
               className="row-wrapper-column2"
+              md="4"
               lg="4"
               xl="4">
               <div className="home-second-wrapper">
