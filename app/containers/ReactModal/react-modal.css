@@ -40,11 +40,15 @@
   padding: 0px;
 }
 
-.modal-footer > p {
+.rc-modal-footer {
+  padding: 8px 8px 0px 8px;
+}
+.rc-modal-footer > p {
   text-align: center;
   color: #333;
   font-size: 13px;
   min-width: 100%;
+  margin-bottom: 0;
 }
 
 .btn-modal-wrapper {

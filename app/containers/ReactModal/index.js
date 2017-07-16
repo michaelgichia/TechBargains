@@ -59,6 +59,7 @@ export class ReactModal extends React.Component {
     const { product, open } = this.state;
     const { handleCloseModal } = this.props;
     const actions = [
+      <ModalFooter />,
       <FlatButton
         label="Back"
         labelStyle={{ color: "rgb(103, 109, 121)", fontWeight: 600 }}
@@ -84,7 +85,6 @@ export class ReactModal extends React.Component {
             className="description-modal"
             dangerouslySetInnerHTML={{ __html: product.features }}
           />
-          <ModalFooter />
         </Dialog>
       </div>
     );
@@ -121,7 +121,7 @@ const ModalButton = ({ product, handlePush }) =>
   <div className="modal-body-btn">
     <FlatButton
       label={`go to ${product.merchant.title}`}
-      backgroundColor="#2eba37"
+      backgroundColor="rgb(29, 161, 242)"
       labelStyle={{
         color: "#fff",
         paddingLeft: 20,
@@ -129,14 +129,14 @@ const ModalButton = ({ product, handlePush }) =>
         fontSize: 20,
         textTransform: "none"
       }}
-      hoverColor="#7fdbb6"
+      hoverColor="#00d7ff"
       keyboardFocused={true}
       onTouchTap={() => handlePush(product.backlink)}
     />
   </div>
 
 const ModalFooter = () =>
-  <div className="modal-footer">
+  <div className="rc-modal-footer">
     <p>
       If you click a merchant link and buy a product or service on their
       website, we may be paid a fee by the merchant.
